@@ -25,9 +25,11 @@ const renderReact = () => {
   );
 }
 
+renderReact()
+
 const render = () => {
   app.configPusher();
-  if (process.env.REACT_APP_HAS_MULTIPLE_LOCALES) {
+  if (import.meta.env.VITE_HAS_MULTIPLE_LOCALES) {
     get('/locale/data')
       .then(data => {
         app.setTranslations(data.translations);
@@ -46,9 +48,9 @@ const render = () => {
 
 window.app = app;
 
-window.React1 = require('react');
+// window.React1 = require('react');
 
-if (process.env.VITE_SECURITY === 'off') {
+if (import.meta.env.VITE_SECURITY === 'off') {
   render();
 }
 else {

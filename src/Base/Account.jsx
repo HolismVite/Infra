@@ -76,9 +76,9 @@ const Account = {
     },
     checkLogin: (callback) => {
         var conf = {
-            url: process.env.REACT_APP_ACCOUNTS_URL + '/auth',
-            realm: process.env.REACT_APP_ACCOUNTS_REALM,
-            client: process.env.REACT_APP_ACCOUNTS_CLIENT
+            url: import.meta.env.VITE_ACCOUNTS_URL + '/auth',
+            realm: import.meta.env.VITE_ACCOUNTS_REALM,
+            client: import.meta.env.VITE_ACCOUNTS_CLIENT
         };
 
         if (conf.url && conf.realm && conf.client) {

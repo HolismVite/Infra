@@ -1,17 +1,17 @@
 const Push = {
     configPusher: () => {
-        if (!process.env.REACT_APP_PUSHER_KEY) {
+        if (!import.meta.env.VITE_PUSHER_KEY) {
             return;
         }
         try {
-            if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+            if (!import.meta.env.NODE_ENV || import.meta.env.NODE_ENV === 'development') {
                 window.Pusher.logToConsole = true;
             } else {
 
             }
 
-            var pusher = new window.Pusher(process.env.REACT_APP_PUSHER_KEY, {
-                cluster: process.env.REACT_APP_PUSHER_CLUSTER
+            var pusher = new window.Pusher(import.meta.env.VITE_PUSHER_KEY, {
+                cluster: import.meta.env.VITE_PUSHER_CLUSTER
             });
             window.pusher = pusher;
         }

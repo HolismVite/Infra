@@ -3,7 +3,7 @@ import Account from "./Account";
 import app from "./App";
 
 const axiosApi = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  baseURL: import.meta.env.VITE_API_URL
 })
 
 axiosApi.interceptors.request.use(config => {

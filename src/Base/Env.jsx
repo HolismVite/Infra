@@ -5,8 +5,8 @@ const Env = {
         if (!key) {
             return `UNDEFINED_KEY`
         }
-        key = `REACT_APP_${key}`
-        const value = process.env[key]
+        key = `VITE_${key}`
+        const value = import.meta.env[key]
         if (!value) {
             console.error('Non existing key in the environment', key)
             return ''
@@ -14,7 +14,7 @@ const Env = {
         return Holism.trim(value, '/')
     },
     isDev: () => {
-        if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+        if (!import.meta.env.NODE_ENV || import.meta.env.NODE_ENV === 'development') {
             return true
         } else {
             return false
