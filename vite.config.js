@@ -15,3 +15,5 @@ export default defineConfig({
 // https://esbuild.github.io/api/#preserve-symlinks
 
 // https://vitejs.dev/config/#resolve-preservesymlinks
+
+// https://vueschool.io/articles/vuejs-tutorials/import-aliases-in-vite/
