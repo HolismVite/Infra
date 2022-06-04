@@ -5,10 +5,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: true
+    host: '0.0.0.0',
+    hmr: {
+      clientPort: 443
+    }
   }
 })
-
 
 // https://esbuild.github.io/api/#preserve-symlinks
 
