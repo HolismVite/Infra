@@ -1,4 +1,4 @@
-import Logo from '../Logo';
+// import Logo from '../Logo';
 import { Link } from 'react-router-dom';
 
 const Branding = ({ onClick }) => {
@@ -18,7 +18,7 @@ const Branding = ({ onClick }) => {
                     'h-full w-full flex items-center justify-center'
                 }
             >
-                <Logo />
+                {/* <Logo /> */}
             </Link>
         </div>
     );

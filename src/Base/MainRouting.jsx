@@ -1,8 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-import app from './App.js';
+import app from './App';
 import NotFound from '../Panel/NotFound';
 import Test from '../Panel/Test'
-import routes from '../Routes.js';
+// import routes from '../Routes.js';
+
+const routes = [
+    {
+        path: "/somewhere",
+        component: () => { return <div>somewhere</div> }
+    }
+]
 
 const MainRouting = () => {
     return (

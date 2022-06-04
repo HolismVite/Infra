@@ -3,10 +3,10 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import useLocalStorageState from '../Base/UseLocalStorageState'
-import Branding from './Branding.js';
-import User from './User.js';
-import Menu from './Menu.js';
-import HolismIcon from '../Components/HolismIcon.js';
+import Branding from './Branding';
+import User from './User';
+import Menu from './Menu';
+import HolismIcon from '../Components/HolismIcon';
 
 export default function Sidebar({ onClick }) {
     const [open, setOpen] = useLocalStorageState(true, 'brandingAndMenuIsShown')

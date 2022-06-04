@@ -13,6 +13,7 @@ const Account = {
         return Account.keycloak().token;
     },
     user: () => {
+        return 'saeed'
         if (Account.keycloak().tokenParsed['family_name'] || Account.keycloak().tokenParsed['given_name']) {
             return Account.keycloak().tokenParsed['given_name'] + ' ' + Account.keycloak().tokenParsed['family_name']
         } else {
