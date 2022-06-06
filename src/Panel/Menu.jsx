@@ -4,17 +4,10 @@ import { useLocation } from "react-router-dom"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import BiotechIcon from '@mui/icons-material/Biotech'
 import Collapse from '@mui/material/Collapse'
-// import menuItems from '../Menu.js'
+import menuItems from '../Menu'
 import HolismIcon from '../Components/HolismIcon'
 import app from '../Base/App'
 
-const menuItems = [
-    {
-        title: "Title",
-        icon: ExpandMoreIcon,
-        url: "/somewhere"
-    }
-]
 let items = menuItems;
 if (app.isDev()) {
     items = [...menuItems, {
