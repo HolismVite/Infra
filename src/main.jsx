@@ -25,8 +25,6 @@ const renderReact = () => {
   );
 }
 
-renderReact()
-
 const render = () => {
   app.configPusher();
   if (import.meta.env.VITE_HAS_MULTIPLE_LOCALES) {
