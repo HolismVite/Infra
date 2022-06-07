@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DataObjectIcon from '@mui/icons-material/DataObject';
-import { Dialog, ItemAction } from '@List';
+import { Dialog, EntityAction } from '@List';
 import { app } from '@List';
 
 const ViewRecordAction = ({
@@ -68,7 +68,7 @@ const ViewRecordAction = ({
 
     return <>
         {dialog}
-        <ItemAction
+        <EntityAction
             icon={<DataObjectIcon style={{ color: 'rgb(37 99 235)' }} />}
             asMenuItem={asMenuItem}
             title={app.t("View record")}

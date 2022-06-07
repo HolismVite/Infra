@@ -33,7 +33,7 @@ const List = ({
   card,
   multicolumn,
   create,
-  itemActions,
+  entityActions,
   separateRowForActions,
   menuForActions,
   hasDelete,
@@ -164,7 +164,7 @@ const List = ({
       row={row}
       card={card}
       multicolumn={multicolumn}
-      itemActions={itemActions}
+      entityActions={entityActions}
       separateRowForActions={separateRowForActions}
       menuForActions={menuForActions}
       hasDelete={hasDelete}
@@ -251,9 +251,9 @@ List anatomy
       Page links
   Items (tabular, card)
     Item1
-      ItemActions
-        ItemAction1
-        ItemAction2
+      EntityActions
+        EntityAction1
+        EntityAction2
         ...
     Item2
     ..

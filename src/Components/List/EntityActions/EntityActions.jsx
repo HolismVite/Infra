@@ -10,10 +10,10 @@ import EditAction from './EditAction';
 import { app } from '../../../Base/App';
 import ViewRecordAction from './ViewRecordAction';
 
-const ItemActions = ({
+const EntityActions = ({
     entityType,
     item,
-    itemActions,
+    entityActions,
     menuForActions,
     hasDelete,
     hasEdit,
@@ -27,7 +27,7 @@ const ItemActions = ({
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    let clonedItemActions = [];
+    let clonedEntityActions = [];
 
     const handleClick = (e) => {
         setAnchorEl(e.currentTarget);
@@ -36,43 +36,43 @@ const ItemActions = ({
         setAnchorEl(null);
     }
 
-    if (itemActions) {
-        let itemActionsArray = null;
-        if (typeof itemActions === 'function') {
-            itemActionsArray = itemActions(item).props.children
-            if (itemActionsArray && itemActionsArray.props && itemActionsArray.props.children) {
-                itemActionsArray = itemActionsArray.props.children
+    if (entityActions) {
+        let entityActionsArray = null;
+        if (typeof entityActions === 'function') {
+            entityActionsArray = entityActions(item).props.children
+            if (entityActionsArray && entityActionsArray.props && entityActionsArray.props.children) {
+                entityActionsArray = entityActionsArray.props.children
             }
         }
         else {
-            itemActionsArray = itemActions.props.children
+            entityActionsArray = entityActions.props.children
         }
 
-        if (itemActionsArray) {
-            clonedItemActions = React
+        if (entityActionsArray) {
+            clonedEntityActions = React
                 .Children
-                .toArray(itemActionsArray)
-                .filter(itemAction => {
+                .toArray(entityActionsArray)
+                .filter(entityAction => {
                     try {
-                        if (itemAction.props?.superAdmin === true) {
+                        if (entityAction.props?.superAdmin === true) {
                             return app.isSuperAdmin()
                         }
                         else if (
-                            itemAction.type &&
-                            typeof itemAction.type === 'function' &&
-                            itemAction.props &&
-                            itemAction.type(itemAction.props).props?.superAdmin === true) {
+                            entityAction.type &&
+                            typeof entityAction.type === 'function' &&
+                            entityAction.props &&
+                            entityAction.type(entityAction.props).props?.superAdmin === true) {
                             return app.isSuperAdmin()
                         }
                         else {
                             return true;
                         }
                     } catch (error) {
-                        console.error(error, itemAction)
+                        console.error(error, entityAction)
                     }
                     return true;
                 })
-                .map(itemAction => React.cloneElement(itemAction, {
+                .map(entityAction => React.cloneElement(entityAction, {
                     item: item,
                     setItem: setItem,
                     reload: reload,
@@ -152,7 +152,7 @@ const ItemActions = ({
             >
 
                 {
-                    clonedItemActions.map((itemAction, index) => itemAction)
+                    clonedEntityActions.map((entityAction, index) => entityAction)
                 }
                 {deleteRecord}
                 {editRecord}
@@ -174,7 +174,7 @@ const ItemActions = ({
                         {/* <Fade in={!item.progress}> */}
                         <>
                             {
-                                clonedItemActions.map((itemAction, index) => itemAction)
+                                clonedEntityActions.map((entityAction, index) => entityAction)
                             }
                             {deleteRecord}
                             {editRecord}
@@ -186,4 +186,4 @@ const ItemActions = ({
         </span>
 }
 
-export default ItemActions;
+export default EntityActions;

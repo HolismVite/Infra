@@ -8,7 +8,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import { useNavigate } from 'react-router-dom';
 import { HolismIcon, app, Unify } from '@List';
 
-const ItemAction = ({
+const EntityAction = ({
     title,
     item,
     icon,
@@ -41,7 +41,7 @@ const ItemAction = ({
             click({ item, setProgress, setItem, reload })
         }
         else if (dialog) {
-            app.emit(app.itemActionDialogRequested, {
+            app.emit(app.entityActionDialogRequested, {
                 entity: item,
                 purpose: title
             })
@@ -92,7 +92,7 @@ const ItemAction = ({
             }
         </>
         :
-        <span className="itemAction flex items-center justify-center">
+        <span className="entityAction flex items-center justify-center">
             {
                 (progress || progress === true)
                     ?
@@ -120,4 +120,4 @@ const ItemAction = ({
         </span >
 };
 
-export { ItemAction }
+export { EntityAction }

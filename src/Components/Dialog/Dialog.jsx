@@ -22,13 +22,13 @@ const Dialog = ({
     const [open, setOpen] = useState(isOpen)
 
     useEffect(() => {
-        const onItemActionDialogRequested = ({ entity, purpose }) => {
+        const onEntityActionDialogRequested = ({ entity, purpose }) => {
             if (entityId === entity?.id && dialogPurpose === purpose && typeof isOpen !== 'boolean') {
                 setOpen(true)
             }
         }
-        app.on(app.itemActionDialogRequested, onItemActionDialogRequested)
-        return () => app.removeListener(app.itemActionDialogRequested, onItemActionDialogRequested)
+        app.on(app.entityActionDialogRequested, onEntityActionDialogRequested)
+        return () => app.removeListener(app.entityActionDialogRequested, onEntityActionDialogRequested)
     }, [entityId, dialogPurpose])
 
     return <MuiDialog

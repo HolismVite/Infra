@@ -133,10 +133,10 @@ const FormBase = ({
 
   useEffect(() => {
     app.on(app.creationRequested, resetForm)
-    app.on(app.itemActionDialogRequested, resetForm)
+    app.on(app.entityActionDialogRequested, resetForm)
     return () => {
       app.removeListener(app.creationRequested, resetForm)
-      app.removeListener(app.itemActionDialogRequested, resetForm)
+      app.removeListener(app.entityActionDialogRequested, resetForm)
     }
   }, [])
 

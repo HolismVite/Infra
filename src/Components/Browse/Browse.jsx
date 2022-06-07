@@ -7,7 +7,7 @@ import Filtering from "../List/Filtering";
 import Sorting from "../List/Sorting";
 import Entities from "../List/Entities";
 import CreateListParameters from '../../Base/CreateListParameters';
-import { app, ItemAction, ListContext, useLocalStorageState } from '@List';
+import { app, EntityAction, ListContext, useLocalStorageState } from '@List';
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer";
 
@@ -28,8 +28,8 @@ const Browse = ({
         setIsFilteringOpen(!isFilteringOpen);
     }
 
-    const itemActions = <>
-        <ItemAction
+    const entityActions = <>
+        <EntityAction
             icon={<CheckIcon />}
             title={'Select ' + entityType}
             click={({ item }) => {
@@ -83,7 +83,7 @@ const Browse = ({
             headers={headers}
             row={row}
             card={card}
-            itemActions={itemActions}
+            entityActions={entityActions}
         />
     </ListContext.Provider>
 }

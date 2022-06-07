@@ -7,9 +7,9 @@ import DisabledByDefaultOutlinedIcon from '@mui/icons-material/DisabledByDefault
 import BlockIcon from '@mui/icons-material/Block';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { HolismIcon, app } from '@Panel'
-import EditAction from './ItemActions/EditAction';
-import ItemActions from './ItemActions/ItemActions';
-import { ItemAction } from './ItemActions/ItemAction';
+import EditAction from './EntityActions/EditAction';
+import EntityActions from './EntityActions/EntityActions';
+import { EntityAction } from './EntityActions/EntityAction';
 import Unify from '../Unify';
 
 const Node = ({
@@ -22,7 +22,7 @@ const Node = ({
     create,
     edit,
     upsert,
-    itemActions,
+    entityActions,
     setItem,
     reload
 }) => {
@@ -66,21 +66,21 @@ const Node = ({
                     }
                 </span>
                 {
-                    (itemActions || hasDelete || hasEdit || edit)
+                    (entityActions || hasDelete || hasEdit || edit)
                         ?
-                        <ItemActions
+                        <EntityActions
                             className="hidden absolute right-0 top-0 bottom-p m-auto group-hover:flex"
                             entityType={entityType}
                             item={entity}
-                            itemActions={(create || upsert) ? <>
-                                <Unify component={itemActions} />
-                                <ItemAction
+                            entityActions={(create || upsert) ? <>
+                                <Unify component={entityActions} />
+                                <EntityAction
                                     icon={<AddIcon />}
                                     click={() => {
                                         app.emit(app.creationRequested, { parentId: entity.hierarchyId || entity.id })
                                     }}
                                 />
-                            </> : itemActions}
+                            </> : entityActions}
                             hasDelete={hasDelete}
                             hasEdit={hasEdit}
                             edit={edit}
@@ -109,7 +109,7 @@ const Node = ({
                         create={create}
                         edit={edit}
                         upsert={upsert}
-                        itemActions={itemActions}
+                        entityActions={entityActions}
                         setItem={setItem}
                         reload={reload}
                     />

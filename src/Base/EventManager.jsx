@@ -21,7 +21,7 @@ const EventManager = {
     editRequested: 'edit_requested',
     entitySelected: 'entity_slected',
     toggleTopPagination: 'toggle_top_pagination',
-    itemActionDialogRequested: 'item_action_dialog_requested',
+    entityActionDialogRequested: 'item_action_dialog_requested',
     entityReloadRequested: 'entity_reload_requested',
     entityRerenderRequested: 'set_entity_requested',
     runMethod: 'run_method'

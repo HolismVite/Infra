@@ -47,13 +47,13 @@ const DialogForm = ({
     }, [])
 
     useEffect(() => {
-        const onItemActionDialogRequested = ({ entity, purpose }) => {
+        const onEntityActionDialogRequested = ({ entity, purpose }) => {
             if (entity?.id === entityId && dialogPurpose === purpose) {
                 setIsDialogFormOpen(true);
             }
         }
-        app.on(app.itemActionDialogRequested, onItemActionDialogRequested)
-        return () => app.removeListener(app.itemActionDialogRequested, onItemActionDialogRequested)
+        app.on(app.entityActionDialogRequested, onEntityActionDialogRequested)
+        return () => app.removeListener(app.entityActionDialogRequested, onEntityActionDialogRequested)
     }, [entityId, dialogPurpose])
 
     useEffect(() => {

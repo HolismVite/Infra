@@ -1,6 +1,6 @@
 import React from 'react';
 import EditIcon from '@mui/icons-material/Edit';
-import { ItemAction } from '@List';
+import { EntityAction } from '@List';
 import { app } from '@List';
 import { useNavigate } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ const EditAction = ({
     }
 
     return <>
-        <ItemAction
+        <EntityAction
             icon={<EditIcon style={{ color: '#10B981' }} />}
             title={app.t("Edit")}
             asMenuItem={asMenuItem}

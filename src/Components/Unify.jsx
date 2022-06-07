@@ -25,23 +25,23 @@ const Unify = ({ component }) => {
                     return <>
                         {
                             component.props.children
-                                // .filter(itemAction => {
+                                // .filter(entityAction => {
                                 //     try {
-                                //         if (itemAction.props?.superAdmin === true) {
+                                //         if (entityAction.props?.superAdmin === true) {
                                 //             return app.isSuperAdmin()
                                 //         }
                                 //         else if (
-                                //             itemAction.type &&
-                                //             typeof itemAction.type === 'function' &&
-                                //             itemAction.props &&
-                                //             itemAction.type(itemAction.props).props?.superAdmin === true) {
+                                //             entityAction.type &&
+                                //             typeof entityAction.type === 'function' &&
+                                //             entityAction.props &&
+                                //             entityAction.type(entityAction.props).props?.superAdmin === true) {
                                 //             return app.isSuperAdmin()
                                 //         }
                                 //         else {
                                 //             return true;
                                 //         }
                                 //     } catch (error) {
-                                //         console.error(error, itemAction)
+                                //         console.error(error, entityAction)
                                 //     }
                                 //     return true;
                                 // })

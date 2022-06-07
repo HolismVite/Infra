@@ -1,5 +1,5 @@
 import Node from './Node'
-import NoItemsFound from '../NoItemsFound';
+import NoEntitiesFound from '../NoEntitiesFound';
 
 const Tree = ({
     data,
@@ -9,7 +9,7 @@ const Tree = ({
 }) => {
     return data.length === 0
         ?
-        <NoItemsFound />
+        <NoEntitiesFound />
         :
         <ul className="w-full px-6">
             {

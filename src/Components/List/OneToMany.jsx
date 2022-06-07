@@ -12,7 +12,7 @@ const OneToMany = ({
     row,
     card,
     create,
-    itemActions,
+    entityActions,
     hasDelete,
     hasEdit,
     edit,
@@ -51,7 +51,7 @@ const OneToMany = ({
             headers={headers}
             row={row}
             card={card}
-            itemActions={itemActions}
+            entityActions={entityActions}
             hasDelete={hasDelete}
             hasEdit={hasEdit}
             edit={edit}

@@ -1,4 +1,4 @@
-import { ItemAction } from '@List';
+import { EntityAction } from '@List';
 import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useState } from 'react';
 import Dialog from '@mui/material/Dialog';
@@ -61,7 +61,7 @@ const DeleteAction = ({ entityType, item, asMenuItem }) => {
                 ?
                 <CircularProgress size={24} className="m-2" />
                 :
-                <ItemAction
+                <EntityAction
                     icon={<DeleteIcon style={{ color: '#EF4444' }} />}
                     title={app.t("Delete")}
                     asMenuItem={asMenuItem}

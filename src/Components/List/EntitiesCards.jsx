@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import Pagination from './Pagination';
-import ItemActions from './ItemActions/ItemActions';
+import EntityActions from './EntityActions/EntityActions';
 import Checkbox from '@mui/material/Checkbox';
 import Tooltip from '@mui/material/Tooltip';
 import Collapse from '@mui/material/Collapse';
 import { ListContext, app } from '@List';
-import NoItemsFound from '../NoItemsFound';
+import NoEntitiesFound from '../NoEntitiesFound';
 
 const Cards = ({
     data,
-    itemActions,
+    entityActions,
     menuForActions,
     hasDelete,
     hasEdit,
@@ -35,7 +35,7 @@ const Cards = ({
         {
             data.length === 0
                 ?
-                <NoItemsFound />
+                <NoEntitiesFound />
                 :
                 <>
                     <Collapse in={showTopPagiation} className="w-full">
@@ -113,15 +113,15 @@ const Cards = ({
                                             card(item)
                                     }
                                     {
-                                        (itemActions || hasDelete || hasEdit || edit)
+                                        (entityActions || hasDelete || hasEdit || edit)
                                             ?
                                             <div
                                                 className={(multicolumn ? " bg-white border absolute bottom-0 right-0 z-50 hidden group-hover:flex" : "")}
                                             >
-                                                <ItemActions
+                                                <EntityActions
                                                     entityType={entityType}
                                                     item={item}
-                                                    itemActions={itemActions}
+                                                    entityActions={entityActions}
                                                     menuForActions={menuForActions}
                                                     hasDelete={hasDelete}
                                                     hasEdit={hasEdit}

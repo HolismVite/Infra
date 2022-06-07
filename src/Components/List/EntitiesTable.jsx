@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Pagination from './Pagination';
-import ItemActions from './ItemActions/ItemActions';
+import EntityActions from './EntityActions/EntityActions';
 import Checkbox from '@mui/material/Checkbox';
 import Tooltip from '@mui/material/Tooltip';
 import Collapse from '@mui/material/Collapse';
@@ -8,7 +8,7 @@ import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import { ListContext, HolismIcon, app } from '@List';
 import { useLocalStorageState } from '../../Base/UseLocalStorageState'
-import NoItemsFound from '../NoItemsFound';
+import NoEntitiesFound from '../NoEntitiesFound';
 import { EntityContext } from './List'
 
 export const TableContext = React.createContext();
@@ -19,7 +19,7 @@ const Table = ({
     metadata,
     headers,
     row,
-    itemActions,
+    entityActions,
     separateRowForActions,
     menuForActions,
     hasDelete,
@@ -36,7 +36,7 @@ const Table = ({
 
     const listContext = useContext(ListContext);
     const { selectedItems, hasData } = listContext;
-    const [hiddenItemActions, setHiddenItemActions] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isItemActionsHidden`)
+    const [hiddenEntityActions, setHiddenEntityActions] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isEntityActionsHidden`)
 
     let headerElements = [];
 
@@ -85,9 +85,9 @@ const Table = ({
                     headerElements
                 }
                 {
-                    (itemActions || hasDelete)
+                    (entityActions || hasDelete)
                         ?
-                        !hiddenItemActions && <td></td>
+                        !hiddenEntityActions && <td></td>
                         :
                         null
                 }
@@ -123,13 +123,13 @@ const Table = ({
             hasmoreroom: menuForActions
         }))
 
-    const actions = (item) => (itemActions || hasDelete || hasEdit || edit)
+    const actions = (item) => (entityActions || hasDelete || hasEdit || edit)
         ?
-        !hiddenItemActions && <td {...(separateRowForActions && { colSpan: "100" })}>
-            <ItemActions
+        !hiddenEntityActions && <td {...(separateRowForActions && { colSpan: "100" })}>
+            <EntityActions
                 entityType={entityType}
                 item={item}
-                itemActions={itemActions}
+                entityActions={entityActions}
                 menuForActions={menuForActions}
                 hasDelete={hasDelete}
                 hasEdit={hasEdit}
@@ -150,7 +150,7 @@ const Table = ({
                 data.length === 0
                     ?
                     <tr>
-                        <td colSpan='100'><NoItemsFound /></td>
+                        <td colSpan='100'><NoEntitiesFound /></td>
                     </tr>
                     :
                     data.map((item, index) => !menuForActions && separateRowForActions
@@ -203,21 +203,21 @@ const Table = ({
         }
         <div className="relative w-full overflow-x-auto px-6">
             {
-                !menuForActions && hasData && (itemActions || hasDelete || hasEdit || edit) &&
+                !menuForActions && hasData && (entityActions || hasDelete || hasEdit || edit) &&
                 <span
                     className={"absolute top-0 right-6 cursor-pointer "}
-                    onClick={() => setHiddenItemActions(!hiddenItemActions)}
+                    onClick={() => setHiddenEntityActions(!hiddenEntityActions)}
                     title="Toggle actions"
                 >
                     <HolismIcon
-                        className={hiddenItemActions ? "text-slate-300" : "text-green-600"}
-                        icon={hiddenItemActions ? ToggleOnIcon : ToggleOffIcon}
+                        className={hiddenEntityActions ? "text-slate-300" : "text-green-600"}
+                        icon={hiddenEntityActions ? ToggleOnIcon : ToggleOffIcon}
                     />
                 </span>
             }
             <TableContext.Provider
                 value={{
-                    hasMoreRoom: !menuForActions && separateRowForActions && !hiddenItemActions
+                    hasMoreRoom: !menuForActions && separateRowForActions && !hiddenEntityActions
                 }}>
                 <table
                     className="w-full text-center "
