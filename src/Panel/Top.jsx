@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import app from '../Base/App';
 
-const Title = () => {
+const TopContext = React.createContext()
+
+const Top = () => {
 
     const [params, setParams] = useState('');
     const [pageTitle, setPageTitle] = useState('');
@@ -31,7 +33,7 @@ const Title = () => {
         };
     });
 
-    const setTitleAndSubtitle = ({ freeze, pageTitle, pageSubtitle, breadcrumbItems }) => {
+    const setTop = ({ freeze, pageTitle, pageSubtitle, breadcrumbItems }) => {
         setParams({ freeze, pageTitle, pageSubtitle, breadcrumbItems })
         if (!isFreezed) {
             setPageTitle(pageTitle);
@@ -46,15 +48,8 @@ const Title = () => {
     }
 
     useEffect(() => {
-        setTitleAndSubtitle(params);
+        setTop(params);
     }, [isFreezed])
-
-    useEffect(() => {
-        app.on(app.componentLoaded, setTitleAndSubtitle);
-        return () => {
-            app.removeListener(app.componentLoaded, setTitleAndSubtitle);
-        }
-    });
 
     useEffect(() => {
         if (app.isSomething(pageSubtitle) || (breadcrumbItems.length > 0)) {
@@ -65,7 +60,11 @@ const Title = () => {
         }
     }, [pageSubtitle, breadcrumbItems]);
 
-    return <>
+    return <TopContext.Provider
+        value={{
+
+        }}
+    >
         {
             (app.isNothing(pageTitle) && app.isNothing(pageSubtitle) && breadcrumbItems.length === 0)
                 ?
@@ -105,7 +104,7 @@ const Title = () => {
                     }
                 </div>
         }
-    </>
+    </TopContext.Provider>
 }
 
-export default Title;
+export default Top;
