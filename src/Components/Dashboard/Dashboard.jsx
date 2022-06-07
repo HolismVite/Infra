@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { PanelContext, app } from '@Panel'
+import { TopContext, app } from '@Panel'
 
 const Dashboard = ({
     title,
@@ -8,10 +8,12 @@ const Dashboard = ({
     children
 }) => {
 
-    const { setTop } = useContext(PanelContext)
+    const { setTitle, setSubtitle, setBreadcrumbItems } = useContext(TopContext)
 
     useEffect(() => {
-        setTop({ title, subtitle, breadcrumbItems })
+        setTitle(title)
+        setSubtitle(subtitle)
+        setBreadcrumbItems(breadcrumbItems)
     }, [title, subtitle, breadcrumbItems]);
 
     return <div

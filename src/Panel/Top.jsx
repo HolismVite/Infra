@@ -88,9 +88,9 @@ const Top = () => {
                                 {
                                     app.t(subtitle) ||
                                     (
-                                        breadcrumbItems.map((item, index) => <span key={index}>
+                                        breadcrumbItems?.map((item, index) => <span key={index}>
                                             <span>{app.t(item.title)}</span>
-                                            {index === breadcrumbItems.length - 1
+                                            {index === breadcrumbItems?.length - 1
                                                 ?
                                                 null
                                                 :
