@@ -19,7 +19,6 @@ const EventManager = {
     formSubmitted: 'form_submission_requested',
     creationRequested: 'dialog_form_requested',
     formCanceled: 'form_canceled',
-    componentLoaded: 'component_loaded',
     accountUpdated: 'account_updated',
     itemUpserted: 'item_upserted',
     showMessage: 'show_message',

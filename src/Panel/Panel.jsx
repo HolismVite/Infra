@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import MainRouting from '../Base/MainRouting';
 import Sidebar from './Sidebar';
@@ -8,12 +8,14 @@ import useLocalStorageState from '../Base/UseLocalStorageState';
 import Footer from './Footer';
 import Message from './Message';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Title from './Top';
+import Top from './Top';
 // https://dev.to/codeply/helpful-page-layouts-using-tailwind-css-1a3k
 // import TrapFocus from '@mui/material/Unstable_TrapFocus';
 // import Backdrop from '@mui/material/Backdrop';
 
 const PanelContext = React.createContext()
+
+const TopContext = React.createContext()
 
 // require('react-dom');
 // window.React2 = require('react');
@@ -25,6 +27,12 @@ const Panel = () => {
 
     const [isSidebarOpen, setIsSidebarOpen] = useLocalStorageState(true, 'isSidebarOpen');
     const [isDark, setIsDark] = useLocalStorageState(false, `isDark_${app.userGuid()}`);
+
+    const [params, setParams] = useState('');
+    const [title, setTitle] = useState('');
+    const [subtitle, setSubtitle] = useState('');
+    const [breadcrumbItems, setBreadcrumbItems] = useState([]);
+    const [isFreezed, setIsFreezed] = useState(false);
 
     const toggleMenu = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -121,8 +129,22 @@ const Panel = () => {
                     id='content'
                     className="md:p-10 md:pt-4 pt-5 flex-1"
                 >
-                    <Title />
-                    <MainRouting />
+                    <TopContext.Provider
+                        value={{
+                            title,
+                            setTitle,
+                            subtitle,
+                            setSubtitle,
+                            breadcrumbItems,
+                            setBreadcrumbItems,
+                            isFreezed,
+                            setIsFreezed,
+                            // setTop
+                        }}
+                    >
+                        <Top />
+                        <MainRouting />
+                    </TopContext.Provider>
                 </div>
                 <Footer />
                 <Message />
@@ -150,3 +172,4 @@ export { Info } from '../Components/Message/Info'
 export { Warning } from '../Components/Message/Warning'
 export { Error } from '../Components/Message/Error'
 export { PanelContext }
+export { TopContext }

@@ -15,7 +15,6 @@ const resolvedAliases = Object.fromEntries(
   Object.entries(aliases).map(([key, value]) => [key, path.resolve(__dirname, value)]),
 )
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.')
 
@@ -36,7 +35,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: resolvedAliases
     },
-    plugins: [htmlPlugin(), react()],
+    plugins: [react(), htmlPlugin()],
     server: {
       host: '0.0.0.0',
       hmr: {
@@ -49,5 +48,3 @@ export default defineConfig(({ mode }) => {
 // https://esbuild.github.io/api/#preserve-symlinks
 
 // https://vitejs.dev/config/#resolve-preservesymlinks
-
-// https://vueschool.io/articles/vuejs-tutorials/import-aliases-in-vite/

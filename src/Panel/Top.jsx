@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import app from '../Base/App';
-
-const TopContext = React.createContext()
+import React, { useState, useEffect, useContext } from 'react';
+import { app, TopContext } from './Panel';
 
 const Top = () => {
 
-    const [params, setParams] = useState('');
-    const [pageTitle, setPageTitle] = useState('');
-    const [pageSubtitle, setPageSubtitle] = useState('');
-    const [breadcrumbItems, setBreadcrumbItems] = useState([]);
     const [hasSubtitleOrBreadcrumb, setHasSubtitleOrBreadcrum] = useState();
     const [isShown, setIsShown] = useState(true);
-    const [isFreezed, setIsFreezed] = useState(false);
+    const {
+        params,
+        setParams,
+        title,
+        setTitle,
+        subtitle,
+        setSubtitle,
+        breadcrumbItems,
+        setBreadcrumbItems,
+        isFreezed,
+        setIsFreezed
+    } = useContext(TopContext)
 
     useEffect(() => {
         const hide = () => {
@@ -33,11 +38,11 @@ const Top = () => {
         };
     });
 
-    const setTop = ({ freeze, pageTitle, pageSubtitle, breadcrumbItems }) => {
-        setParams({ freeze, pageTitle, pageSubtitle, breadcrumbItems })
+    const setTop = ({ freeze, title, subtitle, breadcrumbItems }) => {
+        setParams({ freeze, title, subtitle, breadcrumbItems })
         if (!isFreezed) {
-            setPageTitle(pageTitle);
-            setPageSubtitle(pageSubtitle);
+            setTitle(title);
+            setSubtitle(subtitle);
             if (breadcrumbItems && breadcrumbItems.length) {
                 setBreadcrumbItems(breadcrumbItems);
             }
@@ -48,25 +53,21 @@ const Top = () => {
     }
 
     useEffect(() => {
-        setTop(params);
+        // setTop(params);
     }, [isFreezed])
 
     useEffect(() => {
-        if (app.isSomething(pageSubtitle) || (breadcrumbItems.length > 0)) {
+        if (app.isSomething(subtitle) || (breadcrumbItems?.length > 0)) {
             setHasSubtitleOrBreadcrum(true);
         }
         else {
             setHasSubtitleOrBreadcrum(false);
         }
-    }, [pageSubtitle, breadcrumbItems]);
+    }, [subtitle, breadcrumbItems]);
 
-    return <TopContext.Provider
-        value={{
-
-        }}
-    >
+    return <>
         {
-            (app.isNothing(pageTitle) && app.isNothing(pageSubtitle) && breadcrumbItems.length === 0)
+            (app.isNothing(title) && app.isNothing(subtitle) && breadcrumbItems?.length === 0)
                 ?
                 <div></div>
                 :
@@ -79,13 +80,13 @@ const Top = () => {
                         + (app.isRtl() ? " text-right pr-5 lg:pr-0 md:pr-0 " : " pl-5 lg:pl-0 md:pl-0 ")
                     }
                 >
-                    <div className="font-medium mb-2 tracking-wider	text-xl text-gray-700 dark:text-zinc-400 ">{app.t(pageTitle)}</div>
+                    <div className="font-medium mb-2 tracking-wider	text-xl text-gray-700 dark:text-zinc-400 ">{app.t(title)}</div>
                     {
                         hasSubtitleOrBreadcrumb
                             ?
                             <div className="text-xs tracking-wider text-gray-500">
                                 {
-                                    app.t(pageSubtitle) ||
+                                    app.t(subtitle) ||
                                     (
                                         breadcrumbItems.map((item, index) => <span key={index}>
                                             <span>{app.t(item.title)}</span>
@@ -104,7 +105,7 @@ const Top = () => {
                     }
                 </div>
         }
-    </TopContext.Provider>
+    </>
 }
 
 export default Top;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import CachedIcon from '@mui/icons-material/Cached';
@@ -12,6 +12,7 @@ import ListActions from "./ListActions/ListActions";
 import app from '../../Base/App';
 import useLocalStorageState from '../../Base/UseLocalStorageState';
 import { DialogForm } from '@Form';
+import { TopContext } from '../../Panel/Panel';
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer";
 
@@ -53,17 +54,16 @@ const List = ({
   const CreationComponent = (create ? (typeof create === 'function' ? create() : create) : null);
   const EditionComponent = (edit ? (typeof edit === 'function' ? edit() : create) : null);
   const UpsertComponent = (upsert ? (typeof upsert === 'function' ? upsert() : create) : null);
+  const { setTitle, setSubtitle, setBreadcrumbItems } = useContext(TopContext)
 
   useEffect(() => {
     // console.log(selectedItems);
   }, [selectedItems]);
 
   useEffect(() => {
-    app.emit(app.componentLoaded, {
-      pageTitle: title,
-      pageSubtitle: subtitle,
-      breadcrumbItems: breadcrumbItems
-    });
+    setTitle(title)
+    setSubtitle(subtitle)
+    setBreadcrumbItems(breadcrumbItems)
   }, [title, subtitle, breadcrumbItems]);
 
   const toggleFiltering = () => {

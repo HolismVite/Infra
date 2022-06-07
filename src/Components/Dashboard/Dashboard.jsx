@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import app from '../../Base/App';
+import React, { useEffect, useContext } from 'react';
+import { PanelContext, app } from '@Panel'
 
 const Dashboard = ({
     title,
@@ -8,12 +8,10 @@ const Dashboard = ({
     children
 }) => {
 
+    const { setTop } = useContext(PanelContext)
+
     useEffect(() => {
-        app.emit(app.componentLoaded, {
-            pageTitle: title,
-            pageSubtitle: subtitle,
-            breadcrumbItems: breadcrumbItems
-        });
+        setTop({ title, subtitle, breadcrumbItems })
     }, [title, subtitle, breadcrumbItems]);
 
     return <div
