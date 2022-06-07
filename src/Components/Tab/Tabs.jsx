@@ -2,25 +2,26 @@ import React, { useState, useEffect } from 'react';
 import MuiTabs from '@mui/material/Tabs';
 import MuiTab from '@mui/material/Tab';
 import Panel from './Panel';
-import app from '../../Base/App';
+import { TopContext } from '../../Panel/Panel';
 
-
-const Tabs = ({ title, subtitle, breadcrumbItems, tabs }) => {
+const Tabs = ({
+	title,
+	subtitle,
+	breadcrumbItems,
+	tabs
+}) => {
 
 	const [tabNumber, setTabNumber] = useState(0);
 	var tabsArray = React.Children.toArray(tabs)[0].props.children;
+	const { setTitle, setSubtitle, setBreadcrumbItems, setFreeze } = useContext(TopContext)
 
 	useEffect(() => {
-		app.emit(app.componentLoaded, {
-			freeze: true,
-			pageTitle: title,
-			pageSubtitle: subtitle,
-			breadcrumbItems: breadcrumbItems
-		});
+		setFreeze(true)
+		setTitle(title)
+		setSubtitle(subtitle)
+		setBreadcrumbItems(breadcrumbItems)
 		return () => {
-			app.emit(app.componentLoaded, {
-				freeze: false
-			});
+			setFreeze(false)
 		}
 	}, []);
 

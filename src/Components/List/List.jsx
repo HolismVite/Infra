@@ -11,7 +11,7 @@ import Items from "./Items";
 import ListActions from "./ListActions/ListActions";
 import app from '../../Base/App';
 import useLocalStorageState from '../../Base/UseLocalStorageState';
-import { DialogForm } from '@Form';
+import { DialogForm } from '../Form/DialogForm'
 import { TopContext } from '../../Panel/Panel';
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer";

@@ -1,12 +1,16 @@
+import { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import { app } from './Panel';
-import { useEffect } from 'react';
+import { TopContext } from './Panel';
 
 const NotFound = () => {
 
+    const { setTitle, setSubtitle, setBreadcrumbItems, setFreeze } = useContext(TopContext)
+
     useEffect(() => {
-        app.emit(app.componentLoaded, {});
+        setTitle('')
+        setSubtitle('')
+        setBreadcrumbItems([])
     }, []);
 
     return <div className="flex flex-col items-center justify-center">

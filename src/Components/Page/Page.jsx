@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import app from '../../Base/App';
+import React, { useEffect, useContext } from 'react';
+import { TopContext } from '../../Panel/Panel';
 
 const Page = ({
     title,
@@ -9,12 +9,12 @@ const Page = ({
     className
 }) => {
 
+	const { setTitle, setSubtitle, setBreadcrumbItems, setFreeze } = useContext(TopContext)
+
     useEffect(() => {
-        app.emit(app.componentLoaded, {
-            pageTitle: title,
-            pageSubtitle: subtitle,
-            breadcrumbItems: breadcrumbItems
-        });
+        setTitle(title)
+        setSubtitle(subtitle)
+        setBreadcrumbItems(breadcrumbItems)
     }, [title, subtitle, breadcrumbItems]);
 
     return <div
