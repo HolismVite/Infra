@@ -13,7 +13,7 @@ import Title from './Title';
 // import TrapFocus from '@mui/material/Unstable_TrapFocus';
 // import Backdrop from '@mui/material/Backdrop';
 
-const ApplicationContext = React.createContext()
+const PanelContext = React.createContext()
 
 // require('react-dom');
 // window.React2 = require('react');
@@ -35,16 +35,6 @@ const Panel = () => {
     // if (window.React1 !== window.React2) {
     //     // console.warn('two reacts inside component');
     // }
-
-    useEffect(() => {
-        const onDarkModeChanged = (isDark) => {
-            setIsDark(isDark)
-        }
-        app.on(app.darkModeChanged, onDarkModeChanged)
-        return () => {
-            app.removeListener(app.onDarkModeChanged, onDarkModeChanged)
-        }
-    }, []);
 
     const closeMenu = () => {
         if (window.innerWidth < app.breakpoints.lg) {
@@ -74,9 +64,12 @@ const Panel = () => {
         };
     });
 
-    return <ApplicationContext.Provider
+    return <PanelContext.Provider
         value={{
-            isSidebarOpen
+            isSidebarOpen,
+            setIsSidebarOpen,
+            isDark,
+            setIsDark
         }}>
         <input type='hidden' id='reactVersion' value={React.version} />
         <div
@@ -135,7 +128,7 @@ const Panel = () => {
                 <Message />
             </div>
         </div>
-    </ApplicationContext.Provider>
+    </PanelContext.Provider>
 }
 
 export default Panel;
@@ -156,4 +149,4 @@ export { Success } from '../Components/Message/Success'
 export { Info } from '../Components/Message/Info'
 export { Warning } from '../Components/Message/Warning'
 export { Error } from '../Components/Message/Error'
-export { ApplicationContext }
+export { PanelContext }
