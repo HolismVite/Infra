@@ -1,13 +1,5 @@
-
-// var EventEmitter = require('eventemitter3');
-// const eventEmitter = new EventEmitter();
-const eventEmitter = {
-    on: () => {},
-    off: () => {},
-    emit: () => {},
-    removeListener: () => {},
-    listeners: () => {}
-}
+import EventEmitter from 'eventemitter3'
+const eventEmitter = new EventEmitter();
 
 const EventManager = {
     on: (event, fn) => eventEmitter.on(event, fn),
