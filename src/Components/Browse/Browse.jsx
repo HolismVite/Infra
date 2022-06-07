@@ -5,7 +5,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import Collapse from '@mui/material/Collapse';
 import Filtering from "../List/Filtering";
 import Sorting from "../List/Sorting";
-import Items from "../List/Items";
+import Entities from "../List/Entities";
 import CreateListParameters from '../../Base/CreateListParameters';
 import { app, ItemAction, ListContext, useLocalStorageState } from '@List';
 
@@ -78,7 +78,7 @@ const Browse = ({
             </div>
         </Collapse>
 
-        <Items
+        <Entities
             entityType={entityType}
             headers={headers}
             row={row}

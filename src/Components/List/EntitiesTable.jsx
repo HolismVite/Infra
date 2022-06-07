@@ -9,6 +9,7 @@ import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import { ListContext, HolismIcon, app } from '@List';
 import { useLocalStorageState } from '../../Base/UseLocalStorageState'
 import NoItemsFound from '../NoItemsFound';
+import { EntityContext } from './List'
 
 export const TableContext = React.createContext();
 
@@ -155,17 +156,23 @@ const Table = ({
                     data.map((item, index) => !menuForActions && separateRowForActions
                         ?
                         <React.Fragment key={item.id}>
-                            <tr
-                                className={rowStyle(item, index, false)}
+                            <EntityContext.Provider
+                            value={{
+                                entity: item
+                            }}
                             >
-                                {itemSelection(item)}
-                                {clonedCells(item)}
-                            </tr>
-                            <tr
-                                className={rowStyle(item, index, true)}
-                            >
-                                {actions(item)}
-                            </tr>
+                                <tr
+                                    className={rowStyle(item, index, false)}
+                                >
+                                    {itemSelection(item)}
+                                    {clonedCells(item)}
+                                </tr>
+                                <tr
+                                    className={rowStyle(item, index, true)}
+                                >
+                                    {actions(item)}
+                                </tr>
+                            </EntityContext.Provider>
                         </React.Fragment>
                         :
                         <tr

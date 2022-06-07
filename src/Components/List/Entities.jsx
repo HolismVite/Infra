@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import { ListContext, useLocalStorageState, app, get } from '@List';
-import Cards from './ItemsCards'
-import Table from './ItemsTable'
-import Tree from './ItemsTree';
+import Cards from './EntitiesCards'
+import Table from './EntitiesTable'
+import Tree from './EntitiesTree';
 
 const Items = (props) => {
 
