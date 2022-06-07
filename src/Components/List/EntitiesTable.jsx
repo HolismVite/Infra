@@ -157,9 +157,9 @@ const Table = ({
                         ?
                         <React.Fragment key={item.id}>
                             <EntityContext.Provider
-                            value={{
-                                entity: item
-                            }}
+                                value={{
+                                    entity: item
+                                }}
                             >
                                 <tr
                                     className={rowStyle(item, index, false)}
@@ -175,14 +175,20 @@ const Table = ({
                             </EntityContext.Provider>
                         </React.Fragment>
                         :
-                        <tr
-                            key={item.id}
-                            className={rowStyle(item, index, true)}
+                        <EntityContext.Provider
+                            value={{
+                                entity: item
+                            }}
                         >
-                            {itemSelection(item)}
-                            {clonedCells(item)}
-                            {actions(item)}
-                        </tr>
+                            <tr
+                                key={item.id}
+                                className={rowStyle(item, index, true)}
+                            >
+                                {itemSelection(item)}
+                                {clonedCells(item)}
+                                {actions(item)}
+                            </tr>
+                        </EntityContext.Provider>
                     )
                 :
                 null
