@@ -44,7 +44,3 @@ export default defineConfig(({ mode }) => {
     }
   }
 })
-
-// https://esbuild.github.io/api/#preserve-symlinks
-
-// https://vitejs.dev/config/#resolve-preservesymlinks
