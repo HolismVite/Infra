@@ -33,7 +33,8 @@ export default defineConfig(({ mode }) => {
 
   return {
     resolve: {
-      alias: resolvedAliases
+      alias: resolvedAliases,
+      preserveSymlinks: true
     },
     plugins: [react(), htmlPlugin()],
     server: {
