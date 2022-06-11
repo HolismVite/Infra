@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Helmet } from "react-helmet";
 import { Transition } from '@headlessui/react'
 import MainRouting from '../Base/MainRouting';
 import Sidebar from './Sidebar';
@@ -79,6 +80,12 @@ const Panel = () => {
             isDark,
             setIsDark
         }}>
+        {
+            app.getLocale().key === 'fa' &&
+            <Helmet>
+                <link type="text/css" rel="stylesheet" href="/src/Fonts/Persian/fontiran.css" />
+            </Helmet>
+        }
         <input type='hidden' id='reactVersion' value={React.version} />
         <div
             className={
