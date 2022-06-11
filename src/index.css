@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    body * {
-        font-family: IRANSansX !important;
-    }
-}
-
 @layer utilities {
     .link {
         @apply underline text-blue-600 cursor-pointer
