@@ -18,6 +18,12 @@ const renderReact = () => {
     <React.StrictMode>
       <BrowserRouter>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
+          {
+            app.getLocale().key === 'fa' &&
+            <>
+              <link rel='styleshee' type='text/css' href="/src/Fonts/Persian/fontiran.css" />
+            </>
+          }
           <Panel />
         </LocalizationProvider>
       </BrowserRouter>
