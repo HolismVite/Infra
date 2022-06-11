@@ -136,10 +136,13 @@ const MenuItemWithSubmenu = ({ item, onClick }) => {
     )
 }
 
-const Menu = ({ onClick }) => {
+const Menu = ({
+    onClick,
+    className
+}) => {
     let location = useLocation()
 
-    return <div id="menu" className="mt-5 dark:bg-slate-900">
+    return <div id="menu" className={"dark:bg-slate-900 " + (className || "")}>
         {
             items.filter(item => {
                 if (item.superAdmin === true) {

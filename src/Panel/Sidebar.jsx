@@ -12,12 +12,8 @@ export default function Sidebar({ onClick }) {
     const [open, setOpen] = useLocalStorageState(true, 'brandingAndMenuIsShown')
 
     return (
-        <div className="h-full pt-4 dark:bg-slate-900">
-            <Collapse in={open}>
-                <Branding onClick={onClick} />
-                <User onClick={onClick} />
-            </Collapse>
-            <div className="absolute top-3 left-3 cursor-pointer"
+        <div className={"h-full dark:bg-slate-900 " + (open && " pt-4 ")}>
+            <div className={"cursor-pointer flex justify-center "}
                 onClick={() => setOpen(!open)}>
                 {
                     open
@@ -27,7 +23,14 @@ export default function Sidebar({ onClick }) {
                         <HolismIcon icon={ExpandMoreIcon} />
                 }
             </div>
-            <Menu onClick={onClick} />
+            <Collapse in={open}>
+                <Branding onClick={onClick} />
+                <User onClick={onClick} />
+            </Collapse>
+            <Menu
+                onClick={onClick}
+                className={open && " mt-5 "}
+            />
         </div>
     );
 }
