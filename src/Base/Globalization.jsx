@@ -1,33 +1,33 @@
 const Globalization = {
     translations: [],
     setTranslations: (translations) => {
-        Globalization.translations = translations;
+        Globalization.translations = translations
     },
     getTranslations: () => {
-        return Globalization.translations;
+        return Globalization.translations
     },
     t: (text) => {
         if (!text) {
-            return text;
+            return text
         }
         if (Globalization.translations.hasOwnProperty(text)) {
-            return Globalization.translations[text];
+            return Globalization.translations[text]
         }
-        var lowerCaseText = text.toLowerCase();
-        if (Globalization.translations.hasOwnProperty(lowerCaseText)) {
-            return Globalization.translations[lowerCaseText];
+        var camelizedText = app.camelize(text)
+        if (Globalization.translations.hasOwnProperty(camelizedText)) {
+            return Globalization.translations[camelizedText]
         }
-        return text;
+        return text
     },
     locale: {},
     setLocale: (locale) => {
-        Globalization.locale = locale;
+        Globalization.locale = locale
     },
     getLocale: () => {
-        return Globalization.locale;
+        return Globalization.locale
     },
     isRtl: () => {
-        return Globalization.locale.isRtl;
+        return Globalization.locale.isRtl
     },
     browserLocale: {
         date: Intl.DateTimeFormat().resolvedOptions(),
@@ -41,4 +41,4 @@ const Globalization = {
     }
 }
 
-export default Globalization;
+export default Globalization

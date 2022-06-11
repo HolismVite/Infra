@@ -176,12 +176,12 @@ const Table = ({
                         </React.Fragment>
                         :
                         <EntityContext.Provider
+                            key={item.id}
                             value={{
                                 entity: item
                             }}
                         >
                             <tr
-                                key={item.id}
                                 className={rowStyle(item, index, true)}
                             >
                                 {itemSelection(item)}

@@ -1,17 +1,17 @@
 const Holism = {
     isSomething: value => {
-        return !Holism.isNothing(value);
+        return !Holism.isNothing(value)
     },
     isNothing: value => {
-        return value === undefined || value === null || (/^\s*$/g.test(value));
+        return value === undefined || value === null || (/^\s*$/g.test(value))
     },
     randomId: () => {
-        return Math.random().toString(36).replace(/[^a-z]+/g, '');
+        return Math.random().toString(36).replace(/[^a-z]+/g, '')
     },
     ensure: (items) => {
         for (let i = 0; i < items.length; i++) {
             if (!items[i]) {
-                throw new Error(`Required parameter is not specified`);
+                throw new Error(`Required parameter is not specified`)
             }
         }
     },
@@ -24,26 +24,30 @@ const Holism = {
         xxl: 1536
     },
     goTo: (url) => {
-        //navigate(url);
+        //navigate(url)
     },
     camelize: (text) => {
+        if (!text) {
+            return ""
+        }
+        text = text.replace(/[^\w ]/g, '')
         return text.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-            return index === 0 ? word.toLowerCase() : word.toUpperCase();
-        }).replace(/\s+/g, '');
+            return index === 0 ? word.toLowerCase() : word.toUpperCase()
+        }).replace(/\s+/g, '')
     },
     trim: (text, character) => {
         var start = 0,
-            end = text.length;
+            end = text.length
 
         while (start < end && text[start] === character)
-            ++start;
+            ++start
 
         while (end > start && text[end - 1] === character)
-            --end;
+            --end
 
-        return (start > 0 || end < text.length) ? text.substring(start, end) : text;
+        return (start > 0 || end < text.length) ? text.substring(start, end) : text
     },
-};
+}
 
-export default Holism;
-export { Holism };
+export default Holism
+export { Holism }
