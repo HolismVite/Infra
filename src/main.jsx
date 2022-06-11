@@ -4,7 +4,7 @@ import './index.css';
 
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 // import AdapterJalali from '@date-io/date-fns-jalali';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import { LocalizationProvider } from '@mui/x-date-pickers'
 import { BrowserRouter } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
 import Panel from './Panel/Panel';
