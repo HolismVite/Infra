@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useNavigate } from 'react-router-dom';
 import app from "../Base/App";
 import HolismIcon from '../Components/HolismIcon'
@@ -37,8 +38,13 @@ export default function User({ onClick }) {
                 {ProfileIcon}
             </span> */}
             <div className="flex flex-col justify-center mt-4">
-                <div className="text-center font-medium antialiased tracking-wide	text-gray-800 dark:text-gray-300 transition-colors mb-2">{user}</div>
-                <p className="text-center text-gray-400 text-sm mb-4">{app.t(role)}</p>
+                <div className={"flex flex-row gap-2 justify-center items-center mb-4 " + (app.isRtl() && "flex-row-reverse")}>
+                    <HolismIcon icon={AccountCircleOutlinedIcon} className="w-12 h-12 text-gray-400" />
+                    <div className={"flex flex-col justify-center " + (app.isRtl() ? "items-end" : "items-start")}>
+                        <div className="text-center font-medium antialiased tracking-wide	text-gray-800 dark:text-gray-300 transition-colors">{user}</div>
+                        <p className="text-center text-gray-400 text-sm">{app.t(role)}</p>
+                    </div>
+                </div>
                 <ul className="flex items-center justify-center">
                     <Item
                         icon={PersonIcon}
