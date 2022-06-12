@@ -2,7 +2,12 @@
     {
         "locale": "fa",
         "translations": {
-            "Create": "ایجاد"
+            "Create": "ایجاد",
+            "Edit": "ویرایش",
+            "Delete": "حذف",
+            "View Record": "نمایش رکورد",
+            "Filters": "فیلترها",
+            "Reload": "بارگزاری مجدد"
         }
     }
 ]
