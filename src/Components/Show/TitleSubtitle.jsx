@@ -1,5 +1,7 @@
+import { app } from '@Panel'
+
 const TitleSubtitle = ({ title, subtitle }) => {
-    return <div className="text-left">
+    return <div className={app.isRtl() ? "text-right" : "text-left"}>
         <div className="text-lg font-bold text-slate-600">{title}</div>
         <div className="text-xs text-gray-400">{subtitle}</div>
     </div>
