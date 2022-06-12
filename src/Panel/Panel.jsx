@@ -83,7 +83,7 @@ const Panel = () => {
         {
             app.getLocale().key === 'fa' &&
             <Helmet>
-                <link type="text/css" rel="stylesheet" href="/src/Fonts/Persian/fontiran.css" />
+                <link type="text/css" rel="stylesheet" href="/Fonts/Persian/fontiran.css" />
                 <style type="text/css">
                     {`
                         body {
