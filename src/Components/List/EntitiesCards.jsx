@@ -50,7 +50,7 @@ const Cards = ({
                         hasItemSelection ?
                             <div className="w-full flex justify-start px-6">
                                 <Tooltip
-                                    title="Select all"
+                                    title={app.t("Select all")}
                                     placement="top"
                                 >
                                     <Checkbox
@@ -62,7 +62,7 @@ const Cards = ({
                                                 :
                                                 app.removeItemsFromSelectedItems(listContext, data)
                                         }}
-                                        inputProps={{ 'aria-label': 'Select all' }}
+                                        inputProps={{ 'aria-label': app.t('Select all') }}
                                     />
                                 </Tooltip>
                             </div>

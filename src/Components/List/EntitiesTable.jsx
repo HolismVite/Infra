@@ -50,13 +50,16 @@ const Table = ({
     const head =
 
         <thead>
-            <tr className='text-xs uppercase font-light tracking-wider border-b'>
+            <tr className={
+                'text-xs uppercase font-light border-b '
+                + (app.getLocale().supportsLetterSpacing && " tracking-wider ")
+            }>
                 {
                     hasItemSelection ?
                         <>
                             <th>
                                 <Tooltip
-                                    title="Select all"
+                                    title={app.t("Select all")}
                                     placement="top"
                                 >
                                     <Checkbox
@@ -68,7 +71,7 @@ const Table = ({
                                                 :
                                                 app.removeItemsFromSelectedItems(listContext, data)
                                         }}
-                                        inputProps={{ 'aria-label': 'Select all' }}
+                                        inputProps={{ 'aria-label': app.t('Select all') }}
                                     />
                                 </Tooltip>
                             </th>

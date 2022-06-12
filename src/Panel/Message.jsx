@@ -75,7 +75,7 @@ const Message = () => {
         open={isShown}
         autoHideDuration={6000}
         onClose={hide}
-        message={message}
+        message={app.t(message)}
         bodystyle={{ whiteSpace: 'pre-line' }}
         action={
             <>
