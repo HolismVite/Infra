@@ -7,7 +7,27 @@
             "Delete": "حذف",
             "View Record": "نمایش رکورد",
             "Filters": "فیلترها",
-            "Reload": "بارگزاری مجدد"
+            "Reload": "بارگزاری مجدد",
+            "Maximize": "بزرگ کردن",
+            "Full Screen": "نمایش تمام صفحه",
+            "Go Dark": "تم شب",
+            "Go Light": "تم روز",
+            "Profile": "پروفایل کاربری",
+            "Settings": "تنظیمات",
+            "Logout": "خروج",
+            "Copyright": "کپی رایت",
+            "Page": "صفحه",
+            "Go to Page": "برو به صفحه",
+            "Go": "برو",
+            "Cancel": "انصراف",
+            "Save": "ذخیره",
+            "Select Page Size": "انتخاب تعداد در صفحه",
+            "Page Size": "تعداد در صفحه",
+            "Next Page": "صفحه بعدی",
+            "Last Page": "آخرین صفحه",
+            "Previous Page": "صفحه قبلی",
+            "First Page": "صفحه اول",
+            "Key": "کلید"
         }
     }
 ]
