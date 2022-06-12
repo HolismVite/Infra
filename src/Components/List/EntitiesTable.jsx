@@ -4,10 +4,7 @@ import EntityActions from './EntityActions/EntityActions';
 import Checkbox from '@mui/material/Checkbox';
 import Tooltip from '@mui/material/Tooltip';
 import Collapse from '@mui/material/Collapse';
-import ToggleOnIcon from '@mui/icons-material/ToggleOn';
-import ToggleOffIcon from '@mui/icons-material/ToggleOff';
-import { ListContext, HolismIcon, app } from '@List';
-import { useLocalStorageState } from '../../Base/UseLocalStorageState'
+import { ListContext, app } from '@List';
 import NoEntitiesFound from '../NoEntitiesFound';
 import { EntityContext, TableContext } from './Contexts'
 
@@ -29,12 +26,12 @@ const Table = ({
     reload,
     hasItemSelection,
     classProvider,
-    showTopPagiation
+    showTopPagiation,
+    hiddenEntityActions
 }) => {
 
     const listContext = useContext(ListContext);
     const { selectedItems, hasData } = listContext;
-    const [hiddenEntityActions, setHiddenEntityActions] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isEntityActionsHidden`)
 
     let headerElements = [];
 
@@ -206,19 +203,6 @@ const Table = ({
                 </Collapse>
         }
         <div className="relative w-full overflow-x-auto px-6">
-            {
-                !menuForActions && hasData && (entityActions || hasDelete || hasEdit || edit) &&
-                <span
-                    className={"absolute top-0 right-6 cursor-pointer "}
-                    onClick={() => setHiddenEntityActions(!hiddenEntityActions)}
-                    title="Toggle actions"
-                >
-                    <HolismIcon
-                        className={hiddenEntityActions ? "text-slate-300" : "text-green-600"}
-                        icon={hiddenEntityActions ? ToggleOnIcon : ToggleOffIcon}
-                    />
-                </span>
-            }
             <TableContext.Provider
                 value={{
                     hasMoreRoom: !menuForActions && separateRowForActions && !hiddenEntityActions

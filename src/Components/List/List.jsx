@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
+import ToggleOnIcon from '@mui/icons-material/ToggleOn';
+import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import CachedIcon from '@mui/icons-material/Cached'
@@ -12,7 +14,7 @@ import ListActions from "./ListActions/ListActions"
 import app from '../../Base/App'
 import useLocalStorageState from '../../Base/UseLocalStorageState'
 import { DialogForm } from '../Form/DialogForm'
-import { TopContext } from '../../Panel/Panel'
+import { TopContext, HolismIcon } from '../../Panel/Panel'
 import { ListContext } from './Contexts'
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer"
@@ -48,6 +50,7 @@ const List = ({
   const [hasData, setHasData] = useState(false)
   const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isFilteringOpen`)
   const [selectedItems, setSelectedItems] = useState([])
+  const [hiddenEntityActions, setHiddenEntityActions] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isEntityActionsHidden`)
 
   const hasItemSelection = listActions ? true : false
   const CreationComponent = (create ? (typeof create === 'function' ? create() : create) : null)
@@ -137,10 +140,27 @@ const List = ({
           <span
             id='reload'
             onClick={() => app.emit(app.reloadRequested)}
-            className={listActionIconStyle}
+            className={
+              listActionIconStyle
+              + (app.isRtl() ? " ml-2 " : " mr-2 ")
+            }
           >
             <Tooltip title={app.t('Reload')}>
               <CachedIcon />
+            </Tooltip>
+          </span>
+        }
+        {
+          !menuForActions && hasData && (entityActions || hasDelete || hasEdit || edit) &&
+          <span
+            className={listActionIconStyle}
+            onClick={() => setHiddenEntityActions(!hiddenEntityActions)}
+          >
+            <Tooltip title={app.t(hiddenEntityActions ? 'Show actions' : 'Hide actions')}>
+              <HolismIcon
+                className={hiddenEntityActions ? "text-slate-300" : "text-green-600"}
+                icon={hiddenEntityActions ? ToggleOnIcon : ToggleOffIcon}
+              />
             </Tooltip>
           </span>
         }
@@ -172,6 +192,7 @@ const List = ({
       isTree={isTree}
       expanded={expanded}
       show={show}
+      hiddenEntityActions={hiddenEntityActions}
     />
     {
       CreationComponent && typeof CreationComponent !== 'string'

@@ -1,4 +1,4 @@
-import { compareAsc, format, newDate } from 'date-fns-jalali'
+import { format } from 'date-fns-jalali'
 import { app } from '@Panel'
 
 const DatePart = ({ value }) => {
