@@ -17,7 +17,7 @@ if (app.isDev()) {
     }]
 }
 
-const liStyle = "py-2 hover:bg-gray-50 dark:hover:bg-blue-900 cursor-pointer text-sm tracking-wide text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white font-normal relative select-none"
+const liStyle = "py-2 hover:bg-gray-50 dark:hover:bg-blue-900 cursor-pointer text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white font-normal relative select-none " + (app.getLocale().supportsLetterSpacing && " tracking-wide ")
 const iconStyle = "text-gray-600 hover:text-gray-900"
 
 const leftBlueLine = (url) => {

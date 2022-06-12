@@ -80,7 +80,7 @@ const Top = () => {
                         + (app.isRtl() ? " text-right pr-5 lg:pr-0 md:pr-0 " : " pl-5 lg:pl-0 md:pl-0 ")
                     }
                 >
-                    <div className="font-medium mb-2 tracking-wider	text-xl text-gray-700 dark:text-zinc-400 ">{app.t(title)}</div>
+                    <div className={"font-medium mb-2 text-xl text-gray-700 dark:text-zinc-400 " + (app.getLocale().supportsLetterSpacing && "tracking-wider	")}>{app.t(title)}</div>
                     {
                         hasSubtitleOrBreadcrumb
                             ?
