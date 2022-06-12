@@ -32,7 +32,8 @@
             "Apply": "اعمال",
             "Reset": "تنظیم مجدد",
             "Admin": "مدیر",
-            "SuperAdmin": "مدیر ارشد"
+            "SuperAdmin": "مدیر ارشد",
+            "No items found": "موردی یافت نشد"
         }
     }
 ]
