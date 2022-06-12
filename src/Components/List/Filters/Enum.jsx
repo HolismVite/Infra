@@ -50,7 +50,7 @@ const Enum = ({ column, entityType, placeholder }) => {
                         (
                             enumItems
                                 ?
-                                enumItems.map(item => <MenuItem key={item.id} value={item.id}>{item.titleizedKey}</MenuItem>)
+                                enumItems.map(item => <MenuItem key={item.id} value={item.id}>{app.t(item.titleizedKey)}</MenuItem>)
                                 :
                                 null
                         )

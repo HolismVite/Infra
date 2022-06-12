@@ -32,7 +32,7 @@ const Select = ({
                         null
                 }
                 {
-                    options.map(option => <MenuItem key={option.id} value={choose(option)}>{display(option)}</MenuItem>)
+                    options.map(option => <MenuItem key={option.id} value={choose(option)}>{app.t(display(option))}</MenuItem>)
                 }
             </MuiSelect>
         }}

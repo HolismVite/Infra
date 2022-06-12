@@ -28,7 +28,9 @@
             "Previous Page": "صفحه قبلی",
             "First Page": "صفحه اول",
             "Key": "کلید",
-            "Select All": "انتخاب همه"
+            "Select All": "انتخاب همه",
+            "Apply": "اعمال",
+            "Reset": "تنظیم مجدد"
         }
     }
 ]
