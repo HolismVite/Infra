@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Collapse from '@mui/material/Collapse';
 import { ListContext, app } from '@List';
 import NoEntitiesFound from '../NoEntitiesFound';
-import { EntityContext } from './List'
+import { EntityContext } from './Contexts'
 
 const Cards = ({
     data,

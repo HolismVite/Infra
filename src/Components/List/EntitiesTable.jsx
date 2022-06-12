@@ -9,9 +9,7 @@ import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import { ListContext, HolismIcon, app } from '@List';
 import { useLocalStorageState } from '../../Base/UseLocalStorageState'
 import NoEntitiesFound from '../NoEntitiesFound';
-import { EntityContext } from './List'
-
-export const TableContext = React.createContext();
+import { EntityContext, TableContext } from './Contexts'
 
 const Table = ({
     entityType,

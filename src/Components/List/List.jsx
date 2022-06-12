@@ -13,12 +13,9 @@ import app from '../../Base/App'
 import useLocalStorageState from '../../Base/UseLocalStorageState'
 import { DialogForm } from '../Form/DialogForm'
 import { TopContext } from '../../Panel/Panel'
+import { ListContext } from './Contexts'
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer"
-
-const ListContext = React.createContext()
-
-const EntityContext = React.createContext()
 
 const List = ({
   title,
@@ -225,10 +222,6 @@ const List = ({
 }
 
 export { List }
-
-export { ListContext }
-
-export { EntityContext }
 
 /*
 List anatomy
