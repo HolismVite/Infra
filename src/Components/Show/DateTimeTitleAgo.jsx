@@ -7,7 +7,10 @@ const DateTimeTitleAgo = ({ date, ago }) => {
         value={<>
             <DatePart value={date} />
             <br />
-            <TimePart value={date} />
+            <TimePart
+                value={date}
+                className="text-xs"
+            />
         </>}
         title={ago + ' ago'}
     />
