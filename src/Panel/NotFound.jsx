@@ -14,8 +14,8 @@ const NotFound = () => {
     }, []);
 
     return <div className="flex flex-col items-center justify-center">
-        <div className="text-9xl text-red-400 font-bold">404</div>
-        <div className={"uppercase mt-10 text-6xl font-bold text-gray-600 text-center " + (app.getLocale().supportsLetterSpacing && " tracking-widest ")}>{app.t('NOT FOUND')}</div>
+        <div className="localized-number text-9xl text-red-400 font-bold">404</div>
+        <div className={"uppercase mt-10 text-6xl font-bold text-gray-600 text-center " + (app.getLocale().supportsLetterSpacing && " tracking-widest ")}>{app.t('Not Found')}</div>
         <div className="text-sm mt-10 text-gray-600 font-light text-center">{app.t('The page you requested does not exist')}.<br />{app.t('Please use the menu to navigate')}.<br />{app.t('Or go to the home page')}.</div>
         <div className="mt-10">
             <Link

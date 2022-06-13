@@ -131,15 +131,11 @@ const Pagination = ({ metadata }) => {
         {pageNumberDialog}
         {pageSizeDialog}
         <Button id='goToPage' className={textStyle + " text-left"} onClick={() => setPageNumberDialogVisibility(true)}>
-            {/* <TextField
-                label="Page"
-                variant="outlined"
-                size="small"
-                className="w-24"
-                InputLabelProps={{ className: "text-sm" }}
-            />
-            <Button className="ml-2" variant="outlined">Go</Button> */}
-            {app.t('Page')} #
+            <Tooltip
+                title={app.t('Click to go to a specific page')}
+            >
+                <span>{app.t('Page')} #</span>
+            </Tooltip>
         </Button>
         <div
             id='pageLinks'
@@ -195,29 +191,33 @@ const Pagination = ({ metadata }) => {
                 </span>
             </Tooltip>
         </div>
-        <Button id='statsAndPageSize' className={textStyle + " text-right"} onClick={() => setPageSizeDialogVisibility(true)}>
-            {
-                from
-                    ?
-                    <>
-                        <span className="text-blue-900">{from}</span>
-                        <span className="mx-2">-</span>
-                        <span className="text-blue-900">{to}</span>
-                    </>
-                    :
-                    null
-            }
-            {
-                totalCount
-                    ?
-                    <>
-                        <span className="mx-2">/</span>
-                        <span className="text-blue-900">{totalCount}</span>
-                    </>
-                    :
-                    null
-            }
-        </Button>
+        <Tooltip
+            title={app.t('Click to change page size')}
+        >
+            <Button id='statsAndPageSize' className={textStyle + " text-right"} onClick={() => setPageSizeDialogVisibility(true)}>
+                {
+                    from
+                        ?
+                        <>
+                            <span className="text-blue-900">{from}</span>
+                            <span className="mx-2">-</span>
+                            <span className="text-blue-900">{to}</span>
+                        </>
+                        :
+                        null
+                }
+                {
+                    totalCount
+                        ?
+                        <>
+                            <span className="mx-2">/</span>
+                            <span className="text-blue-900">{totalCount}</span>
+                        </>
+                        :
+                        null
+                }
+            </Button>
+        </Tooltip>
     </div>
 }
 

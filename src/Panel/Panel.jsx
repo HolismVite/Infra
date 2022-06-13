@@ -84,13 +84,7 @@ const Panel = () => {
             app.getLocale().key === 'fa' &&
             <Helmet>
                 <link type="text/css" rel="stylesheet" href="/Fonts/Persian/fontiran.css" />
-                <style type="text/css">
-                    {`
-                        body {
-                            font-family: IRANSansX  !important;
-                        }
-                    `}
-                </style>
+                <link type="text/css" rel="stylesheet" href="/Fonts/Persian/style.css" />
             </Helmet>
         }
         <input type='hidden' id='reactVersion' value={React.version} />
