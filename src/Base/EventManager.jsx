@@ -20,7 +20,6 @@ const EventManager = {
     returnBackToNormalForm: 'return_back_to_normal_form',
     editRequested: 'edit_requested',
     entitySelected: 'entity_slected',
-    toggleTopPagination: 'toggle_top_pagination',
     entityActionDialogRequested: 'item_action_dialog_requested',
     entityReloadRequested: 'entity_reload_requested',
     entityRerenderRequested: 'set_entity_requested',

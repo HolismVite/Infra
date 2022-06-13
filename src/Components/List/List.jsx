@@ -51,6 +51,7 @@ const List = ({
   const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isFilteringOpen`)
   const [selectedItems, setSelectedItems] = useState([])
   const [hiddenEntityActions, setHiddenEntityActions] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isEntityActionsHidden`)
+  const [showTopPagiation, setTopPaginationVisibility] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isTopPaginationShown`)
 
   const hasItemSelection = listActions ? true : false
   const CreationComponent = (create ? (typeof create === 'function' ? create() : create) : null)
@@ -77,7 +78,9 @@ const List = ({
     selectedItems: selectedItems,
     setSelectedItems: setSelectedItems,
     hasData: hasData,
-    setHasData: setHasData
+    setHasData: setHasData,
+    showTopPagiation,
+    setTopPaginationVisibility
   }} id='list'>
 
     <div
@@ -102,9 +105,11 @@ const List = ({
             className={
               listActionIconStyle
             }
-            onClick={() => app.emit(app.toggleTopPagination)}
+            onClick={() => setTopPaginationVisibility(!showTopPagiation)}
           >
-            <SwapHorizIcon />
+            <Tooltip title={app.t(showTopPagiation ?  'Hide top pagination' : 'Show top pagination')}>
+              <SwapHorizIcon />
+            </Tooltip>
           </span>
         }
         {

@@ -13,18 +13,12 @@ const Items = (props) => {
     const [loading, setLoading] = useState();
     const [data, setData] = useState([]);
     const [metadata, setMetadata] = useState({});
-    const { listParameters, setHasData } = useContext(ListContext);
-    const [showTopPagiation, setTopPaginationVisibility] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isTopPaginationShown`);
-
-    useEffect(() => {
-        const setVisibility = () => {
-            setTopPaginationVisibility(!showTopPagiation);
-        };
-        app.on(app.toggleTopPagination, setVisibility);
-        return () => {
-            app.removeListener(app.toggleTopPagination, setVisibility);
-        }
-    });
+    const {
+        listParameters,
+        setHasData,
+        showTopPagiation,
+        setTopPaginationVisibility
+    } = useContext(ListContext);
 
     const setEntityProgress = (entity, progress) => {
         setData((data) => {

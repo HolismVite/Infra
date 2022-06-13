@@ -40,7 +40,9 @@
             "Description": "توضیحات",
             "Ok": "باشه",
             "Item created successfully": "با موفقت ایجاد شد",
-            "Item updated successfully": "با موفقیت به روزرسانی شد"
+            "Item updated successfully": "با موفقیت به روزرسانی شد",
+            "Show top pagination": "نمایش صفحه بندی بالایی",
+            "Hide top pagination": "مخفی کردن صفحه بندی بالایی"
         }
     }
 ]
