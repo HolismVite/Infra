@@ -59,13 +59,13 @@ const MenuItemWithSubmenu = ({ item, onClick }) => {
                 <span
                     className=
                     {
-                        "px-9 flex items-center h-full"
+                        "px-9 flex items-center h-full w-full"
                     }
                 >
                     <span
                         className=
                         {
-                            "flex items-center"
+                            "flex items-center "
                             + "ltr:mr-3 rtl:ml-3"
                         }
                     >
@@ -73,10 +73,10 @@ const MenuItemWithSubmenu = ({ item, onClick }) => {
                             <HolismIcon icon={item.icon} />
                         }
                     </span>
-                    <span>{app.t(item.title)}</span>
+                    <span className="flex-1">{app.t(item.title)}</span>
                     <span
                         className={
-                            "flex-1 flex "
+                            "flex "
                         }
                     >
                         <span
@@ -167,13 +167,13 @@ const Menu = ({
                         >
                             <span
                                 className={
-                                    "px-9 flex items-cener"
+                                    "px-9 flex items-cener inline-block w-full"
                                 }
                             >
                                 <span
                                     className={
                                         iconStyle
-                                        + "ltr:mr-3 rtl:ml3-"
+                                        + " ltr:mr-3 rtl:ml-3 "
                                     }
                                 >
                                     {
