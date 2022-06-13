@@ -49,7 +49,9 @@
             "Or go to the home page": "یا به صفحه اصلی بروید",
             "Home": "صحفه اصلی",
             "Click to go to a specific page": "برای رفتن به صفحه خاص، کلیک کنید",
-            "Click to change page size": "برای تغییر تعداد در صفحه، کلیک کنید"
+            "Click to change page size": "برای تغییر تعداد در صفحه، کلیک کنید",
+            "Applied": "انجام شد",
+            "Find": "پیدا کن"
         }
     }
 ]

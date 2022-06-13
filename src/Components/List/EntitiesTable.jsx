@@ -119,7 +119,9 @@ const Table = ({
     const clonedCells = (item) => React.Children
         .toArray(row(item).props.children)
         .map(td => React.cloneElement(td, {
-            className: 'text-gray-900 dark:text-gray-300 py-3 text-sm font-light tracking-wide ' + td.props.className,
+            className: 'text-gray-900 dark:text-gray-300 py-3 text-sm font-light tracking-wide ' 
+            + (td?.props?.start && " ltr:text-left rtl:text-right ")
+            + td.props.className,
             hasmoreroom: menuForActions
         }))
 

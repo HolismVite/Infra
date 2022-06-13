@@ -33,7 +33,7 @@ const Image = ({
             })
     }
 
-    return <div className="relative">
+    return <div className="relative inline-block">
         {
             uploadUrl &&
             <Dialog

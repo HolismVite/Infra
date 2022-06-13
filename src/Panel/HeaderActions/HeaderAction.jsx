@@ -51,8 +51,8 @@ const HeaderAction = ({ icon, title, url, action, component, ...rest }) => {
                 <Fade in={showComponent}>
                     <div
                         className={
-                            "absolute top-10 z-50 shadow-xl"
-                            + "ltr:right-0 rtl:left-0"
+                            "absolute top-10 z-50 shadow-xl "
+                            + " ltr:right-0 rtl:left-0 "
                         }
                     >
                         <Component />
