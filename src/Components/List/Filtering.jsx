@@ -39,12 +39,15 @@ const Filtering = ({ filters }) => {
                 }))
             }
             <div className={"flex justify-end mt-6 sm:mt-3 flex-1"}>
-                <Button
-                    size="small"
-                    variant="outlined"
-                    onClick={resetFilters}>
-                    {app.t('Reset')}
-                </Button>
+                {
+                    listParameters?.filters?.length > 0 &&
+                    <Button
+                        size="small"
+                        variant="outlined"
+                        onClick={resetFilters}>
+                        {app.t('Reset')}
+                    </Button>
+                }
                 <Button
                     size="small"
                     className={"bg-green-200 hover:bg-green-400 ltr:ml-2 rtl:mr-2"}

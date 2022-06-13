@@ -93,7 +93,7 @@ const List = ({
       />
       <div
         className={
-          "sortAndFilteringAndReload flex items-center justify-end my-4 lg:my-0"
+          "sortAndFilteringAndReload flex items-center justify-end gap-2 lg:my-0"
         }
       >
         {
@@ -101,7 +101,6 @@ const List = ({
             id='showHideTopPagination'
             className={
               listActionIconStyle
-              + " ltr:ml-2 mr-2 "
             }
             onClick={() => app.emit(app.toggleTopPagination)}
           >
@@ -122,7 +121,6 @@ const List = ({
               id='showHideFiltering'
               className={
                 listActionIconStyle
-                + " ltr:ml-2 mr-2 "
               }
               onClick={toggleFiltering}
             >
@@ -140,7 +138,6 @@ const List = ({
             onClick={() => app.emit(app.reloadRequested)}
             className={
               listActionIconStyle
-              + " ltr:ml-2 mr-2 "
             }
           >
             <Tooltip title={app.t('Reload')}>

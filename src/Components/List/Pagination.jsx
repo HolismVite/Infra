@@ -68,7 +68,7 @@ const Pagination = ({ metadata }) => {
                 <Button variant="outlined" onClick={() => setPageNumberDialogVisibility(false)}>
                     {app.t('Cancel')}
                 </Button>
-                <Button variant="outlined" className='bg-green-200 ml-2' onClick={() => {
+                <Button variant="outlined" className='bg-green-200 ltr:ml-2 rtl:mr-2 ' onClick={() => {
                     var value = document.querySelector('#goToPageInput').value;
                     if (value) {
                         goToPage(value);
@@ -111,7 +111,7 @@ const Pagination = ({ metadata }) => {
                         app.t('Cancel')
                     }
                 </Button>
-                <Button variant="outlined" className='bg-green-200 ml-2' onClick={() => {
+                <Button variant="outlined" className='bg-green-200 ltr:ml-2 rtl:mr-2 ' onClick={() => {
                     setPageSize();
                 }}>
                     {

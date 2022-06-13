@@ -51,7 +51,6 @@ const Sorting = ({ sorts }) => {
             id='sorting'
             className={
                 'flex items-center cursor-pointer text-gray-700 hover:text-blue-500'
-                + " ltr:ml-2 rtl:mr-2 "
             }
         >
             <div id='currentSort' className="uppercase text-xs text-gray-500 font-light tracking-wider flex items-center">

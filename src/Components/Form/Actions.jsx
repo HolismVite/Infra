@@ -14,7 +14,7 @@ const Actions = ({
     return <div id='actions' className={'mt-4 ' + className}>
         {
             actions ||
-            <div className="mr-6 mb-6" >
+            <div className="ltr:mr-6 rtl:ml-6 mb-6" >
                 {
                     progress
                         ?
@@ -31,7 +31,7 @@ const Actions = ({
                             </Button>
                             <Button
                                 variant="outlined"
-                                className={'ml-2' + (isValid ? " bg-green-200 text-gray-900 border-gray-400 " : "")}
+                                className={'ltr:ml-2 rtl:mr-2 ' + (isValid ? " bg-green-200 text-gray-900 border-gray-400 " : "")}
                                 onClick={(e) => handleSubmit(e)}
                                 disabled={!isValid}
                             >

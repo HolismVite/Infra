@@ -250,7 +250,7 @@ const FormBase = ({
   }}>
     {
       renderForm({
-        calculatedTitle: calculatedTitle || title,
+        calculatedTitle: app.t(calculatedTitle || title),
         focusFirstInput,
         handleSubmit
       })

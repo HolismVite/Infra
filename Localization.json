@@ -33,7 +33,12 @@
             "Reset": "تنظیم مجدد",
             "Admin": "مدیر",
             "SuperAdmin": "مدیر ارشد",
-            "No items found": "موردی یافت نشد"
+            "No items found": "موردی یافت نشد",
+            "Slug": "آدرس",
+            "Slug is not provided": "آدرس وارد نشده است",
+            "Name": "نام",
+            "Description": "توضیحات",
+            "Ok": "باشه"
         }
     }
 ]

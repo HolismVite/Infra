@@ -15,7 +15,7 @@ const ViewRecordAction = ({
         if (!obj) {
             return <span className="ml-2 ml-4 ml-6 ml-8 ml-10"></span>
         }
-        return <ul className="leading-4">
+        return <ul className="leading-4" dir='ltr'>
             <li className={"text-orange-600 ml" + level * 2}>{'{'}</li>
             {
                 Object.getOwnPropertyNames(obj).map(propertyName => {
