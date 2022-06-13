@@ -38,9 +38,9 @@ export default function User({ onClick }) {
                 {ProfileIcon}
             </span> */}
             <div className="flex flex-col justify-center mt-4">
-                <div className={"flex flex-row gap-2 justify-center items-center mb-4 " + (app.isRtl() && "flex-row-reverse")}>
+                <div className={"flex flex-row gap-2 justify-center items-center mb-4 "}>
                     <HolismIcon icon={AccountCircleOutlinedIcon} className="w-12 h-12 text-gray-400" />
-                    <div className={"flex flex-col justify-center " + (app.isRtl() ? "items-end" : "items-start")}>
+                    <div className={"flex flex-col justify-center items-start"}>
                         <div className="text-center font-medium antialiased tracking-wide	text-gray-800 dark:text-gray-300 transition-colors">{user}</div>
                         <p className="text-center text-gray-400 text-sm">{app.t(role)}</p>
                     </div>

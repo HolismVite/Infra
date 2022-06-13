@@ -31,14 +31,14 @@ const Filtering = ({ filters }) => {
     const filtersArray = filters.props.children.map ? filters.props.children : [filters.props.children];
 
     return <div id='filtering' className="bg-white px-6 py-3 md:rounded-lg relative" onKeyPress={(event) => handleKeyPress(event)}>
-        <div className={"flex flex-wrap " + (app.isRtl() ? ' flex-row-reverse ' : '')}>
+        <div className={"flex flex-wrap "}>
             {
                 filtersArray.map((filter, index) => React.cloneElement(filter, {
                     key: index,
-                    className: (app.isRtl() ? 'mr-4' : "ml-4")
+                    className: 'ltr:ml-4 rtl:mr-4'
                 }))
             }
-            <div className={"flex justify-end mt-6 sm:mt-3 flex-1" + (app.isRtl() ? ' flex-row-reverse ' : '')}>
+            <div className={"flex justify-end mt-6 sm:mt-3 flex-1"}>
                 <Button
                     size="small"
                     variant="outlined"
@@ -47,7 +47,7 @@ const Filtering = ({ filters }) => {
                 </Button>
                 <Button
                     size="small"
-                    className={"bg-green-200 hover:bg-green-400 " + (app.isRtl() ? 'mr-2' : ' ml-2')}
+                    className={"bg-green-200 hover:bg-green-400 ltr:ml-2 rtl:mr-2"}
                     variant="outlined"
                     onClick={applyFilters}>
                     {app.t('Apply')}

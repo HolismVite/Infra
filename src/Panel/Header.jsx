@@ -39,7 +39,6 @@ const Header = ({ onMenuIconClicked }) => {
                 id='header'
                 className={
                     "flex items-center p-5 md:p-10 justify-between h-20"
-                    + (app.isRtl() ? " flex-row-reverse " : "")
                 }
             >
                 <div>
@@ -50,7 +49,6 @@ const Header = ({ onMenuIconClicked }) => {
                 <div
                     className={
                         'flex items-center justify-center'
-                        + (app.isRtl() ? " flex-row-reverse " : "")
                     }
                 >
                     {

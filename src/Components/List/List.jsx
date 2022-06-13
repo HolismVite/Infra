@@ -83,7 +83,6 @@ const List = ({
     <div
       className={
         'lg:flex items-center justify-between px-6 py-2 lg:h-14'
-        + (app.isRtl() ? " lg:flex-row-reverse " : "")
       }
     >
       <ListActions
@@ -95,7 +94,6 @@ const List = ({
       <div
         className={
           "sortAndFilteringAndReload flex items-center justify-end my-4 lg:my-0"
-          + (app.isRtl() ? " flex-row-reverse " : "")
         }
       >
         {
@@ -103,7 +101,7 @@ const List = ({
             id='showHideTopPagination'
             className={
               listActionIconStyle
-              + (app.isRtl() ? " ml-2 " : " mr-2 ")
+              + " ltr:ml-2 mr-2 "
             }
             onClick={() => app.emit(app.toggleTopPagination)}
           >
@@ -124,7 +122,7 @@ const List = ({
               id='showHideFiltering'
               className={
                 listActionIconStyle
-                + (app.isRtl() ? " ml-2 " : " mr-2 ")
+                + " ltr:ml-2 mr-2 "
               }
               onClick={toggleFiltering}
             >
@@ -142,7 +140,7 @@ const List = ({
             onClick={() => app.emit(app.reloadRequested)}
             className={
               listActionIconStyle
-              + (app.isRtl() ? " ml-2 " : " mr-2 ")
+              + " ltr:ml-2 mr-2 "
             }
           >
             <Tooltip title={app.t('Reload')}>

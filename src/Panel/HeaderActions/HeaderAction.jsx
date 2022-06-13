@@ -39,7 +39,7 @@ const HeaderAction = ({ icon, title, url, action, component, ...rest }) => {
                 }}
                 className={
                     'text-gray-600 cursor-pointer hover:text-blue-500 transition-colors dark:text-slate-500 dark:hover:text-slate-300'
-                    + (app.isRtl() ? " mr-4 " : " ml-4 ")
+                    + " ltr:ml-4 rtl:mr-4"
                 }
             >
                 <HolismIcon icon={icon} />
@@ -52,7 +52,7 @@ const HeaderAction = ({ icon, title, url, action, component, ...rest }) => {
                     <div
                         className={
                             "absolute top-10 z-50 shadow-xl"
-                            + (app.isRtl() ? " left-0 " : " right-0 ")
+                            + "ltr:right-0 rtl:left-0"
                         }
                     >
                         <Component />

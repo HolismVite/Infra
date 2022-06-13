@@ -51,7 +51,7 @@ const Sorting = ({ sorts }) => {
             id='sorting'
             className={
                 'flex items-center cursor-pointer text-gray-700 hover:text-blue-500'
-                + (app.isRtl() ? " ml-2 " : " mr-2 ")
+                + " ltr:ml-2 rtl:mr-2 "
             }
         >
             <div id='currentSort' className="uppercase text-xs text-gray-500 font-light tracking-wider flex items-center">
@@ -73,8 +73,14 @@ const Sorting = ({ sorts }) => {
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleClose}
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            transformOrigin={{ vertical: "top", horizontal: "right" }}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: app.isRtl() ? 'left' : 'right',
+            }}
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: app.isRtl() ? 'left' : 'right',
+            }}
         >
             {
                 sorts.map((sort, index) => <MenuItem

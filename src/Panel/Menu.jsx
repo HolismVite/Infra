@@ -25,13 +25,9 @@ const leftBlueLine = (url) => {
         return <span
             className={
                 "w-2 bg-blue-600 h-full absolute top-0"
-                + (
-                    app.isRtl()
-                        ?
-                        " rounded-tl-md rounded-bl-md right-0 "
-                        :
-                        " rounded-tr-md rounded-br-md left-0 "
-                )
+                + " ltr:rounded-tr-md ltr:rounded-br-md ltr:left-0 "
+                + " rtl:rounded-tl-md rtl:rounded-bl-md rtl:right-0 "
+
             }
         ></span>
     }
@@ -64,14 +60,13 @@ const MenuItemWithSubmenu = ({ item, onClick }) => {
                     className=
                     {
                         "px-9 flex items-center h-full"
-                        + (app.isRtl() ? " flex-row-reverse " : "")
                     }
                 >
                     <span
                         className=
                         {
                             "flex items-center"
-                            + (app.isRtl() ? " ml-3 " : " mr-3 ")
+                            + "ltr:mr-3 rtl:ml-3"
                         }
                     >
                         {
@@ -82,7 +77,6 @@ const MenuItemWithSubmenu = ({ item, onClick }) => {
                     <span
                         className={
                             "flex-1 flex "
-                            + (app.isRtl() ? "" : " flex-row-reverse ")
                         }
                     >
                         <span
@@ -118,13 +112,12 @@ const MenuItemWithSubmenu = ({ item, onClick }) => {
                                         liStyle
                                         + " flex items-center hover:bg-gray-100"
                                         + (child.url === location.pathname ? " bg-gray-200 text-blue-800 hover:text-blue-800 dark:bg-slate-600 dark:text-slate-200 dark:hover:text-slate-100" : '')
-                                        + (app.isRtl() ? " flex-row-reverse " : "")
                                     }
                                 >
                                     {
                                         leftBlueLine(child.url)
                                     }
-                                    <span className={app.isRtl() ? "mr-20" : "ml-20"}>{app.t(child.title)}</span>
+                                    <span className={"ltr:ml-20 rtl:mr-20"}>{app.t(child.title)}</span>
                                 </Link>
                             })
                         }
@@ -170,19 +163,17 @@ const Menu = ({
                                 liStyle
                                 + " flex items-center relative"
                                 + (item.url === location.pathname ? " bg-gray-200 hover:bg-gray-400 text-blue-800 hover:text-blue-800 dark:bg-slate-700 dark:text-slate-200 dark:hover:text-slate-100" : '')
-                                + (app.isRtl() ? " flex-row-reverse " : "")
                             }
                         >
                             <span
                                 className={
                                     "px-9 flex items-cener"
-                                    + (app.isRtl() ? " flex-row-reverse " : "")
                                 }
                             >
                                 <span
                                     className={
                                         iconStyle
-                                        + (app.isRtl() ? " ml-3 " : " mr-3 ")
+                                        + "ltr:mr-3 rtl:ml3-"
                                     }
                                 >
                                     {

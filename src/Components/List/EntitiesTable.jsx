@@ -40,9 +40,9 @@ const Table = ({
         headerElements = React.Children
             .toArray(headers.props.children)
             .map(header => React.cloneElement(header, {
-                className: "text-gray-900 dark:text-gray-300 py-3 font-light text-xs " 
-                + (header?.props?.start && (app.isRtl() ? " text-right " : " text-left "))
-                + (header?.props?.className || ""),
+                className: "text-gray-900 dark:text-gray-300 py-3 font-light text-xs "
+                    + (header?.props?.start && " ltr:text-left rtl:text-right ")
+                    + (header?.props?.className || ""),
                 children: React.Children.toArray(header.props.children).map(child => {
                     return typeof child === "string" ? app.t(child) : child;
                 })
@@ -215,7 +215,6 @@ const Table = ({
                 <table
                     className="w-full text-center "
                     style={{ minWidth: '600px' }}
-                    dir={app.isRtl() ? "rtl" : "ltr"}
                 >
                     {head}
                     {body}

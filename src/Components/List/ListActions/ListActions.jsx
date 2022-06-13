@@ -53,7 +53,6 @@ const ListActions = ({ actions, create, creationButton, upsert }) => {
         className=
         {
             'flex flex-wrap items-center'
-            + (app.isRtl() ? " flex-row-reverse " : "")
         }
     >
         <div>

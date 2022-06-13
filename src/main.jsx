@@ -1,28 +1,63 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
-
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 // import AdapterJalali from '@date-io/date-fns-jalali';
 import { LocalizationProvider } from '@mui/x-date-pickers'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter } from 'react-router-dom';
 import { DndProvider } from 'react-dnd'
+import rtlPlugin from 'stylis-plugin-rtl';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+import { prefixer } from 'stylis';
 import Panel from './Panel/Panel';
 import app from './Base/App';
 import { get } from './Base/Api';
+import './index.css';
+
+const theme = createTheme({
+  direction: 'rtl',
+});
+
+// Create rtl cache
+const cacheRtl = createCache({
+  key: 'muirtl',
+  stylisPlugins: [prefixer, rtlPlugin],
+});
+
+function RTL(props) {
+  return <CacheProvider value={cacheRtl}>{props.children}</CacheProvider>;
+}
 
 const renderReact = () => {
   const container = document.getElementById('root');
   const root = createRoot(container);
-  root.render(
-    <React.StrictMode>
-      <BrowserRouter>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <Panel />
-        </LocalizationProvider>
-      </BrowserRouter>
-    </React.StrictMode>
-  );
+  if (app.isRtl()) {
+    root.render(
+      <React.StrictMode>
+        <BrowserRouter>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <CacheProvider value={cacheRtl}>
+              <ThemeProvider theme={theme}>
+                <Panel />
+              </ThemeProvider>
+            </CacheProvider>
+          </LocalizationProvider>
+        </BrowserRouter>
+      </React.StrictMode>
+    );
+  }
+  else {
+    root.render(
+      <React.StrictMode>
+        <BrowserRouter>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <Panel />
+          </LocalizationProvider>
+        </BrowserRouter>
+      </React.StrictMode>
+    );
+  }
 }
 
 const render = () => {
@@ -32,6 +67,7 @@ const render = () => {
       .then(data => {
         app.setTranslations(data.translations);
         app.setLocale(data.locale);
+        document.dir = data.locale.isRtl ? "rtl" : "ltr"
         renderReact();
       }, error => {
         console.error(error);
@@ -40,6 +76,7 @@ const render = () => {
       });
   }
   else {
+    document.dir = 'ltr'
     renderReact();
   }
 }

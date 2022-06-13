@@ -90,7 +90,6 @@ const Cards = ({
                                             (classProvider ? classProvider(item) : '')
                                         }
                                         key={item.id}
-                                        dir={app.isRtl() ? "rtl" : "ltr"}
                                     >
                                         {
                                             hasItemSelection

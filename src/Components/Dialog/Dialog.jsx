@@ -36,7 +36,6 @@ const Dialog = ({
         onClose={() => typeof isOpen === 'boolean' ? null : setOpen(false)}
         aria-labelledby="dialogTitle"
         id="dialog"
-        /*dir={app.isRtl() ? "rtl" : "ltr"}*/
         fullWidth
         maxWidth={large ? 'md' : 'sm'}
         TransitionProps={{

@@ -22,7 +22,6 @@ const Widget = ({
                 <div
                     className={
                         "widgetTopBar flex items-start justify-between mb-4 "
-                        + (app.isRtl() ? " flex-row-reverse " : "")
                     }
                 >
                     {

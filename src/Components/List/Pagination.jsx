@@ -126,7 +126,6 @@ const Pagination = ({ metadata }) => {
         id='pagination'
         className={
             "flex flex-col md:flex-row justify-between items-center w-full"
-            + (app.isRtl() ? " md:flex-row-reverse " : "")
         }
     >
         {pageNumberDialog}
@@ -146,7 +145,6 @@ const Pagination = ({ metadata }) => {
             id='pageLinks'
             className={
                 "flex-1 items-center flex justify-center"
-                + (app.isRtl() ? " flex-row-reverse " : "")
             }
         >
             <IconButton disabled={pageNumber === 1} onClick={() => goToPage(1)}>

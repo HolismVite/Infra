@@ -97,7 +97,6 @@ const Panel = () => {
         <div
             className={
                 "flex " +
-                (app.isRtl() ? "flex-row-reverse " : "")
                 + (isDark ? ' dark ' : '')
             }
         >
@@ -111,7 +110,7 @@ const Panel = () => {
                     // leaveTo="-ml-64"
                     className={
                         "w-72 absolute border-b z-10 bg-white dark:bg-slate-900 top-0 bottom-0 "
-                        + (app.isRtl() ? " border-l " : " border-r ")
+                        + " ltr:border-r rtl:border-l "
                         +
           /*large*/"lg:w-1/5 lg:static lg:border-b-0 "
                         + (app.isRtl() ? " lg:border-l-0 " : " lg:border-r-0 ")
