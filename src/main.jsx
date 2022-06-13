@@ -17,17 +17,17 @@ import './index.css';
 
 const theme = createTheme({
   direction: 'rtl',
+  typography: {
+    fontFamily: [
+      'IRANSansX'
+    ]
+  }
 });
 
-// Create rtl cache
 const cacheRtl = createCache({
   key: 'muirtl',
   stylisPlugins: [prefixer, rtlPlugin],
 });
-
-function RTL(props) {
-  return <CacheProvider value={cacheRtl}>{props.children}</CacheProvider>;
-}
 
 const renderReact = () => {
   const container = document.getElementById('root');
