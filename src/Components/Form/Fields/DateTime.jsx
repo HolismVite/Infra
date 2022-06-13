@@ -5,6 +5,8 @@ import { Field, app } from '@Form';
 const DateTime = (props) => {
 
     return <Field
+        type="datetime"
+        {...props}
         renderInput={({
             displayValue,
             setDisplayValue,
