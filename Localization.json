@@ -38,7 +38,9 @@
             "Slug is not provided": "آدرس وارد نشده است",
             "Name": "نام",
             "Description": "توضیحات",
-            "Ok": "باشه"
+            "Ok": "باشه",
+            "Item created successfully": "با موفقت ایجاد شد",
+            "Item updated successfully": "با موفقیت به روزرسانی شد"
         }
     }
 ]

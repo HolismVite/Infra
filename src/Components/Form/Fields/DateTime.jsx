@@ -1,12 +1,18 @@
-import DatePicker from '@mui/lab/DatePicker';
+import DateTimePicker from '@mui/lab/DateTimePicker';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { Field, app } from '@Form';
 
 const DateTime = (props) => {
 
     return <Field
-        renderInput={({ displayValue, setDisplayValue, setChosenValue, label, progress }) => {
-            return <DatePicker
+        renderInput={({
+            displayValue,
+            setDisplayValue,
+            setChosenValue,
+            label,
+            progress
+        }) => {
+            return <DateTimePicker
                 format="MM/dd/yyyy HH:mm"
                 value={displayValue}
                 disabled={progress}
