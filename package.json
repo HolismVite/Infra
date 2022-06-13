@@ -38,6 +38,8 @@
     "slate": "^0.78.0",
     "slate-history": "^0.66.0",
     "slate-react": "^0.79.0",
+    "stylis": "^4.1.1",
+    "stylis-plugin-rtl": "^2.1.1",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
