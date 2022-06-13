@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-// import AdapterJalali from '@date-io/date-fns-jalali';
+import AdapterJalali from '@date-io/date-fns-jalali';
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter } from 'react-router-dom';
@@ -32,11 +32,12 @@ const cacheRtl = createCache({
 const renderReact = () => {
   const container = document.getElementById('root');
   const root = createRoot(container);
+
   if (app.isRtl()) {
     root.render(
       <React.StrictMode>
         <BrowserRouter>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <LocalizationProvider dateAdapter={app.getLocale().key === 'fa' ? AdapterJalali : AdapterDateFns}>
             <CacheProvider value={cacheRtl}>
               <ThemeProvider theme={theme}>
                 <Panel />

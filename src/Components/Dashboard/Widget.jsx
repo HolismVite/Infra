@@ -29,8 +29,9 @@ const Widget = ({
                             ?
                             <div
                                 className={
-                                    "uppercase text-sm text-gray-800 font-light tracking-wider truncate cursor-default "
+                                    "uppercase text-sm text-gray-800 font-light truncate cursor-default "
                                     + " mb-3 "
+                                    + (app.getLocale().supportsLetterSpacing && " tracking-wider ")
                                 }
                                 title={app.t(title)}
                             >
