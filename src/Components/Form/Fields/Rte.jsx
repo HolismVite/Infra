@@ -93,7 +93,7 @@ const Rte = ({
                 <Editable
                     renderElement={renderElement}
                     renderLeaf={renderLeaf}
-                    placeholder="Write your content here ..."
+                    placeholder={app.t(placeholder || "Write your content here ...")}
                     spellCheck
                     className="prose"
                     autoFocus
