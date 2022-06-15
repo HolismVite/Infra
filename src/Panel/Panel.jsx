@@ -10,13 +10,10 @@ import Footer from './Footer';
 import Message from './Message';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Top from './Top';
+import { PanelContext, TopContext } from './Contexts'
 // https://dev.to/codeply/helpful-page-layouts-using-tailwind-css-1a3k
 // import TrapFocus from '@mui/material/Unstable_TrapFocus';
 // import Backdrop from '@mui/material/Backdrop';
-
-const PanelContext = React.createContext()
-
-const TopContext = React.createContext()
 
 // require('react-dom');
 // window.React2 = require('react');
