@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { HeaderAction } from './HeaderAction';
-import { PanelContext } from '../Panel';
+import { PanelContext } from '../Contexts';
 
 const DarkMode = () => {
 

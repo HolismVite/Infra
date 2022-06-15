@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { TopContext } from '../../Panel/Panel';
+import { TopContext } from '../../Panel/Contexts'
 
 const Page = ({
     title,
