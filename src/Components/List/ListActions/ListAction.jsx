@@ -9,7 +9,7 @@ import HolismIcon from '../../HolismIcon';
 const ListAction = ({ icon, text, title, click, minCardinality }) => {
 
     const [progress, setProgress] = useState(false);
-    const { selectedItems } = useContext(ListContext);
+    const { selectedEntities } = useContext(ListContext);
 
     const reloadList = () => {
         app.emit(app.reloadRequested)
@@ -17,7 +17,7 @@ const ListAction = ({ icon, text, title, click, minCardinality }) => {
 
     const button = <Button
         variant="outlined"
-        disabled={progress || (minCardinality && minCardinality > selectedItems.length)}
+        disabled={progress || (minCardinality && minCardinality > selectedEntities.length)}
         startIcon={
             progress
                 ?

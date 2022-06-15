@@ -1,54 +1,54 @@
 const List = {
-    addItemToSelectedItems: (listContext, id) => {
+    addItemToSelectedEntities: (listContext, id) => {
         if (!id) {
             return;
         }
-        const { selectedItems, setSelectedItems } = listContext;
-        if (selectedItems.indexOf(id) > -1) {
+        const { selectedEntities, setSelectedEntities } = listContext;
+        if (selectedEntities.indexOf(id) > -1) {
             return;
         }
-        setSelectedItems((previousSelectedItems) => {
-            return [id, ...previousSelectedItems];
+        setSelectedEntities((previousSelectedEntities) => {
+            return [id, ...previousSelectedEntities];
         });
     },
-    addItemsToSelectedItems: (listContext, items) => {
+    addItemsToSelectedEntities: (listContext, items) => {
         if (!items || items.length === 0) {
             return;
         }
         if (!items[0].id) {
             return;
         }
-        const { setSelectedItems } = listContext;
-        setSelectedItems((previousSelectedItems) => {
+        const { setSelectedEntities } = listContext;
+        setSelectedEntities((previousSelectedEntities) => {
             let newItems = items.map(i => i.id);
-            return [...previousSelectedItems, ...newItems];
+            return [...previousSelectedEntities, ...newItems];
         });
     },
-    removeItemFromSelectedItems: (listContext, id) => {
+    removeItemFromSelectedEntities: (listContext, id) => {
         if (!id) {
             return;
         }
-        const { selectedItems, setSelectedItems } = listContext;
-        if (selectedItems.indexOf(id) === -1) {
+        const { selectedEntities, setSelectedEntities } = listContext;
+        if (selectedEntities.indexOf(id) === -1) {
             return;
         }
-        setSelectedItems((previousSelectedItems) => {
-            selectedItems.splice(selectedItems.indexOf(id), 1);
-            return [...selectedItems];
+        setSelectedEntities((previousSelectedEntities) => {
+            selectedEntities.splice(selectedEntities.indexOf(id), 1);
+            return [...selectedEntities];
         });
     },
-    removeItemsFromSelectedItems: (listContext, items) => {
+    removeItemsFromSelectedEntities: (listContext, items) => {
         if (!items || items.length === 0) {
             return;
         }
         if (!items[0].id) {
             return;
         }
-        const { setSelectedItems } = listContext;
-        setSelectedItems((previousSelectedItems) => {
+        const { setSelectedEntities } = listContext;
+        setSelectedEntities((previousSelectedEntities) => {
             let itemsToBeDeleted = items.map(i => i.id);
 
-            return previousSelectedItems.filter(i => !itemsToBeDeleted.includes(i));
+            return previousSelectedEntities.filter(i => !itemsToBeDeleted.includes(i));
         });
     }
 }

@@ -7,13 +7,13 @@ import { app, ListContext, HolismIcon } from '@List';
 const ListActions = ({ actions, create, creationButton, upsert }) => {
     let navigate = useNavigate();
 
-    const { selectedItems } = useContext(ListContext);
+    const { selectedEntities } = useContext(ListContext);
 
     let clonedListActions = null;
     let actionItems = null;
 
     if (typeof actions === 'function') {
-        var actionsReturn = actions(selectedItems);
+        var actionsReturn = actions(selectedEntities);
         if (actionsReturn.props.children) {
             actionItems = actionsReturn.props.children;
         }
@@ -88,7 +88,7 @@ const ListActions = ({ actions, create, creationButton, upsert }) => {
             {
                 clonedListActions?.map((action, index) => {
                     if (action.props.minCardinality) {
-                        if (selectedItems.length >= action.props.minCardinality) {
+                        if (selectedEntities.length >= action.props.minCardinality) {
                             return <span key={index}>
                                 {
                                     action

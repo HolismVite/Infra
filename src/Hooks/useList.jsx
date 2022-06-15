@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { ListContext } from '../Components/List/Contexts';
 
 const useList = () => {
 
@@ -6,6 +7,8 @@ const useList = () => {
     const [data, setData] = useState([]);
     const [metadata, setMetadata] = useState({});
     const [hasData, setHasData] = useState(false)
+
+    const { selectedEntities, setSelectedEntities } = useContext(ListContext)
 
     const setEntityProgress = (entity, progress) => {
         setData((data) => {
@@ -79,10 +82,66 @@ const useList = () => {
         load();
     }
 
+    const selectEntity = (id) => {
+        if (!id) {
+            return;
+        }
+        if (selectedEntities.indexOf(id) > -1) {
+            return;
+        }
+        setSelectedEntities((previousSelectedEntities) => {
+            return [id, ...previousSelectedEntities];
+        });
+    }
+
+    const selectEntities = (entities) => {
+        if (!entities || entities.length === 0) {
+            return;
+        }
+        if (!entities[0].id) {
+            return;
+        }
+        setSelectedEntities((previousSelectedEntities) => {
+            let newItems = entities.map(i => i.id);
+            return [...previousSelectedEntities, ...newItems];
+        });
+    }
+
+    const deselectEntity = (id) => {
+        if (!id) {
+            return;
+        }
+        if (selectedEntities.indexOf(id) === -1) {
+            return;
+        }
+        setSelectedEntities((previousSelectedEntities) => {
+            selectedEntities.splice(selectedEntities.indexOf(id), 1);
+            return [...selectedEntities];
+        });
+    }
+
+    const deselectEntities = (entities) => {
+        if (!entities || entities.length === 0) {
+            return;
+        }
+        if (!entities[0].id) {
+            return;
+        }
+        setSelectedEntities((previousSelectedEntities) => {
+            let entitiesToBeDeleted = entities.map(i => i.id);
+
+            return previousSelectedEntities.filter(i => !entitiesToBeDeleted.includes(i));
+        });
+    }
+
     return {
         setEntityProgress,
         setEntity,
-        reload
+        reload,
+        selectEntity,
+        selectEntities,
+        deselectEntity,
+        deselectEntities
     }
 }
 

@@ -26,7 +26,7 @@ const Cards = ({
 
     const {
         hasItemSelection,
-        selectedItems,
+        selectedEntities,
         card,
         hasDelete,
         hasEdit
@@ -58,9 +58,9 @@ const Cards = ({
                                         onChange={(event) => {
                                             event.target.checked
                                                 ?
-                                                app.addItemsToSelectedItems(listContext, data)
+                                                app.addItemsToSelectedEntities(listContext, data)
                                                 :
-                                                app.removeItemsFromSelectedItems(listContext, data)
+                                                app.removeItemsFromSelectedEntities(listContext, data)
                                         }}
                                         inputProps={{ 'aria-label': app.t('Select all') }}
                                     />
@@ -97,14 +97,14 @@ const Cards = ({
                                                 <div className="flex flex-row">
                                                     <div className="flex items-center justify-center w-10 mr-4">
                                                         <Checkbox
-                                                            checked={selectedItems.indexOf(item.id) > -1}
+                                                            checked={selectedEntities.indexOf(item.id) > -1}
                                                             color="primary"
                                                             onChange={(event) => {
                                                                 event.target.checked
                                                                     ?
-                                                                    app.addItemToSelectedItems(listContext, item.id)
+                                                                    app.addItemToSelectedEntities(listContext, item.id)
                                                                     :
-                                                                    app.removeItemFromSelectedItems(listContext, item.id)
+                                                                    app.removeItemFromSelectedEntities(listContext, item.id)
                                                             }}
                                                         />
                                                     </div>

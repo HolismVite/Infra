@@ -49,7 +49,7 @@ const List = ({
   const [listParameters] = useState(CreateListParameters(app.userGuid(), entityType))
   const [hasData, setHasData] = useState(false)
   const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isFilteringOpen`)
-  const [selectedItems, setSelectedItems] = useState([])
+  const [selectedEntities, setSelectedEntities] = useState([])
   const [hiddenEntityActions, setHiddenEntityActions] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isEntityActionsHidden`)
   const [showTopPagiation, setTopPaginationVisibility] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isTopPaginationShown`)
 
@@ -60,8 +60,8 @@ const List = ({
   const { setTitle, setSubtitle, setBreadcrumbItems } = useContext(TopContext)
 
   useEffect(() => {
-    // console.log(selectedItems)
-  }, [selectedItems])
+    console.log(selectedEntities)
+  }, [selectedEntities])
 
   useEffect(() => {
     setTitle(title)
@@ -70,11 +70,11 @@ const List = ({
   }, [title, subtitle, breadcrumbItems])
 
   return <ListContext.Provider value={{
-    listParameters: listParameters,
-    selectedItems: selectedItems,
-    setSelectedItems: setSelectedItems,
-    hasData: hasData,
-    setHasData: setHasData,
+    listParameters,
+    selectedEntities,
+    setSelectedEntities,
+    hasData,
+    setHasData,
     hasItemSelection,
     showTopPagiation,
     setTopPaginationVisibility,

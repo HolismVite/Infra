@@ -7,6 +7,7 @@ import Collapse from '@mui/material/Collapse';
 import { ListContext, app } from '@List';
 import NoEntitiesFound from '../NoEntitiesFound';
 import { EntityContext, TableContext } from './Contexts'
+import useList from '../../Hooks/useList';
 
 const Table = ({
     entityType,
@@ -26,13 +27,20 @@ const Table = ({
 
     const {
         hasItemSelection,
-        selectedItems,
+        selectedEntities,
         headers,
         row,
         menuForActions,
         hasDelete,
         hasEdit
     } = useContext(ListContext);
+
+    const {
+        selectEntity,
+        selectEntities,
+        deselectEntity,
+        deselectEntities,
+    } = useList()
 
     let headerElements = [];
 
@@ -70,9 +78,9 @@ const Table = ({
                                         onChange={(event) => {
                                             event.target.checked
                                                 ?
-                                                app.addItemsToSelectedItems(listContext, data)
+                                                selectEntities(data)
                                                 :
-                                                app.removeItemsFromSelectedItems(listContext, data)
+                                                deselectEntities(data)
                                         }}
                                         inputProps={{ 'aria-label': app.t('Select all') }}
                                     />
@@ -103,14 +111,14 @@ const Table = ({
         ?
         <td>
             <Checkbox
-                checked={selectedItems.indexOf(item.id) > -1}
+                checked={selectedEntities.indexOf(item.id) > -1}
                 color="primary"
                 onChange={(event) => {
                     event.target.checked
                         ?
-                        app.addItemToSelectedItems(listContext, item.id)
+                        selectEntity(item.id)
                         :
-                        app.removeItemFromSelectedItems(listContext, item.id)
+                        deselectEntity(item.id)
                 }}
             />
         </td>
