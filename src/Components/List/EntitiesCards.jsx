@@ -7,6 +7,7 @@ import Collapse from '@mui/material/Collapse';
 import { ListContext, app } from '@List';
 import NoEntitiesFound from '../NoEntitiesFound';
 import { EntityContext } from './Contexts'
+import useList from '../../Hooks/useList'
 
 const Cards = ({
     data,
@@ -31,6 +32,13 @@ const Cards = ({
         hasDelete,
         hasEdit
     } = useContext(ListContext);
+
+    const {
+        selectEntity,
+        selectEntities,
+        deselectEntity,
+        deselectEntities,
+    } = useList()
 
     return <>
         {
@@ -58,9 +66,9 @@ const Cards = ({
                                         onChange={(event) => {
                                             event.target.checked
                                                 ?
-                                                app.addItemsToSelectedEntities(listContext, data)
+                                                selectEntities(data)
                                                 :
-                                                app.removeItemsFromSelectedEntities(listContext, data)
+                                                deselectEntities(data)
                                         }}
                                         inputProps={{ 'aria-label': app.t('Select all') }}
                                     />
@@ -102,9 +110,9 @@ const Cards = ({
                                                             onChange={(event) => {
                                                                 event.target.checked
                                                                     ?
-                                                                    app.addItemToSelectedEntities(listContext, item.id)
+                                                                    selectEntity(item.id)
                                                                     :
-                                                                    app.removeItemFromSelectedEntities(listContext, item.id)
+                                                                    deselectEntity(item.id)
                                                             }}
                                                         />
                                                     </div>
