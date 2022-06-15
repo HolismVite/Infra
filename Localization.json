@@ -57,7 +57,9 @@
             "Confirmation": "تایید",
             "Are you sure you want to delete this item": "آیا از حذف این مورد مطمئن هستید؟",
             "Yes": "بله",
-            "No": "خیر"
+            "No": "خیر",
+            "Show Actions": "نمایش عملیات ها",
+            "Hide Actions": "مخفی کردن عملیات ها"
         }
     }
 ]

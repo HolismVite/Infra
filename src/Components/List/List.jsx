@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import Switch from '@mui/material/Switch';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
@@ -156,17 +157,13 @@ const List = ({
         }
         {
           !menuForActions && hasData && (entityActions || hasDelete || hasEdit || edit) &&
-          <span
-            className={listActionIconStyle}
-            onClick={() => setHiddenEntityActions(!hiddenEntityActions)}
-          >
-            <Tooltip title={app.t(hiddenEntityActions ? 'Show actions' : 'Hide actions')}>
-              <HolismIcon
-                className={hiddenEntityActions ? "text-slate-300" : "text-green-600"}
-                icon={hiddenEntityActions ? ToggleOnIcon : ToggleOffIcon}
-              />
-            </Tooltip>
-          </span>
+          <Tooltip title={hiddenEntityActions ? app.t('Show actions') : app.t('Hide actions')}>
+            <Switch
+              size="small"
+              checked={!hiddenEntityActions}
+              onChange={(e) => setHiddenEntityActions(!hiddenEntityActions)}
+            />
+          </Tooltip>
         }
       </div>
     </div>
