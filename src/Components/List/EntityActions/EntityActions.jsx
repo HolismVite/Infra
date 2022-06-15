@@ -15,8 +15,6 @@ const EntityActions = ({
     entityType,
     item,
     entityActions,
-    hasDelete,
-    hasEdit,
     edit,
     create,
     upsert,
@@ -26,7 +24,11 @@ const EntityActions = ({
 }) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
-    const { menuForActions } = useContext(ListContext)
+    const {
+        menuForActions,
+        hasDelete,
+        hasEdit
+    } = useContext(ListContext)
     const open = Boolean(anchorEl);
     let clonedEntityActions = [];
 

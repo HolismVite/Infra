@@ -82,7 +82,9 @@ const List = ({
     headers,
     row,
     card,
-    menuForActions
+    menuForActions,
+    hasDelete,
+    hasEdit
   }} id='list'>
 
     <div
@@ -180,8 +182,6 @@ const List = ({
       multicolumn={multicolumn}
       entityActions={entityActions}
       separateRowForActions={separateRowForActions}
-      hasDelete={hasDelete}
-      hasEdit={hasEdit}
       edit={edit}
       classProvider={classProvider}
       upsert={upsert}

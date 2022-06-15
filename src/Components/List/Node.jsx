@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Collapse from '@mui/material/Collapse';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import AddIcon from '@mui/icons-material/Add';
@@ -11,14 +11,13 @@ import EditAction from './EntityActions/EditAction';
 import EntityActions from './EntityActions/EntityActions';
 import { EntityAction } from './EntityActions/EntityAction';
 import Unify from '../Unify';
+import { ListContext } from './Contexts';
 
 const Node = ({
     entityType,
     entity,
     show,
     expanded,
-    hasEdit,
-    hasDelete,
     create,
     edit,
     upsert,
@@ -28,6 +27,10 @@ const Node = ({
 }) => {
     const [isExpanded, setIsExpanded] = useState(expanded)
     const [hasChildren, setHasChildren] = useState(entity.relatedItems.children.length > 0)
+    const {
+        hasDelete,
+        hasEdit,
+    } = useContext(ListContext)
 
     return <li className={entity.parentId && "ml-8 border-l border-dashed border-slate-400"}>
         <span

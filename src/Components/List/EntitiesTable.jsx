@@ -14,8 +14,6 @@ const Table = ({
     metadata,
     entityActions,
     separateRowForActions,
-    hasDelete,
-    hasEdit,
     edit,
     create,
     upsert,
@@ -31,7 +29,9 @@ const Table = ({
         selectedItems,
         headers,
         row,
-        menuForActions
+        menuForActions,
+        hasDelete,
+        hasEdit
     } = useContext(ListContext);
 
     let headerElements = [];

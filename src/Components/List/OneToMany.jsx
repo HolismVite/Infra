@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import { List, Progress, app, get } from '@List';
+import { ListContext } from './Contexts';
 
 const OneToMany = ({
     title,
@@ -13,8 +15,6 @@ const OneToMany = ({
     card,
     create,
     entityActions,
-    hasDelete,
-    hasEdit,
     edit,
     creationButton,
     classProvider,
@@ -22,6 +22,10 @@ const OneToMany = ({
 }) => {
 
     const [oneSide, setOneSide] = useState();
+    const {
+        hasDelete,
+        hasEdit
+    } = useContext(ListContext)
 
     useEffect(() => {
         if (app.selectedItem) {

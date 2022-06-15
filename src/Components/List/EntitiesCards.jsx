@@ -11,8 +11,6 @@ import { EntityContext } from './Contexts'
 const Cards = ({
     data,
     entityActions,
-    hasDelete,
-    hasEdit,
     edit,
     entityType,
     create,
@@ -30,6 +28,8 @@ const Cards = ({
         hasItemSelection,
         selectedItems,
         card,
+        hasDelete,
+        hasEdit
     } = useContext(ListContext);
 
     return <>
