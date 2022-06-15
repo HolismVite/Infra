@@ -1,4 +1,4 @@
-import DateTimePicker from '@mui/lab/DateTimePicker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { Field, app } from '@Form';
 
