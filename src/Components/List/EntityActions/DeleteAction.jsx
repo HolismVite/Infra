@@ -44,19 +44,19 @@ const DeleteAction = ({
                 <HolismIcon icon={WarningIcon} className="text-red-400 text-5xl my-10" />
             </div>
             <p>
-                Are you sure you want to delete this item?
+                {app.t('Are you sure you want to delete this item?')}
             </p>
             {/* todo: Show some information form the selected item, to enhance UX */}
         </DialogContent>
         <DialogActions>
             <div id='actions' className='mt-4'>
                 <Button variant="outlined" onClick={() => setConfirmationDialogVisibility(false)}>
-                    No
+                    {app.t('No')}
                 </Button>
                 <Button variant="outlined" className='bg-green-200 ml-2' onClick={() => {
                     deleteItem()
                 }}>
-                    Yes
+                    {app.t('Yes')}
                 </Button>
             </div>
         </DialogActions>

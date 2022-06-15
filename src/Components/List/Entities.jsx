@@ -5,7 +5,7 @@ import Cards from './EntitiesCards'
 import Table from './EntitiesTable'
 import Tree from './EntitiesTree';
 
-const Items = (props) => {
+const Entities = (props) => {
 
     const {
         classProvider,
@@ -226,4 +226,4 @@ const Items = (props) => {
     </div>
 }
 
-export default Items;
+export default Entities;
