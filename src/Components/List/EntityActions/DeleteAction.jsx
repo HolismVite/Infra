@@ -38,7 +38,7 @@ const DeleteAction = ({
         aria-labelledby="dialog-title"
         TransitionProps={{ onEntered: () => { } }}
     >
-        <DialogTitle id="dialog-title">Confirmation</DialogTitle>
+        <DialogTitle id="dialog-title">{app.t('Confirmation')}</DialogTitle>
         <DialogContent>
             <div className="flex justify-center ">
                 <HolismIcon icon={WarningIcon} className="text-red-400 text-5xl my-10" />
@@ -53,7 +53,7 @@ const DeleteAction = ({
                 <Button variant="outlined" onClick={() => setConfirmationDialogVisibility(false)}>
                     {app.t('No')}
                 </Button>
-                <Button variant="outlined" className='bg-green-200 ml-2' onClick={() => {
+                <Button variant="outlined" className='bg-green-200 ltr:ml-2 rtl:mr-2' onClick={() => {
                     deleteItem()
                 }}>
                     {app.t('Yes')}
