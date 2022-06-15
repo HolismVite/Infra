@@ -88,6 +88,7 @@ const Cards = ({
                                     value={{
                                         entity: item
                                     }}
+                                    key={item.id}
                                 >
                                     <div
                                         className=
@@ -97,13 +98,12 @@ const Cards = ({
                                             (!multicolumn && index !== 0 ? 'border-t ' : '') +
                                             (classProvider ? classProvider(item) : '')
                                         }
-                                        key={item.id}
                                     >
                                         {
                                             hasItemSelection
                                                 ?
                                                 <div className="flex flex-row">
-                                                    <div className="flex items-center justify-center w-10 mr-4">
+                                                    <div className="flex items-center justify-center w-10 ">
                                                         <Checkbox
                                                             checked={selectedEntities.indexOf(item.id) > -1}
                                                             color="primary"

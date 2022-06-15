@@ -35,7 +35,7 @@ const Filtering = ({ filters }) => {
             {
                 filtersArray.map((filter, index) => React.cloneElement(filter, {
                     key: index,
-                    className: 'ltr:ml-4 rtl:mr-4'
+                    className: ' ltr:ml-4 rtl:mr-4 '
                 }))
             }
             <div className={"flex justify-end mt-6 sm:mt-3 flex-1"}>

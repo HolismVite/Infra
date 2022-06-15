@@ -52,7 +52,7 @@ const ListActions = ({ actions, create, creationButton, upsert }) => {
         id='listActions'
         className=
         {
-            'flex flex-wrap items-center'
+            'flex flex-wrap items-center mb-2 lg:mb-0 '
         }
     >
         <div>

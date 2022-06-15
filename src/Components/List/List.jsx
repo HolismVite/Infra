@@ -89,7 +89,7 @@ const List = ({
 
     <div
       className={
-        'lg:flex items-center justify-between px-6 py-2 lg:h-14'
+        ' lg:flex items-center justify-between px-6 py-2 lg:h-14 '
       }
     >
       <ListActions
@@ -100,7 +100,7 @@ const List = ({
       />
       <div
         className={
-          "sortAndFilteringAndReload flex items-center justify-end gap-2 lg:my-0"
+          " sortAndFilteringAndReload flex items-center justify-end gap-2 lg:my-0 "
         }
       >
         {
