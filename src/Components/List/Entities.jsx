@@ -7,18 +7,27 @@ import Tree from './EntitiesTree';
 
 const Items = (props) => {
 
-    const { entityType, card, headers, row, classProvider, isTree } = props;
-    app.ensure([entityType]);
-
-    const [loading, setLoading] = useState();
-    const [data, setData] = useState([]);
-    const [metadata, setMetadata] = useState({});
     const {
+        card,
+        headers,
+        row,
+        classProvider,
+        isTree
+    } = props;
+
+    const {
+        entityType,
         listParameters,
         setHasData,
         showTopPagiation,
         setTopPaginationVisibility
     } = useContext(ListContext);
+    
+    app.ensure([entityType]);
+
+    const [loading, setLoading] = useState();
+    const [data, setData] = useState([]);
+    const [metadata, setMetadata] = useState({});
 
     const setEntityProgress = (entity, progress) => {
         setData((data) => {

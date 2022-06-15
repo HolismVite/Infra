@@ -9,7 +9,7 @@ import Tooltip from '@mui/material/Tooltip'
 import Filtering from "./Filtering"
 import CreateListParameters from "../../Base/CreateListParameters"
 import Sorting from "./Sorting"
-import Items from "./Entities"
+import Entities from "./Entities"
 import ListActions from "./ListActions/ListActions"
 import app from '../../Base/App'
 import useLocalStorageState from '../../Base/UseLocalStorageState'
@@ -80,7 +80,8 @@ const List = ({
     hasData: hasData,
     setHasData: setHasData,
     showTopPagiation,
-    setTopPaginationVisibility
+    setTopPaginationVisibility,
+    entityType
   }} id='list'>
 
     <div
@@ -173,9 +174,8 @@ const List = ({
       </div>
     </Collapse>
 
-    <Items
+    <Entities
       hasItemSelection={hasItemSelection}
-      entityType={entityType}
       create={create}
       headers={headers}
       row={row}
