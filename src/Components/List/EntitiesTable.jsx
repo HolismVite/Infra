@@ -12,11 +12,8 @@ const Table = ({
     entityType,
     data,
     metadata,
-    headers,
-    row,
     entityActions,
     separateRowForActions,
-    menuForActions,
     hasDelete,
     hasEdit,
     edit,
@@ -24,14 +21,18 @@ const Table = ({
     upsert,
     setItem,
     reload,
-    hasItemSelection,
     classProvider,
     showTopPagiation,
     hiddenEntityActions
 }) => {
 
-    const listContext = useContext(ListContext);
-    const { selectedItems, hasData } = listContext;
+    const {
+        hasItemSelection,
+        selectedItems,
+        headers,
+        row,
+        menuForActions
+    } = useContext(ListContext);
 
     let headerElements = [];
 
@@ -119,9 +120,9 @@ const Table = ({
     const clonedCells = (item) => React.Children
         .toArray(row(item).props.children)
         .map(td => React.cloneElement(td, {
-            className: 'text-gray-900 dark:text-gray-300 py-3 text-sm font-light tracking-wide ' 
-            + (td?.props?.start && " ltr:text-left rtl:text-right ")
-            + td.props.className,
+            className: 'text-gray-900 dark:text-gray-300 py-3 text-sm font-light tracking-wide '
+                + (td?.props?.start && " ltr:text-left rtl:text-right ")
+                + td.props.className,
             hasmoreroom: menuForActions
         }))
 
@@ -132,7 +133,6 @@ const Table = ({
                 entityType={entityType}
                 item={item}
                 entityActions={entityActions}
-                menuForActions={menuForActions}
                 hasDelete={hasDelete}
                 hasEdit={hasEdit}
                 edit={edit}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Fade from '@mui/material/Fade';
@@ -9,12 +9,12 @@ import DeleteAction from './DeleteAction';
 import EditAction from './EditAction';
 import { app } from '../../../Base/App';
 import ViewRecordAction from './ViewRecordAction';
+import { ListContext } from '../Contexts';
 
 const EntityActions = ({
     entityType,
     item,
     entityActions,
-    menuForActions,
     hasDelete,
     hasEdit,
     edit,
@@ -26,6 +26,7 @@ const EntityActions = ({
 }) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
+    const { menuForActions } = useContext(ListContext)
     const open = Boolean(anchorEl);
     let clonedEntityActions = [];
 

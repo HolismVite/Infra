@@ -69,19 +69,20 @@ const List = ({
     setBreadcrumbItems(breadcrumbItems)
   }, [title, subtitle, breadcrumbItems])
 
-  const toggleFiltering = () => {
-    setIsFilteringOpen(!isFilteringOpen)
-  }
-
   return <ListContext.Provider value={{
     listParameters: listParameters,
     selectedItems: selectedItems,
     setSelectedItems: setSelectedItems,
     hasData: hasData,
     setHasData: setHasData,
+    hasItemSelection,
     showTopPagiation,
     setTopPaginationVisibility,
-    entityType
+    entityType,
+    headers,
+    row,
+    card,
+    menuForActions
   }} id='list'>
 
     <div
@@ -108,7 +109,7 @@ const List = ({
             }
             onClick={() => setTopPaginationVisibility(!showTopPagiation)}
           >
-            <Tooltip title={app.t(showTopPagiation ?  'Hide top pagination' : 'Show top pagination')}>
+            <Tooltip title={app.t(showTopPagiation ? 'Hide top pagination' : 'Show top pagination')}>
               <SwapHorizIcon />
             </Tooltip>
           </span>
@@ -128,7 +129,7 @@ const List = ({
               className={
                 listActionIconStyle
               }
-              onClick={toggleFiltering}
+              onClick={() => setIsFilteringOpen(!isFilteringOpen)}
             >
               <Tooltip title={app.t('Filters')}>
                 <FilterListIcon />
@@ -175,15 +176,10 @@ const List = ({
     </Collapse>
 
     <Entities
-      hasItemSelection={hasItemSelection}
       create={create}
-      headers={headers}
-      row={row}
-      card={card}
       multicolumn={multicolumn}
       entityActions={entityActions}
       separateRowForActions={separateRowForActions}
-      menuForActions={menuForActions}
       hasDelete={hasDelete}
       hasEdit={hasEdit}
       edit={edit}

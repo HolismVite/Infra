@@ -11,7 +11,6 @@ import { EntityContext } from './Contexts'
 const Cards = ({
     data,
     entityActions,
-    menuForActions,
     hasDelete,
     hasEdit,
     edit,
@@ -19,18 +18,19 @@ const Cards = ({
     create,
     upsert,
     metadata,
-    card,
     multicolumn,
     setItem,
     reload,
-    hasItemSelection,
     classProvider,
     showTopPagiation,
     noItemIsFoundStyle
 }) => {
 
-    const listContext = useContext(ListContext);
-    const { selectedItems } = listContext;
+    const {
+        hasItemSelection,
+        selectedItems,
+        card,
+    } = useContext(ListContext);
 
     return <>
         {
@@ -127,7 +127,6 @@ const Cards = ({
                                                         entityType={entityType}
                                                         item={item}
                                                         entityActions={entityActions}
-                                                        menuForActions={menuForActions}
                                                         hasDelete={hasDelete}
                                                         hasEdit={hasEdit}
                                                         edit={edit}

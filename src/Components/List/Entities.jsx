@@ -8,21 +8,21 @@ import Tree from './EntitiesTree';
 const Items = (props) => {
 
     const {
-        card,
-        headers,
-        row,
         classProvider,
         isTree
     } = props;
 
     const {
         entityType,
+        headers,
+        row,
+        card,
         listParameters,
         setHasData,
         showTopPagiation,
         setTopPaginationVisibility
     } = useContext(ListContext);
-    
+
     app.ensure([entityType]);
 
     const [loading, setLoading] = useState();

@@ -5,6 +5,7 @@ const useList = () => {
     const [loading, setLoading] = useState();
     const [data, setData] = useState([]);
     const [metadata, setMetadata] = useState({});
+    const [hasData, setHasData] = useState(false)
 
     const setEntityProgress = (entity, progress) => {
         setData((data) => {
