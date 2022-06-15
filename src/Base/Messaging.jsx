@@ -1,4 +1,4 @@
-import app from './App';
+import EventManager from './EventManager';
 
 const Messaging = {
     success: (message, action) => {
@@ -17,7 +17,7 @@ const Messaging = {
         if (message && message.message) {
             message = message.message;
         }
-        app.emit(app.showMessage, { message: message, action: action, type: type });
+        EventManager.emit(EventManager.showMessage, { message: message, action: action, type: type });
     }
 }
 
