@@ -94,7 +94,6 @@ const Entities = (props) => {
     }
 
     const load = () => {
-        listParameters.storeInLocalStorage();
         setLoading(true);
         let url = `${entityType}/`;
         if (isTree) {
@@ -103,11 +102,11 @@ const Entities = (props) => {
         else {
             url += `list?pageNumber=${listParameters.pageNumber}&pageSize=${listParameters.pageSize}`
         }
-        const filters = listParameters.filtersQueryString();
+        const filters = listParameters.buildFiltersQueryString();
         if (filters) {
             url += `&filters=${filters}`;
         }
-        const sorts = listParameters.sortsQueryString();
+        const sorts = listParameters.buildSortsQueryString();
         if (sorts) {
             url += `&sorts=${sorts}`;
         }

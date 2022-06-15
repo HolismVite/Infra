@@ -7,7 +7,6 @@ import CachedIcon from '@mui/icons-material/Cached'
 import Collapse from '@mui/material/Collapse'
 import Tooltip from '@mui/material/Tooltip'
 import Filtering from "./Filtering"
-import CreateListParameters from "../../Base/CreateListParameters"
 import Sorting from "./Sorting"
 import Entities from "./Entities"
 import ListActions from "./ListActions/ListActions"
@@ -16,6 +15,7 @@ import useLocalStorageState from '../../Base/UseLocalStorageState'
 import { DialogForm } from '../Form/DialogForm'
 import { TopContext, HolismIcon } from '../../Panel/Panel'
 import { ListContext } from './Contexts'
+import useListParameters from '../../Hooks/useListParameters';
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer"
 
@@ -46,7 +46,7 @@ const List = ({
   expanded,
   show
 }) => {
-  const [listParameters] = useState(CreateListParameters(app.userGuid(), entityType))
+  const listParameters = useListParameters(app.userGuid(), entityType)
   const [hasData, setHasData] = useState(false)
   const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isFilteringOpen`)
   const [selectedEntities, setSelectedEntities] = useState([])

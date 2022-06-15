@@ -19,7 +19,18 @@ const useListParameters = (userGuid, entityType) => {
     const [sorts, setSorts] = useState(existingParameters.sorts || [])
 
     const addFilter = (property, value, operator) => {
-
+        var isAdded = false;
+        for (var i = 0; i < filters.length; i++) {
+            if (filters[i].property === property) {
+                if (filters[i].operator && operator && filters[i].operator === operator) {
+                    filters[i].value = value;
+                    isAdded = true;
+                }
+            }
+        }
+        if (!isAdded) {
+            filters.push({ property: property, operator: operator, value: value });
+        }
     }
 
     const removeFilter = (property) => {

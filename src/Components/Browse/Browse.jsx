@@ -6,8 +6,8 @@ import Collapse from '@mui/material/Collapse';
 import Filtering from "../List/Filtering";
 import Sorting from "../List/Sorting";
 import Entities from "../List/Entities";
-import CreateListParameters from '../../Base/CreateListParameters';
 import { app, EntityAction, ListContext, useLocalStorageState } from '@List';
+import useListParameters from '../../Hooks/useListParameters';
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer";
 
@@ -21,7 +21,7 @@ const Browse = ({
     callerId
 }) => {
 
-    const [listParameters] = useState(CreateListParameters(app.userGuid(), entityType));
+    const listParameters = useListParameters(app.userGuid(), entityType)
     const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isFilteringOpen`);
 
     const toggleFiltering = () => {
