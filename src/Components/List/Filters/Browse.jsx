@@ -29,15 +29,7 @@ const Browse = ({ column, placeholder, entityType, browser, display, choose }) =
         callerId: `${column}_browser`
     });
 
-    useEffect(() => {
-        const reset = () => {
-            setSelectedEntity(null);
-        };
-        app.on(app.resetFilters, reset);
-        return () => {
-            app.removeListener(app.resetFilters, reset);
-        }
-    }, []);
+    // todo: on resetting filters, setSelectedEntity(null);
 
     useEffect(() => {
         if (!selectedEntity) {

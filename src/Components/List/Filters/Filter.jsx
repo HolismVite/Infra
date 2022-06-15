@@ -22,22 +22,14 @@ const Filter = ({
     var { listParameters } = useContext(ListContext);
     const label = placeholder || column;
 
-    useEffect(() => {
-        const reset = () => {
-            setDisplayValue(value || "");
-        };
-        app.on(app.resetFilters, reset);
-        return () => {
-            app.removeListener(app.resetFilters, reset);
-        }
-    }, [value]);
+    // todo: on resetting filters => setDisplayValue(value || "");
 
     useEffect(() => {
         setId(`${type}_${column}`)
     }, [type, column]);
 
     useEffect(() => {
-        listParameters.addFilter(column, operator || filterOperator.contains, displayValue);
+        listParameters.addFilter(column, displayValue, operator || filterOperator.contains);
     }, [column, listParameters, operator, displayValue]);
 
     return <div className="filter mt-1 mr-4 w-64">

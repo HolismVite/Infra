@@ -60,7 +60,7 @@ const List = ({
   const { setTitle, setSubtitle, setBreadcrumbItems } = useContext(TopContext)
 
   useEffect(() => {
-    console.log(selectedEntities)
+    // console.log(selectedEntities)
   }, [selectedEntities])
 
   useEffect(() => {

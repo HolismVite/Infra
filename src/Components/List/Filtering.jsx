@@ -16,8 +16,7 @@ const Filtering = ({ filters }) => {
     };
 
     const resetFilters = () => {
-        listParameters.filters = [];
-        app.emit(app.resetFilters);
+        listParameters.resetFilters()
         applyFilters();
     }
 

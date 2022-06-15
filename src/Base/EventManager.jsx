@@ -15,7 +15,6 @@ const EventManager = {
     itemUpserted: 'item_upserted',
     showMessage: 'show_message',
     reloadRequested: 'reload_requested',
-    resetFilters: 'reset_filters',
     makeRoom: 'make_room',
     returnBackToNormalForm: 'return_back_to_normal_form',
     editRequested: 'edit_requested',

@@ -37,6 +37,10 @@ const useListParameters = (userGuid, entityType) => {
 
     }
 
+    const resetFilters = () => {
+        setFilters([])
+    }
+
     const addSort = (property, direction) => {
 
     }
@@ -57,6 +61,10 @@ const useListParameters = (userGuid, entityType) => {
     useEffect(() => {
         storeInLocalStorage()
     }, [pageNumber, pageSize, filters, sorts])
+
+    useEffect(() => {
+        console.log(filters)
+    }, [filters])
 
     const buildFiltersQueryString = () => {
         //filters=title_contains_hi&stateId_eq_closed&userAge_gt_35
@@ -95,7 +103,8 @@ const useListParameters = (userGuid, entityType) => {
         addSort,
         removeSort,
         buildFiltersQueryString,
-        buildSortsQueryString
+        buildSortsQueryString,
+        resetFilters
     }
 }
 
