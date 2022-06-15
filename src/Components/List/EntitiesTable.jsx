@@ -52,6 +52,7 @@ const Table = ({
                 className: "text-gray-900 dark:text-gray-300 py-3 font-light text-xs "
                     + (header?.props?.start && " ltr:text-left rtl:text-right ")
                     + (header?.props?.className || ""),
+                start: header?.props?.start ? 'true' : 'false',
                 children: React.Children.toArray(header.props.children).map(child => {
                     return typeof child === "string" ? app.t(child) : child;
                 })
