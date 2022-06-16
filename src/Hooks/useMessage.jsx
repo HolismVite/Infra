@@ -9,7 +9,6 @@ const useMessage = () => {
         message,
         setMessage,
         setAction,
-        setMessageType,
         severity,
         setSeverity
     } = useContext(PanelContext)
@@ -20,7 +19,7 @@ const useMessage = () => {
         }
         setMessage(data)
         setAction(action)
-        setMessageType(type)
+        setSeverity(type)
         setIsMessageShown(true)
     }
 
@@ -51,19 +50,11 @@ const useMessage = () => {
     }, [message, severity])
 
     useEffect(() => {
-        console.log('message:', message);
-    }, [message])
-
-    useEffect(() => {
-        console.log('severity:', severity)
-    }, [severity])
-
-    useEffect(() => {
-        if (isMessageShown === false) {
-            setTimeout(() => {
+        return () => {
+            if (isMessageShown === false) {
                 setMessage(null)
                 setSeverity(null)
-            }, 100)
+            }
         }
     }, [isMessageShown])
 

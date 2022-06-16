@@ -35,7 +35,6 @@ const Panel = () => {
     const [isMessageShown, setIsMessageShown] = useState()
     const [message, setMessage] = useState()
     const [action, setAction] = useState()
-    const [messageType, setMessageType] = useState()
     const [severity, setSeverity] = useState()
 
     const toggleMenu = () => {
@@ -88,8 +87,6 @@ const Panel = () => {
             setMessage,
             action,
             setAction,
-            messageType,
-            setMessageType,
             severity,
             setSeverity
         }}>
