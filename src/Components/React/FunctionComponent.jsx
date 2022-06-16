@@ -4,7 +4,7 @@ const FunctionComponent = ({ children, ...rest }) => {
         <p>I can also have children and props</p>
         {children}
         {
-            Object.getOwnPropertyNames(rest).map(item => <div>{item} - {rest[item].toString()}</div>)
+            Object.getOwnPropertyNames(rest).map(item => <div key={item}>{item} - {rest[item].toString()}</div>)
         }
     </div>
 }

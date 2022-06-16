@@ -1,7 +1,7 @@
 import React from 'react'
 import app from "../Base/App"
 
-const Unify = ({ component }) => {
+const Unify = ({ component, ...rest }) => {
 
     if (!component) {
         return <span className="hidden">Component passed to the wrapper is null or undefined</span>
@@ -18,7 +18,7 @@ const Unify = ({ component }) => {
         }
         if (typeof component.type === 'function') {
             const Component = component.type;
-            return <Component {...component.props} />
+            return <Component {...component.props} {...rest} />
         }
         if (typeof component.type === 'string') {
             return <>

@@ -21,6 +21,8 @@ const Render = ({ component }) => {
         <Unify component={jsxSingleFunctionComponentWithChildren} />
         <hr />
         <Unify component={jsxSingleFunctionComponentWithProps} />
+        <hr />
+        <Unify component={jsxSingleFunctionComponent} anotherBooleanProp={false}/>
         {/* <jsxSingleElement /> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter. */}
         {/* <PascalCasedJsxSingleElement /> Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. */}
         {/* <Unify component={jsxArray} />
