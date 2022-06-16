@@ -1,7 +1,7 @@
 import Render from "../Components/React/Render"
 
 const Test = () => {
-    return <div>
+    return <div dir='ltr'>
         <Render />
     </div>
 }

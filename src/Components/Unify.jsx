@@ -18,7 +18,7 @@ const Unify = ({ component }) => {
         }
         if (typeof component.type === 'function') {
             const Component = component.type;
-            return <Component />
+            return <Component {...component.props} />
         }
         if (typeof component.type === 'string') {
             return <>
