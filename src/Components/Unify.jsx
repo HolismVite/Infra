@@ -31,27 +31,20 @@ const Unify = ({ component, ...rest }) => {
                     return <>
                         {
                             component.props.children
-                                // .filter(entityAction => {
-                                //     try {
-                                //         if (entityAction.props?.superAdmin === true) {
-                                //             return app.isSuperAdmin()
-                                //         }
-                                //         else if (
-                                //             entityAction.type &&
-                                //             typeof entityAction.type === 'function' &&
-                                //             entityAction.props &&
-                                //             entityAction.type(entityAction.props).props?.superAdmin === true) {
-                                //             return app.isSuperAdmin()
-                                //         }
-                                //         else {
-                                //             return true;
-                                //         }
-                                //     } catch (error) {
-                                //         console.error(error, entityAction)
-                                //     }
-                                //     return true;
-                                // })
-                                .map(i => <Unify component={i} />)
+                                .filter(i => {
+                                    if (i.props?.superAdmin === true) {
+                                        return app.isSuperAdmin()
+                                    }
+                                    else {
+                                        return true;
+                                    }
+                                })
+                                .map((i, index) => <Unify
+                                    key={i}
+                                    component={i}
+                                    {...i.props}
+                                    {...rest}
+                                />)
                         }
                     </>
                 }
