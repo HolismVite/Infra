@@ -1,15 +1,12 @@
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import { PanelContext } from '../Panel/Contexts'
 
 const useMessage = () => {
 
     const {
-        isMessageShown,
         setIsMessageShown,
-        message,
         setMessage,
         setAction,
-        severity,
         setSeverity
     } = useContext(PanelContext)
 
@@ -42,21 +39,6 @@ const useMessage = () => {
     const hide = () => {
         setIsMessageShown(false)
     }
-
-    useEffect(() => {
-        if (message && severity) {
-            setIsMessageShown(true)
-        }
-    }, [message, severity])
-
-    useEffect(() => {
-        return () => {
-            if (isMessageShown === false) {
-                setMessage(null)
-                setSeverity(null)
-            }
-        }
-    }, [isMessageShown])
 
     return {
         success,
