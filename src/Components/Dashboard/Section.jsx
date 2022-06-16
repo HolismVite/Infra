@@ -52,7 +52,7 @@ const Section = ({
             + /* lg */ " lg:grid-cols-" + count
             + ` windowWidth_${windowWidth} windowHeight_${windowHeight}`
         }
-        classes="fullClassNamesForTailwindPurge sm:grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 md:grid-cols-2 md:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4"
+        classes="fullClassNamesForTailwind sm:grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 md:grid-cols-2 md:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4"
         ref={ref}
     >
         {
