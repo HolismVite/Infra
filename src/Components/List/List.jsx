@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Switch from '@mui/material/Switch';
-import ToggleOnIcon from '@mui/icons-material/ToggleOn';
-import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import CachedIcon from '@mui/icons-material/Cached'
@@ -191,13 +189,7 @@ const List = ({
       CreationComponent && typeof CreationComponent !== 'string'
         ?
         <DialogForm
-          entityType={CreationComponent.props?.entityType}
-          humanReadableEntityType={CreationComponent.props?.humanReadableEntityType}
-          title={CreationComponent.props?.title}
-          explanations={CreationComponent.props?.explanations}
-          inputs={CreationComponent.props?.inputs}
-          actions={CreationComponent.props?.actions}
-          large={CreationComponent.props?.large}
+          {...CreationComponent.props}
         />
         :
         null
@@ -206,13 +198,7 @@ const List = ({
       UpsertComponent && typeof UpsertComponent !== 'string'
         ?
         <DialogForm
-          entityType={UpsertComponent.props?.entityType}
-          humanReadableEntityType={UpsertComponent.props?.humanReadableEntityType}
-          title={UpsertComponent.props?.title}
-          explanations={UpsertComponent.props?.explanations}
-          inputs={UpsertComponent.props?.inputs}
-          actions={UpsertComponent.props?.actions}
-          large={UpsertComponent.props?.large}
+          {...UpsertComponent.props}
         />
         :
         null
@@ -221,13 +207,7 @@ const List = ({
       EditionComponent && typeof EditionComponent !== 'string'
         ?
         <DialogForm
-          entityType={EditionComponent.props?.entityType}
-          humanReadableEntityType={EditionComponent.props?.humanReadableEntityType}
-          title={EditionComponent.props?.title}
-          explanations={EditionComponent.props?.explanations}
-          inputs={EditionComponent.props?.inputs}
-          actions={EditionComponent.props?.actions}
-          large={EditionComponent.props?.large}
+          {...EditionComponent.props}
         />
         :
         null
