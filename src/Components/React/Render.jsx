@@ -7,11 +7,13 @@ import jsxSingleFunctionComponentWithProps from './Jsx/Single/FunctionComponentW
 import jsxArrayHtml from './Jsx/Array/Html'
 import jsxArrayFunctionComponent from "./Jsx/Array/FunctionComponent"
 import functionNoBodySingleHtml from './Function/NoBody/Single/Html'
+import functionNoBodySingleFunctionComponent from './Function/NoBody/Single/FunctionComponent'
+import functionWithBodyHtml from './Function/WithBody/Html'
 
 const Render = ({ component }) => {
     const Component = component
     return <div>
-        <Unify component={stringVariable} />
+        {/* <Unify component={stringVariable} />
         <hr />
         <Unify component={jsxSingleHtml} />
         <hr />
@@ -32,7 +34,12 @@ const Render = ({ component }) => {
         <Unify component={functionNoBodySingleHtml} />
         <hr />
         <Unify component={functionNoBodySingleHtml} someProp={15} />
-        
+        <hr />
+        <Unify component={functionNoBodySingleFunctionComponent} someProp={15} /> */}
+
+        <hr />
+        <Unify component={functionWithBodyHtml} someProp={7} />
+
     </div>
 }
 
