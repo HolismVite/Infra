@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { app, get, post, upload } from '@Form';
+import { app, get, post, upload, useMessage } from '@Form';
 
 export const FormContext = React.createContext();
 
@@ -31,6 +31,7 @@ const FormBase = ({
   const [calculatedTitle, setCalculatedTitle] = useState('')
   const [hasFile, setHasFile] = useState(false)
   const [extraParams, setExtraParams] = useState()
+  const { success, error } = useMessage()
 
   app.ensure([entityType]);
 
@@ -228,10 +229,10 @@ const FormBase = ({
       const method = hasFile ? upload : post
       method(url, data).then(data => {
         app.emit(app.itemUpserted);
-        app.success(app.t(`Item ${(formMode.creation ? 'created' : 'updated')} successfully`))
+        success(app.t(`Item ${(formMode.creation ? 'created' : 'updated')} successfully`))
         setProgress(false);
-      }, error => {
-        app.error(error);
+      }, e => {
+        error(e);
         setProgress(false);
       })
     }

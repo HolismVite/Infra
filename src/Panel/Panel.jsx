@@ -32,6 +32,12 @@ const Panel = () => {
     const [breadcrumbItems, setBreadcrumbItems] = useState([]);
     const [isFreezed, setIsFreezed] = useState(false);
 
+    const [isMessageShown, setIsMessageShown] = useState()
+    const [message, setMessage] = useState()
+    const [action, setAction] = useState()
+    const [messageType, setMessageType] = useState()
+    const [severity, setSeverity] = useState()
+
     const toggleMenu = () => {
         setIsSidebarOpen(!isSidebarOpen);
     }
@@ -75,7 +81,17 @@ const Panel = () => {
             isSidebarOpen,
             setIsSidebarOpen,
             isDark,
-            setIsDark
+            setIsDark,
+            isMessageShown,
+            setIsMessageShown,
+            message,
+            setMessage,
+            action,
+            setAction,
+            messageType,
+            setMessageType,
+            severity,
+            setSeverity
         }}>
         {
             app.getLocale().key === 'fa' &&
@@ -177,3 +193,4 @@ export { Warning } from '../Components/Message/Warning'
 export { Error } from '../Components/Message/Error'
 export { PanelContext }
 export { TopContext }
+export { useMessage } from '../Hooks/useMessage'

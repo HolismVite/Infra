@@ -4,7 +4,7 @@ import Tooltip from '@mui/material/Tooltip';
 import CircularProgress from '@mui/material/CircularProgress';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
-import { app, post, HolismIcon } from '@List';
+import { app, post, HolismIcon, useMessage } from '@List';
 
 const BooleanProperty = ({
     column,
@@ -13,10 +13,11 @@ const BooleanProperty = ({
     actionUrl
 }) => {
 
+    const { success, error } = useMessage()
+
     const [progress, setProgress] = useState(false);
 
     const onChange = (e) => {
-        console.log(e);
         if (!actionUrl || app.isNothing(actionUrl)) {
             return;
         }
@@ -27,10 +28,10 @@ const BooleanProperty = ({
         }
         post(api).then(data => {
             setProgress(false);
-            app.success('Applied');
+            success('Applied');
             app.emit(app.entityRerenderRequested, data);
-        }, error => {
-            app.error(error);
+        }, e => {
+            error(e);
             setProgress(false);
         });
     }
