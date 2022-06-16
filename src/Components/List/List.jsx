@@ -15,6 +15,7 @@ import { DialogForm } from '../Form/DialogForm'
 import { TopContext, HolismIcon } from '../../Panel/Panel'
 import { ListContext } from './Contexts'
 import useListParameters from '../../Hooks/useListParameters';
+import Unify from '../Unify';
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer"
 
@@ -53,9 +54,6 @@ const List = ({
   const [showTopPagiation, setTopPaginationVisibility] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isTopPaginationShown`)
 
   const hasItemSelection = listActions ? true : false
-  const CreationComponent = (create ? (typeof create === 'function' ? create() : create) : null)
-  const EditionComponent = (edit ? (typeof edit === 'function' ? edit() : create) : null)
-  const UpsertComponent = (upsert ? (typeof upsert === 'function' ? upsert() : create) : null)
   const { setTitle, setSubtitle, setBreadcrumbItems } = useContext(TopContext)
 
   useEffect(() => {
@@ -186,31 +184,25 @@ const List = ({
       hiddenEntityActions={hiddenEntityActions}
     />
     {
-      CreationComponent && typeof CreationComponent !== 'string'
-        ?
-        <DialogForm
-          {...CreationComponent.props}
-        />
-        :
-        null
+      create && typeof create !== 'string'
+      &&
+      <Unify
+        component={create}
+      />
     }
     {
-      UpsertComponent && typeof UpsertComponent !== 'string'
-        ?
-        <DialogForm
-          {...UpsertComponent.props}
-        />
-        :
-        null
+      upsert && typeof upsert !== 'string'
+      &&
+      <Unify
+        component={upsert}
+      />
     }
     {
-      EditionComponent && typeof EditionComponent !== 'string'
-        ?
-        <DialogForm
-          {...EditionComponent.props}
-        />
-        :
-        null
+      edit && typeof edit !== 'string'
+      &&
+      <Unify
+        component={edit}
+      />
     }
   </ListContext.Provider>
 }
