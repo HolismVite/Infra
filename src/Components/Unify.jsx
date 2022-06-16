@@ -40,7 +40,7 @@ const Unify = ({ component, ...rest }) => {
                                     }
                                 })
                                 .map((i, index) => <Unify
-                                    key={i}
+                                    key={index}
                                     component={i}
                                     {...i.props}
                                     {...rest}
@@ -53,7 +53,7 @@ const Unify = ({ component, ...rest }) => {
     }
     if (typeof component === 'function') {
         const Component = component;
-        return <Component />
+        return <Component {...component.props} {...rest} />
     }
 
     console.log(component)
