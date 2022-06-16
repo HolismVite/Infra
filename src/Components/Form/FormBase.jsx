@@ -229,7 +229,7 @@ const FormBase = ({
       const method = hasFile ? upload : post
       method(url, data).then(data => {
         app.emit(app.itemUpserted);
-        success(app.t(`Item ${(formMode.creation ? 'created' : 'updated')} successfully`))
+        success(app.t(`Item ${(mode === formMode.creation ? 'created' : 'updated')} successfully`))
         setProgress(false);
       }, e => {
         error(e);
