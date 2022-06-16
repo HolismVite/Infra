@@ -1,5 +1,5 @@
-import Dummy from './Dummy'
+import FunctionComponent from './FunctionComponent'
 
-const ArrowItemReturningSingleJsx = (props) => <Dummy />
+const ArrowItemReturningSingleJsx = (props) => <FunctionComponent />
 
 export default ArrowItemReturningSingleJsx

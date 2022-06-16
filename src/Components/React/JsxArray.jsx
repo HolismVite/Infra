@@ -1,9 +1,9 @@
-import Dummy from './Dummy'
+import FunctionComponent from './FunctionComponent'
 
 const jsxArray = <>
-    <Dummy />
-    <Dummy />
-    <Dummy />
+    <FunctionComponent />
+    <FunctionComponent />
+    <FunctionComponent />
 </>
 
 export default jsxArray

@@ -6,10 +6,16 @@ const Unify = ({ component }) => {
     if (!component) {
         return <span className="hidden">Component passed to the wrapper is null or undefined</span>
     }
+    if (typeof component === 'string') {
+        return <>{component}</>
+    }
     if (component.props && component.props.superAdmin && !app.isSuperAdmin()) {
         return <span className="hidden"></span>
     }
     if (component.type) {
+        if (typeof component.type === 'string') {
+            return <>{component}</>
+        }
         if (typeof component.type === 'function') {
             const Component = component.type;
             return <Component />
