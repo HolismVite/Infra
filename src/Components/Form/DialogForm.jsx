@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Dialog from '../Dialog/Dialog'
 import { ListContext } from '../List/Contexts'
 import {
-    FormBase,
+    Form,
     Explanations,
     FormElement,
     Actions,
@@ -55,7 +55,7 @@ const DialogForm = ({
         // app.on(app.formCanceled, onFormCanceled)
     }, [])
 
-    return <FormBase
+    return <Form
         entityType={entityType}
         title={title}
         explanations={explanations}
