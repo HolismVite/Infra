@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { ListContext } from '../List/Contexts';
 import {
     FormBase,
     Page,
@@ -21,14 +22,14 @@ const Form = ({
 
     const navigate = useNavigate();
     const { id, entityId } = app.parseQuery()
+    const { setIsDialogOpen, setDialogProps } = useContext(ListContext)
 
     useEffect(() => {
-        if (entityId) {
-            app.emit(app.editRequested, { entityType, entityId })
-        }
-        if (id) {
-            app.emit(app.editRequested, { entityType, entityId: id })
-        }
+        setDialogProps({
+            entityType,
+            entityId: entityId || id
+        })
+        setIsDialogOpen(true)
     }, [])
 
     useEffect(() => {

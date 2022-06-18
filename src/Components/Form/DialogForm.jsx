@@ -23,19 +23,18 @@ const DialogForm = ({
     close
 }) => {
 
-    const { isDialogOpen, setIsDialogOpen } = useContext(ListContext)
+    const {
+        isDialogOpen,
+        setIsDialogOpen,
+        dialogProps
+    } = useContext(ListContext)
+    const [open, setOpen] = useState(isDialogOpen)
 
     useEffect(() => {
-        const onEditRequested = (params) => {
-            if (params.entityType === entityType) {
-                setIsDialogOpen(true)
-            }
+        if (dialogProps.purpose === 'edition' && dialogProps.entityType === entityType) {
+            setIsDialogOpen(true)
         }
-        app.on(app.editRequested, onEditRequested)
-        return () => {
-            app.removeListener(app.editRequested, onEditRequested)
-        }
-    }, [entityType])
+    }, [isDialogOpen])
 
     useEffect(() => {
         const onEntityActionDialogRequested = ({ entity, purpose }) => {

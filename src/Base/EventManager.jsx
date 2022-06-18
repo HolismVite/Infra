@@ -16,7 +16,6 @@ const EventManager = {
     reloadRequested: 'reload_requested',
     makeRoom: 'make_room',
     returnBackToNormalForm: 'return_back_to_normal_form',
-    editRequested: 'edit_requested',
     entitySelected: 'entity_slected',
     entityActionDialogRequested: 'item_action_dialog_requested',
     entityReloadRequested: 'entity_reload_requested',

@@ -1,42 +1,55 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import { EntityAction } from '@List';
 import { app } from '@List';
 import { useNavigate } from 'react-router-dom';
+import { ListContext } from '../Contexts'
 
 const EditAction = ({
-    entityType,
-    item,
-    hasEdit,
-    create,
-    edit,
-    upsert,
+    entity,
     asMenuItem
 }) => {
 
     const navigate = useNavigate();
+    const {
+        create,
+        edit,
+        entityType,
+        hasEdit,
+        setDialogProps,
+        setIsDialogOpen,
+        upsert,
+    } = useContext(ListContext)
 
     const manageEdition = (component) => {
-        if (typeof component === 'function') {
-            var result = component(item);
-            if (typeof result === 'object') {
-                app.emit(app.editRequested, {
-                    entityType: entityType,
-                    entity: item,
-                });
-            }
-            else if (typeof result === 'string') {
-                navigate(result);
-            }
-            else {
-                app.error('For edition, either provide a component, or a URL');
-            }
-        }
-        else if (typeof component === 'string') {
+        if (typeof component === 'string') {
             navigate(component);
+
         }
         else {
-            app.error('For edition, either provide a component, or a URL');
+            if (typeof component === 'function') {
+                var result = component(entity);
+                if (typeof result === 'object') {
+                    setDialogProps({
+                        entityType,
+                        entity,
+                    })
+                    setIsDialogOpen(true)
+                }
+                else if (typeof result === 'string') {
+                    navigate(result);
+                }
+                else {
+                    app.error('For edition, either provide a component, or a URL');
+                }
+            }
+            else {
+                setDialogProps({
+                    entityType,
+                    entity,
+                })
+                setIsDialogOpen(true)
+            }
         }
     }
 

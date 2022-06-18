@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { app, get, post, upload, useMessage } from '@Form';
 import { FormContext } from './Contexts';
+import { ListContext } from '../List/Contexts'
 
 const FormBase = ({
   entityType,
@@ -31,6 +32,13 @@ const FormBase = ({
   const [hasFile, setHasFile] = useState(false)
   const [extraParams, setExtraParams] = useState()
   const { success, error } = useMessage()
+
+
+  const {
+    isDialogOpen,
+    setIsDialogOpen,
+    dialogProps
+  } = useContext(ListContext)
 
   app.ensure([entityType]);
 
@@ -139,29 +147,24 @@ const FormBase = ({
   }, [])
 
   useEffect(() => {
-    const onEditRequested = (params) => {
-      if (entityType === params.entityType) {
-        if (params.entity) {
-          setCurrentEntity(params.entity);
-        }
-        if (params.entityId) {
-          setProgress(true)
-          get(`/${entityType}/get/${params.entityId}`)
-            .then(data => {
-              setProgress(false)
-              setCurrentEntity(data)
-            }, error => {
-              setProgress(false)
-              app.error(error)
-            })
-        }
+    if (dialogProps.purpose === 'edition' && dialogProps.entityType === entityType) {
+      if (dialogProps.entity) {
+        setCurrentEntity(params.entity);
       }
+      if (dialogProps.entityId) {
+        setProgress(true)
+        get(`/${entityType}/get/${params.entityId}`)
+          .then(data => {
+            setProgress(false)
+            setCurrentEntity(data)
+          }, error => {
+            setProgress(false)
+            app.error(error)
+          })
+      }
+      setIsDialogOpen(true)
     }
-    app.on(app.editRequested, onEditRequested);
-    return () => {
-      app.removeListener(app.editRequested, onEditRequested);
-    }
-  }, [entityType])
+  }, [isDialogOpen])
 
   useEffect(() => {
     validate()
