@@ -46,7 +46,8 @@ const DialogForm = ({
         handleSubmit
     } = useForm({
         entityType,
-        humanReadableEntityType
+        humanReadableEntityType,
+        title
     })
 
     useEffect(() => {

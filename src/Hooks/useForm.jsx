@@ -1,10 +1,14 @@
 import { useState, useEffect, useContext } from 'react'
 import useMessage from './useMessage'
 import { FormContext } from '../Components/Form/Contexts'
+import { post, get } from '../Base/Api'
 
 const useForm = ({
     entityType,
-    humanReadableEntityType
+    humanReadableEntityType,
+    title,
+    okAction,
+    entityId
 }) => {
     // is edit, or is create? get id from somewhere
     // file upload
@@ -18,7 +22,7 @@ const useForm = ({
     const [progress, setProgress] = useState()
     const [isValid, setIsValid] = useState(false)
     const [currentEntity, setCurrentEntity] = useState()
-    const [mode, setMode] = useState(formMode.creation)
+    const [mode, setMode] = useState(entityId ? formMode.edition : formMode.creation)
     const [calculatedTitle, setCalculatedTitle] = useState('')
     const [hasFile, setHasFile] = useState(false)
     const [extraParams, setExtraParams] = useState()
@@ -58,9 +62,16 @@ const useForm = ({
         // app.updateToken();
     }, [])
 
+    useEffect(() => {
+        if (mode === formMode.edition)
+        {
+            loadEntity()
+        }
+    }, [])
+
     const loadEntity = () => {
         setProgress(true)
-        get(`/${entityType}/get/${params.entityId}`)
+        get(`/${entityType}/get/${entityId}`)
             .then(data => {
                 setProgress(false)
                 setCurrentEntity(data)

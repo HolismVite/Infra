@@ -14,13 +14,15 @@ import {
 const PageForm = ({
     entityType,
     humanReadableEntityType,
-    entity,
     title,
     explanations,
     inputs,
     actions,
     large
 }) => {
+
+    const navigate = useNavigate();
+    const { id, entityId } = app.parseQuery()
 
     const {
         fields,
@@ -36,11 +38,10 @@ const PageForm = ({
         handleSubmit
     } = useForm({
         entityType,
-        humanReadableEntityType
+        humanReadableEntityType,
+        title,
+        entityId: entityId || id
     })
-
-    const navigate = useNavigate();
-    const { id, entityId } = app.parseQuery()
 
     return <Page
         title={calculatedTitle}
