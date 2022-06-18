@@ -9,14 +9,12 @@ import { OkCancel } from '../../../Components/Dialog/OkCancel'
 import { ListContext } from '../Contexts'
 import useMessage from '../../../Hooks/useMessage'
 
-const DeleteAction = ({
-    asMenuItem
-}) => {
+const DeleteAction = () => {
 
     const [confirmationDialogIsOpen, setConfirmationDialogVisibility] = useState(false)
     const [progress, setProgress] = useState(false)
 
-    const { entityType, reload } = useContext(ListContext)
+    const { entityType, reload, menuForActions } = useContext(ListContext)
     const { entity } = useContext(EntityContext)
     const { success, error } = useMessage()
 
@@ -62,7 +60,7 @@ const DeleteAction = ({
                 <EntityAction
                     icon={<DeleteIcon style={{ color: '#EF4444' }} />}
                     title={app.t("Delete")}
-                    asMenuItem={asMenuItem}
+                    asMenuItem={menuForActions}
                     click={(e) => {
                         setConfirmationDialogVisibility(true)
                     }}

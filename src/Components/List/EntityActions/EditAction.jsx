@@ -4,11 +4,9 @@ import { EntityAction } from '@List';
 import { app } from '@List';
 import { useNavigate } from 'react-router-dom';
 import { ListContext } from '../Contexts'
+import { EntityContext } from '../Contexts';
 
-const EditAction = ({
-    entity,
-    asMenuItem
-}) => {
+const EditAction = () => {
 
     const navigate = useNavigate();
     const {
@@ -16,9 +14,11 @@ const EditAction = ({
         edit,
         entityType,
         hasEdit,
+        menuForActions,
         showDialog,
         upsert,
     } = useContext(ListContext)
+    const { entity } = useContext(EntityContext)
 
     const manageEdition = (component) => {
         if (typeof component === 'string') {
@@ -56,7 +56,7 @@ const EditAction = ({
         <EntityAction
             icon={<EditIcon style={{ color: '#10B981' }} />}
             title={app.t("Edit")}
-            asMenuItem={asMenuItem}
+            asMenuItem={menuForActions}
             click={() => {
                 if (edit) {
                     manageEdition(edit);

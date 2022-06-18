@@ -85,15 +85,7 @@ const EntityActions = ({
         }
     }
 
-    const deleteRecord = hasDelete
-        ?
-        <DeleteAction
-            entityType={entityType}
-            asMenuItem={menuForActions}
-            closeMenu={handleClose}
-        />
-        :
-        null
+    const deleteRecord = hasDelete && <DeleteAction />
 
     /*
         upsert={UpsertEntity}
@@ -103,32 +95,9 @@ const EntityActions = ({
 
         either upsert, or edit URL, or edit component, or create + hasEdit
     */
-    const editRecord = (hasEdit && create) || edit || upsert
-        ?
-        <EditAction
-            entityType={entityType}
-            entity={entity}
-            create={create}
-            hasEdit={hasEdit}
-            edit={edit}
-            upsert={upsert}
-            asMenuItem={menuForActions}
-            closeMenu={handleClose}
-        />
-        :
-        null
+    const editRecord = ((hasEdit && create) || edit || upsert) && <EditAction />
 
-    const viewRecord = app.isDev() &&
-        <ViewRecordAction
-            entityType={entityType}
-            entity={entity}
-            create={create}
-            hasEdit={hasEdit}
-            edit={edit}
-            upsert={upsert}
-            asMenuItem={menuForActions}
-            closeMenu={handleClose}
-        />
+    const viewRecord = app.isDev() && <ViewRecordAction />
 
     return menuForActions
         ?

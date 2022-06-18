@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 import { Dialog, EntityAction } from '@List';
 import { app } from '@List';
+import { ListContext } from '../Contexts'
+import { EntityContext } from '../Contexts';
 
-const ViewRecordAction = ({
-    entityType,
-    item,
-    asMenuItem
-}) => {
+const ViewRecordAction = () => {
 
     const [open, setOpen] = useState(false)
+    const { menuForActions } = useContext(ListContext)
+    const { entity } = useContext(EntityContext)
 
     const getJsonHtml = (obj, level) => {
         if (!obj) {
@@ -61,7 +61,7 @@ const ViewRecordAction = ({
 
     const dialog = <Dialog
         title='View record'
-        content={getJsonHtml(item, 1)}
+        content={getJsonHtml(entity, 1)}
         isOpen={open}
         onClosed={() => setOpen(false)}
     />
@@ -70,7 +70,7 @@ const ViewRecordAction = ({
         {dialog}
         <EntityAction
             icon={<DataObjectIcon style={{ color: 'rgb(37 99 235)' }} />}
-            asMenuItem={asMenuItem}
+            asMenuItem={menuForActions}
             title={app.t("View record")}
             click={() => setOpen(!open)}
         />
