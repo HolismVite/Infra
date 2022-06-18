@@ -33,7 +33,6 @@ const FormBase = ({
   const [extraParams, setExtraParams] = useState()
   const { success, error } = useMessage()
 
-
   const {
     isDialogOpen,
     setIsDialogOpen,
@@ -147,9 +146,10 @@ const FormBase = ({
   }, [])
 
   useEffect(() => {
+    console.log('from form base', isDialogOpen, dialogProps)
     if (dialogProps.purpose === 'edition' && dialogProps.entityType === entityType) {
       if (dialogProps.entity) {
-        setCurrentEntity(params.entity);
+        setCurrentEntity(dialogProps.entity);
       }
       if (dialogProps.entityId) {
         setProgress(true)
@@ -228,7 +228,6 @@ const FormBase = ({
       }
       const method = hasFile ? upload : post
       method(url, data).then(data => {
-        app.emit(app.itemUpserted);
         success(app.t(`Item ${(mode === formMode.creation ? 'created' : 'updated')} successfully`))
         setProgress(false);
       }, e => {

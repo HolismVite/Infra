@@ -11,7 +11,6 @@ const EventManager = {
     formSubmitted: 'form_submission_requested',
     formCanceled: 'form_canceled',
     accountUpdated: 'account_updated',
-    itemUpserted: 'item_upserted',
     showMessage: 'show_message',
     reloadRequested: 'reload_requested',
     makeRoom: 'make_room',

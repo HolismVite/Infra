@@ -140,13 +140,6 @@ const Entities = (props) => {
     };
 
     useEffect(() => {
-        app.on(app.itemUpserted, load);
-        return () => {
-            app.removeListener(app.itemUpserted, load);
-        }
-    }, []);
-
-    useEffect(() => {
         app.on(app.reloadRequested, load);
         return () => {
             app.removeListener(app.reloadRequested, load);

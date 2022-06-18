@@ -57,14 +57,6 @@ const DialogForm = ({
         return () => app.removeListener(app.formCanceled, onFormCanceled)
     }, [])
 
-    useEffect(() => {
-        const onItemUpserted = (item) => {
-            setIsDialogOpen(false);
-        }
-        app.on(app.itemUpserted, onItemUpserted)
-        return () => app.removeListener(app.itemUpserted, onItemUpserted)
-    }, [])
-
     return <FormBase
         entityType={entityType}
         title={title}

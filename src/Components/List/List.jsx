@@ -62,6 +62,7 @@ const List = ({
   const showDialog = ({ entity, purpose, ...props }) => {
     setDialogProps({
       purpose,
+      entity,
       ...props
     })
     setIsDialogOpen(true)

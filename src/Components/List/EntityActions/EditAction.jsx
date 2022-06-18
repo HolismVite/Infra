@@ -29,7 +29,11 @@ const EditAction = ({
             if (typeof component === 'function') {
                 var result = component(entity);
                 if (typeof result === 'object') {
-                    showDialog(entity, `edit_${entityType}_${entity.id}`, entityType)
+                    showDialog({
+                        purpose: 'edition',
+                        entity,
+                        entityType
+                    })
                 }
                 else if (typeof result === 'string') {
                     navigate(result);
@@ -39,7 +43,11 @@ const EditAction = ({
                 }
             }
             else {
-                showDialog(entity, `edit_${entityType}_${entity.id}`, entityType)
+                showDialog({
+                    purpose: 'edition',
+                    entity,
+                    entityType
+                })
             }
         }
     }
