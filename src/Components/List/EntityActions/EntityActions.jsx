@@ -89,7 +89,6 @@ const EntityActions = ({
         ?
         <DeleteAction
             entityType={entityType}
-            entity={entity}
             asMenuItem={menuForActions}
             closeMenu={handleClose}
         />

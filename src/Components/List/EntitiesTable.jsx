@@ -9,38 +9,34 @@ import NoEntitiesFound from '../NoEntitiesFound';
 import { EntityContext, TableContext } from './Contexts'
 import useList from '../../Hooks/useList';
 
-const Table = ({
-    entityType,
-    data,
-    metadata,
-    entityActions,
-    separateRowForActions,
-    edit,
-    create,
-    upsert,
-    setItem,
-    reload,
-    classProvider,
-    showTopPagiation,
-    hiddenEntityActions
-}) => {
+const Table = () => {
 
     const {
-        hasItemSelection,
-        selectedEntities,
-        headers,
-        row,
-        menuForActions,
-        hasDelete,
-        hasEdit
-    } = useContext(ListContext);
-
-    const {
-        selectEntity,
-        selectEntities,
-        deselectEntity,
+        classProvider,
+        create,
+        data,
         deselectEntities,
-    } = useList()
+        deselectEntity,
+        edit,
+        entityActions,
+        entityType,
+        hasDelete,
+        hasEdit,
+        hasItemSelection,
+        headers,
+        hiddenEntityActions,
+        menuForActions,
+        metadata,
+        reload,
+        row,
+        selectEntities,
+        selectEntity,
+        selectedEntities,
+        separateRowForActions,
+        setItem,
+        showTopPagiation,
+        upsert,
+    } = useContext(ListContext);
 
     let headerElements = [];
 

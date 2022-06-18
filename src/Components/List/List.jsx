@@ -8,13 +8,13 @@ import app from '../../Base/App'
 import useLocalStorageState from '../../Base/UseLocalStorageState'
 import { TopContext } from '../../Panel/Panel'
 import { ListContext } from './Contexts'
-import useListParameters from '../../Hooks/useListParameters';
 import Unify from '../Unify';
 import { useSearchParams } from 'react-router-dom'
 import ShowHideTopPagination from './ShowHideTopPagination'
 import ShowHideFiltering from './ShowHideFiltering'
 import Reload from './Reload'
 import ShowHideEntityActions from './ShowHideEntityActions'
+import useList from '../../Hooks/useList'
 
 const List = ({
   entityType,
@@ -46,10 +46,7 @@ const List = ({
 }) => {
 
   const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer"
-  const listParameters = useListParameters(app.userGuid(), entityType)
-  const [hasData, setHasData] = useState(false)
   const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isFilteringOpen`)
-  const [selectedEntities, setSelectedEntities] = useState([])
   const [hiddenEntityActions, setHiddenEntityActions] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isEntityActionsHidden`)
   const [showTopPagiation, setTopPaginationVisibility] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isTopPaginationShown`)
 
@@ -58,6 +55,26 @@ const List = ({
   let [searchParams] = useSearchParams();
   const [dialogProps, setDialogProps] = useState({})
   const [isDialogOpen, setIsDialogOpen] = useState(searchParams.get("showDialog") || false);
+
+  const {
+    data,
+    deselectEntities,
+    deselectEntity,
+    hasData,
+    listParameters,
+    loading,
+    metadata,
+    reload,
+    reloadEntity,
+    selectEntities,
+    selectEntity,
+    selectedEntities,
+    setEntity,
+    setEntityProgress,
+  } = useList({
+    entityType,
+    isTree
+  })
 
   const showDialog = ({ entity, purpose, ...props }) => {
     setDialogProps({
@@ -81,7 +98,11 @@ const List = ({
   return <ListContext.Provider value={{
     card,
     create,
+    data,
+    deselectEntities,
+    deselectEntity,
     dialogProps,
+    entityActions,
     entityType,
     filters,
     hasData,
@@ -96,19 +117,25 @@ const List = ({
     listActionIconStyle,
     listActions,
     listParameters,
+    loading,
     menuForActions,
+    metadata,
+    multicolumn,
+    reload,
+    reloadEntity,
     row,
+    selectEntities,
+    selectEntity,
     selectedEntities,
+    separateRowForActions,
     setDialogProps,
-    setHasData,
+    setEntity,
+    setEntityProgress,
     setHiddenEntityActions,
     setIsDialogOpen,
     setIsFilteringOpen,
-    setSelectedEntities,
-    setTopPaginationVisibility,
     setTopPaginationVisibility,
     showDialog,
-    showTopPagiation,
     showTopPagiation,
     upsert,
     upsertionIcon,
@@ -141,39 +168,18 @@ const List = ({
       </div>
     </Collapse>
 
-    <Entities
-      create={create}
-      multicolumn={multicolumn}
-      entityActions={entityActions}
-      separateRowForActions={separateRowForActions}
-      edit={edit}
-      classProvider={classProvider}
-      upsert={upsert}
-      isTree={isTree}
-      expanded={expanded}
-      show={show}
-      hiddenEntityActions={hiddenEntityActions}
-    />
+    <Entities />
     {
-      create && typeof create !== 'string'
-      &&
-      <Unify
-        component={create}
-      />
+      create && typeof create !== 'string' &&
+      <Unify component={create} />
     }
     {
-      upsert && typeof upsert !== 'string'
-      &&
-      <Unify
-        component={upsert}
-      />
+      upsert && typeof upsert !== 'string' &&
+      <Unify component={upsert} />
     }
     {
-      edit && typeof edit !== 'string'
-      &&
-      <Unify
-        component={edit}
-      />
+      edit && typeof edit !== 'string' &&
+      <Unify component={edit} />
     }
   </ListContext.Provider>
 }

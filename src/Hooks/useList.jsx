@@ -1,14 +1,19 @@
-import { useState, useContext } from 'react'
-import { ListContext } from '../Components/List/Contexts';
+import { useState, useEffect } from 'react'
+import app from '../Base/App';
+import useListParameters from './useListParameters'
+import { get } from '../Base/Api';
 
-const useList = () => {
+const useList = ({
+    entityType,
+    isTree
+}) => {
 
     const [loading, setLoading] = useState();
     const [data, setData] = useState([]);
     const [metadata, setMetadata] = useState({});
     const [hasData, setHasData] = useState(false)
-
-    const { selectedEntities, setSelectedEntities } = useContext(ListContext)
+    const [selectedEntities, setSelectedEntities] = useState()
+    const listParameters = useListParameters(app.userGuid(), entityType)
 
     const setEntityProgress = (entity, progress) => {
         setData((data) => {
@@ -134,14 +139,46 @@ const useList = () => {
         });
     }
 
+    const reloadEntity = ({ entity }) => {
+        setEntityProgress(entity, true);
+        get(`${entityType}/get/${entity.id}`)
+            .then(result => {
+                setEntityProgress(entity, false)
+                setItem(result)
+            }, error => {
+                setEntityProgress(entity, false)
+                app.error(error)
+            })
+    }
+
+    useEffect(() => {
+        if (data && Array.isArray(data) && data.length !== 0) {
+            setHasData(true)
+        }
+        else {
+            setHasData(false)
+        }
+    }, [data])
+
+    useEffect(() => {
+        load();
+    }, []);
+
     return {
-        setEntityProgress,
-        setEntity,
-        reload,
-        selectEntity,
-        selectEntities,
+        data,
+        deselectEntities,
         deselectEntity,
-        deselectEntities
+        hasData,
+        listParameters,
+        loading,
+        metadata,
+        reload,
+        reloadEntity,
+        selectEntities,
+        selectEntity,
+        selectedEntities,
+        setEntity,
+        setEntityProgress,
     }
 }
 
