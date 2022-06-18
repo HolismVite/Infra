@@ -9,7 +9,9 @@ const UpsertAction = () => {
         create,
         upsert,
         upsertionIcon,
-        upsertionText
+        upsertionText,
+        setIsDialogOpen,
+        setDialogProps,
     } = useContext(ListContext)
 
     const icon = upsertionIcon
@@ -25,13 +27,16 @@ const UpsertAction = () => {
                 <Button
                     className="bg-green-200 text-gray-900 border-gray-400 hover:bg-green-400 mt-2 lg:mt-0 mr-2"
                     variant="outlined"
-                    startIcon={upsertionIcon}
+                    startIcon={icon}
                     onClick={() => {
                         if (typeof create === 'string') {
                             navigate(create)
                         }
                         else {
-                            app.emit(app.creationRequested)
+                            setDialogProps({
+                                purpose: 'creation'
+                            })
+                            setIsDialogOpen(true)
                         }
                     }}
                 >

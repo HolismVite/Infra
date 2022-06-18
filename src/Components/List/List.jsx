@@ -17,21 +17,21 @@ import Reload from './Reload'
 import ShowHideEntityActions from './ShowHideEntityActions'
 
 const List = ({
+  entityType,
   title,
   subtitle,
   breadcrumbItems,
-  filters,
+  create,
   listActions,
+  filters,
   sorts,
-  entityType,
   headers,
   row,
-  card,
-  multicolumn,
-  create,
-  entityActions,
   separateRowForActions,
+  card,
+  entityActions,
   menuForActions,
+  multicolumn,
   hasDelete,
   hasEdit,
   edit,
@@ -56,8 +56,16 @@ const List = ({
   const hasItemSelection = listActions ? true : false
   const { setTitle, setSubtitle, setBreadcrumbItems } = useContext(TopContext)
   let [searchParams] = useSearchParams();
+  const [dialogProps, setDialogProps] = useState({})
+  const [isDialogOpen, setIsDialogOpen] = useState(searchParams.get("showDialog") || false);
 
-  const [isDialogFormOpen, setIsDialogFormOpen] = useState(searchParams.get("showDialog") || false);
+  const showDialog = ({ entity, purpose, ...props }) => {
+    setIsDialogOpen(true)
+    setDialogProps({
+      purpose,
+      ...props
+    })
+  }
 
   useEffect(() => {
     // console.log(selectedEntities)
@@ -70,35 +78,39 @@ const List = ({
   }, [title, subtitle, breadcrumbItems])
 
   return <ListContext.Provider value={{
-    listParameters,
-    selectedEntities,
-    setSelectedEntities,
-    hasData,
-    setHasData,
-    hasItemSelection,
-    showTopPagiation,
-    setTopPaginationVisibility,
-    entityType,
-    headers,
-    row,
     card,
-    menuForActions,
+    create,
+    dialogProps,
+    entityType,
+    filters,
+    hasData,
     hasDelete,
     hasEdit,
-    create,
+    hasItemSelection,
+    headers,
+    hiddenEntityActions,
+    isDialogOpen,
+    isFilteringOpen,
+    isTree,
+    listActionIconStyle,
+    listActions,
+    listParameters,
+    menuForActions,
+    row,
+    selectedEntities,
+    setDialogProps,
+    setHasData,
+    setHiddenEntityActions,
+    setIsDialogOpen,
+    setIsFilteringOpen,
+    setSelectedEntities,
+    setTopPaginationVisibility,
+    setTopPaginationVisibility,
+    showTopPagiation,
+    showTopPagiation,
     upsert,
     upsertionIcon,
     upsertionText,
-    listActions,
-    listActionIconStyle,
-    showTopPagiation,
-    setTopPaginationVisibility,
-    isTree,
-    isFilteringOpen,
-    setIsFilteringOpen,
-    filters,
-    hiddenEntityActions,
-    setHiddenEntityActions
   }}>
 
     <div

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { app, get, post, upload, useMessage } from '@Form';
-
-export const FormContext = React.createContext();
+import { FormContext } from './Contexts';
 
 const FormBase = ({
   entityType,
@@ -133,10 +132,8 @@ const FormBase = ({
   }
 
   useEffect(() => {
-    app.on(app.creationRequested, resetForm)
     app.on(app.entityActionDialogRequested, resetForm)
     return () => {
-      app.removeListener(app.creationRequested, resetForm)
       app.removeListener(app.entityActionDialogRequested, resetForm)
     }
   }, [])

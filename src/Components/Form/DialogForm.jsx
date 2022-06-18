@@ -23,12 +23,12 @@ const DialogForm = ({
     close
 }) => {
 
-    const { isDialogFormOpen, setIsDialogFormOpen } = useContext(ListContext)
+    const { isDialogOpen, setIsDialogOpen } = useContext(ListContext)
 
     useEffect(() => {
         const onEditRequested = (params) => {
             if (params.entityType === entityType) {
-                setIsDialogFormOpen(true)
+                setIsDialogOpen(true)
             }
         }
         app.on(app.editRequested, onEditRequested)
@@ -40,7 +40,7 @@ const DialogForm = ({
     useEffect(() => {
         const onEntityActionDialogRequested = ({ entity, purpose }) => {
             if (entity?.id === entityId && dialogPurpose === purpose) {
-                setIsDialogFormOpen(true);
+                setIsDialogOpen(true);
             }
         }
         app.on(app.entityActionDialogRequested, onEntityActionDialogRequested)
@@ -49,7 +49,7 @@ const DialogForm = ({
 
     useEffect(() => {
         const onFormCanceled = (item) => {
-            setIsDialogFormOpen(false);
+            setIsDialogOpen(false);
             if (close && typeof close === 'function') {
                 close()
             }
@@ -60,7 +60,7 @@ const DialogForm = ({
 
     useEffect(() => {
         const onItemUpserted = (item) => {
-            setIsDialogFormOpen(false);
+            setIsDialogOpen(false);
         }
         app.on(app.itemUpserted, onItemUpserted)
         return () => app.removeListener(app.itemUpserted, onItemUpserted)
@@ -92,13 +92,13 @@ const DialogForm = ({
                     actions={actions}
                     handleSubmit={handleSubmit}
                 />}
-                isOpen={isOpen || isDialogFormOpen}
+                isOpen={isOpen || isDialogOpen}
                 onEntered={() => {
                     focusFirstInput('dialogForm')
                 }}
                 large={large}
                 onClosed={() => {
-                    setIsDialogFormOpen(false)
+                    setIsDialogOpen(false)
                     if (close && typeof close === 'function') {
                         close()
                     }
