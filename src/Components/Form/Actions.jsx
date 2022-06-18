@@ -6,7 +6,8 @@ import { FormContext, app } from '@Form';
 const Actions = ({
     actions,
     className,
-    handleSubmit
+    handleSubmit,
+    onCanceled
 }) => {
 
     const { isValid, progress } = useContext(FormContext)
@@ -26,7 +27,9 @@ const Actions = ({
                                 className="text-gray-900 border-gray-400 "
                                 variant="outlined"
                                 onClick={() => {
-                                    // app.emit(app.formCanceled)
+                                    if (onCanceled instanceof Function) {
+                                        onCanceled()
+                                    }
                                 }}
                             >
                                 {app.t('Cancel')}

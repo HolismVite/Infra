@@ -1,7 +1,6 @@
 export { fieldStyles } from './Fields/FieldStyle'
 export { Page } from '../Page/Page'
 export { FormContext } from './Contexts'
-export { Form } from './Form'
 export { Actions } from './Actions'
 export { Explanations } from './Explanations'
 export { FormElement } from './FormElement'

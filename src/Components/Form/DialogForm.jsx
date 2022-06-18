@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Dialog from '../Dialog/Dialog'
 import { ListContext } from '../List/Contexts'
+import { useForm } from '../../Hooks/useForm'
 import {
-    Form,
     Explanations,
     FormElement,
     Actions,
     app,
 } from '@Form';
+import { FormContext } from './Contexts';
 
 const DialogForm = ({
     entityType,
+    humanReadableEntityType,
     title,
     explanations,
     inputs,
@@ -30,8 +32,31 @@ const DialogForm = ({
     } = useContext(ListContext)
     const [open, setOpen] = useState(isDialogOpen)
 
+    const {
+        fields,
+        setFields,
+        calculatedTitle,
+        addFieldToFormContext,
+        setField,
+        isValid,
+        progress,
+        currentEntity,
+        mode,
+        setHasFile,
+        handleSubmit
+    } = useForm({
+        entityType,
+        humanReadableEntityType
+    })
+
     useEffect(() => {
         if (dialogProps.purpose === 'edition' && dialogProps.entityType === entityType) {
+            if (dialogProps.entity) {
+                setCurrentEntity(dialogProps.entity);
+            }
+            if (dialogProps.entityId) {
+
+            }
             setIsDialogOpen(true)
         }
     }, [isDialogOpen])
@@ -55,46 +80,38 @@ const DialogForm = ({
         // app.on(app.formCanceled, onFormCanceled)
     }, [])
 
-    return <Form
-        entityType={entityType}
-        title={title}
-        explanations={explanations}
-        inputs={inputs}
-        actions={actions}
-        okAction={okAction}
-        renderForm={({
-            calculatedTitle,
-            focusFirstInput,
-            handleSubmit,
-        }) => {
-            return <Dialog
-                title={calculatedTitle}
-                content={<>
-                    <Explanations explanations={explanations} />
-                    <FormElement
-                        id='dialogForm'
-                        inputs={inputs}
-                        handleSubmit={handleSubmit}
-                    />
-                </>}
-                actions={<Actions
-                    actions={actions}
+    return <FormContext.Provider
+        value={{
+
+        }}>
+        <Dialog
+            title={calculatedTitle}
+            content={<>
+                <Explanations explanations={explanations} />
+                <FormElement
+                    id='dialogForm'
+                    inputs={inputs}
                     handleSubmit={handleSubmit}
-                />}
-                isOpen={isOpen || isDialogOpen}
-                onEntered={() => {
-                    focusFirstInput('dialogForm')
-                }}
-                large={large}
-                onClosed={() => {
-                    setIsDialogOpen(false)
-                    if (close && typeof close === 'function') {
-                        close()
-                    }
-                }}
-            />
-        }}
-    />
+                />
+            </>}
+            actions={<Actions
+                actions={actions}
+                handleSubmit={handleSubmit}
+                onCanceled={() => setIsDialogOpen(false)}
+            />}
+            isOpen={isOpen || isDialogOpen}
+            onEntered={() => {
+                focusFirstInput('dialogForm')
+            }}
+            large={large}
+            onClosed={() => {
+                setIsDialogOpen(false)
+                if (close && typeof close === 'function') {
+                    close()
+                }
+            }}
+        />
+    </FormContext.Provider>
 }
 
 export { DialogForm };

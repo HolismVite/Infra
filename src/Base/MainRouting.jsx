@@ -3,6 +3,7 @@ import app from './App';
 import NotFound from '../Panel/NotFound';
 import Test from '../Panel/Test'
 import routes from '../Routes';
+import Unify from "../Components/Unify";
 
 const MainRouting = () => {
     return (
@@ -20,11 +21,12 @@ const MainRouting = () => {
                         return true;
                     }
                 }).map(route => {
-                    const Component = route.component;
                     return <Route
                         key={route.path}
                         path={route.path}
-                        element={<Component />}
+                        element={<Unify
+                            component={route.component}
+                        />}
                     />
                 })
             }
