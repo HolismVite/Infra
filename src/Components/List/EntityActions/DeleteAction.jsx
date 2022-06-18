@@ -16,7 +16,7 @@ const DeleteAction = ({
     const [confirmationDialogIsOpen, setConfirmationDialogVisibility] = useState(false)
     const [progress, setProgress] = useState(false)
 
-    const { entityType } = useContext(ListContext)
+    const { entityType, reload } = useContext(ListContext)
     const { entity } = useContext(EntityContext)
     const { success, error } = useMessage()
 
@@ -26,7 +26,7 @@ const DeleteAction = ({
         post(`${entityType}/delete/${entity.id}`).then(data => {
             success(app.t("Deleted successfully"))
             setProgress(false)
-            // app.emit(app.reloadRequested)
+            reload()
         }, e => {
             error(error)
             setProgress(false)

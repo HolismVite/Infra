@@ -6,13 +6,14 @@ import app from '../../Base/App'
 
 const Reload = () => {
 
-    const { listActionIconStyle } = useContext(ListContext)
+    const { 
+        listActionIconStyle,
+        reload
+     } = useContext(ListContext)
 
     return <span
         id='reload'
-        onClick={() => {
-            // app.emit(app.reloadRequested)
-        }}
+        onClick={reload}
         className={listActionIconStyle}
     >
         <Tooltip title={app.t('Reload')}>
