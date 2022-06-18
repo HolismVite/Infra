@@ -7,17 +7,16 @@ const Hidden = ({
 }) => {
 
     const [id, setId] = useState();
-    const formContext = useContext(FormContext);
-    const { addFieldToFormContext } = formContext;
+    const { addFieldToFormContext } = useContext(FormContext);
 
     useEffect(() => {
         setId(`hidden_${column}`);
     }, [column]);
 
     useEffect(() => {
-        addFieldToFormContext(formContext, id, value, true);
+        addFieldToFormContext(id, value, true);
         // app.on(app.formSubmitted, () => { });
-    }, [value, id, formContext]);
+    }, [value, id]);
 
     return <input
         id={id}

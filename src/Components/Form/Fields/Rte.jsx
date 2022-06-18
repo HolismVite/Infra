@@ -49,16 +49,15 @@ const Rte = ({
     }
     const editor = editorRef.current;
     editor.children = currentValue
-    var formContext = useContext(FormContext);
-    const { progress, currentEntity, addFieldToFormContext, setField } = formContext;
+    const { progress, currentEntity, addFieldToFormContext, setField } = useContext(FormContext);
 
     useEffect(() => {
         setId(`rte_${column}`);
     }, [column]);
 
     useEffect(() => {
-        addFieldToFormContext(formContext, id, currentValue, false);
-    }, [formContext, id]);
+        addFieldToFormContext(id, currentValue, false);
+    }, [id]);
 
     useEffect(() => {
         if (currentEntity) {
@@ -73,7 +72,7 @@ const Rte = ({
     useEffect(() => {
         const json = JSON.stringify(currentValue)
         app.rteJson = json;
-        setField(formContext, id, app.rteJson, true);
+        setField(id, app.rteJson, true);
     }, [currentValue])
 
     return (
