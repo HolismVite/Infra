@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import Switch from '@mui/material/Switch';
-import CachedIcon from '@mui/icons-material/Cached'
 import Collapse from '@mui/material/Collapse'
-import Tooltip from '@mui/material/Tooltip'
 import Filtering from "./Filtering"
 import Sorting from "./Sorting"
 import Entities from "./Entities"
@@ -16,8 +13,8 @@ import Unify from '../Unify';
 import { useSearchParams } from 'react-router-dom'
 import ShowHideTopPagination from './ShowHideTopPagination'
 import ShowHideFiltering from './ShowHideFiltering'
-
-const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer"
+import Reload from './Reload'
+import ShowHideEntityActions from './ShowHideEntityActions'
 
 const List = ({
   title,
@@ -47,6 +44,8 @@ const List = ({
   expanded,
   show
 }) => {
+
+  const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer"
   const listParameters = useListParameters(app.userGuid(), entityType)
   const [hasData, setHasData] = useState(false)
   const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isFilteringOpen`)
@@ -91,12 +90,15 @@ const List = ({
     upsertionIcon,
     upsertionText,
     listActions,
+    listActionIconStyle,
     showTopPagiation,
     setTopPaginationVisibility,
     isTree,
     isFilteringOpen,
     setIsFilteringOpen,
     filters,
+    hiddenEntityActions,
+    setHiddenEntityActions
   }}>
 
     <div
@@ -108,42 +110,14 @@ const List = ({
       <ListActions />
       <div
         className={
-          " sortAndFilteringAndReload flex items-center justify-end gap-2 lg:my-0 "
+          " flex items-center justify-end gap-2 lg:my-0 "
         }
       >
-        <ShowHideTopPagination
-          className={listActionIconStyle}
-        />
-        <Sorting
-          className={listActionIconStyle}
-          sorts={sorts}
-        />
-        <ShowHideFiltering
-          className={listActionIconStyle}
-        />
-        {
-          <span
-            id='reload'
-            onClick={() => app.emit(app.reloadRequested)}
-            className={
-              listActionIconStyle
-            }
-          >
-            <Tooltip title={app.t('Reload')}>
-              <CachedIcon />
-            </Tooltip>
-          </span>
-        }
-        {
-          !menuForActions && hasData && (entityActions || hasDelete || hasEdit || edit) &&
-          <Tooltip title={hiddenEntityActions ? app.t('Show actions') : app.t('Hide actions')}>
-            <Switch
-              size="small"
-              checked={!hiddenEntityActions}
-              onChange={(e) => setHiddenEntityActions(!hiddenEntityActions)}
-            />
-          </Tooltip>
-        }
+        <ShowHideTopPagination />
+        <Sorting sorts={sorts} />
+        <ShowHideFiltering />
+        <Reload />
+        <ShowHideEntityActions />
       </div>
     </div>
 

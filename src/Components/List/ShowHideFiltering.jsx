@@ -3,19 +3,20 @@ import Tooltip from '@mui/material/Tooltip'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import { ListContext } from './Contexts'
 
-const ShowHideFiltering = ({ className }) => {
+const ShowHideFiltering = () => {
 
     const {
         filters,
         isFilteringOpen,
-        setIsFilteringOpen
+        setIsFilteringOpen,
+        listActionIconStyle
     } = useContext(ListContext)
 
     return filters && (filters.props?.children?.length > 0 || filters.props?.children?.props)
         ?
         <span
             id='showHideFiltering'
-            className={className || ''}
+            className={listActionIconStyle}
             onClick={() => setIsFilteringOpen(!isFilteringOpen)}
         >
             <Tooltip title={app.t('Filters')}>

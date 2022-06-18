@@ -7,7 +7,7 @@ import { ListContext } from './Contexts';
 import app from '../../Base/App';
 import Holism from '../../Base/Holism';
 
-const Sorting = ({ sorts, className }) => {
+const Sorting = ({ sorts }) => {
 
     if (!sorts || !Array.isArray(sorts) || sorts.length === 0) {
         return null
@@ -26,7 +26,10 @@ const Sorting = ({ sorts, className }) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const [currentSort, setCurrentSort] = useState({});
-    const { listParameters } = useContext(ListContext);
+    const {
+        listParameters,
+        listActionIconStyle
+    } = useContext(ListContext);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -53,7 +56,7 @@ const Sorting = ({ sorts, className }) => {
     return sorts && <>
         <div
             id='sorting'
-            className={'flex items-center cursor-pointer ' + (className || "")}
+            className={'flex items-center cursor-pointer ' + listActionIconStyle}
         >
             <div id='currentSort' className="uppercase text-xs text-gray-500 font-light tracking-wider flex items-center">
                 {currentSort.caption

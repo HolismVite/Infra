@@ -3,18 +3,19 @@ import Tooltip from '@mui/material/Tooltip'
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
 import { ListContext } from './Contexts'
 
-const ShowHideTopPagination = ({ className }) => {
+const ShowHideTopPagination = () => {
 
     const {
         isTree,
         hasData,
         showTopPagiation,
-        setTopPaginationVisibility
+        setTopPaginationVisibility,
+        listActionIconStyle
     } = useContext(ListContext)
 
     return !isTree && hasData && <span
         id='showHideTopPagination'
-        className={className || ""}
+        className={listActionIconStyle}
         onClick={() => setTopPaginationVisibility(!showTopPagiation)}
     >
         <Tooltip title={app.t(showTopPagiation ? 'Hide top pagination' : 'Show top pagination')}>
