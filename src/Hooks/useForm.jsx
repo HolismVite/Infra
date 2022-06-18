@@ -212,6 +212,7 @@ const useForm = ({
         loadEntity,
         mode,
         progress,
+        setCurrentEntity,
         setField,
         setFields,
         setHasFile,

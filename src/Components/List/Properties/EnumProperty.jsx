@@ -12,7 +12,6 @@ const EnumProperty = ({
     styleProvider,
     actionUrl
 }) => {
-    const [open, setOpen] = useState()
     const [progress, setProgress] = useState(false)
     const [enumItems, setEnumItems] = useState([])
     const [selectedEnum, setSelectedEnum] = useState({ key: currentKey })
@@ -102,12 +101,11 @@ const EnumProperty = ({
             entityType='Enumeration'
             title='Set new value'
             inputs={inputs}
-            isOpen={open}
-            close={() => setOpen(false)}
+            close={() => { }}
             okAction={save}
         />
         <span
-            onClick={() => setOpen(true)}
+            onClick={() => { }}
         >
             {current}
         </span>

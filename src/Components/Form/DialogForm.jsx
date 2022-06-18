@@ -11,24 +11,28 @@ import { FormContext } from './Contexts';
 
 const DialogForm = ({
     actions,
-    close,
     entityType,
     explanations,
     humanReadableEntityType,
     inputs,
-    isOpen,
     large,
-    okAction,
     title,
 }) => {
 
     const {
         dialogProps,
         isDialogOpen,
+        reload,
         setIsDialogOpen,
     } = useContext(ListContext)
-    const [open, setOpen] = useState(isDialogOpen)
     const [entityId, setEntityId] = useState(null)
+
+    const closeDialog = () => {
+        setIsDialogOpen(false)
+        if (close instanceof Function) {
+            close()
+        }
+    }
 
     const {
         addFieldToFormContext,
@@ -41,6 +45,7 @@ const DialogForm = ({
         loadEntity,
         mode,
         progress,
+        setCurrentEntity,
         setField,
         setFields,
         setHasFile,
@@ -48,6 +53,10 @@ const DialogForm = ({
         entityId,
         entityType,
         humanReadableEntityType,
+        onSaved: () => {
+            closeDialog()
+            reload()
+        },
         title
     })
 
@@ -88,17 +97,12 @@ const DialogForm = ({
                 handleSubmit={handleSubmit}
                 onCanceled={() => setIsDialogOpen(false)}
             />}
-            isOpen={isOpen || isDialogOpen}
+            isOpen={isDialogOpen}
             onEntered={() => {
                 focusFirstInput('dialogForm')
             }}
             large={large}
-            onClosed={() => {
-                setIsDialogOpen(false)
-                if (close && typeof close === 'function') {
-                    close()
-                }
-            }}
+            onClosed={closeDialog}
         />
     </FormContext.Provider>
 }
