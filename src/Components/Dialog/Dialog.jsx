@@ -13,30 +13,18 @@ const Dialog = ({
     isOpen,
     actions,
     large,
+    tiny,
     onEntered,
-    entityId,
-    dialogPurpose,
     onClosed
 }) => {
 
-    const [open, setOpen] = useState(isOpen)
-
-    useEffect(() => {
-        const onEntityActionDialogRequested = ({ entity, purpose }) => {
-            if (entityId === entity?.id && dialogPurpose === purpose && typeof isOpen !== 'boolean') {
-                setOpen(true)
-            }
-        }
-        // app.on(app.entityActionDialogRequested, onEntityActionDialogRequested)
-    }, [entityId, dialogPurpose])
-
     return <MuiDialog
-        open={typeof isOpen === 'boolean' ? isOpen || false : open || false}
+        open={isOpen}
         onClose={() => typeof isOpen === 'boolean' ? null : setOpen(false)}
         aria-labelledby="dialogTitle"
         id="dialog"
         fullWidth
-        maxWidth={large ? 'md' : 'sm'}
+        maxWidth={large ? 'md' : (tiny ? 'xs' : 'sm')}
         TransitionProps={{
             onEntered: onEntered
         }}
@@ -61,14 +49,12 @@ const Dialog = ({
                     :
                     <>
                         <Button
-                            variant="outlined"
                             className={"ml-2 bg-green-200 text-gray-900 border-gray-400 "}
                             onClick={() => {
                                 if (typeof isOpen !== 'boolean') {
                                     setOpen(false)
                                 }
-                                if(onClosed && typeof onClosed === 'function')
-                                {
+                                if (onClosed && typeof onClosed === 'function') {
                                     onClosed()
                                 }
                             }}

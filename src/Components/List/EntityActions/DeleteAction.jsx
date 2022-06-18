@@ -1,14 +1,12 @@
 import React, { useState, useContext } from 'react'
 import DeleteIcon from '@mui/icons-material/Delete'
-import Dialog from '@mui/material/Dialog'
-import DialogActions from '@mui/material/DialogActions'
-import DialogContent from '@mui/material/DialogContent'
-import DialogTitle from '@mui/material/DialogTitle'
 import WarningIcon from '@mui/icons-material/Warning'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import { EntityAction, EntityContext, app, post } from '@List'
 import HolismIcon from '../../HolismIcon'
+import Dialog from '../../../Components/Dialog/Dialog'
+import { OkCancel } from '../../../Components/Dialog/OkCancel'
 
 const DeleteAction = ({
     entityType,
@@ -34,33 +32,23 @@ const DeleteAction = ({
     }
 
     const confirmationDialog = <Dialog
-        open={confirmationDialogIsOpen}
-        aria-labelledby="dialog-title"
-        TransitionProps={{ onEntered: () => { } }}
-    >
-        <DialogTitle id="dialog-title">{app.t('Confirmation')}</DialogTitle>
-        <DialogContent>
-            <div className="flex justify-center ">
-                <HolismIcon icon={WarningIcon} className="text-red-400 text-5xl my-10" />
-            </div>
-            <p>
+        tiny
+        isOpen={confirmationDialogIsOpen}
+        title={app.t('Confirmation')}
+        content={<div class="flex justify-center items-center flex-col sm:flex-row">
+            <HolismIcon icon={WarningIcon} className="text-red-400 text-5xl ltr:mr-4 rtl:ml-4" />
+            <span>
                 {app.t('Are you sure you want to delete this item?')}
-            </p>
+            </span>
             {/* todo: Show some information form the selected item, to enhance UX */}
-        </DialogContent>
-        <DialogActions>
-            <div id='actions' className='mt-4'>
-                <Button variant="outlined" onClick={() => setConfirmationDialogVisibility(false)}>
-                    {app.t('No')}
-                </Button>
-                <Button variant="outlined" className='bg-green-200 ltr:ml-2 rtl:mr-2' onClick={() => {
-                    deleteItem()
-                }}>
-                    {app.t('Yes')}
-                </Button>
-            </div>
-        </DialogActions>
-    </Dialog>
+        </div>}
+        actions={<OkCancel
+            okText='Yes'
+            cancelText='No'
+            cancelClick={() => setConfirmationDialogVisibility(false)}
+            okClick={deleteItem}
+        />}
+    />
 
     return <>
         {confirmationDialog}

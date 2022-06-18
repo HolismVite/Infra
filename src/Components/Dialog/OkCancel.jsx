@@ -4,20 +4,28 @@ import { CancelAction } from './CancelAction';
 
 const OkCancel = ({
     progress,
+    okText,
     okClick,
+    cancelText,
     cancelClick
 }) => {
 
     return <div id='actions' className={'mt-4 '}>
-        <div className="mr-6 mb-6" >
+        <div>
             {
                 progress
                     ?
                     <CircularProgress size={30} />
                     :
                     <>
-                        <CancelAction click={cancelClick} />
-                        <PrimaryAction click={okClick} />
+                        <CancelAction
+                            text={cancelText}
+                            click={cancelClick}
+                        />
+                        <PrimaryAction
+                            text={okText}
+                            click={okClick}
+                        />
                     </>
             }
         </div>
