@@ -1,19 +1,18 @@
 import React, { useContext } from 'react';
-import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
-import { app, ListContext, HolismIcon } from '@List';
+import { ListContext } from '@List';
+import UpsertAction from './UpsertAction';
 
-const ListActions = ({ actions, create, creationButton, upsert }) => {
+const ListActions = () => {
     let navigate = useNavigate();
 
-    const { selectedEntities } = useContext(ListContext);
+    const { listActions, selectedEntities } = useContext(ListContext);
 
     let clonedListActions = null;
     let actionItems = null;
 
-    if (typeof actions === 'function') {
-        var actionsReturn = actions(selectedEntities);
+    if (typeof listActions === 'function') {
+        var actionsReturn = listActions(selectedEntities);
         if (actionsReturn.props.children) {
             actionItems = actionsReturn.props.children;
         }
@@ -22,12 +21,12 @@ const ListActions = ({ actions, create, creationButton, upsert }) => {
         }
     }
     else {
-        if (actions) {
-            if (actions.props.children) {
-                actionItems = actions.props.children;
+        if (listActions) {
+            if (listActions.props.children) {
+                actionItems = listActions.props.children;
             }
             else {
-                actionItems = actions;
+                actionItems = listActions;
             }
         }
     }
@@ -42,12 +41,6 @@ const ListActions = ({ actions, create, creationButton, upsert }) => {
                 }))
     }
 
-    const icon = (creationButton && creationButton.icon)
-        ?
-        <HolismIcon icon={creationButton.icon} />
-        :
-        <AddIcon />
-
     return <div
         id='listActions'
         className=
@@ -55,35 +48,7 @@ const ListActions = ({ actions, create, creationButton, upsert }) => {
             'flex flex-wrap items-center mb-2 lg:mb-0 '
         }
     >
-        <div>
-            {
-                create || upsert
-                    ?
-                    <Button
-                        className="bg-green-200 text-gray-900 border-gray-400 hover:bg-green-400 mt-2 lg:mt-0 mr-2"
-                        variant="outlined"
-                        startIcon={icon}
-                        onClick={() => {
-                            if (typeof create === 'string') {
-                                navigate(create)
-                            }
-                            else {
-                                app.emit(app.creationRequested)
-                            }
-                        }}
-                    >
-                        {
-                            (creationButton && creationButton.text)
-                                ?
-                                app.t(creationButton.text)
-                                :
-                                app.t("Create")
-                        }
-                    </Button>
-                    :
-                    null
-            }
-        </div>
+        <UpsertAction />
         <div>
             {
                 clonedListActions?.map((action, index) => {

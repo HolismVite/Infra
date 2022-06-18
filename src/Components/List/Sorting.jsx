@@ -7,7 +7,11 @@ import { ListContext } from './Contexts';
 import app from '../../Base/App';
 import Holism from '../../Base/Holism';
 
-const Sorting = ({ sorts }) => {
+const Sorting = ({ sorts, className }) => {
+
+    if (!sorts || !Array.isArray(sorts) || sorts.length === 0) {
+        return null
+    }
 
     for (let i = 0; i < sorts.length; i++) {
         const { caption, column, direction, key } = sorts[i];
@@ -46,12 +50,10 @@ const Sorting = ({ sorts }) => {
         app.emit(app.reloadRequested);
     }, [currentSort]);
 
-    return <>
+    return sorts && <>
         <div
             id='sorting'
-            className={
-                'flex items-center cursor-pointer text-gray-700 hover:text-blue-500'
-            }
+            className={'flex items-center cursor-pointer ' + (className || "")}
         >
             <div id='currentSort' className="uppercase text-xs text-gray-500 font-light tracking-wider flex items-center">
                 {currentSort.caption

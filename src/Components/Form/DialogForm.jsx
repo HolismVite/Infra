@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Dialog from '../Dialog/Dialog'
-import { useSearchParams } from 'react-router-dom'
+import { ListContext } from '../List/Contexts'
 import {
     FormBase,
     Explanations,
@@ -23,8 +23,7 @@ const DialogForm = ({
     close
 }) => {
 
-    let [searchParams] = useSearchParams();
-    const [isDialogFormOpen, setIsDialogFormOpen] = useState(searchParams.get("showDialog") || false);
+    const { isDialogFormOpen, setIsDialogFormOpen } = useContext(ListContext)
 
     useEffect(() => {
         const onEditRequested = (params) => {
@@ -39,14 +38,6 @@ const DialogForm = ({
     }, [entityType])
 
     useEffect(() => {
-        const onCreationRequested = (item) => {
-            setIsDialogFormOpen(true);
-        }
-        app.on(app.creationRequested, onCreationRequested)
-        return () => app.removeListener(app.creationRequested, onCreationRequested)
-    }, [])
-
-    useEffect(() => {
         const onEntityActionDialogRequested = ({ entity, purpose }) => {
             if (entity?.id === entityId && dialogPurpose === purpose) {
                 setIsDialogFormOpen(true);
@@ -59,8 +50,7 @@ const DialogForm = ({
     useEffect(() => {
         const onFormCanceled = (item) => {
             setIsDialogFormOpen(false);
-            if (close && typeof close === 'function')
-            {
+            if (close && typeof close === 'function') {
                 close()
             }
         }
@@ -109,8 +99,7 @@ const DialogForm = ({
                 large={large}
                 onClosed={() => {
                     setIsDialogFormOpen(false)
-                    if (close && typeof close === 'function')
-                    {
+                    if (close && typeof close === 'function') {
                         close()
                     }
                 }}

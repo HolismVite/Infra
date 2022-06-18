@@ -9,7 +9,6 @@ const EventManager = {
     listeners: (event) => eventEmitter.listeners(event),
     eventEmitter: eventEmitter,
     formSubmitted: 'form_submission_requested',
-    creationRequested: 'dialog_form_requested',
     formCanceled: 'form_canceled',
     accountUpdated: 'account_updated',
     itemUpserted: 'item_upserted',

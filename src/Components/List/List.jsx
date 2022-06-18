@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Switch from '@mui/material/Switch';
-import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
-import FilterListIcon from '@mui/icons-material/FilterList'
 import CachedIcon from '@mui/icons-material/Cached'
 import Collapse from '@mui/material/Collapse'
 import Tooltip from '@mui/material/Tooltip'
@@ -11,11 +9,13 @@ import Entities from "./Entities"
 import ListActions from "./ListActions/ListActions"
 import app from '../../Base/App'
 import useLocalStorageState from '../../Base/UseLocalStorageState'
-import { DialogForm } from '../Form/DialogForm'
-import { TopContext, HolismIcon } from '../../Panel/Panel'
+import { TopContext } from '../../Panel/Panel'
 import { ListContext } from './Contexts'
 import useListParameters from '../../Hooks/useListParameters';
 import Unify from '../Unify';
+import { useSearchParams } from 'react-router-dom'
+import ShowHideTopPagination from './ShowHideTopPagination'
+import ShowHideFiltering from './ShowHideFiltering'
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer"
 
@@ -38,7 +38,8 @@ const List = ({
   hasDelete,
   hasEdit,
   edit,
-  creationButton,
+  upsertionIcon,
+  upsertionText,
   classProvider,
   upsert,
   dialogs,
@@ -55,6 +56,9 @@ const List = ({
 
   const hasItemSelection = listActions ? true : false
   const { setTitle, setSubtitle, setBreadcrumbItems } = useContext(TopContext)
+  let [searchParams] = useSearchParams();
+
+  const [isDialogFormOpen, setIsDialogFormOpen] = useState(searchParams.get("showDialog") || false);
 
   useEffect(() => {
     // console.log(selectedEntities)
@@ -81,63 +85,42 @@ const List = ({
     card,
     menuForActions,
     hasDelete,
-    hasEdit
-  }} id='list'>
+    hasEdit,
+    create,
+    upsert,
+    upsertionIcon,
+    upsertionText,
+    listActions,
+    showTopPagiation,
+    setTopPaginationVisibility,
+    isTree,
+    isFilteringOpen,
+    setIsFilteringOpen,
+    filters,
+  }}>
 
     <div
+      id='list'
       className={
         ' lg:flex items-center justify-between px-6 py-2 lg:h-14 '
       }
     >
-      <ListActions
-        actions={listActions}
-        create={create}
-        upsert={upsert}
-        creationButton={creationButton}
-      />
+      <ListActions />
       <div
         className={
           " sortAndFilteringAndReload flex items-center justify-end gap-2 lg:my-0 "
         }
       >
-        {
-          !isTree && hasData && <span
-            id='showHideTopPagination'
-            className={
-              listActionIconStyle
-            }
-            onClick={() => setTopPaginationVisibility(!showTopPagiation)}
-          >
-            <Tooltip title={app.t(showTopPagiation ? 'Hide top pagination' : 'Show top pagination')}>
-              <SwapHorizIcon />
-            </Tooltip>
-          </span>
-        }
-        {
-          sorts
-            ?
-            <Sorting sorts={sorts} />
-            :
-            null
-        }
-        {
-          filters && (filters.props?.children?.length > 0 || filters.props?.children?.props)
-            ?
-            <span
-              id='showHideFiltering'
-              className={
-                listActionIconStyle
-              }
-              onClick={() => setIsFilteringOpen(!isFilteringOpen)}
-            >
-              <Tooltip title={app.t('Filters')}>
-                <FilterListIcon />
-              </Tooltip>
-              {/* <span>Filters</span> */}
-            </span>
-            :
-            null
-        }
+        <ShowHideTopPagination
+          className={listActionIconStyle}
+        />
+        <Sorting
+          className={listActionIconStyle}
+          sorts={sorts}
+        />
+        <ShowHideFiltering
+          className={listActionIconStyle}
+        />
         {
           <span
             id='reload'
