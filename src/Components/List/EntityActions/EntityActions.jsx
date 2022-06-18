@@ -13,7 +13,7 @@ import { ListContext } from '../Contexts';
 
 const EntityActions = ({
     entityType,
-    item,
+    entity,
     entityActions,
     edit,
     create,
@@ -42,7 +42,7 @@ const EntityActions = ({
     if (entityActions) {
         let entityActionsArray = null;
         if (typeof entityActions === 'function') {
-            entityActionsArray = entityActions(item).props.children
+            entityActionsArray = entityActions(entity).props.children
             if (entityActionsArray && entityActionsArray.props && entityActionsArray.props.children) {
                 entityActionsArray = entityActionsArray.props.children
             }
@@ -76,7 +76,7 @@ const EntityActions = ({
                     return true;
                 })
                 .map(entityAction => React.cloneElement(entityAction, {
-                    item: item,
+                    entity: entity,
                     setItem: setItem,
                     reload: reload,
                     asMenuItem: menuForActions,
@@ -89,7 +89,7 @@ const EntityActions = ({
         ?
         <DeleteAction
             entityType={entityType}
-            item={item}
+            entity={entity}
             asMenuItem={menuForActions}
             closeMenu={handleClose}
         />
@@ -108,7 +108,7 @@ const EntityActions = ({
         ?
         <EditAction
             entityType={entityType}
-            item={item}
+            entity={entity}
             create={create}
             hasEdit={hasEdit}
             edit={edit}
@@ -122,7 +122,7 @@ const EntityActions = ({
     const viewRecord = app.isDev() &&
         <ViewRecordAction
             entityType={entityType}
-            item={item}
+            entity={entity}
             create={create}
             hasEdit={hasEdit}
             edit={edit}
@@ -165,16 +165,16 @@ const EntityActions = ({
         :
         <span className={className}>
             {
-                item.progress
+                entity.progress
                     ?
                     <span className="flex flex-wrap items-center justify-end px-2">
-                        <Fade in={item.progress}>
+                        <Fade in={entity.progress}>
                             <CircularProgress size={24} className="mt-2" />
                         </Fade>
                     </span>
                     :
                     <span className="flex flex-wrap items-center justify-end">
-                        {/* <Fade in={!item.progress}> */}
+                        {/* <Fade in={!entity.progress}> */}
                         <>
                             {
                                 clonedEntityActions.map((entityAction, index) => entityAction)

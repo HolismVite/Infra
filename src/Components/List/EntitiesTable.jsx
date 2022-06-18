@@ -140,7 +140,7 @@ const Table = ({
         !hiddenEntityActions && <td {...(separateRowForActions && { colSpan: "100" })}>
             <EntityActions
                 entityType={entityType}
-                item={item}
+                entity={item}
                 entityActions={entityActions}
                 hasDelete={hasDelete}
                 hasEdit={hasEdit}

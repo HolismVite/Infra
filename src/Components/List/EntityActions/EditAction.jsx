@@ -16,8 +16,7 @@ const EditAction = ({
         edit,
         entityType,
         hasEdit,
-        setDialogProps,
-        setIsDialogOpen,
+        showDialog,
         upsert,
     } = useContext(ListContext)
 
@@ -30,11 +29,7 @@ const EditAction = ({
             if (typeof component === 'function') {
                 var result = component(entity);
                 if (typeof result === 'object') {
-                    setDialogProps({
-                        entityType,
-                        entity,
-                    })
-                    setIsDialogOpen(true)
+                    showDialog(entity, `edit_${entityType}_${entity.id}`, entityType)
                 }
                 else if (typeof result === 'string') {
                     navigate(result);
@@ -44,11 +39,7 @@ const EditAction = ({
                 }
             }
             else {
-                setDialogProps({
-                    entityType,
-                    entity,
-                })
-                setIsDialogOpen(true)
+                showDialog(entity, `edit_${entityType}_${entity.id}`, entityType)
             }
         }
     }

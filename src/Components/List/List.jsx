@@ -60,11 +60,11 @@ const List = ({
   const [isDialogOpen, setIsDialogOpen] = useState(searchParams.get("showDialog") || false);
 
   const showDialog = ({ entity, purpose, ...props }) => {
-    setIsDialogOpen(true)
     setDialogProps({
       purpose,
       ...props
     })
+    setIsDialogOpen(true)
   }
 
   useEffect(() => {
@@ -106,6 +106,7 @@ const List = ({
     setSelectedEntities,
     setTopPaginationVisibility,
     setTopPaginationVisibility,
+    showDialog,
     showTopPagiation,
     showTopPagiation,
     upsert,
