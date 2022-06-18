@@ -16,10 +16,7 @@ const Hidden = ({
 
     useEffect(() => {
         addFieldToFormContext(formContext, id, value, true);
-        app.on(app.formSubmitted, () => { });
-        return () => {
-            app.removeListener(app.formSubmitted, () => { });
-        }
+        // app.on(app.formSubmitted, () => { });
     }, [value, id, formContext]);
 
     return <input

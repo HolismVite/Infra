@@ -29,7 +29,7 @@ const BooleanProperty = ({
         post(api).then(data => {
             setProgress(false);
             success('Applied');
-            app.emit(app.entityRerenderRequested, data);
+            // app.emit(app.entityRerenderRequested, data);
         }, e => {
             error(e);
             setProgress(false);

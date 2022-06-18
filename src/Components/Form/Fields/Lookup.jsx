@@ -35,10 +35,7 @@ const Lookup = ({ column, entityType, placeholder, hint, value, required, displa
         var handler = () => {
             validate();
         };
-        app.on(app.formSubmitted, handler);
-        return () => {
-            app.removeListener(app.formSubmitted, handler);
-        }
+        // app.on(app.formSubmitted, handler);
     }, [id, formContext])
 
     useEffect(() => {

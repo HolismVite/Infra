@@ -25,10 +25,10 @@ export default function User({ onClick }) {
     const [role, setRole] = useState(app.role());
 
     useEffect(() => {
-        app.on(app.accountUpdated, () => {
-            setUser(app.user);
-            setRole(app.role());
-        });
+        // app.on(app.accountUpdated, () => {
+        //     setUser(app.user);
+        //     setRole(app.role());
+        // });
     }, [])
 
     return (

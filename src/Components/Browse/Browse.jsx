@@ -33,7 +33,7 @@ const Browse = ({
             icon={<CheckIcon />}
             title={'Select ' + entityType}
             click={({ item }) => {
-                app.emit(app.entitySelected, { selectedEntity: item, callerId });
+                // app.emit(app.entitySelected, { selectedEntity: item, callerId });
             }}
         />
     </>
@@ -63,7 +63,9 @@ const Browse = ({
                 {
                     <span
                         id='reload'
-                        onClick={() => app.emit(app.reloadRequested)}
+                        onClick={() => {
+                            // app.emit(app.reloadRequested)
+                        }}
                         className={listActionIconStyle}
                     >
                         <CachedIcon />

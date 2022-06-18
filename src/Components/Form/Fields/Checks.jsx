@@ -25,10 +25,7 @@ const Checks = ({
                 loadCheckedItems()
             }
         }
-        app.on(app.runMethod, onRunMethod)
-        return () => {
-            app.removeListener(app.runMethod, onRunMethod)
-        }
+        // app.on(app.runMethod, onRunMethod)
     }, [])
 
     useEffect(() => {

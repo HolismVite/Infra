@@ -10,7 +10,9 @@ const Reload = () => {
 
     return <span
         id='reload'
-        onClick={() => app.emit(app.reloadRequested)}
+        onClick={() => {
+            // app.emit(app.reloadRequested)
+        }}
         className={listActionIconStyle}
     >
         <Tooltip title={app.t('Reload')}>

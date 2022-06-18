@@ -6,7 +6,9 @@ const Maximize = () => {
     return <HeaderAction
         title="Maximize"
         icon={ExpandLessIcon}
-        action={() => app.emit(app.makeRoom)}
+        action={() => {
+            // app.emit(app.makeRoom)
+        }}
     />
 }
 

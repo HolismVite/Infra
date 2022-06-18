@@ -12,7 +12,7 @@ const ListAction = ({ icon, text, title, click, minCardinality }) => {
     const { selectedEntities } = useContext(ListContext);
 
     const reloadList = () => {
-        app.emit(app.reloadRequested)
+        // app.emit(app.reloadRequested)
     }
 
     const button = <Button

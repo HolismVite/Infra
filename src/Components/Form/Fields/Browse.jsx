@@ -42,10 +42,7 @@ const Browse = ({
             setSelectedEntity(selectedEntity);
             setIsBrowserDialogOpen(false);
         }
-        app.on(app.entitySelected, handleEntitySelection);
-        return () => {
-            app.removeListener(app.entitySelected, handleEntitySelection);
-        }
+        // app.on(app.entitySelected, handleEntitySelection);
     });
 
     useEffect(() => {

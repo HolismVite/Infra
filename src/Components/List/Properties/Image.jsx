@@ -26,7 +26,7 @@ const Image = ({
                 setProgress(false)
                 app.success('Image uploaded successfully')
                 setIsOpen(false)
-                app.emit(app.entityReloadRequested, { entity: data })
+                // app.emit(app.entityReloadRequested, { entity: data })
             }, error => {
                 setProgress(false)
                 app.error(error)

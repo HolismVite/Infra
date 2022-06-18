@@ -50,7 +50,7 @@ const Sorting = ({ sorts }) => {
 
     useEffect(() => {
         listParameters.sorts = [currentSort];
-        app.emit(app.reloadRequested);
+        // app.emit(app.reloadRequested);
     }, [currentSort]);
 
     return sorts && <>

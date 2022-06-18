@@ -25,7 +25,9 @@ const Actions = ({
                                 tabIndex={-1}
                                 className="text-gray-900 border-gray-400 "
                                 variant="outlined"
-                                onClick={() => app.emit(app.formCanceled)}
+                                onClick={() => {
+                                    // app.emit(app.formCanceled)
+                                }}
                             >
                                 {app.t('Cancel')}
                             </Button>

@@ -27,8 +27,7 @@ const Dialog = ({
                 setOpen(true)
             }
         }
-        app.on(app.entityActionDialogRequested, onEntityActionDialogRequested)
-        return () => app.removeListener(app.entityActionDialogRequested, onEntityActionDialogRequested)
+        // app.on(app.entityActionDialogRequested, onEntityActionDialogRequested)
     }, [entityId, dialogPurpose])
 
     return <MuiDialog

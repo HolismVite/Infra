@@ -12,7 +12,7 @@ const Filtering = ({ filters }) => {
     }
 
     const applyFilters = () => {
-        app.emit(app.reloadRequested);
+        // app.emit(app.reloadRequested);
     };
 
     const resetFilters = () => {

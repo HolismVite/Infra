@@ -128,8 +128,7 @@ const FormBase = ({
     const onFormCanceled = (item) => {
       resetForm()
     }
-    app.on(app.formCanceled, onFormCanceled)
-    return () => app.removeListener(app.formCanceled, onFormCanceled)
+    // app.on(app.formCanceled, onFormCanceled)
   }, [])
 
   const resetForm = (params) => {
@@ -139,10 +138,7 @@ const FormBase = ({
   }
 
   useEffect(() => {
-    app.on(app.entityActionDialogRequested, resetForm)
-    return () => {
-      app.removeListener(app.entityActionDialogRequested, resetForm)
-    }
+    // app.on(app.entityActionDialogRequested, resetForm)
   }, [])
 
   useEffect(() => {
@@ -173,7 +169,7 @@ const FormBase = ({
   }, [validate, fields]);
 
   const handleSubmit = (event) => {
-    app.emit(app.formSubmitted);
+    // app.emit(app.formSubmitted);
     if (!isValid) {
       event.preventDefault();
       return;

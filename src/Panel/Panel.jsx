@@ -57,10 +57,7 @@ const Panel = () => {
         const hide = () => {
             setIsSidebarOpen(false);
         };
-        app.on(app.makeRoom, hide);
-        return () => {
-            app.removeListener(app.makeRoom, hide);
-        };
+        // app.on(app.makeRoom, hide);
     });
 
     useEffect(() => {
@@ -69,10 +66,7 @@ const Panel = () => {
                 setIsSidebarOpen(true);
             }
         };
-        app.on(app.returnBackToNormalForm, show);
-        return () => {
-            app.removeListener(app.returnBackToNormalForm, show);
-        };
+        // app.on(app.returnBackToNormalForm, show);
     });
 
     return <PanelContext.Provider

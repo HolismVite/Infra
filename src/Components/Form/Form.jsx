@@ -36,10 +36,7 @@ const Form = ({
         const onCancelOrOk = (item) => {
             navigate(-1)
         }
-        app.on(app.formCanceled, onCancelOrOk)
-        return () => {
-            app.removeListener(app.formCanceled, onCancelOrOk)
-        }
+        // app.on(app.formCanceled, onCancelOrOk)
     }, [])
 
     return <FormBase

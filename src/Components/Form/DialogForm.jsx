@@ -42,8 +42,7 @@ const DialogForm = ({
                 setIsDialogOpen(true);
             }
         }
-        app.on(app.entityActionDialogRequested, onEntityActionDialogRequested)
-        return () => app.removeListener(app.entityActionDialogRequested, onEntityActionDialogRequested)
+        // app.on(app.entityActionDialogRequested, onEntityActionDialogRequested)
     }, [entityId, dialogPurpose])
 
     useEffect(() => {
@@ -53,8 +52,7 @@ const DialogForm = ({
                 close()
             }
         }
-        app.on(app.formCanceled, onFormCanceled)
-        return () => app.removeListener(app.formCanceled, onFormCanceled)
+        // app.on(app.formCanceled, onFormCanceled)
     }, [])
 
     return <FormBase

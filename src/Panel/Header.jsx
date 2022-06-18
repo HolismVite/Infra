@@ -17,20 +17,14 @@ const Header = ({ onMenuIconClicked }) => {
         const hide = () => {
             setIsShown(false);
         };
-        app.on(app.makeRoom, hide);
-        return () => {
-            app.removeListener(app.makeRoom, hide);
-        };
+        // app.on(app.makeRoom, hide);
     });
 
     useEffect(() => {
         const show = () => {
             setIsShown(true);
         };
-        app.on(app.returnBackToNormalForm, show);
-        return () => {
-            app.removeListener(app.returnBackToNormalForm, show);
-        };
+        // app.on(app.returnBackToNormalForm, show);
     });
 
     return <>
@@ -67,7 +61,9 @@ const Header = ({ onMenuIconClicked }) => {
         </Collapse>
         <Collapse in={!isShown}>
             <div
-                className="m-auto absolute top-0 right-0 left-0 h-0 flex justify-center" onClick={() => app.emit(app.returnBackToNormalForm)}>
+                className="m-auto absolute top-0 right-0 left-0 h-0 flex justify-center" onClick={() => {
+                    // app.emit(app.returnBackToNormalForm)
+                }}>
                 <ExpandMoreIcon style={{ fontSize: 40 }} className="cursor-pointer" />
             </div>
         </Collapse>

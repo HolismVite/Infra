@@ -52,18 +52,14 @@ const Entities = (props) => {
                     app.error(error)
                 })
         }
-        app.on(app.entityReloadRequested, onEntityReloadRequested)
-        return () => {
-            app.removeListener(app.entityReloadRequested, onEntityReloadRequested)
-        }
+        // app.on(app.entityReloadRequested, onEntityReloadRequested)
     }, [entityType])
 
     useEffect(() => {
         const onEntityRerenderRequested = (entity) => {
             setItem(entity)
         }
-        app.on(app.entityRerenderRequested, onEntityRerenderRequested)
-        return () => app.removeListener(app.entityRerenderRequested, onEntityRerenderRequested)
+        // app.on(app.entityRerenderRequested, onEntityRerenderRequested)
     }, [entityType])
 
     const setItem = (item) => {
@@ -140,10 +136,7 @@ const Entities = (props) => {
     };
 
     useEffect(() => {
-        app.on(app.reloadRequested, load);
-        return () => {
-            app.removeListener(app.reloadRequested, load);
-        }
+        // app.on(app.reloadRequested, load);
     }, [])
 
     useEffect(() => {

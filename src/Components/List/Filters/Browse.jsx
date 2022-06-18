@@ -59,10 +59,7 @@ const Browse = ({ column, placeholder, entityType, browser, display, choose }) =
             setSelectedEntity(item.item);
             setIsBrowserDialogOpen(false);
         }
-        app.on(app.entitySelected, handleEntitySelection);
-        return () => {
-            app.removeListener(app.entitySelected, handleEntitySelection);
-        }
+        // app.on(app.entitySelected, handleEntitySelection);
     });
 
     const browserDialog = <Dialog

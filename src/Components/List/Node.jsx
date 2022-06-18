@@ -80,7 +80,7 @@ const Node = ({
                                 <EntityAction
                                     icon={<AddIcon />}
                                     click={() => {
-                                        app.emit(app.creationRequested, { parentId: entity.hierarchyId || entity.id })
+                                        // app.emit(app.creationRequested, { parentId: entity.hierarchyId || entity.id })
                                     }}
                                 />
                             </> : entityActions}

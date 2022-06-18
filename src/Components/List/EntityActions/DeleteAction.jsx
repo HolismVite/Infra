@@ -26,7 +26,7 @@ const DeleteAction = ({
         post(`${entityType}/delete/${entity.id}`).then(data => {
             app.success("Item is deleted successfully")
             setProgress(false)
-            app.emit(app.reloadRequested)
+            // app.emit(app.reloadRequested)
         }, error => {
             app.error(error)
             setProgress(false)

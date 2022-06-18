@@ -75,7 +75,7 @@ const EnumProperty = ({
             .then(data => {
                 setProgress(false)
                 setOpen(false)
-                app.emit(app.entityReloadRequested, { entity: data })
+                // app.emit(app.entityReloadRequested, { entity: data })
             }, error => {
                 setProgress(false)
                 app.error(error)

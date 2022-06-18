@@ -41,10 +41,10 @@ const EntityAction = ({
             click({ item, setProgress, setItem, reload })
         }
         else if (dialog) {
-            app.emit(app.entityActionDialogRequested, {
-                entity: item,
-                purpose: title
-            })
+            // app.emit(app.entityActionDialogRequested, {
+            //     entity: item,
+            //     purpose: title
+            // })
         }
         else {
             console.warn(`No action is assigned to item action. Title is '${title}'`)

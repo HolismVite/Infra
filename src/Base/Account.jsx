@@ -1,7 +1,6 @@
 // todo: redirect user to "403" page if his role is not equivalent to role in .env file
 // https://keycloak.discourse.group/t/what-is-the-workflow-of-refreshing-the-token-in-an-api-client-scenario/12634/2
 // https://github.com/dasniko/keycloak-reactjs-demo
-import EventManager from './EventManager'
 
 let keycloak = null;
 
@@ -96,7 +95,7 @@ const Account = {
                 checkLoginIframe: false
             }).then(function (auth) {
                 if (auth) {
-                    EventManager.emit(EventManager.accountUpdated);
+                    // EventManager.emit(EventManager.accountUpdated);
                     if (callback && typeof callback === "function") {
                         callback();
                     }
