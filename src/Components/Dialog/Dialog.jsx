@@ -6,6 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { app } from '../../Base/App'
+import { PrimaryAction } from './PrimaryAction';
 
 const Dialog = ({
     title,
@@ -47,21 +48,17 @@ const Dialog = ({
                     ?
                     actions
                     :
-                    <>
-                        <Button
-                            className={"ml-2 bg-green-200 text-gray-900 border-gray-400 "}
-                            onClick={() => {
-                                if (typeof isOpen !== 'boolean') {
-                                    setOpen(false)
-                                }
-                                if (onClosed && typeof onClosed === 'function') {
-                                    onClosed()
-                                }
-                            }}
-                        >
-                            {app.t('Ok')}
-                        </Button>
-                    </>
+                    <PrimaryAction
+                        text='Ok'
+                        click={() => {
+                            if (typeof isOpen !== 'boolean') {
+                                setOpen(false)
+                            }
+                            if (onClosed && typeof onClosed === 'function') {
+                                onClosed()
+                            }
+                        }}
+                    />
             }
         </DialogActions>
     </MuiDialog>
