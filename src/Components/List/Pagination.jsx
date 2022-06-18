@@ -19,18 +19,25 @@ const textStyle = "text-blue-900 p-2 font-light text-xs items-center cursor-poin
 
 const Pagination = () => {
 
-    const { metadata, reload } = useContext(ListContext)
+    const {
+        metadata,
+        reload,
+        listParameters
+    } = useContext(ListContext)
 
     const {
         from,
         to,
         pageNumber,
-        setPageNumber,
         pageSize,
-        setPageSize,
         pagesCount,
         totalCount
     } = metadata;
+
+    const {
+        setPageNumber,
+        setPageSize
+    } = listParameters
 
     const [pageNumberDialogIsOpen, setPageNumberDialogVisibility] = useState(false);
     const [pageSizeDialogIsOpen, setPageSizeDialogVisibility] = useState(false);
