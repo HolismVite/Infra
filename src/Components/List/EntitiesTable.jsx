@@ -26,7 +26,6 @@ const Table = () => {
         headers,
         hiddenEntityActions,
         menuForActions,
-        metadata,
         reload,
         row,
         selectEntities,
@@ -210,7 +209,7 @@ const Table = () => {
                 :
                 <Collapse in={showTopPagiation} className="w-full">
                     <div className="w-full px-6">
-                        <Pagination metadata={metadata} />
+                        <Pagination />
                     </div>
                 </Collapse>
         }
@@ -234,7 +233,7 @@ const Table = () => {
                 null
                 :
                 <div className="pt-8 w-full px-6">
-                    <Pagination metadata={metadata} />
+                    <Pagination />
                 </div>
         }
     </>

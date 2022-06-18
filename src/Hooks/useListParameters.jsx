@@ -94,17 +94,19 @@ const useListParameters = (userGuid, entityType) => {
     }
 
     return {
-        pageNumber,
-        pageSize,
-        filters,
-        sorts,
         addFilter,
-        removeFilter,
         addSort,
-        removeSort,
         buildFiltersQueryString,
         buildSortsQueryString,
-        resetFilters
+        filters,
+        pageNumber,
+        pageSize,
+        removeFilter,
+        removeSort,
+        resetFilters,
+        setPageNumber,
+        setPageSize,
+        sorts,
     }
 }
 

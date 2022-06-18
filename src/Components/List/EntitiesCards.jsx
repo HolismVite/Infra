@@ -9,28 +9,25 @@ import NoEntitiesFound from '../NoEntitiesFound';
 import { EntityContext } from './Contexts'
 import useList from '../../Hooks/useList'
 
-const Cards = ({
-    data,
-    entityActions,
-    edit,
-    entityType,
-    create,
-    upsert,
-    metadata,
-    multicolumn,
-    setItem,
-    reload,
-    classProvider,
-    showTopPagiation,
-    noItemIsFoundStyle
-}) => {
+const Cards = () => {
 
     const {
-        hasItemSelection,
-        selectedEntities,
         card,
+        classProvider,
+        create,
+        data,
+        edit,
+        entityActions,
+        entityType,
         hasDelete,
-        hasEdit
+        hasEdit,
+        hasItemSelection,
+        multicolumn,
+        reload,
+        selectedEntities,
+        setItem,
+        showTopPagiation,
+        upsert,
     } = useContext(ListContext);
 
     const {
@@ -49,7 +46,7 @@ const Cards = ({
                 <>
                     <Collapse in={showTopPagiation} className="w-full">
                         <div className="px-6 w-full">
-                            <Pagination metadata={metadata} />
+                            <Pagination />
                         </div>
                         <br />
                     </Collapse>
@@ -153,7 +150,7 @@ const Cards = ({
                         }
                     </div>
                     <div className="px-6 w-full">
-                        <Pagination metadata={metadata} />
+                        <Pagination />
                     </div>
                 </>
         }
