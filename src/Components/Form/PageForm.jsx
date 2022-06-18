@@ -18,11 +18,21 @@ const PageForm = ({
     explanations,
     inputs,
     actions,
-    large
+    large,
+    returnTo
 }) => {
 
     const navigate = useNavigate();
     const { id, entityId } = app.parseQuery()
+
+    const navigateBack = () => {
+        if (returnTo) {
+            navigate(returnTo)
+        }
+        else {
+            navigate(-1)
+        }
+    }
 
     const {
         fields,
@@ -40,7 +50,8 @@ const PageForm = ({
         entityType,
         humanReadableEntityType,
         title,
-        entityId: entityId || id
+        entityId: entityId || id,
+        onSaved: navigateBack
     })
 
     return <Page
@@ -65,7 +76,7 @@ const PageForm = ({
             <Actions
                 actions={actions}
                 handleSubmit={handleSubmit}
-                onCanceled={() => navigate(-1)}
+                onCanceled={navigateBack}
             />
         </FormContext.Provider>
     </Page >

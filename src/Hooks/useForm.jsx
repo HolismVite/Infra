@@ -8,7 +8,8 @@ const useForm = ({
     humanReadableEntityType,
     title,
     okAction,
-    entityId
+    entityId,
+    onSaved
 }) => {
     // is edit, or is create? get id from somewhere
     // file upload
@@ -63,8 +64,7 @@ const useForm = ({
     }, [])
 
     useEffect(() => {
-        if (mode === formMode.edition)
-        {
+        if (mode === formMode.edition) {
             loadEntity()
         }
     }, [])
@@ -155,15 +155,11 @@ const useForm = ({
         if (extraParams && typeof extraParams === 'object') {
             data = { ...data, ...extraParams };
         }
-        console.log(data);
         if (okAction && typeof okAction === 'function') {
             okAction({ setProgress, data, currentEntity });
         }
         else {
             setProgress(true);
-            // setTimeout(() => {
-            //   setProgress(false)
-            // }, 4000)
             let url = `${entityType}/`;
             if (hasFile) {
                 url += 'upload'
@@ -187,6 +183,9 @@ const useForm = ({
             method(url, data).then(data => {
                 success(app.t(`Item ${(mode === formMode.creation ? 'created' : 'updated')} successfully`))
                 setProgress(false);
+                if (onSaved instanceof Function) {
+                    onSaved()
+                }
             }, e => {
                 error(e);
                 setProgress(false);
