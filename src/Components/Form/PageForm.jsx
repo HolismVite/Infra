@@ -1,25 +1,24 @@
 import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { ListContext } from '../List/Contexts';
 import { useForm } from '../../Hooks/useForm'
 import { FormContext } from './Contexts';
 import {
-    Page,
+    Actions,
+    app,
     Explanations,
     FormElement,
-    Actions,
-    app
+    Page,
 } from '@Form';
 
 const PageForm = ({
-    entityType,
-    humanReadableEntityType,
-    title,
-    explanations,
-    inputs,
     actions,
+    entityType,
+    explanations,
+    humanReadableEntityType,
+    inputs,
     large,
-    returnTo
+    returnTo,
+    title,
 }) => {
 
     const navigate = useNavigate();
@@ -35,23 +34,21 @@ const PageForm = ({
     }
 
     const {
-        fields,
-        setFields,
-        calculatedTitle,
         addFieldToFormContext,
-        setField,
-        isValid,
-        progress,
+        calculatedTitle,
         currentEntity,
+        handleSubmit,
+        isValid,
         mode,
+        progress,
+        setField,
         setHasFile,
-        handleSubmit
     } = useForm({
+        entityId: entityId || id,
         entityType,
         humanReadableEntityType,
+        onSaved: navigateBack,
         title,
-        entityId: entityId || id,
-        onSaved: navigateBack
     })
 
     return <Page
@@ -60,11 +57,11 @@ const PageForm = ({
     >
         <FormContext.Provider value={{
             addFieldToFormContext,
-            setField,
-            isValid,
-            progress,
             currentEntity,
+            isValid,
             mode,
+            progress,
+            setField,
             setHasFile
         }}>
             <Explanations explanations={explanations} />

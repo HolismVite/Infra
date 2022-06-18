@@ -21,7 +21,12 @@ const Field = ({
     const [chosenEntity, setChosenEntity] = useState(null);
     const [helpText, setHelpText] = useState(hint);
     const initialHint = hint;
-    const { progress, currentEntity, addFieldToFormContext, setField } = useContext(FormContext);
+    const {
+        progress,
+        currentEntity,
+        addFieldToFormContext,
+        setField
+    } = useContext(FormContext);
     const [validationState, setValidationState] = useState(null);
     const label = placeholder || column;
 

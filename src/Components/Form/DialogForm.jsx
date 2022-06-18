@@ -3,48 +3,49 @@ import Dialog from '../Dialog/Dialog'
 import { ListContext } from '../List/Contexts'
 import { useForm } from '../../Hooks/useForm'
 import {
+    Actions,
     Explanations,
     FormElement,
-    Actions,
-    app,
 } from '@Form';
 import { FormContext } from './Contexts';
 
 const DialogForm = ({
-    entityType,
-    humanReadableEntityType,
-    title,
-    explanations,
-    inputs,
     actions,
+    close,
+    entityType,
+    explanations,
+    humanReadableEntityType,
+    inputs,
+    isOpen,
     large,
     okAction,
-    entityId,
-    dialogPurpose,
-    isOpen,
-    close
+    title,
 }) => {
 
     const {
+        dialogProps,
         isDialogOpen,
         setIsDialogOpen,
-        dialogProps
     } = useContext(ListContext)
     const [open, setOpen] = useState(isDialogOpen)
+    const [entityId, setEntityId] = useState(null)
 
     const {
-        fields,
-        setFields,
-        calculatedTitle,
         addFieldToFormContext,
-        setField,
-        isValid,
-        progress,
+        calculatedTitle,
         currentEntity,
+        fields,
+        focusFirstInput,
+        handleSubmit,
+        isValid,
+        loadEntity,
         mode,
+        progress,
+        setField,
+        setFields,
         setHasFile,
-        handleSubmit
     } = useForm({
+        entityId,
         entityType,
         humanReadableEntityType,
         title
@@ -56,34 +57,21 @@ const DialogForm = ({
                 setCurrentEntity(dialogProps.entity);
             }
             if (dialogProps.entityId) {
-
+                setEntityId(dialogProps.entityId)
             }
             setIsDialogOpen(true)
         }
     }, [isDialogOpen])
 
-    useEffect(() => {
-        const onEntityActionDialogRequested = ({ entity, purpose }) => {
-            if (entity?.id === entityId && dialogPurpose === purpose) {
-                setIsDialogOpen(true);
-            }
-        }
-        // app.on(app.entityActionDialogRequested, onEntityActionDialogRequested)
-    }, [entityId, dialogPurpose])
-
-    useEffect(() => {
-        const onFormCanceled = (item) => {
-            setIsDialogOpen(false);
-            if (close && typeof close === 'function') {
-                close()
-            }
-        }
-        // app.on(app.formCanceled, onFormCanceled)
-    }, [])
-
     return <FormContext.Provider
         value={{
-
+            addFieldToFormContext,
+            currentEntity,
+            isValid,
+            mode,
+            progress,
+            setField,
+            setHasFile
         }}>
         <Dialog
             title={calculatedTitle}

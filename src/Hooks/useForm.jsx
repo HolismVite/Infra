@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import useMessage from './useMessage'
 import { FormContext } from '../Components/Form/Contexts'
 import { post, get } from '../Base/Api'
+import app from '../Base/App'
 
 const useForm = ({
     entityType,
@@ -60,14 +61,20 @@ const useForm = ({
     }
 
     useEffect(() => {
-        // app.updateToken();
+        app.updateToken();
     }, [])
+
+    useEffect(() => {
+        if (entityId) {
+            setMode(formMode.edition)
+        }
+    }, [entityId])
 
     useEffect(() => {
         if (mode === formMode.edition) {
             loadEntity()
         }
-    }, [])
+    }, [mode])
 
     const loadEntity = () => {
         setProgress(true)
@@ -195,17 +202,19 @@ const useForm = ({
     }
 
     return {
-        fields,
-        setFields,
-        calculatedTitle,
         addFieldToFormContext,
-        setField,
-        isValid,
-        progress,
+        calculatedTitle,
         currentEntity,
+        fields,
+        focusFirstInput,
+        handleSubmit,
+        isValid,
+        loadEntity,
         mode,
+        progress,
+        setField,
+        setFields,
         setHasFile,
-        handleSubmit
     }
 }
 
