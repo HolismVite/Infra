@@ -10,8 +10,7 @@ const UpsertAction = () => {
         upsert,
         upsertionIcon,
         upsertionText,
-        setIsDialogOpen,
-        setDialogProps,
+        showDialog
     } = useContext(ListContext)
 
     const icon = upsertionIcon
@@ -33,10 +32,10 @@ const UpsertAction = () => {
                             navigate(create)
                         }
                         else {
-                            setDialogProps({
-                                purpose: 'creation'
+                            showDialog({
+                                purpose: 'creation',
+                                entity: null
                             })
-                            setIsDialogOpen(true)
                         }
                     }}
                 >

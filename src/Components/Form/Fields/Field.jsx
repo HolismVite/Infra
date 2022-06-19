@@ -118,7 +118,7 @@ const Field = ({
             <FormHelperText
                 disabled={progress}
             >
-                {app.t(helpText)}
+                {app.t(helpText) || " "}
             </FormHelperText>
         </FormControl>
     </div>

@@ -39,6 +39,7 @@ const DialogForm = ({
         progress,
         setCurrentEntity,
         setField,
+        setFields,
         setHasFile,
     } = useForm({
         entityId,
@@ -52,9 +53,13 @@ const DialogForm = ({
     })
 
     useEffect(() => {
-        if (dialogProps?.purpose === 'edition' && dialogProps?.entityType === entityType) {
+        if (dialogProps?.purpose === 'creation') {
+            setCurrentEntity(null)
+            setFields([])
+        }
+        else if (dialogProps?.purpose === 'edition' && dialogProps?.entityType === entityType) {
             if (dialogProps.entity) {
-                setCurrentEntity(dialogProps.entity);
+                setCurrentEntity(dialogProps.entity)
             }
             if (dialogProps.entityId) {
                 setEntityId(dialogProps.entityId)
