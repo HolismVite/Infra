@@ -41,7 +41,11 @@ const Cards = () => {
                 <NoEntitiesFound />
                 :
                 <>
-                    <Collapse in={showTopPagiation} className="w-full">
+                    <Collapse
+                        in={showTopPagiation}
+                        className="w-full"
+                        unmountOnExit
+                    >
                         <div className="px-6 w-full">
                             <Pagination />
                         </div>
@@ -110,7 +114,7 @@ const Cards = () => {
                                                             }}
                                                         />
                                                     </div>
-                                                    <div>
+                                                    <div className="flex-1">
                                                         {
                                                             card(item)
                                                         }

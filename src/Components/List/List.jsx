@@ -102,6 +102,7 @@ const List = ({
 
   return <ListContext.Provider value={{
     card,
+    classProvider,
     closeDialog,
     create,
     data,

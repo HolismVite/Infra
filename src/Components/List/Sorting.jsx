@@ -65,7 +65,7 @@ const Sorting = ({ sorts }) => {
                     :
                     null
                 }
-                {currentSort.caption}
+                {app.t(currentSort.caption)}
             </div>
             <div className="flex items-center" onClick={handleClick} aria-controls='sortsMenu'>
                 <ImportExportIcon />
@@ -94,7 +94,7 @@ const Sorting = ({ sorts }) => {
                         event.preventDefault();
                     }}
                 >
-                    {sort.caption}
+                    {app.t(sort.caption)}
                 </MenuItem>)
             }
         </Menu>
