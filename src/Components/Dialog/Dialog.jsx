@@ -21,7 +21,7 @@ const Dialog = ({
 
     return <MuiDialog
         open={isOpen}
-        onClose={() => typeof isOpen === 'boolean' ? null : setOpen(false)}
+        onClose={() => onClosed instanceof Function && onClosed(false)}
         aria-labelledby="dialogTitle"
         id="dialog"
         fullWidth
@@ -54,7 +54,7 @@ const Dialog = ({
                             if (typeof isOpen !== 'boolean') {
                                 setOpen(false)
                             }
-                            if (onClosed && typeof onClosed === 'function') {
+                            if (onClosed instanceof Function) {
                                 onClosed()
                             }
                         }}

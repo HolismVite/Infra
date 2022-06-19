@@ -11,7 +11,7 @@ import useMessage from '../../../Hooks/useMessage'
 
 const EntityAction = ({
     title,
-    item,
+    entity,
     icon,
     click,
     goTo,
@@ -27,13 +27,14 @@ const EntityAction = ({
 
     const navigate = useNavigate()
     const { success, error } = useMessage()
+    const [isOpen, setIsOpen] = useState(false)
 
     const handleClick = (e) => {
-        app.selectedItem = item;
+        app.selectedItem = entity;
         if (goTo) {
-            app.selectedItem = item;
+            app.selectedItem = entity;
             if (typeof goTo === 'function') {
-                navigate(goTo(item));
+                navigate(goTo(entity));
             }
             else {
                 navigate(goTo);
@@ -42,7 +43,7 @@ const EntityAction = ({
         else if (click && typeof click === 'function') {
             click({
                 error,
-                item,
+                entity,
                 reload,
                 setEntity,
                 setProgress,
@@ -50,28 +51,15 @@ const EntityAction = ({
             })
         }
         else if (dialog) {
-            // app.emit(app.entityActionDialogRequested, {
-            //     entity: item,
-            //     purpose: title
-            // })
+            setIsOpen(true)
         }
         else {
-            console.warn(`No action is assigned to item action. Title is '${title}'`)
+            console.warn(`No action is assigned to entity action. Title is '${title}'`)
         }
         e.stopPropagation()
         e.preventDefault()
         e.nativeEvent.stopPropagation()
         e.nativeEvent.preventDefault()
-    }
-
-    let DialogInstanceCloned = null
-
-    if (dialog) {
-        const DialogInstance = dialog(item)
-        DialogInstanceCloned = React.cloneElement(DialogInstance, {
-            entityId: item.id,
-            dialogPurpose: title
-        })
     }
 
     const [progress, setProgress] = useState(false);
@@ -124,7 +112,14 @@ const EntityAction = ({
                     </Tooltip>
             }
             {
-                dialog && DialogInstanceCloned
+                dialog &&
+                <Unify
+                    component={dialog}
+                    entity={entity}
+                    dialogPurpose={title}
+                    isOpen={isOpen}
+                    onClosed={() => setIsOpen(false)}
+                />
             }
         </span >
 };
