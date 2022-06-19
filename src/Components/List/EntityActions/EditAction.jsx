@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import { EntityAction } from '@List';
 import { app } from '@List';
 import { useNavigate } from 'react-router-dom';
 import { ListContext } from '../Contexts'
 import { EntityContext } from '../Contexts';
+import DialogContext from '../../Dialog/DialogContext';
 
 const EditAction = () => {
+
+    const [open, setOpen] = useState(false)
 
     const navigate = useNavigate();
     const {
@@ -15,7 +18,6 @@ const EditAction = () => {
         entityType,
         hasEdit,
         menuForActions,
-        showDialog,
         upsert,
     } = useContext(ListContext)
     const { entity } = useContext(EntityContext)
@@ -28,11 +30,7 @@ const EditAction = () => {
             if (typeof component === 'function') {
                 var result = component(entity);
                 if (typeof result === 'object') {
-                    showDialog({
-                        purpose: 'edition',
-                        entity,
-                        entityType
-                    })
+                    setOpen(true)
                 }
                 else if (typeof result === 'string') {
                     navigate(result);
@@ -42,16 +40,33 @@ const EditAction = () => {
                 }
             }
             else {
-                showDialog({
-                    purpose: 'edition',
-                    entity,
-                    entityType
-                })
+                setOpen(true)
             }
         }
     }
 
-    return <>
+    return <DialogContext.Provider
+        value={{
+            open,
+            setOpen
+        }}
+    >
+        {
+            create && typeof create !== 'string' &&
+            <Unify
+                component={create}
+            />
+        }
+        {
+            upsert && typeof upsert !== 'string' &&
+            <Unify
+                component={upsert}
+            />
+        }
+        {
+            edit && typeof edit !== 'string' &&
+            <Unify component={edit} />
+        }
         <EntityAction
             icon={<EditIcon style={{ color: '#10B981' }} />}
             title={app.t("Edit")}
@@ -73,7 +88,7 @@ const EditAction = () => {
                 }
             }}
         />
-    </>
+    </DialogContext.Provider>
 }
 
 export default EditAction;

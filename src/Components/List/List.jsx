@@ -8,7 +8,6 @@ import app from '../../Base/App'
 import useLocalStorageState from '../../Base/UseLocalStorageState'
 import { TopContext } from '../../Panel/Panel'
 import { ListContext } from './Contexts'
-import Unify from '../Unify';
 import { useSearchParams } from 'react-router-dom'
 import ShowHideTopPagination from './ShowHideTopPagination'
 import ShowHideFiltering from './ShowHideFiltering'
@@ -54,7 +53,6 @@ const List = ({
   const { setTitle, setSubtitle, setBreadcrumbItems } = useContext(TopContext)
   let [searchParams] = useSearchParams();
   const [dialogProps, setDialogProps] = useState({})
-  const [isDialogOpen, setIsDialogOpen] = useState(searchParams.get("showDialog") || false);
 
   const {
     data,
@@ -76,20 +74,6 @@ const List = ({
     isTree
   })
 
-  const showDialog = ({ entity, purpose, ...props }) => {
-    setDialogProps({
-      purpose,
-      entity,
-      ...props
-    })
-    setIsDialogOpen(true)
-  }
-
-  const closeDialog = () => {
-    setDialogProps(null)
-    setIsDialogOpen(false)
-  }
-
   useEffect(() => {
     // console.log(selectedEntities)
   }, [selectedEntities])
@@ -103,7 +87,6 @@ const List = ({
   return <ListContext.Provider value={{
     card,
     classProvider,
-    closeDialog,
     create,
     data,
     deselectEntities,
@@ -118,7 +101,6 @@ const List = ({
     hasItemSelection,
     headers,
     hiddenEntityActions,
-    isDialogOpen,
     isFilteringOpen,
     isTree,
     listActionIconStyle,
@@ -139,10 +121,8 @@ const List = ({
     setEntity,
     setEntityProgress,
     setHiddenEntityActions,
-    setIsDialogOpen,
     setIsFilteringOpen,
     setTopPaginationVisibility,
-    showDialog,
     showTopPagiation,
     upsert,
     upsertionIcon,
@@ -176,18 +156,7 @@ const List = ({
     </Collapse>
 
     <Entities />
-    {/* {
-      create && typeof create !== 'string' &&
-      <Unify component={create} />
-    }
-    {
-      upsert && typeof upsert !== 'string' &&
-      <Unify component={upsert} />
-    }
-    {
-      edit && typeof edit !== 'string' &&
-      <Unify component={edit} />
-    } */}
+
   </ListContext.Provider>
 }
 

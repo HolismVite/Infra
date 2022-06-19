@@ -19,7 +19,6 @@ const UpsertAction = () => {
         upsert,
         upsertionIcon,
         upsertionText,
-        showDialog
     } = useContext(ListContext)
 
     const icon = upsertionIcon
