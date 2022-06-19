@@ -10,12 +10,11 @@ import useMessage from '../../../Hooks/useMessage'
 const ListAction = ({ icon, text, title, click, minCardinality }) => {
 
     const [progress, setProgress] = useState(false);
-    const { selectedEntities } = useContext(ListContext);
+    const {
+        selectedEntities,
+        reload
+    } = useContext(ListContext);
     const { success, error } = useMessage()
-
-    const reloadList = () => {
-        // app.emit(app.reloadRequested)
-    }
 
     const button = <Button
         variant="outlined"
@@ -36,7 +35,12 @@ const ListAction = ({ icon, text, title, click, minCardinality }) => {
 
         }
         /* HolismIcon creates 321 error in production build */
-        onClick={() => click({ setProgress, reloadList, success, error })}
+        onClick={() => click({
+            error,
+            reloadList: reload,
+            setProgress,
+            success,
+        })}
         className='mr-2 mt-2 lg:mt-0'
     >
         {app.t(text || title)}
