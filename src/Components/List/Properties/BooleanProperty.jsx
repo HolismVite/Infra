@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Switch from '@mui/material/Switch';
 import Tooltip from '@mui/material/Tooltip';
 import CircularProgress from '@mui/material/CircularProgress';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import { app, post, HolismIcon, useMessage } from '@List';
+import { ListContext } from '../Contexts'
 
 const BooleanProperty = ({
     column,
@@ -16,6 +17,8 @@ const BooleanProperty = ({
     const { success, error } = useMessage()
 
     const [progress, setProgress] = useState(false);
+
+    const { setEntity } = useContext(ListContext)
 
     const onChange = (e) => {
         if (!actionUrl || app.isNothing(actionUrl)) {
@@ -29,7 +32,7 @@ const BooleanProperty = ({
         post(api).then(data => {
             setProgress(false);
             success('Applied');
-            // app.emit(app.entityRerenderRequested, data);
+            setEntity(data)
         }, e => {
             error(e);
             setProgress(false);
