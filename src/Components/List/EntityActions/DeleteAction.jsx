@@ -8,10 +8,11 @@ import Dialog from '../../../Components/Dialog/Dialog'
 import { OkCancel } from '../../../Components/Dialog/OkCancel'
 import { ListContext } from '../Contexts'
 import useMessage from '../../../Hooks/useMessage'
+import DialogContext from '../../Dialog/DialogContext'
 
 const DeleteAction = () => {
 
-    const [confirmationDialogIsOpen, setConfirmationDialogVisibility] = useState(false)
+    const [open, setOpen] = useState(false)
     const [progress, setProgress] = useState(false)
 
     const { entityType, reload, menuForActions } = useContext(ListContext)
@@ -19,7 +20,7 @@ const DeleteAction = () => {
     const { success, error } = useMessage()
 
     const deleteItem = () => {
-        setConfirmationDialogVisibility(false)
+        setOpen(false)
         setProgress(true)
         post(`${entityType}/delete/${entity.id}`).then(data => {
             success(app.t("Deleted successfully"))
@@ -33,7 +34,7 @@ const DeleteAction = () => {
 
     const confirmationDialog = <Dialog
         tiny
-        isOpen={confirmationDialogIsOpen}
+        isOpen={open}
         title={app.t('Confirmation')}
         content={<div className="flex justify-center items-center flex-col sm:flex-row">
             <HolismIcon icon={WarningIcon} className="text-red-400 text-5xl ltr:mr-4 rtl:ml-4" />
@@ -45,7 +46,7 @@ const DeleteAction = () => {
         actions={<OkCancel
             okText='Yes'
             cancelText='No'
-            cancelClick={() => setConfirmationDialogVisibility(false)}
+            cancelClick={() => setOpen(false)}
             okClick={deleteItem}
         />}
     />
@@ -62,7 +63,7 @@ const DeleteAction = () => {
                     title={app.t("Delete")}
                     asMenuItem={menuForActions}
                     click={(e) => {
-                        setConfirmationDialogVisibility(true)
+                        setOpen(true)
                     }}
                 />
         }
