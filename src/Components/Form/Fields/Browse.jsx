@@ -14,6 +14,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Tooltip from '@mui/material/Tooltip';
 import { Field, app } from '@Form';
 import ClearIcon from '@mui/icons-material/Clear';
+import Pagination from '../../List/Pagination';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -134,6 +135,9 @@ const Browse = ({
                 })
             }
         </DialogContent>
+        <DialogActions>
+            <Pagination />
+        </DialogActions>
     </Dialog>
 
     return <Field
