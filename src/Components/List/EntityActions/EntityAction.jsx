@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { HolismIcon, app, Unify } from '@List';
 import useMessage from '../../../Hooks/useMessage'
 import { ListContext } from '../Contexts';
+import DialogContext from '../../Dialog/DialogContext'
 
 const EntityAction = ({
     asMenuItem,
@@ -29,8 +30,8 @@ const EntityAction = ({
 
     const navigate = useNavigate()
     const { success, error } = useMessage()
-    const [isOpen, setIsOpen] = useState(false)
     const { reloadEntity } = useContext(ListContext)
+    const [open, setOpen] = useState(false)
 
     const handleClick = (e) => {
         app.selectedItem = entity;
@@ -54,7 +55,7 @@ const EntityAction = ({
             })
         }
         else if (dialog) {
-            setIsOpen(true)
+            setOpen(true)
         }
         else {
             console.warn(`No action is assigned to entity action. Title is '${title}'`)
@@ -71,64 +72,69 @@ const EntityAction = ({
         return <span className="hidden"></span>
     }
 
-    return asMenuItem ?
-        <>
-            <MenuItem onClick={(e) => {
-                handleClick(e)
-                if (closeMenu && typeof closeMenu === 'function') {
-                    // closeMenu()
-                }
-            }}>
-                <ListItemIcon>
-                    <HolismIcon
-                        icon={icon}
-                        className={color}
-                    />
-                </ListItemIcon>
-                <ListItemText>{app.t(title || "")}</ListItemText>
-            </MenuItem>
-            {
-                dialog && DialogInstanceCloned
-            }
-        </>
-        :
-        <span className="entityAction flex items-center justify-center">
-            {
-                (progress || progress === true)
-                    ?
-                    <CircularProgress size={24} className="m-2" />
-                    :
-                    <Tooltip title={app.t(title || "")}>
-                        <IconButton onClick={handleClick}>
-                            {
-                                <HolismIcon
-                                    icon={icon}
-                                    className={color}
-                                />
-                                // <CircularProgress
-                                //     variant="determinate"
-                                //     value={100}
-                                //     size={20}
-                                // />
-                            }
-                        </IconButton>
-                    </Tooltip>
-            }
-            {
-                dialog &&
-                <Unify
-                    component={dialog}
-                    entity={entity}
-                    dialogPurpose={title}
-                    isOpen={isOpen}
-                    reloadEntity={reloadEntity}
-                    close={() => setIsOpen(false)}
-                    onClosed={() => setIsOpen(false)}
-                    setEntity={setEntity}
-                    {...rest}
-                />
-            }
-        </span >
+    return <DialogContext.Provider
+        value={{
+            open,
+            setOpen
+        }}
+    >
+        {
+            asMenuItem ?
+                <>
+                    <MenuItem onClick={(e) => {
+                        handleClick(e)
+                        if (closeMenu && typeof closeMenu === 'function') {
+                            // closeMenu()
+                        }
+                    }}>
+                        <ListItemIcon>
+                            <HolismIcon
+                                icon={icon}
+                                className={color}
+                            />
+                        </ListItemIcon>
+                        <ListItemText>{app.t(title || "")}</ListItemText>
+                    </MenuItem>
+                    {
+                        dialog && DialogInstanceCloned
+                    }
+                </>
+                :
+                <span className="entityAction flex items-center justify-center">
+                    {
+                        (progress || progress === true)
+                            ?
+                            <CircularProgress size={24} className="m-2" />
+                            :
+                            <Tooltip title={app.t(title || "")}>
+                                <IconButton onClick={handleClick}>
+                                    {
+                                        <HolismIcon
+                                            icon={icon}
+                                            className={color}
+                                        />
+                                        // <CircularProgress
+                                        //     variant="determinate"
+                                        //     value={100}
+                                        //     size={20}
+                                        // />
+                                    }
+                                </IconButton>
+                            </Tooltip>
+                    }
+                    {
+                        dialog &&
+                        <Unify
+                            component={dialog}
+                            entity={entity}
+                            reloadEntity={reloadEntity}
+                            setEntity={setEntity}
+                            {...rest}
+                        />
+                    }
+                </span >
+        }
+    </DialogContext.Provider>
 };
 
 export { EntityAction }
