@@ -16,6 +16,8 @@ const Cards = () => {
         classProvider,
         create,
         data,
+        deselectEntities,
+        deselectEntity,
         edit,
         entityActions,
         entityType,
@@ -25,17 +27,12 @@ const Cards = () => {
         multicolumn,
         reload,
         selectedEntities,
+        selectEntities,
+        selectEntity,
         setEntity,
         showTopPagiation,
         upsert,
     } = useContext(ListContext);
-
-    const {
-        selectEntity,
-        selectEntities,
-        deselectEntity,
-        deselectEntities,
-    } = useList()
 
     return <>
         {
