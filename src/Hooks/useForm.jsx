@@ -162,11 +162,17 @@ const useForm = ({
                 data[key] = fields[i].value;
             }
         }
-        if (extraParams && typeof extraParams === 'object') {
+        if (extraParams instanceof Object) {
             data = { ...data, ...extraParams };
         }
-        if (okAction && typeof okAction === 'function') {
-            okAction({ setProgress, data, currentEntity });
+        if (okAction instanceof Function) {
+            okAction({
+                currentEntity,
+                data,
+                error,
+                setProgress,
+                success,
+            });
         }
         else {
             setProgress(true);

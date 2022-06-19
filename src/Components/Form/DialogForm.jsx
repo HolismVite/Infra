@@ -18,6 +18,7 @@ const DialogForm = ({
     large,
     title,
     close,
+    okAction,
     ...rest
 }) => {
 
@@ -51,6 +52,7 @@ const DialogForm = ({
             closeDialog()
             reload()
         },
+        okAction,
         title
     })
 
