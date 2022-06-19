@@ -17,6 +17,7 @@ const PageForm = ({
     humanReadableEntityType,
     inputs,
     large,
+    loader,
     returnTo,
     title,
 }) => {
@@ -47,6 +48,7 @@ const PageForm = ({
         entityId: entityId || id,
         entityType,
         humanReadableEntityType,
+        loader,
         onSaved: navigateBack,
         title,
     })

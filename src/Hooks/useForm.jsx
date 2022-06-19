@@ -4,13 +4,14 @@ import { post, get } from '../Base/Api'
 import app from '../Base/App'
 
 const useForm = ({
+    entity,
+    entityId,
     entityType,
     humanReadableEntityType,
-    title,
+    loader,
     okAction,
-    entityId,
-    entity,
-    onSaved
+    onSaved,
+    title,
 }) => {
     // is edit, or is create? get id from somewhere
     // file upload
@@ -59,6 +60,15 @@ const useForm = ({
             return [...previousFields]
         })
     }
+
+    useEffect(() => {
+        if (loader instanceof Function) {
+            loader({
+                setEntity: setCurrentEntity,
+                setProgress
+            })
+        }
+    }, [])
 
     useEffect(() => {
         app.updateToken();
