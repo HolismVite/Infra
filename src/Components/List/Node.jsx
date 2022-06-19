@@ -22,7 +22,7 @@ const Node = ({
     edit,
     upsert,
     entityActions,
-    setItem,
+    setEntity,
     reload
 }) => {
     const [isExpanded, setIsExpanded] = useState(expanded)
@@ -89,7 +89,7 @@ const Node = ({
                             edit={edit}
                             create={create}
                             upsert={upsert}
-                            setItem={setItem}
+                            setEntity={setEntity}
                             reload={reload}
                         />
                         :
@@ -113,7 +113,7 @@ const Node = ({
                         edit={edit}
                         upsert={upsert}
                         entityActions={entityActions}
-                        setItem={setItem}
+                        setEntity={setEntity}
                         reload={reload}
                     />
                 </ul>)

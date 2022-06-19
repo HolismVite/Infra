@@ -7,6 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { useNavigate } from 'react-router-dom';
 import { HolismIcon, app, Unify } from '@List';
+import useMessage from '../../../Hooks/useMessage'
 
 const EntityAction = ({
     title,
@@ -15,7 +16,7 @@ const EntityAction = ({
     click,
     goTo,
     dialog,
-    setItem,
+    setEntity,
     reload,
     color,
     hoverOnly,
@@ -24,7 +25,8 @@ const EntityAction = ({
     closeMenu
 }) => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const { success, error } = useMessage()
 
     const handleClick = (e) => {
         app.selectedItem = item;
@@ -38,7 +40,14 @@ const EntityAction = ({
             }
         }
         else if (click && typeof click === 'function') {
-            click({ item, setProgress, setItem, reload })
+            click({
+                error,
+                item,
+                reload,
+                setEntity,
+                setProgress,
+                success,
+            })
         }
         else if (dialog) {
             // app.emit(app.entityActionDialogRequested, {

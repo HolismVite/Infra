@@ -144,7 +144,7 @@ const useList = ({
         get(`${entityType}/get/${entity.id}`)
             .then(result => {
                 setEntityProgress(entity, false)
-                setItem(result)
+                setEntity(result)
             }, error => {
                 setEntityProgress(entity, false)
                 app.error(error)

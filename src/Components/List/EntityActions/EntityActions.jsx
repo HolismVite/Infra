@@ -18,7 +18,7 @@ const EntityActions = ({
     edit,
     create,
     upsert,
-    setItem,
+    setEntity,
     reload,
     className
 }) => {
@@ -77,7 +77,7 @@ const EntityActions = ({
                 })
                 .map(entityAction => React.cloneElement(entityAction, {
                     entity: entity,
-                    setItem: setItem,
+                    setEntity: setEntity,
                     reload: reload,
                     asMenuItem: menuForActions,
                     closeMenu: handleClose

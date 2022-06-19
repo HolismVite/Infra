@@ -25,7 +25,7 @@ const Cards = () => {
         multicolumn,
         reload,
         selectedEntities,
-        setItem,
+        setEntity,
         showTopPagiation,
         upsert,
     } = useContext(ListContext);
@@ -137,7 +137,7 @@ const Cards = () => {
                                                         edit={edit}
                                                         create={create}
                                                         upsert={upsert}
-                                                        setItem={setItem}
+                                                        setEntity={setEntity}
                                                         reload={reload}
                                                     />
                                                 </div>

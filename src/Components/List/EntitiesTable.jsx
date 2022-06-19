@@ -32,7 +32,7 @@ const Table = () => {
         selectEntity,
         selectedEntities,
         separateRowForActions,
-        setItem,
+        setEntity,
         showTopPagiation,
         upsert,
     } = useContext(ListContext);
@@ -58,31 +58,29 @@ const Table = () => {
 
         <thead>
             <tr className={
-                'text-xs uppercase font-light border-b '
+                'text-xs uppercase font-light border-b h-10'
                 + (app.getLocale().supportsLetterSpacing && " tracking-wider ")
             }>
                 {
                     hasItemSelection ?
-                        <>
-                            <th>
-                                <Tooltip
-                                    title={app.t("Select all")}
-                                    placement="top"
-                                >
-                                    <Checkbox
-                                        color="primary"
-                                        onChange={(event) => {
-                                            event.target.checked
-                                                ?
-                                                selectEntities(data)
-                                                :
-                                                deselectEntities(data)
-                                        }}
-                                        inputProps={{ 'aria-label': app.t('Select all') }}
-                                    />
-                                </Tooltip>
-                            </th>
-                        </>
+                        <th>
+                            <Tooltip
+                                title={app.t("Select all")}
+                                placement="top"
+                            >
+                                <Checkbox
+                                    color="primary"
+                                    onChange={(event) => {
+                                        event.target.checked
+                                            ?
+                                            selectEntities(data)
+                                            :
+                                            deselectEntities(data)
+                                    }}
+                                    inputProps={{ 'aria-label': app.t('Select all') }}
+                                />
+                            </Tooltip>
+                        </th>
                         :
                         null
                 }
@@ -107,7 +105,7 @@ const Table = () => {
         ?
         <td>
             <Checkbox
-                checked={selectedEntities.indexOf(item.id) > -1}
+                checked={selectedEntities?.indexOf(item.id) > -1}
                 color="primary"
                 onChange={(event) => {
                     event.target.checked
@@ -142,7 +140,7 @@ const Table = () => {
                 edit={edit}
                 create={create}
                 upsert={upsert}
-                setItem={setItem}
+                setEntity={setEntity}
                 reload={reload}
             />
         </td>
