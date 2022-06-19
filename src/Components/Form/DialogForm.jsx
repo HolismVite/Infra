@@ -8,6 +8,7 @@ import {
     FormElement,
 } from '@Form';
 import { FormContext } from './Contexts';
+import DialogContext from '../Dialog/DialogContext';
 
 const DialogForm = ({
     actions,
@@ -23,12 +24,13 @@ const DialogForm = ({
 }) => {
 
     const {
-        closeDialog,
         dialogProps,
-        isDialogOpen,
         reload,
-        setIsDialogOpen,
     } = useContext(ListContext)
+
+    const dialogContext = useContext(DialogContext)
+    const { setOpen } = dialogContext || {}
+
     const [entityId, setEntityId] = useState(null)
 
     const {
@@ -49,7 +51,7 @@ const DialogForm = ({
         entityType,
         humanReadableEntityType,
         onSaved: () => {
-            closeDialog()
+            setOpen(false)
             reload()
         },
         okAction,
@@ -76,7 +78,7 @@ const DialogForm = ({
             setCurrentEntity(null)
             setEntityId(null)
         }
-    }, [isDialogOpen, dialogProps])
+    }, [dialogProps])
 
     return <FormContext.Provider
         value={{
@@ -101,19 +103,13 @@ const DialogForm = ({
             actions={<Actions
                 actions={actions}
                 handleSubmit={handleSubmit}
-                onCanceled={() => {
-                    closeDialog()
-                    if (close instanceof Function) {
-                        close()
-                    }
-                }}
+                onCanceled={() => setOpen(false)}
             />}
-            isOpen={isDialogOpen}
             onEntered={() => {
                 focusFirstInput('dialogForm')
             }}
             large={large}
-            onClosed={closeDialog}
+            onClosed={() => setOpen(false)}
             {...rest}
         />
     </FormContext.Provider>

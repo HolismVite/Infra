@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Button from '@mui/material/Button';
+import React, { useContext } from 'react';
 import MuiDialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -7,11 +6,11 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { app } from '../../Base/App'
 import { PrimaryAction } from './PrimaryAction';
+import DialogContext from './DialogContext';
 
 const Dialog = ({
     title,
     content,
-    isOpen,
     actions,
     large,
     tiny,
@@ -19,9 +18,15 @@ const Dialog = ({
     onClosed
 }) => {
 
+    const dialogContext = useContext(DialogContext)
+    const { open, setOpen } = dialogContext || {}
+
     return <MuiDialog
-        open={isOpen}
-        onClose={() => onClosed instanceof Function && onClosed(false)}
+        open={open}
+        onClose={() => {
+            setOpen(false)
+            onClosed instanceof Function && onClosed(false)
+        }}
         aria-labelledby="dialogTitle"
         id="dialog"
         fullWidth
@@ -51,12 +56,8 @@ const Dialog = ({
                     <PrimaryAction
                         text='Ok'
                         click={() => {
-                            if (typeof isOpen !== 'boolean') {
-                                setOpen(false)
-                            }
-                            if (onClosed instanceof Function) {
-                                onClosed()
-                            }
+                            setOpen(false)
+                            onClosed instanceof Function && onClosed()
                         }}
                     />
             }
