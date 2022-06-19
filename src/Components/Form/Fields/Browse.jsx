@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
+import CachedIcon from '@mui/icons-material/Cached';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -89,14 +90,41 @@ const Browse = ({
             id="browserDialog"
             className="bg-gray-100"
         >
-            <div className="flex items-center">
-                <IconButton
-                    onClick={() => setIsBrowserDialogOpen(false)}
-                    aria-label="close"
+            <div className="flex items-center justify-between">
+                <div
+                    className="flex gap-4 items-center"
                 >
-                    <CloseIcon />
-                </IconButton>
-                <span className="ml-4">{app.t("Find")}</span>
+                    <IconButton
+                        onClick={() => setIsBrowserDialogOpen(false)}
+                        aria-label="close"
+                    >
+                        <CloseIcon />
+                    </IconButton>
+                    <span className="ml-4">{app.t("Find")}</span>
+                </div>
+                <div
+                    dir='ltr'
+                    className="listActions flex-1 flex gap-4"
+                >
+                    <IconButton
+                        onClick={() => setIsBrowserDialogOpen(false)}
+                        aria-label="close"
+                    >
+                        <CloseIcon />
+                    </IconButton>
+                    <IconButton
+                        onClick={() => setIsBrowserDialogOpen(false)}
+                        aria-label="close"
+                    >
+                        <CloseIcon />
+                    </IconButton>
+                    <IconButton
+                        onClick={() => setIsBrowserDialogOpen(false)}
+                        aria-label="close"
+                    >
+                        <CachedIcon />
+                    </IconButton>
+                </div>
             </div>
         </DialogTitle>
         <DialogContent>
@@ -106,20 +134,6 @@ const Browse = ({
                 })
             }
         </DialogContent>
-        <DialogActions>
-            <div id='actions' className='mt-4'>
-                {
-                    <div className="mr-6 mb-6" >
-                        <Button
-                            variant="outlined"
-                            onClick={() => setIsBrowserDialogOpen(false)}
-                        >
-                            {app.t('Cancel')}
-                        </Button>
-                    </div>
-                }
-            </div>
-        </DialogActions>
     </Dialog>
 
     return <Field

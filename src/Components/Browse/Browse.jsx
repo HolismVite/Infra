@@ -1,28 +1,39 @@
 import React, { useState } from 'react';
 import FilterListIcon from '@mui/icons-material/FilterList';
-import CachedIcon from '@mui/icons-material/Cached';
 import CheckIcon from '@mui/icons-material/Check';
 import Collapse from '@mui/material/Collapse';
 import Filtering from "../List/Filtering";
 import Sorting from "../List/Sorting";
 import Entities from "../List/Entities";
 import { app, EntityAction, ListContext, useLocalStorageState } from '@List';
-import useListParameters from '../../Hooks/useListParameters';
+import useList from '../../Hooks/useList';
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer";
 
 const Browse = ({
-    sorts,
-    filters,
-    row,
+    callerId,
     card,
     entityType,
+    filters,
     headers,
-    callerId
+    isTree,
+    row,
+    sorts,
 }) => {
 
-    const listParameters = useListParameters(app.userGuid(), entityType)
     const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isFilteringOpen`);
+
+    const {
+        data,
+        hasData,
+        listParameters,
+        loading,
+        metadata,
+        reload,
+    } = useList({
+        entityType,
+        isTree
+    })
 
     const toggleFiltering = () => {
         setIsFilteringOpen(!isFilteringOpen);
@@ -39,8 +50,13 @@ const Browse = ({
     </>
 
     return <ListContext.Provider value={{
-        listParameters: listParameters,
-    }} id='list'>
+        data,
+        hasData,
+        listParameters,
+        loading,
+        metadata,
+        reload,
+    }} id='browser'>
         <div className='flex items-center justify-end px-6 py-2'>
             <div className="flex items-center">
                 {
@@ -60,17 +76,6 @@ const Browse = ({
                         :
                         null
                 }
-                {
-                    <span
-                        id='reload'
-                        onClick={() => {
-                            // app.emit(app.reloadRequested)
-                        }}
-                        className={listActionIconStyle}
-                    >
-                        <CachedIcon />
-                    </span>
-                }
             </div>
         </div>
 
@@ -81,10 +86,6 @@ const Browse = ({
         </Collapse>
 
         <Entities
-            entityType={entityType}
-            headers={headers}
-            row={row}
-            card={card}
             entityActions={entityActions}
         />
     </ListContext.Provider>
