@@ -13,7 +13,7 @@ const useList = ({
     const [data, setData] = useState([]);
     const [metadata, setMetadata] = useState({});
     const [hasData, setHasData] = useState(false)
-    const [selectedEntities, setSelectedEntities] = useState()
+    const [selectedEntities, setSelectedEntities] = useState([])
     const listParameters = useListParameters(app.userGuid(), entityType)
     const { error } = useMessage()
 
@@ -97,7 +97,9 @@ const useList = ({
             return;
         }
         setSelectedEntities((previousSelectedEntities) => {
-            return [id, ...previousSelectedEntities];
+            const all = [id, ...previousSelectedEntities]
+            const unique = [...new Set(all)].sort()
+            return unique;
         });
     }
 
@@ -110,7 +112,9 @@ const useList = ({
         }
         setSelectedEntities((previousSelectedEntities) => {
             let newItems = entities.map(i => i.id);
-            return [...previousSelectedEntities, ...newItems];
+            const all = [...previousSelectedEntities, ...newItems]
+            const unique = [...new Set(all)].sort()
+            return unique;
         });
     }
 
