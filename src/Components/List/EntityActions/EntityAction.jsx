@@ -24,6 +24,7 @@ const EntityAction = ({
     setEntity,
     superAdmin,
     title,
+    ...rest
 }) => {
 
     const navigate = useNavigate()
@@ -124,6 +125,7 @@ const EntityAction = ({
                     close={() => setIsOpen(false)}
                     onClosed={() => setIsOpen(false)}
                     setEntity={setEntity}
+                    {...rest}
                 />
             }
         </span >
