@@ -50,12 +50,15 @@ const Browse = ({
     </>
 
     return <ListContext.Provider value={{
+        card,
         data,
         hasData,
+        headers,
         listParameters,
         loading,
         metadata,
         reload,
+        row,
     }} id='browser'>
         <div className='flex items-center justify-end px-6 py-2'>
             <div className="flex items-center">
