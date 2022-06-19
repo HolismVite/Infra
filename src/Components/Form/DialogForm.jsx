@@ -58,13 +58,19 @@ const DialogForm = ({
             setFields([])
         }
         else if (dialogProps?.purpose === 'edition' && dialogProps?.entityType === entityType) {
+            setCurrentEntity(null)
+            setFields([])
             if (dialogProps.entity) {
                 setCurrentEntity(dialogProps.entity)
             }
             if (dialogProps.entityId) {
                 setEntityId(dialogProps.entityId)
             }
-            setIsDialogOpen(true)
+        }
+        return () => {
+            setField([])
+            setCurrentEntity(null)
+            setEntityId(null)
         }
     }, [isDialogOpen, dialogProps])
 
