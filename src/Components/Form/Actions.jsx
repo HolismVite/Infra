@@ -15,7 +15,7 @@ const Actions = ({
     return <div id='actions' className={'mt-4 ' + className}>
         {
             actions ||
-            <div className="ltr:mr-6 rtl:ml-6 mb-6" >
+            <div className="ltr:mr-4 rtl:ml-4 mb-4" >
                 {
                     progress
                         ?
