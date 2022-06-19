@@ -123,6 +123,7 @@ const EntityAction = ({
                     reloadEntity={reloadEntity}
                     close={() => setIsOpen(false)}
                     onClosed={() => setIsOpen(false)}
+                    setEntity={setEntity}
                 />
             }
         </span >

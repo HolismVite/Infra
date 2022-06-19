@@ -126,16 +126,7 @@ const Cards = () => {
                                                     className={(multicolumn ? " bg-white border absolute bottom-0 right-0 z-50 hidden group-hover:flex" : "")}
                                                 >
                                                     <EntityActions
-                                                        entityType={entityType}
-                                                        item={item}
                                                         entityActions={entityActions}
-                                                        hasDelete={hasDelete}
-                                                        hasEdit={hasEdit}
-                                                        edit={edit}
-                                                        create={create}
-                                                        upsert={upsert}
-                                                        setEntity={setEntity}
-                                                        reload={reload}
                                                     />
                                                 </div>
                                                 :

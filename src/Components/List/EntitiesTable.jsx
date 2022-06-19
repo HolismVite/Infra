@@ -132,16 +132,7 @@ const Table = () => {
         ?
         !hiddenEntityActions && <td {...(separateRowForActions && { colSpan: "100" })}>
             <EntityActions
-                entityType={entityType}
-                entity={item}
                 entityActions={entityActions}
-                hasDelete={hasDelete}
-                hasEdit={hasEdit}
-                edit={edit}
-                create={create}
-                upsert={upsert}
-                setEntity={setEntity}
-                reload={reload}
             />
         </td>
         :

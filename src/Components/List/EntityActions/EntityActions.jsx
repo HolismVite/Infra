@@ -10,25 +10,29 @@ import EditAction from './EditAction';
 import { app } from '../../../Base/App';
 import ViewRecordAction from './ViewRecordAction';
 import { ListContext } from '../Contexts';
+import { EntityContext } from '../Contexts';
 
 const EntityActions = ({
-    entityType,
-    entity,
     entityActions,
-    edit,
-    create,
-    upsert,
-    setEntity,
-    reload,
     className
 }) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const {
-        menuForActions,
+        create,
+        edit,
         hasDelete,
-        hasEdit
+        hasEdit,
+        menuForActions,
+        reload,
+        setEntity,
+        upsert,
     } = useContext(ListContext)
+
+    const {
+        entity
+    } = useContext(EntityContext)
+
     const open = Boolean(anchorEl);
     let clonedEntityActions = [];
 

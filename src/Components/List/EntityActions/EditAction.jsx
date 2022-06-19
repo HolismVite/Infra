@@ -23,7 +23,6 @@ const EditAction = () => {
     const manageEdition = (component) => {
         if (typeof component === 'string') {
             navigate(component);
-
         }
         else {
             if (typeof component === 'function') {
