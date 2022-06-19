@@ -53,7 +53,7 @@ const DialogForm = ({
     })
 
     useEffect(() => {
-        if (dialogProps?.purpose === 'creation') {
+        if (!dialogProps || dialogProps?.purpose === 'creation') {
             setCurrentEntity(null)
             setFields([])
         }
@@ -66,7 +66,7 @@ const DialogForm = ({
             }
             setIsDialogOpen(true)
         }
-    }, [isDialogOpen])
+    }, [isDialogOpen, dialogProps])
 
     return <FormContext.Provider
         value={{
