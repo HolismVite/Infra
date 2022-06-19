@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -8,26 +8,28 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import { useNavigate } from 'react-router-dom';
 import { HolismIcon, app, Unify } from '@List';
 import useMessage from '../../../Hooks/useMessage'
+import { ListContext } from '../Contexts';
 
 const EntityAction = ({
-    title,
-    entity,
-    icon,
-    click,
-    goTo,
-    dialog,
-    setEntity,
-    reload,
-    color,
-    hoverOnly,
-    superAdmin,
     asMenuItem,
-    closeMenu
+    click,
+    closeMenu,
+    color,
+    dialog,
+    entity,
+    goTo,
+    hoverOnly,
+    icon,
+    reload,
+    setEntity,
+    superAdmin,
+    title,
 }) => {
 
     const navigate = useNavigate()
     const { success, error } = useMessage()
     const [isOpen, setIsOpen] = useState(false)
+    const { reloadEntity } = useContext(ListContext)
 
     const handleClick = (e) => {
         app.selectedItem = entity;
@@ -118,6 +120,8 @@ const EntityAction = ({
                     entity={entity}
                     dialogPurpose={title}
                     isOpen={isOpen}
+                    reloadEntity={reloadEntity}
+                    close={() => setIsOpen(false)}
                     onClosed={() => setIsOpen(false)}
                 />
             }

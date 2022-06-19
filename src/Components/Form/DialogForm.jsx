@@ -17,6 +17,8 @@ const DialogForm = ({
     inputs,
     large,
     title,
+    close,
+    ...rest
 }) => {
 
     const {
@@ -97,7 +99,12 @@ const DialogForm = ({
             actions={<Actions
                 actions={actions}
                 handleSubmit={handleSubmit}
-                onCanceled={closeDialog}
+                onCanceled={() => {
+                    closeDialog()
+                    if (close instanceof Function) {
+                        close()
+                    }
+                }}
             />}
             isOpen={isDialogOpen}
             onEntered={() => {
@@ -105,6 +112,7 @@ const DialogForm = ({
             }}
             large={large}
             onClosed={closeDialog}
+            {...rest}
         />
     </FormContext.Provider>
 }

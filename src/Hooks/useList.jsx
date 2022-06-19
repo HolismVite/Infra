@@ -145,7 +145,7 @@ const useList = ({
         });
     }
 
-    const reloadEntity = ({ entity }) => {
+    const reloadEntity = (entity) => {
         setEntityProgress(entity, true);
         get(`${entityType}/get/${entity.id}`)
             .then(result => {
