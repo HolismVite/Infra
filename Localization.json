@@ -60,7 +60,8 @@
             "No": "خیر",
             "Show Actions": "نمایش عملیات ها",
             "Hide Actions": "مخفی کردن عملیات ها",
-            "Deleted Successfully": "با موفقیت حذف شد"
+            "Deleted Successfully": "با موفقیت حذف شد",
+            "Slug is not valid. Only dash and lowercase English characters, and numbers are accepted.": "آدرس صحیح نیست. فقط حروف کوچک انگلیسی، عدد و خط تیره قابل قبول است."
         }
     }
 ]
