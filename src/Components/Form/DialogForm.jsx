@@ -20,6 +20,7 @@ const DialogForm = ({
 }) => {
 
     const {
+        closeDialog,
         dialogProps,
         isDialogOpen,
         reload,
@@ -27,27 +28,17 @@ const DialogForm = ({
     } = useContext(ListContext)
     const [entityId, setEntityId] = useState(null)
 
-    const closeDialog = () => {
-        setIsDialogOpen(false)
-        if (close instanceof Function) {
-            close()
-        }
-    }
-
     const {
         addFieldToFormContext,
         calculatedTitle,
         currentEntity,
-        fields,
         focusFirstInput,
         handleSubmit,
         isValid,
-        loadEntity,
         mode,
         progress,
         setCurrentEntity,
         setField,
-        setFields,
         setHasFile,
     } = useForm({
         entityId,
@@ -61,7 +52,7 @@ const DialogForm = ({
     })
 
     useEffect(() => {
-        if (dialogProps.purpose === 'edition' && dialogProps.entityType === entityType) {
+        if (dialogProps?.purpose === 'edition' && dialogProps?.entityType === entityType) {
             if (dialogProps.entity) {
                 setCurrentEntity(dialogProps.entity);
             }
@@ -95,7 +86,7 @@ const DialogForm = ({
             actions={<Actions
                 actions={actions}
                 handleSubmit={handleSubmit}
-                onCanceled={() => setIsDialogOpen(false)}
+                onCanceled={closeDialog}
             />}
             isOpen={isDialogOpen}
             onEntered={() => {

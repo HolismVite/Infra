@@ -85,6 +85,11 @@ const List = ({
     setIsDialogOpen(true)
   }
 
+  const closeDialog = () => {
+    setDialogProps(null)
+    setIsDialogOpen(false)
+  }
+
   useEffect(() => {
     // console.log(selectedEntities)
   }, [selectedEntities])
@@ -97,6 +102,7 @@ const List = ({
 
   return <ListContext.Provider value={{
     card,
+    closeDialog,
     create,
     data,
     deselectEntities,

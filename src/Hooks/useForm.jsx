@@ -10,6 +10,7 @@ const useForm = ({
     title,
     okAction,
     entityId,
+    entity,
     onSaved
 }) => {
     // is edit, or is create? get id from somewhere
@@ -77,14 +78,17 @@ const useForm = ({
     }, [mode])
 
     const loadEntity = () => {
+        if (!entityId) {
+            return
+        }
         setProgress(true)
         get(`/${entityType}/get/${entityId}`)
             .then(data => {
                 setProgress(false)
                 setCurrentEntity(data)
-            }, error => {
+            }, e => {
                 setProgress(false)
-                app.error(error)
+                error(e)
             })
     }
 
