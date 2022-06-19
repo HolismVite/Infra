@@ -55,26 +55,6 @@ const EntityActions = ({
             clonedEntityActions = React
                 .Children
                 .toArray(entityActionsArray)
-                .filter(entityAction => {
-                    try {
-                        if (entityAction.props?.superAdmin === true) {
-                            return app.isSuperAdmin()
-                        }
-                        else if (
-                            entityAction.type &&
-                            typeof entityAction.type === 'function' &&
-                            entityAction.props &&
-                            entityAction.type(entityAction.props).props?.superAdmin === true) {
-                            return app.isSuperAdmin()
-                        }
-                        else {
-                            return true;
-                        }
-                    } catch (error) {
-                        console.error(error, entityAction)
-                    }
-                    return true;
-                })
                 .map(entityAction => React.cloneElement(entityAction, {
                     entity: entity,
                     setEntity: setEntity,
