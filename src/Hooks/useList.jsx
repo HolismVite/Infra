@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import app from '../Base/App';
 import useListParameters from './useListParameters'
 import { get } from '../Base/Api';
+import useMessage from './useMessage';
 
 const useList = ({
     entityType,
@@ -14,6 +15,7 @@ const useList = ({
     const [hasData, setHasData] = useState(false)
     const [selectedEntities, setSelectedEntities] = useState()
     const listParameters = useListParameters(app.userGuid(), entityType)
+    const { error } = useMessage()
 
     const setEntityProgress = (entity, progress) => {
         setData((data) => {
@@ -77,8 +79,8 @@ const useList = ({
                 setMetadata(metadata);
             }
             setLoading(false);
-        }, (error) => {
-            app.error(error);
+        }, (e) => {
+            error(e);
             setLoading(false);
         });
     };
@@ -145,9 +147,9 @@ const useList = ({
             .then(result => {
                 setEntityProgress(entity, false)
                 setEntity(result)
-            }, error => {
+            }, e => {
                 setEntityProgress(entity, false)
-                app.error(error)
+                error(e)
             })
     }
 

@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Collapse from '@mui/material/Collapse';
 import CheckIcon from '@mui/icons-material/Check';
 import { Chip } from "./Chip"
-import { DialogForm, Progress, HolismIcon, app, get, post } from '@Form'
+import { DialogForm, Progress, HolismIcon, get, post, useMessage } from '@Form'
+import { ListContext } from '../Contexts';
 
 const EnumProperty = ({
-    column,
     enumeration,
     currentKey,
     currentStyle,
@@ -15,6 +15,8 @@ const EnumProperty = ({
     const [progress, setProgress] = useState(false)
     const [enumItems, setEnumItems] = useState([])
     const [selectedEnum, setSelectedEnum] = useState({ key: currentKey })
+    const { error } = useMessage()
+    const { setEntity } = useContext(ListContext)
 
     const current =
         <Chip
@@ -74,10 +76,10 @@ const EnumProperty = ({
             .then(data => {
                 setProgress(false)
                 setOpen(false)
-                // app.emit(app.entityReloadRequested, { entity: data })
-            }, error => {
+                setEntity(data)
+            }, e => {
                 setProgress(false)
-                app.error(error)
+                error(e)
             })
     }
 
@@ -90,8 +92,8 @@ const EnumProperty = ({
             .then(data => {
                 setEnumItems(data)
                 setProgress(false)
-            }, error => {
-                app.error(error)
+            }, e => {
+                error(e)
                 setProgress(false)
             })
     }, [open])

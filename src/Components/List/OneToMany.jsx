@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { List, Progress, app, get } from '@List';
 import { ListContext } from './Contexts';
+import useMessage from '../../Hooks/useMessage';
 
 const OneToMany = ({
     title,
@@ -26,6 +27,7 @@ const OneToMany = ({
         hasDelete,
         hasEdit
     } = useContext(ListContext)
+    const { error } = useMessage()
 
     useEffect(() => {
         if (app.selectedItem) {
@@ -36,8 +38,8 @@ const OneToMany = ({
             get(oneSideUrl(app.parsedQuery()))
                 .then(project => {
                     setOneSide(project.oneSide);
-                }, error => {
-                    app.error(error);
+                }, e => {
+                    error(e);
                 });
         }
     }, []);

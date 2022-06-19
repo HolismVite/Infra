@@ -26,7 +26,7 @@ const DeleteAction = () => {
             setProgress(false)
             reload()
         }, e => {
-            error(error)
+            error(e)
             setProgress(false)
         })
     }

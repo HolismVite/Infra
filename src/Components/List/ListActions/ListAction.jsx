@@ -5,11 +5,13 @@ import Button from '@mui/material/Button';
 import { ListContext } from '../Contexts';
 import app from '../../../Base/App';
 import HolismIcon from '../../HolismIcon';
+import useMessage from '../../../Hooks/useMessage'
 
 const ListAction = ({ icon, text, title, click, minCardinality }) => {
 
     const [progress, setProgress] = useState(false);
     const { selectedEntities } = useContext(ListContext);
+    const { success, error } = useMessage()
 
     const reloadList = () => {
         // app.emit(app.reloadRequested)
@@ -34,7 +36,7 @@ const ListAction = ({ icon, text, title, click, minCardinality }) => {
 
         }
         /* HolismIcon creates 321 error in production build */
-        onClick={() => click({ setProgress, reloadList })}
+        onClick={() => click({ setProgress, reloadList, success, error })}
         className='mr-2 mt-2 lg:mt-0'
     >
         {app.t(text || title)}

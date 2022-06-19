@@ -4,6 +4,7 @@ import { Dialog, HolismIcon } from '../Exports';
 import { FormElement, Upload, app, upload } from '@Form'
 import { OkCancel } from '@Panel'
 import { TableContext } from '@List'
+import useMessage from '../../../Hooks/useMessage'
 
 const Image = ({
     url,
@@ -14,6 +15,7 @@ const Image = ({
     const [isOpen, setIsOpen] = useState(false)
     const [progress, setProgress] = useState(false)
     const { hasMoreRoom } = useContext(TableContext)
+    const { success, error } = useMessage()
 
     const uploadImage = () => {
         var form = new FormData();
@@ -24,12 +26,12 @@ const Image = ({
         upload(uploadUrl, form)
             .then(data => {
                 setProgress(false)
-                app.success('Image uploaded successfully')
+                success('Image uploaded successfully')
                 setIsOpen(false)
                 // app.emit(app.entityReloadRequested, { entity: data })
-            }, error => {
+            }, e => {
                 setProgress(false)
-                app.error(error)
+                error(e)
             })
     }
 

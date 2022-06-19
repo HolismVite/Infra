@@ -3,6 +3,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Progress, app, get, FormContext, fieldStyles } from '@Form';
+import useMessage from '../../../Hooks/useMessage';
 
 const Checks = ({
     column,
@@ -17,6 +18,7 @@ const Checks = ({
     const [checkedItems, setCheckedItems] = useState(null)
     const [loading, setLoading] = useState(true)
     const [chosenValues, setChosenValues] = useState([])
+    const { error } = useMessage()
 
     useEffect(() => {
         const onRunMethod = (entityGuid) => {
@@ -48,9 +50,9 @@ const Checks = ({
                         throw new Error('Return value of the API is not well formatted')
                     }
                 }
-            }, error => {
+            }, e => {
                 setLoading(false)
-                app.error(error)
+                error(e)
             })
     }
 
@@ -69,9 +71,9 @@ const Checks = ({
                         throw new Error('Return value of the API is not well formatted')
                     }
                 }
-            }, error => {
+            }, e => {
                 setLoading(false)
-                app.error(error)
+                error(e)
             })
     }
 

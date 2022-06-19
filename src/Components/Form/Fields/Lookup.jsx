@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import CircularProgress from '@mui/material/CircularProgress';
 import { FormContext, fieldStyles, get, app } from '@Form';
+import useMessage from '../../../Hooks/useMessage';
 
 const Lookup = ({ column, entityType, placeholder, hint, value, required, display }) => {
 
@@ -23,6 +24,7 @@ const Lookup = ({ column, entityType, placeholder, hint, value, required, displa
     const initialHint = hint;
     const [validationResult, setValidationResult] = useState(null);
     const { addFieldToFormContext, setField } = useContext(FormContext);
+    const { error } = useMessage()
 
     useEffect(() => {
         setId(`lookup_${column}`);
@@ -45,8 +47,8 @@ const Lookup = ({ column, entityType, placeholder, hint, value, required, displa
         get(`/${entityType}/all`).then(data => {
             setLookupItems(data);
             setLoading(false);
-        }, error => {
-            app.error(error);
+        }, e => {
+            error(e);
             setLoading(false);
         })
     }, []);
@@ -56,7 +58,6 @@ const Lookup = ({ column, entityType, placeholder, hint, value, required, displa
     }, [displayValue]);
 
     const validate = (event) => {
-        console.log(displayValue);
         if (required && app.isNothing(displayValue)) {
             setValidationResult('invalid required');
             setHelpText(required);
