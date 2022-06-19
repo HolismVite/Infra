@@ -29,7 +29,7 @@ const DialogForm = ({
     } = useContext(ListContext)
 
     const dialogContext = useContext(DialogContext)
-    const { setOpen } = dialogContext || {}
+    const { setOpen, entity } = dialogContext || {}
 
     const [entityId, setEntityId] = useState(null)
 
@@ -59,26 +59,8 @@ const DialogForm = ({
     })
 
     useEffect(() => {
-        if (!dialogProps || dialogProps?.purpose === 'creation') {
-            setCurrentEntity(null)
-            setFields([])
-        }
-        else if (dialogProps?.purpose === 'edition' && dialogProps?.entityType === entityType) {
-            setCurrentEntity(null)
-            setFields([])
-            if (dialogProps.entity) {
-                setCurrentEntity(dialogProps.entity)
-            }
-            if (dialogProps.entityId) {
-                setEntityId(dialogProps.entityId)
-            }
-        }
-        return () => {
-            setField([])
-            setCurrentEntity(null)
-            setEntityId(null)
-        }
-    }, [dialogProps])
+        setCurrentEntity(entity)
+    }, [entity])
 
     return <FormContext.Provider
         value={{

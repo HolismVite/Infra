@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { ListContext } from '../Contexts'
 import { EntityContext } from '../Contexts';
 import DialogContext from '../../Dialog/DialogContext';
+import Unify from '../../Unify';
 
 const EditAction = () => {
 
@@ -48,7 +49,8 @@ const EditAction = () => {
     return <DialogContext.Provider
         value={{
             open,
-            setOpen
+            setOpen,
+            entity,
         }}
     >
         {
