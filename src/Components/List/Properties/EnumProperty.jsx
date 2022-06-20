@@ -4,6 +4,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { Chip } from "./Chip"
 import { DialogForm, Progress, HolismIcon, get, post, useMessage } from '@Form'
 import { ListContext } from '../Contexts';
+import DialogContext from '../../Dialog/DialogContext'
 
 const EnumProperty = ({
     enumeration,
@@ -17,6 +18,7 @@ const EnumProperty = ({
     const [selectedEnum, setSelectedEnum] = useState({ key: currentKey })
     const { error } = useMessage()
     const { setEntity } = useContext(ListContext)
+    const [open, setOpen] = useState(false)
 
     const current =
         <Chip
@@ -99,15 +101,21 @@ const EnumProperty = ({
     }, [open])
 
     return <div>
-        <DialogForm
-            entityType='Enumeration'
-            title='Set new value'
-            inputs={inputs}
-            close={() => { }}
-            okAction={save}
-        />
+        <DialogContext.Provider
+            value={{
+                open,
+                setOpen
+            }}
+        >
+            <DialogForm
+                entityType='Enumeration'
+                title='Set new value'
+                inputs={inputs}
+                okAction={save}
+            />
+        </DialogContext.Provider>
         <span
-            onClick={() => { }}
+            onClick={() => setOpen(true)}
         >
             {current}
         </span>

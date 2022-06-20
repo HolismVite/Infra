@@ -4,6 +4,7 @@ import { Dialog, EntityAction } from '@List';
 import { app } from '@List';
 import { ListContext } from '../Contexts'
 import { EntityContext } from '../Contexts';
+import DialogContext from '../../Dialog/DialogContext';
 
 const ViewRecordAction = () => {
 
@@ -59,12 +60,18 @@ const ViewRecordAction = () => {
         }
     }
 
-    const dialog = <Dialog
-        title='View record'
-        content={getJsonHtml(entity, 1)}
-        isOpen={open}
-        onClosed={() => setOpen(false)}
-    />
+    const dialog = <DialogContext.Provider
+        value={{
+            open,
+            setOpen
+        }}
+    >
+        <Dialog
+            title='View record'
+            content={getJsonHtml(entity, 1)}
+            onClosed={() => setOpen(false)}
+        />
+    </DialogContext.Provider>
 
     return <>
         {dialog}

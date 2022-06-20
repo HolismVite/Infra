@@ -5,6 +5,7 @@ import { FormElement, Upload, app, upload } from '@Form'
 import { OkCancel } from '@Panel'
 import { TableContext } from '@List'
 import useMessage from '../../../Hooks/useMessage'
+import DialogContext from '../../Dialog/DialogContext';
 
 const Image = ({
     url,
@@ -12,7 +13,7 @@ const Image = ({
     uploadUrl
 }) => {
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [open, setOpen] = useState(false)
     const [progress, setProgress] = useState(false)
     const { hasMoreRoom } = useContext(TableContext)
     const { success, error } = useMessage()
@@ -27,7 +28,7 @@ const Image = ({
             .then(data => {
                 setProgress(false)
                 success('Image uploaded successfully')
-                setIsOpen(false)
+                setOpen(false)
                 // app.emit(app.entityReloadRequested, { entity: data })
             }, e => {
                 setProgress(false)
@@ -38,8 +39,13 @@ const Image = ({
     return <div className="relative inline-block">
         {
             uploadUrl &&
-            <Dialog
-                isOpen={isOpen}
+            <DialogContext.Provider
+                value={{
+                    open,
+                    setOpen
+                }}
+            >
+                <Dialog
                 title='Upload image'
                 content={<>
                     {/* <Explanations explanations={explanations} /> */}
@@ -55,15 +61,16 @@ const Image = ({
                     <OkCancel
                         progress={progress}
                         okClick={() => uploadImage()}
-                        cancelClick={() => setIsOpen(false)}
+                        cancelClick={() => setOpen(false)}
                     />
                 }
                 onEntered={() => {
                     // focusFirstInput('uploadImageForm')
                 }}
             />
+            </DialogContext.Provider>
         }
-        <span className="group" onClick={() => setIsOpen(true)}>
+        <span className="group" onClick={() => setOpen(true)}>
             <img src={url} alt={alt || ''} className={(hasMoreRoom ? "w-12 h-12" : "w-8 h-8 ") + " object-cover rounded-full " + (uploadUrl && "cursor-pointer group-hover:shadow-md group-hover:shadow-black transition-all")} />
             {
                 uploadUrl &&

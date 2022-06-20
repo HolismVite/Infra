@@ -125,6 +125,7 @@ const Table = () => {
             className: 'text-gray-900 dark:text-gray-300 py-3 text-sm font-light tracking-wide '
                 + (td?.props?.start && " ltr:text-left rtl:text-right ")
                 + td.props.className,
+            start: td?.props?.start ? 'true' : 'false',
             hasmoreroom: menuForActions
         }))
 
