@@ -23,7 +23,8 @@ const Pagination = () => {
     const {
         metadata,
         reload,
-        listParameters
+        setPageNumber,
+        setPageSize,
     } = useContext(ListContext)
 
     const {
@@ -34,11 +35,6 @@ const Pagination = () => {
         pagesCount,
         totalCount
     } = metadata;
-
-    const {
-        setPageNumber,
-        setPageSize
-    } = listParameters
 
     const [pageNumberDialogIsOpen, setPageNumberDialogVisibility] = useState(false);
     const [pageSizeDialogIsOpen, setPageSizeDialogVisibility] = useState(false);
@@ -63,7 +59,6 @@ const Pagination = () => {
     const pageNumberDialog = <Dialog
         tiny
         title='Go to page'
-        isOpen={pageNumberDialogIsOpen}
         onEntered={() => { document.querySelector('#goToPageInput').focus() }}
         content={<form
             noValidate
@@ -92,7 +87,6 @@ const Pagination = () => {
     const pageSizeDialog = <Dialog
         tiny
         title='Select page size'
-        isOpen={pageSizeDialogIsOpen}
         onEntered={() => { /*document.querySelector('#pageSizeSelect').focus()*/ }}
         content={<FormControl fullWidth className="mt-4">
             <InputLabel>

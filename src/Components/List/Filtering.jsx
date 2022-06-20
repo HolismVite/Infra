@@ -6,7 +6,7 @@ import app from '../../Base/App';
 const Filtering = ({ filters }) => {
 
     const {
-        listParameters,
+        resetFilters,
         reload
     } = useContext(ListContext);
 
@@ -18,8 +18,8 @@ const Filtering = ({ filters }) => {
         reload()
     };
 
-    const resetFilters = () => {
-        listParameters.resetFilters()
+    const reset = () => {
+        resetFilters()
         applyFilters();
     }
 
@@ -42,11 +42,11 @@ const Filtering = ({ filters }) => {
             }
             <div className={"flex justify-end mt-6 sm:mt-3 flex-1"}>
                 {
-                    listParameters?.filters?.length > 0 &&
+                    // filters?.length > 0 &&
                     <Button
                         size="small"
                         variant="outlined"
-                        onClick={resetFilters}>
+                        onClick={reset}>
                         {app.t('Reset')}
                     </Button>
                 }

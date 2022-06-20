@@ -26,7 +26,6 @@ const Browse = ({
     const {
         data,
         hasData,
-        listParameters,
         loading,
         metadata,
         reload,
@@ -54,7 +53,6 @@ const Browse = ({
         data,
         hasData,
         headers,
-        listParameters,
         loading,
         metadata,
         reload,

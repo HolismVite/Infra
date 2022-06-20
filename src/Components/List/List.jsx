@@ -59,7 +59,6 @@ const List = ({
     deselectEntities,
     deselectEntity,
     hasData,
-    listParameters,
     loading,
     metadata,
     reload,
@@ -69,6 +68,9 @@ const List = ({
     selectedEntities,
     setEntity,
     setEntityProgress,
+    addFilter,
+    setPageSize,
+    setPageNumber,
   } = useList({
     entityType,
     isTree
@@ -105,7 +107,6 @@ const List = ({
     isTree,
     listActionIconStyle,
     listActions,
-    listParameters,
     loading,
     menuForActions,
     metadata,
@@ -127,6 +128,10 @@ const List = ({
     upsert,
     upsertionIcon,
     upsertionText,
+    addFilter,
+    setPageSize,
+    setPageNumber,
+    
   }}>
 
     <div

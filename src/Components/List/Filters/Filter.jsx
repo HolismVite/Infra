@@ -19,7 +19,9 @@ const Filter = ({
 
     const [id, setId] = useState();
     const [displayValue, setDisplayValue] = useState(value || "");
-    var { listParameters } = useContext(ListContext);
+    var { 
+        addFilter
+     } = useContext(ListContext);
     const label = placeholder || column;
 
     // todo: on resetting filters => setDisplayValue(value || "");
@@ -29,8 +31,8 @@ const Filter = ({
     }, [type, column]);
 
     useEffect(() => {
-        listParameters.addFilter(column, displayValue, operator || filterOperator.contains);
-    }, [column, listParameters, operator, displayValue]);
+        addFilter(column, displayValue, operator || filterOperator.contains);
+    }, [column, addFilter, operator, displayValue]);
 
     return <div className="filter mt-1 mr-4 w-64">
         <FormControl

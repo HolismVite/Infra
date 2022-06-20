@@ -27,7 +27,7 @@ const Sorting = ({ sorts }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [currentSort, setCurrentSort] = useState({});
     const {
-        listParameters,
+        setSorts,
         listActionIconStyle
     } = useContext(ListContext);
 
@@ -49,7 +49,7 @@ const Sorting = ({ sorts }) => {
     }
 
     useEffect(() => {
-        listParameters.sorts = [currentSort];
+        setSorts([currentSort]);
         // app.emit(app.reloadRequested);
     }, [currentSort]);
 
