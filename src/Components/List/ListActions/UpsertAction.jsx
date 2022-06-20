@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { useContext } from 'react'
@@ -9,10 +9,6 @@ import DialogContext from '../../Dialog/DialogContext';
 const UpsertAction = () => {
 
     const [open, setOpen] = useState(false)
-
-    useEffect(() => {
-        console.log('upsert dialog open?', open)
-    }, [open])
 
     const {
         create,

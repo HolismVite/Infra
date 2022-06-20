@@ -5,14 +5,17 @@ import app from '../../Base/App';
 
 const Filtering = ({ filters }) => {
 
-    const { listParameters } = useContext(ListContext);
+    const {
+        listParameters,
+        reload
+    } = useContext(ListContext);
 
     if (!filters || filters.props.children.length === 0) {
         return <div></div>
     }
 
     const applyFilters = () => {
-        // app.emit(app.reloadRequested);
+        reload()
     };
 
     const resetFilters = () => {
