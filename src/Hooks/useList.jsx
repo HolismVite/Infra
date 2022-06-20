@@ -70,6 +70,7 @@ const useList = ({
 
     useEffect(() => {
         storeInLocalStorage()
+        reload()
     }, [pageNumber, pageSize, filters, sorts])
 
     useEffect(() => {

@@ -22,7 +22,6 @@ const Pagination = () => {
 
     const {
         metadata,
-        reload,
         setPageNumber,
         setPageSize,
     } = useContext(ListContext)
@@ -47,13 +46,11 @@ const Pagination = () => {
         else {
             setPageNumber(number)
         }
-        reload()
     };
 
     const setSize = () => {
         setPageSize(internalPageSize)
         setPageNumber(1)
-        reload()
     };
 
     const pageNumberDialog = <Dialog
