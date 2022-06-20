@@ -55,6 +55,7 @@ const List = ({
   const [dialogProps, setDialogProps] = useState({})
 
   const {
+    addFilter,
     data,
     deselectEntities,
     deselectEntity,
@@ -63,15 +64,15 @@ const List = ({
     metadata,
     reload,
     reloadEntity,
+    resetFilters,
+    selectedEntities,
     selectEntities,
     selectEntity,
-    selectedEntities,
     setEntity,
     setEntityProgress,
-    addFilter,
-    setPageSize,
     setPageNumber,
-    resetFilters,
+    setPageSize,
+    setSorts,
   } = useList({
     entityType,
     isTree
@@ -88,6 +89,7 @@ const List = ({
   }, [title, subtitle, breadcrumbItems])
 
   return <ListContext.Provider value={{
+    addFilter,
     card,
     classProvider,
     create,
@@ -114,25 +116,25 @@ const List = ({
     multicolumn,
     reload,
     reloadEntity,
+    resetFilters,
     row,
+    selectedEntities,
     selectEntities,
     selectEntity,
-    selectedEntities,
     separateRowForActions,
     setDialogProps,
     setEntity,
     setEntityProgress,
     setHiddenEntityActions,
     setIsFilteringOpen,
+    setPageNumber,
+    setPageSize,
+    setSorts,
     setTopPaginationVisibility,
     showTopPagiation,
     upsert,
     upsertionIcon,
     upsertionText,
-    addFilter,
-    setPageSize,
-    setPageNumber,
-    resetFilters,
   }}>
 
     <div

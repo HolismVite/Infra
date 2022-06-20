@@ -27,6 +27,9 @@ const Dialog = ({
             setOpen(false)
             onClosed instanceof Function && onClosed(false)
         }}
+        PaperProps={{
+            className: "dark:bg-zinc-700"
+        }}
         aria-labelledby="dialogTitle"
         id="dialog"
         fullWidth

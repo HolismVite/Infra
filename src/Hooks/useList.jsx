@@ -283,6 +283,7 @@ const useList = ({
         setEntityProgress,
         setPageNumber,
         setPageSize,
+        setSorts,
         sorts,
     }
 }

@@ -55,7 +55,7 @@ const PageForm = ({
 
     return <Page
         title={calculatedTitle}
-        className={"px-6 md:px-12 mx-auto " + (large ? "lg:w-full" : "lg:w-2/3")}
+        className={"px-6 md:px-12 mx-auto dark:bg-zinc-700 " + (large ? "lg:w-full" : "lg:w-2/3")}
     >
         <FormContext.Provider value={{
             addFieldToFormContext,

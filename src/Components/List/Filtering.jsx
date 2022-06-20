@@ -32,7 +32,7 @@ const Filtering = ({ filters }) => {
 
     const filtersArray = filters.props.children.map ? filters.props.children : [filters.props.children];
 
-    return <div id='filtering' className="bg-white px-6 py-3 md:rounded-lg relative" onKeyPress={(event) => handleKeyPress(event)}>
+    return <div id='filtering' className="bg-white px-6 py-3 md:rounded-lg relative dark:bg-zinc-700 " onKeyPress={(event) => handleKeyPress(event)}>
         <div className={"flex flex-wrap "}>
             {
                 filtersArray.map((filter, index) => React.cloneElement(filter, {

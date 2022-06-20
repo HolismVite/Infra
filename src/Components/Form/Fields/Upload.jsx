@@ -44,7 +44,7 @@ const Upload = ({
     }
 
     return <div
-        className={fieldStyles + (previews.length === 0 ? " relative bg-slate-100 flex justify-center items-center py-20 cursor-pointer group hover:bg-slate-200 border-dashed border-2 border-slate-400 hover:border-slate-600 " : "")}
+        className={fieldStyles + (previews.length === 0 ? " relative bg-slate-100 flex justify-center items-center py-20 cursor-pointer group hover:bg-slate-200 border-dashed border-2 border-slate-400 hover:border-slate-600 dark:bg-zinc-700 " : "")}
         {...getRootProps()}
     >
         <Fade in={hasImages}>

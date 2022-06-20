@@ -13,7 +13,7 @@ const Widget = ({
 
     return <div
         className={
-            "widget bg-white md:rounded-lg p-6 "
+            "widget bg-white md:rounded-lg p-6 dark:bg-zinc-700 "
         }
     >
         {

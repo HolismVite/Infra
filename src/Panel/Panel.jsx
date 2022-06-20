@@ -69,6 +69,15 @@ const Panel = () => {
         // app.on(app.returnBackToNormalForm, show);
     });
 
+    useEffect(() => {
+        if (isDark) {
+            document.body.classList.add('dark')
+        }
+        else {
+            document.body.classList.remove('dark')
+        }
+    }, [isDark])
+
     return <PanelContext.Provider
         value={{
             isSidebarOpen,

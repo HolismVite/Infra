@@ -75,6 +75,9 @@ const Sorting = ({ sorts }) => {
             id="sortsMenu"
             anchorEl={anchorEl}
             keepMounted
+            PaperProps={{
+                className:"dark:bg-zinc-700"
+            }}
             open={Boolean(anchorEl)}
             onClose={handleClose}
             anchorOrigin={{
