@@ -71,6 +71,7 @@ const List = ({
     addFilter,
     setPageSize,
     setPageNumber,
+    resetFilters,
   } = useList({
     entityType,
     isTree
@@ -131,7 +132,7 @@ const List = ({
     addFilter,
     setPageSize,
     setPageNumber,
-    
+    resetFilters,
   }}>
 
     <div

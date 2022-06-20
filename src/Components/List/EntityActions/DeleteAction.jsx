@@ -32,24 +32,30 @@ const DeleteAction = () => {
         })
     }
 
-    const confirmationDialog = <Dialog
-        tiny
-        isOpen={open}
-        title={app.t('Confirmation')}
-        content={<div className="flex justify-center items-center flex-col sm:flex-row">
-            <HolismIcon icon={WarningIcon} className="text-red-400 text-5xl ltr:mr-4 rtl:ml-4" />
-            <span>
-                {app.t('Are you sure you want to delete this item?')}
-            </span>
-            {/* todo: Show some information form the selected item, to enhance UX */}
-        </div>}
-        actions={<OkCancel
-            okText='Yes'
-            cancelText='No'
-            cancelClick={() => setOpen(false)}
-            okClick={deleteItem}
-        />}
-    />
+    const confirmationDialog = <DialogContext.Provider
+        value={{
+            open,
+            setOpen
+        }}
+    >
+        <Dialog
+            tiny
+            title={app.t('Confirmation')}
+            content={<div className="flex justify-center items-center flex-col sm:flex-row">
+                <HolismIcon icon={WarningIcon} className="text-red-400 text-5xl ltr:mr-4 rtl:ml-4" />
+                <span>
+                    {app.t('Are you sure you want to delete this item?')}
+                </span>
+                {/* todo: Show some information form the selected item, to enhance UX */}
+            </div>}
+            actions={<OkCancel
+                okText='Yes'
+                cancelText='No'
+                cancelClick={() => setOpen(false)}
+                okClick={deleteItem}
+            />}
+        />
+    </DialogContext.Provider>
 
     return <>
         {confirmationDialog}
