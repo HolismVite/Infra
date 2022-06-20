@@ -94,7 +94,7 @@ const Rte = ({
                     renderLeaf={renderLeaf}
                     placeholder={app.t(placeholder || "Write your content here ...")}
                     spellCheck
-                    className="prose"
+                    className="prose dark:text-gray-200"
                     autoFocus
                     onKeyDown={event => {
                         for (const hotkey in HOTKEYS) {
