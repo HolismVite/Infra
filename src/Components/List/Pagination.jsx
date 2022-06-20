@@ -14,6 +14,7 @@ import Select from '@mui/material/Select';
 import { ListContext, app } from '@List'
 import Dialog from '../Dialog/Dialog'
 import { OkCancel } from '../Dialog/OkCancel'
+import DialogContext from '../Dialog/DialogContext';
 
 const textStyle = "text-blue-900 p-2 font-light text-xs items-center cursor-pointer uppercase hover:bg-blue-50 rounded-lg";
 
@@ -122,8 +123,22 @@ const Pagination = () => {
             "flex flex-col md:flex-row justify-between items-center w-full"
         }
     >
-        {pageNumberDialog}
-        {pageSizeDialog}
+        <DialogContext.Provider
+            value={{
+                open: pageNumberDialogIsOpen,
+                setOpen: setPageNumberDialogVisibility
+            }}
+        >
+            {pageNumberDialog}
+        </DialogContext.Provider>
+        <DialogContext.Provider
+            value={{
+                open: pageSizeDialogIsOpen,
+                setOpen: setPageSizeDialogVisibility
+            }}
+        >
+            {pageSizeDialog}
+        </DialogContext.Provider>
         <Button id='goToPage' className={textStyle + " text-left"} onClick={() => setPageNumberDialogVisibility(true)}>
             <Tooltip
                 title={app.t('Click to go to a specific page')}
