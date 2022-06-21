@@ -55,7 +55,9 @@ const HeaderAction = ({ icon, title, url, action, component, ...rest }) => {
                             + " ltr:right-0 rtl:left-0 "
                         }
                     >
-                        <Component />
+                        <Component 
+                            hide={() => setShowComponent(false)}
+                        />
                     </div>
                 </Fade>
             </div>
