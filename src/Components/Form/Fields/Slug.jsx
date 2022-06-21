@@ -3,6 +3,7 @@ import LinkIcon from '@mui/icons-material/Link';
 
 const Slug = (props) => {
     const slugFormat = /^[a-z0-9-]*$/;
+    // todo: add separate slug for each language or locale that extends this slug
 
     return <Text
         column="Slug"
