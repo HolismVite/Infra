@@ -23,7 +23,7 @@ import { PanelContext, TopContext } from './Contexts'
 
 const Panel = () => {
 
-    const [isSidebarOpen, setIsSidebarOpen] = useLocalStorageState(true, 'isSidebarOpen')   
+    const [isSidebarOpen, setIsSidebarOpen] = useLocalStorageState(true, 'isSidebarOpen')
     const [isDark, setIsDark] = useLocalStorageState(false, `isDark_${app.userGuid()}`)
     const [maximized, setMaximized] = useLocalStorageState(false, `maximized_${app.userGuid()}`)
 
@@ -55,20 +55,13 @@ const Panel = () => {
     }
 
     useEffect(() => {
-        const hide = () => {
-            setIsSidebarOpen(false);
-        };
-        // app.on(app.makeRoom, hide);
-    });
-
-    useEffect(() => {
-        const show = () => {
-            if (window.innerWidth >= app.breakpoints.lg) {
-                setIsSidebarOpen(true);
-            }
-        };
-        // app.on(app.returnBackToNormalForm, show);
-    });
+        if (maximized) {
+            setIsSidebarOpen(false)
+        }
+        else {
+            setIsSidebarOpen(true)
+        }
+    }, [maximized]);
 
     useEffect(() => {
         if (isDark) {
