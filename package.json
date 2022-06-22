@@ -10,6 +10,7 @@
   "dependencies": {
     "@craco/craco": "^7.0.0-alpha.3",
     "@date-io/date-fns-jalali": "^2.14.0",
+    "@date-io/hijri": "^2.14.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@headlessui/react": "^1.6.2",
