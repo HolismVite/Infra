@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import AdapterJalali from '@date-io/date-fns-jalali';
+import AdapterHijri from '@date-io/hijri';
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter } from 'react-router-dom';
