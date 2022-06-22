@@ -35,10 +35,17 @@ const renderReact = () => {
   const root = createRoot(container);
 
   if (app.isRtl()) {
+    let adapter = AdapterDateFns
+    if (app.getLocale().key === 'fa') {
+      adapter = AdapterJalali
+    }
+    else if (app.getLocale().key === 'ar') {
+      adapter = AdapterDateFns
+    }
     root.render(
       <React.StrictMode>
         <BrowserRouter>
-          <LocalizationProvider dateAdapter={app.getLocale().key === 'fa' ? AdapterJalali : AdapterDateFns}>
+          <LocalizationProvider dateAdapter={adapter}>
             <CacheProvider value={cacheRtl}>
               <ThemeProvider theme={theme}>
                 <Panel />
