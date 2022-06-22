@@ -100,6 +100,15 @@ const Panel = () => {
                 <link type="text/css" rel="stylesheet" href="/Fonts/Persian/style.css" />
             </Helmet>
         }
+        {
+            app.getLocale().key === 'ar' &&
+            <Helmet>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+                <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+                <link type="text/css" rel="stylesheet" href="/Fonts/Arabic/style.css" />
+            </Helmet>
+        }
         <input type='hidden' id='reactVersion' value={React.version} />
         <div
             className={

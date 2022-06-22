@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import AdapterJalali from '@date-io/date-fns-jalali';
-import AdapterHijri from '@date-io/hijri';
+// import AdapterHijri from '@date-io/hijri';
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter } from 'react-router-dom';
@@ -16,7 +16,7 @@ import app from './Base/App';
 import { get } from './Base/Api';
 import './index.css';
 
-const theme = createTheme({
+const faTheme = createTheme({
   direction: 'rtl',
   typography: {
     fontFamily: [
@@ -24,6 +24,15 @@ const theme = createTheme({
     ]
   }
 });
+
+const arTheme = createTheme({
+  direction: 'rtl',
+  typography: {
+    fontFamily: [
+      'Noto Kufi Arabic'
+    ]
+  }
+})
 
 const cacheRtl = createCache({
   key: 'muirtl',
@@ -41,6 +50,10 @@ const renderReact = () => {
     }
     else if (app.getLocale().key === 'ar') {
       adapter = AdapterDateFns
+    }
+    let theme = faTheme
+    if (app.getLocale().key === 'ar') {
+      theme = arTheme
     }
     root.render(
       <React.StrictMode>
