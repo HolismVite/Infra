@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import app from '../Base/App';
-import { TopContext } from './Contexts';
+import { PanelContext, TopContext } from './Contexts';
 
 const Top = () => {
 
     const [hasSubtitleOrBreadcrumb, setHasSubtitleOrBreadcrum] = useState();
-    const [isShown, setIsShown] = useState(true);
+    const { maximized, setMaximized } = useContext(PanelContext)
     const {
         params,
         setParams,
@@ -18,20 +18,6 @@ const Top = () => {
         isFreezed,
         setIsFreezed
     } = useContext(TopContext)
-
-    useEffect(() => {
-        const hide = () => {
-            setIsShown(false);
-        };
-        // app.on(app.makeRoom, hide);
-    });
-
-    useEffect(() => {
-        const show = () => {
-            setIsShown(true);
-        };
-        // app.on(app.returnBackToNormalForm, show);
-    });
 
     const setTop = ({ freeze, title, subtitle, breadcrumbItems }) => {
         setParams({ freeze, title, subtitle, breadcrumbItems })
@@ -71,7 +57,7 @@ const Top = () => {
                     {
                         "mb-7 "
                         + (hasSubtitleOrBreadcrumb ? "h-12" : "h-6")
-                        + (isShown ? "" : " hidden")
+                        + (maximized && " hidden ")
                         + (app.isRtl() ? " text-right pr-5 lg:pr-0 md:pr-0 " : " pl-5 lg:pl-0 md:pl-0 ")
                     }
                 >

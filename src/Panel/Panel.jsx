@@ -23,8 +23,9 @@ import { PanelContext, TopContext } from './Contexts'
 
 const Panel = () => {
 
-    const [isSidebarOpen, setIsSidebarOpen] = useLocalStorageState(true, 'isSidebarOpen');
-    const [isDark, setIsDark] = useLocalStorageState(false, `isDark_${app.userGuid()}`);
+    const [isSidebarOpen, setIsSidebarOpen] = useLocalStorageState(true, 'isSidebarOpen')   
+    const [isDark, setIsDark] = useLocalStorageState(false, `isDark_${app.userGuid()}`)
+    const [maximized, setMaximized] = useLocalStorageState(false, `maximized_${app.userGuid()}`)
 
     const [params, setParams] = useState('');
     const [title, setTitle] = useState('');
@@ -91,7 +92,9 @@ const Panel = () => {
             action,
             setAction,
             severity,
-            setSeverity
+            setSeverity,
+            maximized,
+            setMaximized
         }}>
         {
             app.getLocale().key === 'fa' &&

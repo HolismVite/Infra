@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import app from '../Base/App';
 import Collapse from '@mui/material/Collapse';
+import { PanelContext } from './Contexts';
 
 const Footer = () => {
 
-    const [isShown, setIsShown] = useState(true);
+    const { maximized } = useContext(PanelContext)
 
-    useEffect(() => {
-        const hide = () => {
-            setIsShown(false);
-        };
-        // app.on(app.makeRoom, hide);
-    });
-
-    useEffect(() => {
-        const show = () => {
-            setIsShown(true);
-        };
-        // app.on(app.returnBackToNormalForm, show);
-    });
-
-    return <Collapse in={isShown}>
+    return <Collapse in={!maximized}>
         <div
             id='footer'
             className="h-10 flex items-center justify-center text-sm font-semibold text-gray-700 mt-4"

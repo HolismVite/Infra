@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import app from '../Base/App';
+import React, { useState, useContext } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MenuIcon from '@mui/icons-material/Menu';
 import HeaderActions from '../HeaderActions'
@@ -8,27 +7,14 @@ import { Maximize } from './HeaderActions/Maximize';
 import Collapse from '@mui/material/Collapse';
 import DarkMode from './HeaderActions/DarkMode';
 import { HolismIcon } from '../Components/HolismIcon';
+import { PanelContext } from './Contexts';
 
 const Header = ({ onMenuIconClicked }) => {
 
-    const [isShown, setIsShown] = useState(true);
-
-    useEffect(() => {
-        const hide = () => {
-            setIsShown(false);
-        };
-        // app.on(app.makeRoom, hide);
-    });
-
-    useEffect(() => {
-        const show = () => {
-            setIsShown(true);
-        };
-        // app.on(app.returnBackToNormalForm, show);
-    });
+    const { maximized, setMaximized } = useContext(PanelContext)
 
     return <>
-        <Collapse in={isShown}>
+        <Collapse in={!maximized}>
             <div
                 id='header'
                 className={
@@ -59,11 +45,9 @@ const Header = ({ onMenuIconClicked }) => {
                 </div>
             </div>
         </Collapse>
-        <Collapse in={!isShown}>
+        <Collapse in={maximized}>
             <div
-                className="m-auto absolute top-0 right-0 left-0 h-0 flex justify-center" onClick={() => {
-                    // app.emit(app.returnBackToNormalForm)
-                }}>
+                className="m-auto absolute top-0 right-0 left-0 h-0 flex justify-center" onClick={() => setMaximized(false)}>
                 <ExpandMoreIcon style={{ fontSize: 40 }} className="cursor-pointer" />
             </div>
         </Collapse>
