@@ -33,6 +33,8 @@ const EntityAction = ({
     const { reloadEntity } = useContext(ListContext)
     const [open, setOpen] = useState(false)
 
+    const iconStyles = "text-gray-500 group-hover:text-blue-500 dark:text-zinc-500 dark:group-hover:text-blue-500"
+
     const handleClick = (e) => {
         app.selectedItem = entity;
         if (goTo) {
@@ -86,11 +88,12 @@ const EntityAction = ({
                         if (closeMenu && typeof closeMenu === 'function') {
                             // closeMenu()
                         }
+                        className="group"
                     }}>
                         <ListItemIcon>
                             <HolismIcon
                                 icon={icon}
-                                className={color}
+                                className={color || iconStyles}
                             />
                         </ListItemIcon>
                         <ListItemText>{app.t(title || "")}</ListItemText>
@@ -107,11 +110,11 @@ const EntityAction = ({
                             <CircularProgress size={24} className="m-2" />
                             :
                             <Tooltip title={app.t(title || "")}>
-                                <IconButton onClick={handleClick}>
+                                <IconButton onClick={handleClick} className="group">
                                     {
                                         <HolismIcon
                                             icon={icon}
-                                            className={color}
+                                            className={color || iconStyles}
                                         />
                                         // <CircularProgress
                                         //     variant="determinate"
