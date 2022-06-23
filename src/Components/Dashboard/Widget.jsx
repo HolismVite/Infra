@@ -29,7 +29,7 @@ const Widget = ({
                             ?
                             <div
                                 className={
-                                    "uppercase text-sm text-gray-800 font-light truncate cursor-default "
+                                    "uppercase text-sm text-gray-800 font-light truncate cursor-default dark:text-gray-400 "
                                     + " mb-3 "
                                     + (app.getLocale().supportsLetterSpacing && " tracking-wider ")
                                 }

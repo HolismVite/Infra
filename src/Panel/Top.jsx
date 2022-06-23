@@ -65,7 +65,7 @@ const Top = () => {
                     {
                         hasSubtitleOrBreadcrumb
                             ?
-                            <div className={"text-xs text-gray-500" + (app.getLocale().supportsLetterSpacing && " tracking-wider ")}>
+                            <div className={"text-xs text-gray-500 dark:text-zinc-400 " + (app.getLocale().supportsLetterSpacing && " tracking-wider ")}>
                                 {
                                     app.t(subtitle) ||
                                     (
