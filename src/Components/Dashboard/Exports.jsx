@@ -3,7 +3,7 @@ import Section from './Section'
 import Widget from './Widget'
 import app from '../../Base/App'
 import { get, post } from '../../Base/Api'
-import useMessage from '../../Hooks/useMessage'
+import { useMessage } from 'Hooks'
 
 export { Dashboard }
 export { Section }

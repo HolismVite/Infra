@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import app from 'App'
 import { post, get } from 'App'
-import useMessage from './useMessage'
+import { useMessage } from 'Hooks'
 
 const useForm = ({
     entity,

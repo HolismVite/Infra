@@ -30,7 +30,7 @@ import Unify from '../Unify'
 import ListContext from './ListContext'
 import TableContext from './TableContext'
 import EntityContext from './EntityContext'
-import useMessage from '../../Hooks/useMessage'
+import { useMessage } from 'Hooks'
 
 export { List }
 export { Text }

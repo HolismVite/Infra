@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Snackbar from '@mui/material/Snackbar'
 import MuiAlert from '@mui/material/Alert'
 import app from 'App'
-import useMessage from '../Hooks/useMessage'
+import { useMessage } from 'Hooks'
 import PanelContext from './PanelContext'
 
 const Alert = React.forwardRef((props, ref) => {

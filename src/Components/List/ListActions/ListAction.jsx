@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import ListContext from '../ListContext';
 import app from 'App'
 import HolismIcon from '../../HolismIcon';
-import useMessage from '../../../Hooks/useMessage'
+import { useMessage } from 'Hooks'
 
 const ListAction = ({ icon, text, title, click, minCardinality }) => {
 

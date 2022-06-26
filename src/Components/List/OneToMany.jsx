@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { List, Progress, app, get } from '@List';
 import { ListContext } from './Contexts';
-import useMessage from '../../Hooks/useMessage';
+import { useMessage } from 'Hooks'
 
 const OneToMany = ({
     title,

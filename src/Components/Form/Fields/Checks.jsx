@@ -4,7 +4,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import app from 'App'
 import { get } from 'App'
-import useMessage from '../../../Hooks/useMessage';
+import { useMessage } from 'Hooks'
 import fieldStyles from './FieldStyle'
 import Progress from '../../Progress'
 

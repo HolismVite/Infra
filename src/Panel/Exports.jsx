@@ -17,7 +17,7 @@ import Warning from '../Components/Message/Warning'
 import Error from '../Components/Message/Error'
 import PanelContext from './PanelContext';
 import TopContext from './TopContext';
-import useMessage from '../Hooks/useMessage'
+import { useMessage } from 'Hooks'
 
 export { HeaderAction }
 export { FullScreen }

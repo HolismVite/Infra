@@ -35,7 +35,7 @@ import Info from '../Message/Info'
 import Warning from '../Message/Warning'
 import Error from '../Message/Error'
 import HolismIcon from '../../Components/HolismIcon'
-import useMessage from '../../Hooks/useMessage'
+import { useMessage } from 'Hooks'
 
 export { fieldStyles }
 export { Page }
