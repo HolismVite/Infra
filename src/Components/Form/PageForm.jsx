@@ -65,6 +65,12 @@ const PageForm = ({
             setHasFile
         }}>
             <Explanations explanations={explanations} />
+            <Actions
+                actions={actions}
+                handleSubmit={handleSubmit}
+                onCanceled={navigateBack}
+            />
+            <div className="mb-10"></div>
             <FormElement
                 id='form'
                 inputs={inputs}
