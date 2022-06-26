@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react'
 import Collapse from '@mui/material/Collapse';
 import CheckIcon from '@mui/icons-material/Check';
-import { Chip } from "./Chip"
 import { DialogForm, Progress, HolismIcon, get, post, useMessage } from '@Form'
-import { ListContext } from '../Contexts';
+import { Chip } from "./Chip"
+import ListContext from '../ListContext';
 import DialogContext from '../../Dialog/DialogContext'
 
 const EnumProperty = ({
@@ -123,4 +123,3 @@ const EnumProperty = ({
 }
 
 export default EnumProperty
-export default EnumProperty 

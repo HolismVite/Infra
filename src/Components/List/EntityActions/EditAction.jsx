@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import { EntityAction } from '@List';
-import { app } from '@List';
 import { useNavigate } from 'react-router-dom';
-import { ListContext } from '../Contexts'
-import { EntityContext } from '../Contexts';
+import EditIcon from '@mui/icons-material/Edit';
+import app from '../../../Base/App';
+import ListContext from '../ListContext'
+import EntityContext from '../EntityContext';
 import DialogContext from '../../Dialog/DialogContext';
 import Unify from '../../Unify';
 
@@ -93,4 +92,4 @@ const EditAction = () => {
     </DialogContext.Provider>
 }
 
-export default EditAction;
+export default EditAction

@@ -5,7 +5,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import { app, post, HolismIcon, useMessage } from '@List';
-import { ListContext } from '../Contexts'
+import ListContext from '../ListContext'
 
 const BooleanProperty = ({
     column,
