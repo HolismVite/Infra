@@ -1,9 +1,9 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import Collapse from '@mui/material/Collapse'
 import Button from '@mui/material/Button'
-import { useNavigate } from 'react-router-dom';
 
 const Message = ({
     severity,
@@ -42,4 +42,3 @@ const Message = ({
 }
 
 export default Message
-export default Message 

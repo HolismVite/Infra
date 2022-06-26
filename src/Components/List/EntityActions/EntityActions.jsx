@@ -4,13 +4,12 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Fade from '@mui/material/Fade';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import app from '../../../Base/App';
+import ListContext from '../ListContext';
+import EntityContext from '../EntityContext';
 import DeleteAction from './DeleteAction';
 import EditAction from './EditAction';
-import { app } from '../../../Base/App';
 import ViewRecordAction from './ViewRecordAction';
-import { ListContext } from '../Contexts';
-import { EntityContext } from '../Contexts';
 
 const EntityActions = ({
     entityActions,

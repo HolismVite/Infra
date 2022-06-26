@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import Pagination from './Pagination';
-import EntityActions from './EntityActions/EntityActions';
 import Checkbox from '@mui/material/Checkbox';
 import Tooltip from '@mui/material/Tooltip';
 import Collapse from '@mui/material/Collapse';
-import { ListContext, app } from '@List';
+import app from '../../Base/App';
+import ListContext from './ListContext';
+import EntityContext from './EntityContext';
+import Pagination from './Pagination';
+import EntityActions from './EntityActions/EntityActions';
 import NoEntitiesFound from '../NoEntitiesFound';
-import { EntityContext } from './Contexts'
-import useList from '../../Hooks/useList'
 
 const Cards = () => {
 

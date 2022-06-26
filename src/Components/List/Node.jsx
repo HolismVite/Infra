@@ -3,16 +3,13 @@ import Collapse from '@mui/material/Collapse';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import AddIcon from '@mui/icons-material/Add';
 import IndeterminateCheckBoxOutlinedIcon from '@mui/icons-material/IndeterminateCheckBoxOutlined';
-import DisabledByDefaultOutlinedIcon from '@mui/icons-material/DisabledByDefaultOutlined';
-import BlockIcon from '@mui/icons-material/Block';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { HolismIcon, app } from '@Panel'
-import EditAction from './EntityActions/EditAction';
+import ListContext from './ListContext';
+import EntityContext from './EntityContext';
+import HolismIcon from '../HolismIcon';
 import EntityActions from './EntityActions/EntityActions';
-import { EntityAction } from './EntityActions/EntityAction';
 import Unify from '../Unify';
-import { ListContext } from './Contexts';
-import { EntityContext } from './Contexts';
+import EntityAction from './EntityActions/EntityAction';
 
 const Node = ({
     entityType,

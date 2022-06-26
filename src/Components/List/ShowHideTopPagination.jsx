@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import Tooltip from '@mui/material/Tooltip'
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
-import { ListContext } from './Contexts'
+import ListContext from './ListContext'
 
 const ShowHideTopPagination = () => {
 
