@@ -4,4 +4,4 @@ const ValueWithTitle = ({ value, title }) => {
     </div>
 }
 
-export { ValueWithTitle }
+export default ValueWithTitle 

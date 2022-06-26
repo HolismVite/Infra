@@ -30,4 +30,4 @@ const Link = (props) => {
     />
 }
 
-export { Link };
+export default Link ;

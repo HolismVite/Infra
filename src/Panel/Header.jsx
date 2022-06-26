@@ -1,13 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MenuIcon from '@mui/icons-material/Menu';
-import HeaderActions from '../HeaderActions'
-import { FullScreen } from './HeaderActions/FullScreen';
-import { Maximize } from './HeaderActions/Maximize';
 import Collapse from '@mui/material/Collapse';
+import HeaderActions from '../HeaderActions'
+import FullScreen from './HeaderActions/FullScreen';
+import Maximize from './HeaderActions/Maximize';
 import DarkMode from './HeaderActions/DarkMode';
-import { HolismIcon } from '../Components/HolismIcon';
-import { PanelContext } from './Contexts';
+import HolismIcon from '../Components/HolismIcon';
+import PanelContext from './PanelContext';
 
 const Header = ({ onMenuIconClicked }) => {
 

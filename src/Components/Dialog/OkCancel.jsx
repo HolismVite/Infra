@@ -32,4 +32,4 @@ const OkCancel = ({
     </div>
 }
 
-export { OkCancel }
+export default OkCancel

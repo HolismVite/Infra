@@ -16,4 +16,4 @@ const DateTimeTitleAgo = ({ date, ago }) => {
     />
 }
 
-export { DateTimeTitleAgo }
+export default DateTimeTitleAgo 

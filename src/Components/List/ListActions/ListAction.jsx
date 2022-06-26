@@ -61,4 +61,4 @@ const ListAction = ({ icon, text, title, click, minCardinality }) => {
     </span>
 };
 
-export { ListAction }
+export default ListAction 

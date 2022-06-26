@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { TopContext } from '../../Panel/Contexts'
+import TopContext from '../../Panel/PanelContext'
 
 const Page = ({
     title,
@@ -9,7 +9,7 @@ const Page = ({
     className
 }) => {
 
-	const { setTitle, setSubtitle, setBreadcrumbItems, setFreeze } = useContext(TopContext)
+    const { setTitle, setSubtitle, setBreadcrumbItems, setFreeze } = useContext(TopContext)
 
     useEffect(() => {
         setTitle(title)
@@ -24,5 +24,4 @@ const Page = ({
     </div>
 }
 
-export default Page;
-export { Page };
+export default Page

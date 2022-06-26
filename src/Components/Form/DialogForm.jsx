@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Dialog from '../Dialog/Dialog'
-import { ListContext } from '../List/Contexts'
+import ListContext from '../List/ListContext'
 import { useForm } from '../../Hooks/useForm'
 import {
     Actions,
@@ -97,4 +97,4 @@ const DialogForm = ({
     </FormContext.Provider>
 }
 
-export { DialogForm };
+export default DialogForm

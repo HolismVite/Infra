@@ -63,4 +63,4 @@ const Widget = ({
     </div>
 }
 
-export { Widget };
+export default Widget

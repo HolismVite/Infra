@@ -28,4 +28,3 @@ const Push = {
 }
 
 export default Push;
-export { Push };

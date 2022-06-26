@@ -86,4 +86,4 @@ const Upload = ({
     </div>
 }
 
-export { Upload }
+export default Upload 

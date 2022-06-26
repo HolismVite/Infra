@@ -30,4 +30,4 @@ const DateOnly = (props) => {
     />
 }
 
-export { DateOnly };
+export default DateOnly ;

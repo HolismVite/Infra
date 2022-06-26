@@ -79,4 +79,4 @@ const BooleanProperty = ({
     </div>
 }
 
-export { BooleanProperty }
+export default BooleanProperty 

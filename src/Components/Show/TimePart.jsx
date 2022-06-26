@@ -10,4 +10,4 @@ const TimePart = ({ value, className }) => {
     </span> : null;
 }
 
-export { TimePart }
+export default TimePart 

@@ -13,4 +13,4 @@ const Explanations = ({ explanations }) => {
     </div>
 }
 
-export { Explanations }
+export default Explanations

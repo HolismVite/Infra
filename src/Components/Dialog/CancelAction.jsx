@@ -14,4 +14,4 @@ const CancelAction = ({
     </Button>
 }
 
-export { CancelAction }
+export default CancelAction

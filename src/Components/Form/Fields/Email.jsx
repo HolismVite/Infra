@@ -12,4 +12,4 @@ const Email = (props) => {
     />
 }
 
-export { Email };
+export default Email ;

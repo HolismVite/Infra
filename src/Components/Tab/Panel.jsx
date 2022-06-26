@@ -1,4 +1,3 @@
-
 const Panel = ({ value, index, children }) => {
 
     return value === index
@@ -13,4 +12,3 @@ const Panel = ({ value, index, children }) => {
 }
 
 export default Panel
-export { Panel }

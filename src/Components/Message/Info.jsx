@@ -7,4 +7,4 @@ const Info = (props) => {
     />
 }
 
-export { Info }
+export default Info 

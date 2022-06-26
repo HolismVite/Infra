@@ -108,4 +108,4 @@ const Lookup = ({ column, entityType, placeholder, hint, value, required, displa
     </div>
 };
 
-export { Lookup };
+export default Lookup ;

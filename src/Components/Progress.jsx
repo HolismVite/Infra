@@ -10,4 +10,4 @@ const Progress = ({ size }) => {
         <CircularProgress />
 }
 
-export { Progress }
+export default Progress

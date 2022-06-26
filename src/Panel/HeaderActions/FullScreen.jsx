@@ -33,4 +33,4 @@ const FullScreen = () => {
     />
 }
 
-export { FullScreen }
+export default FullScreen 

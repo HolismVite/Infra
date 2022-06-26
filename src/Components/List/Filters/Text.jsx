@@ -19,4 +19,4 @@ const Text = ({ column, placeholder }) => {
     />
 };
 
-export { Text }
+export default Text 

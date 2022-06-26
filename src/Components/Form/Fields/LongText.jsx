@@ -21,4 +21,4 @@ const LongText = (props) => {
     />
 }
 
-export { LongText }
+export default LongText 

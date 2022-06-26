@@ -13,4 +13,4 @@ const Phone = (props) => {
     />
 }
 
-export { Phone }
+export default Phone 

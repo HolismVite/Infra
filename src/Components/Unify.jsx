@@ -61,4 +61,3 @@ const Unify = ({ component, ...rest }) => {
 }
 
 export default Unify
-export { Unify }

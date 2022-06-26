@@ -42,4 +42,4 @@ const Enum = ({
     </div>
 };
 
-export { Enum };
+export default Enum ;

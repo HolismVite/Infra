@@ -232,4 +232,4 @@ const MarkButton = ({ format, icon }) => {
     )
 }
 
-export { Rte }
+export default Rte 

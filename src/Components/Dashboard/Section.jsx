@@ -73,4 +73,4 @@ const Section = ({
     </div>
 }
 
-export { Section };
+export default Section

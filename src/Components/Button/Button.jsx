@@ -38,4 +38,4 @@ const Button = ({
     </MuiButton>
 }
 
-export { Button }
+export default Button

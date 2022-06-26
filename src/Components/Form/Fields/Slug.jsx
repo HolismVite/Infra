@@ -17,4 +17,4 @@ const Slug = (props) => {
     />
 }
 
-export { Slug };
+export default Slug ;

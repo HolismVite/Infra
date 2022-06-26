@@ -40,4 +40,4 @@ const DateTime = (props) => {
     />
 }
 
-export { DateTime };
+export default DateTime ;

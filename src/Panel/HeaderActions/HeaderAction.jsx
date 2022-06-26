@@ -65,4 +65,4 @@ const HeaderAction = ({ icon, title, url, action, component, ...rest }) => {
     </div>
 }
 
-export { HeaderAction }
+export default HeaderAction 

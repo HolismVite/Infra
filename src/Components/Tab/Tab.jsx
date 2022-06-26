@@ -10,4 +10,3 @@ const Tab = ({ title, icon, panel }) => {
 }
 
 export default Tab
-export { Tab }

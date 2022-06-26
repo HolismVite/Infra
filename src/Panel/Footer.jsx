@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import app from '../Base/App';
 import Collapse from '@mui/material/Collapse';
-import { PanelContext } from './Contexts';
+import app from '../Base/App';
+import PanelContext from './PanelContext';
 
 const Footer = () => {
 
@@ -20,4 +20,4 @@ const Footer = () => {
     </Collapse>
 };
 
-export default Footer;
+export default Footer

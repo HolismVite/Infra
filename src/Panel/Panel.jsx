@@ -10,7 +10,8 @@ import Footer from './Footer';
 import Message from './Message';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Top from './Top';
-import { PanelContext, TopContext } from './Contexts'
+import PanelContext from './PanelContext';
+import TopContext from './TopContext';
 // https://dev.to/codeply/helpful-page-layouts-using-tailwind-css-1a3k
 // import TrapFocus from '@mui/material/Unstable_TrapFocus';
 // import Backdrop from '@mui/material/Backdrop';
@@ -178,24 +179,4 @@ const Panel = () => {
     </PanelContext.Provider>
 }
 
-export default Panel;
-export { HeaderAction } from './HeaderActions/HeaderAction';
-export { FullScreen } from './HeaderActions/FullScreen';
-export { Maximize } from './HeaderActions/Maximize';
-export { Page } from '../Components/Page/Page';
-export { HolismIcon } from '../Components/HolismIcon';
-export { app } from '../Base/App';
-export { get, post, upload } from '../Base/Api';
-export { PagePadding } from './Styles';
-export { Dialog } from '../Components/Dialog/Dialog'
-export { PrimaryAction } from '../Components/Dialog/PrimaryAction'
-export { CancelAction } from '../Components/Dialog/CancelAction'
-export { OkCancel } from '../Components/Dialog/OkCancel'
-export { Progress } from '../Components/Progress'
-export { Success } from '../Components/Message/Success'
-export { Info } from '../Components/Message/Info'
-export { Warning } from '../Components/Message/Warning'
-export { Error } from '../Components/Message/Error'
-export { PanelContext }
-export { TopContext }
-export { useMessage } from '../Hooks/useMessage'
+export default Panel

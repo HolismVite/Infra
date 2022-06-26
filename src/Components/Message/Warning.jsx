@@ -7,4 +7,4 @@ const Warning = (props) => {
     />
 }
 
-export { Warning }
+export default Warning 

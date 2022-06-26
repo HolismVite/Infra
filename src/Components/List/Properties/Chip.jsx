@@ -9,4 +9,4 @@ const Chip = ({
     </span>
 }
 
-export { Chip }
+export default Chip 

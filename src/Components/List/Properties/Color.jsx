@@ -23,4 +23,4 @@ const Color = ({
     </div>
 }
 
-export { Color };
+export default Color ;

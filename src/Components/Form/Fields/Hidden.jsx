@@ -25,4 +25,4 @@ const Hidden = ({
     />
 };
 
-export { Hidden }
+export default Hidden 

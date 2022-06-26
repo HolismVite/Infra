@@ -33,4 +33,4 @@ const ImageGroup = ({
     </div>
 }
 
-export { ImageGroup }
+export default ImageGroup 

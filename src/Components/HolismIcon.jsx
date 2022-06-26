@@ -28,5 +28,4 @@ const HolismIcon = ({ icon, className }) => {
     }
 }
 
-export default HolismIcon;
-export { HolismIcon };
+export default HolismIcon

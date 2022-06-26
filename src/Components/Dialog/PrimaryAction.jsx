@@ -15,4 +15,4 @@ const PrimaryAction = ({
     </Button>
 }
 
-export { PrimaryAction }
+export default PrimaryAction

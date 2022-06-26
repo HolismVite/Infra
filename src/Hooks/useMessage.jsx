@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { PanelContext } from '../Panel/Contexts'
+import PanelContext from '../Panel/PanelContext'
 
 const useMessage = () => {
 
@@ -51,4 +51,3 @@ const useMessage = () => {
 }
 
 export default useMessage
-export { useMessage }

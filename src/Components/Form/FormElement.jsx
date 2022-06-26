@@ -14,4 +14,4 @@ const FormElement = ({
     </form>
 }
 
-export { FormElement }
+export default FormElement 

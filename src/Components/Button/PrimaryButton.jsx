@@ -6,4 +6,4 @@ const PrimaryButton = (props) => {
     />
 }
 
-export { PrimaryButton }
+export default PrimaryButton

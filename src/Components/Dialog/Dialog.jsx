@@ -68,5 +68,4 @@ const Dialog = ({
     </MuiDialog>
 }
 
-export default Dialog;
-export { Dialog }
+export default Dialog

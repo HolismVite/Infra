@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import { TopContext } from './Contexts';
+import TopContext from './TopContext';
 
 const NotFound = () => {
 

@@ -12,4 +12,4 @@ const DateTime = ({ date }) => {
     </>
 }
 
-export { DateTime }
+export default DateTime 

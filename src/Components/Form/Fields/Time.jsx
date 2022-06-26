@@ -31,4 +31,4 @@ const Time = (props) => {
     />
 }
 
-export { Time };
+export default Time ;

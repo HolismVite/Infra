@@ -83,4 +83,4 @@ const Image = ({
     </div>
 }
 
-export { Image }
+export default Image 

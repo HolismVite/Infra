@@ -49,4 +49,4 @@ const Actions = ({
     </div>
 }
 
-export { Actions }
+export default Actions

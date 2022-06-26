@@ -140,4 +140,4 @@ const EntityAction = ({
     </DialogContext.Provider>
 };
 
-export { EntityAction }
+export default EntityAction 

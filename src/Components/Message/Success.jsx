@@ -7,4 +7,4 @@ const Success = (props) => {
     />
 }
 
-export { Success }
+export default Success 

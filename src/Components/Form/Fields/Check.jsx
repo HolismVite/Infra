@@ -38,4 +38,4 @@ const Check = ({
     />
 };
 
-export { Check }
+export default Check 

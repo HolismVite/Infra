@@ -26,4 +26,4 @@ const Tree = ({
 
 export default Tree
 
-export { Tree }
+export default Tree 

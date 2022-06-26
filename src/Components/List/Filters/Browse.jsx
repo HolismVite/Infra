@@ -132,4 +132,4 @@ const Browse = ({ column, placeholder, entityType, browser, display, choose }) =
     </>
 }
 
-export { Browse };
+export default Browse ;

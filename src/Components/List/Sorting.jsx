@@ -3,9 +3,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import CloseIcon from '@mui/icons-material/Close';
-import { ListContext } from './Contexts';
+import ListContext from './ListContext';
 import app from '../../Base/App';
-import Holism from '../../Base/Holism';
 
 const Sorting = ({ sorts }) => {
 
@@ -15,12 +14,12 @@ const Sorting = ({ sorts }) => {
 
     for (let i = 0; i < sorts.length; i++) {
         const { caption, column, direction, key } = sorts[i];
-        Holism.ensure(caption);
+        app.ensure(caption);
         if (key) {
-            Holism.ensure(key);
+            app.ensure(key);
         }
         else {
-            Holism.ensure([column, direction]);
+            app.ensure([column, direction]);
         }
     }
 

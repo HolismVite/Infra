@@ -123,4 +123,4 @@ const EnumProperty = ({
 }
 
 export default EnumProperty
-export { EnumProperty }
+export default EnumProperty 

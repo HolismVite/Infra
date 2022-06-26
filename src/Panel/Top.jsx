@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import app from '../Base/App';
-import { PanelContext, TopContext } from './Contexts';
+import PanelContext from './PanelContext'
+import TopContext from './TopContext'
 
 const Top = () => {
 

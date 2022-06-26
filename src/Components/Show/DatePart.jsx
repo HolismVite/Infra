@@ -21,4 +21,4 @@ const DatePart = ({ value }) => {
     new Date(normalizedValue).toDateString()
 }
 
-export { DatePart }
+export default DatePart 

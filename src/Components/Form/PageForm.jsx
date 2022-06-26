@@ -81,4 +81,4 @@ const PageForm = ({
     </Page >
 }
 
-export { PageForm }
+export default PageForm 

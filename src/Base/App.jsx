@@ -21,5 +21,3 @@ const app = {
 }
 
 export default app
-
-export { app }

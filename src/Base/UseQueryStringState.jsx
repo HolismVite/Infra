@@ -22,5 +22,4 @@ const useQueryStringState = (key, defaultValue) => {
     return [value, setValue];
 }
 
-export default useQueryStringState;
-export { useQueryStringState };
+export default useQueryStringState

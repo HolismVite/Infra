@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { HeaderAction } from './HeaderAction';
-import { PanelContext } from '../Contexts';
+import HeaderAction from './HeaderAction';
+import PanelContext from '../PanelContext';
 
 const DarkMode = () => {
 

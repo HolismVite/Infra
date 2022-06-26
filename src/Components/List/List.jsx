@@ -168,7 +168,7 @@ const List = ({
   </ListContext.Provider>
 }
 
-export { List }
+export default List 
 
 /*
 List anatomy

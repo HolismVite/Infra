@@ -144,4 +144,4 @@ const Checks = ({
     </div>
 }
 
-export { Checks }
+export default Checks 

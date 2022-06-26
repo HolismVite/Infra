@@ -59,4 +59,4 @@ const Enum = ({ column, entityType, placeholder }) => {
     />
 };
 
-export { Enum }
+export default Enum 
