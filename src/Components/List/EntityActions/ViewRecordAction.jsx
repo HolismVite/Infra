@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import DataObjectIcon from '@mui/icons-material/DataObject';
-import app from '../../../Base/App';
+import app from 'App'
 import ListContext from '../ListContext';
 import EntityContext from '../EntityContext';
 import DialogContext from '../../Dialog/DialogContext';

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import Tooltip from '@mui/material/Tooltip'
 import CachedIcon from '@mui/icons-material/Cached'
-import app from '../../Base/App'
+import app from 'App'
 import ListContext from './ListContext'
 
 const Reload = () => {

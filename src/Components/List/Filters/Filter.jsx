@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import app from '../../../Base/App';
+import app from 'App'
 import ListContext from "../ListContext";
 import filterOperator from '../../../Base/FilterOperator';
 

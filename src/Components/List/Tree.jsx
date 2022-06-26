@@ -1,6 +1,6 @@
 import React from 'react';
 import useLocalStorageState from '../../Base/UseLocalStorageState';
-import app from '../../Base/App'
+import app from 'App'
 import List from './List';
 
 const Tree = ({

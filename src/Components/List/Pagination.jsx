@@ -11,7 +11,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import app from '../../Base/App';
+import app from 'App'
 import ListContext from './ListContext';
 import DialogContext from '../Dialog/DialogContext';
 import Dialog from '../Dialog/Dialog'

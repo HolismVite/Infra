@@ -4,7 +4,7 @@ import svgr from 'vite-plugin-svgr'
 
 const path = require(`path`)
 const aliases = {
-  '@Base': 'src/Base',
+  'App': 'src/Base/Exports',
   '@Components': 'src/Components',
   '@Form': 'src/Components/Form/Exports',
   '@List': 'src/Components/List/Exports',

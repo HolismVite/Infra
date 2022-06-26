@@ -1,6 +1,6 @@
 import MenuItem from '@mui/material/MenuItem';
 import MuiSelect from '@mui/material/Select';
-import app from '../../../Base/App';
+import app from 'App'
 import Field from './Field'
 
 const Select = ({

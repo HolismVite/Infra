@@ -1,4 +1,4 @@
-import app from "../../Base/App"
+import app from 'App'
 
 const TitleSubtitle = ({ title, subtitle }) => {
     return <div className={"ltr:text-left rtl:text-right"}>

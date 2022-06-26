@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
-import app from '../../../Base/App';
+import app from 'App'
 import EntityAction from './EntityAction';
 import ListContext from '../ListContext'
 import EntityContext from '../EntityContext';

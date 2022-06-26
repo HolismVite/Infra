@@ -5,7 +5,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import CircularProgress from '@mui/material/CircularProgress';
-import app from '../../../Base/App';
+import app from 'App'
 import { get } from '../../../Base/Api';
 import useMessage from '../../../Hooks/useMessage';
 import FormContext from '../FormContext';

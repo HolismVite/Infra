@@ -4,7 +4,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useNavigate } from 'react-router-dom';
-import app from "../Base/App";
+import app from 'App'
 import HolismIcon from '../Components/HolismIcon'
 
 const Item = ({ url, icon, background, title, handler }) =>

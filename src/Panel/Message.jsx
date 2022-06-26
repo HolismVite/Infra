@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import Snackbar from '@mui/material/Snackbar'
 import MuiAlert from '@mui/material/Alert'
-import app from '../Base/App'
+import app from 'App'
 import useMessage from '../Hooks/useMessage'
 import PanelContext from './PanelContext'
 

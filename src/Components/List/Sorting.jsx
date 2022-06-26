@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import CloseIcon from '@mui/icons-material/Close';
 import ListContext from './ListContext';
-import app from '../../Base/App';
+import app from 'App'
 
 const Sorting = ({ sorts }) => {
 

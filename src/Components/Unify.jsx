@@ -1,5 +1,5 @@
 import React from 'react'
-import app from "../Base/App"
+import app from 'App'
 
 const Unify = ({ component, ...rest }) => {
 

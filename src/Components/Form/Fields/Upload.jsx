@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { useDropzone } from 'react-dropzone'
 import Fade from '@mui/material/Fade';
-import app from '../../../Base/App';
+import app from 'App'
 import FormContext from '../FormContext';
 import fieldStyles from './FieldStyle';
 

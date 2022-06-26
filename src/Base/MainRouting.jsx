@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import app from './App';
+import app from 'App'
 import NotFound from '../Panel/NotFound';
 import Test from '../Panel/Test'
 import routes from '../Routes';

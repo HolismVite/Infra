@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import CircularProgress from '@mui/material/CircularProgress';
-import app from '../../../Base/App';
+import app from 'App'
 import { get } from '../../../Base/Api';
 import Filter from './Filter';
 import useLocalStorageState from '../../../Base/UseLocalStorageState';

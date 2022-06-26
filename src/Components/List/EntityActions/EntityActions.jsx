@@ -4,7 +4,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Fade from '@mui/material/Fade';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
-import app from '../../../Base/App';
+import app from 'App'
 import ListContext from '../ListContext';
 import EntityContext from '../EntityContext';
 import DeleteAction from './DeleteAction';

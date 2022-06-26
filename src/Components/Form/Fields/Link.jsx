@@ -1,5 +1,5 @@
 import LinkIcon from '@mui/icons-material/Link';
-import app from '../../../Base/App';
+import app from 'App'
 import Text from './Text';
 
 const Link = (props) => {

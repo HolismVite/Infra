@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import Tooltip from '@mui/material/Tooltip';
 import Collapse from '@mui/material/Collapse';
-import app from '../../Base/App';
+import app from 'App'
 import ListContext from './ListContext';
 import TableContext from './TableContext'
 import EntityContext from './EntityContext';

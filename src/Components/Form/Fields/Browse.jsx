@@ -12,7 +12,7 @@ import Slide from '@mui/material/Slide';
 import CloseIcon from '@mui/icons-material/Close';
 import Tooltip from '@mui/material/Tooltip';
 import ClearIcon from '@mui/icons-material/Clear';
-import app from '../../../Base/App';
+import app from 'App'
 import Field from './Field'
 import Pagination from '../../List/Pagination';
 

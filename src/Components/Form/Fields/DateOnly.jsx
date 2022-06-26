@@ -1,6 +1,6 @@
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import app from '../../../Base/App';
+import app from 'App'
 import Field from './Field';
 
 const DateOnly = (props) => {

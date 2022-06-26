@@ -4,7 +4,7 @@ import { Transition } from '@headlessui/react'
 import MainRouting from '../Base/MainRouting';
 import Sidebar from './Sidebar';
 import Header from './Header';
-import app from '../Base/App';
+import app from 'App'
 import useLocalStorageState from '../Base/UseLocalStorageState';
 import Footer from './Footer';
 import Message from './Message';

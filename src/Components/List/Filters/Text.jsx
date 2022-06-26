@@ -1,4 +1,4 @@
-import app from "../../../Base/App";
+import app from 'App'
 import Filter from "./Filter";
 import OutlinedInput from '@mui/material/OutlinedInput';
 

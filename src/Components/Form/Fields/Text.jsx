@@ -1,6 +1,6 @@
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
-import app from '../../../Base/App'
+import app from 'App'
 import Field from './Field'
 import HolismIcon from '../../HolismIcon'
 

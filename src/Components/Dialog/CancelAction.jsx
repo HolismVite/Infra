@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import app from '../../Base/App';
+import app from 'App'
 
 const CancelAction = ({
     text,

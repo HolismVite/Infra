@@ -19,7 +19,7 @@ import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import { Button, Toolbar } from './RteComponents'
 import HolismIcon from '../../HolismIcon'
-import app from '../../../Base/App'
+import app from 'App'
 import FormContext from '../FormContext'
 
 const HOTKEYS = {

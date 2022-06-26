@@ -1,4 +1,4 @@
-import app from '../Base/App'
+import app from 'App'
 
 const NoEntitiesFound = ({
     icon,

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Collapse from '@mui/material/Collapse';
-import app from '../Base/App';
+import app from 'App'
 import PanelContext from './PanelContext';
 
 const Footer = () => {

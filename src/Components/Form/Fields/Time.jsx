@@ -1,6 +1,6 @@
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-import app from '../../../Base/App';
+import app from 'App'
 import Field from './Field';
 
 const Time = (props) => {

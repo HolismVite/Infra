@@ -1,4 +1,4 @@
-import app from "../../../Base/App";
+import app from 'App'
 import Filter from "./Filter";
 import Input from '@mui/material/Input';
 import React, { useState, useEffect } from 'react';

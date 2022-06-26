@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import app from '../Base/App';
+import app from 'App'
 import PanelContext from './PanelContext'
 import TopContext from './TopContext'
 

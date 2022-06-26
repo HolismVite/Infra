@@ -6,7 +6,7 @@ import BiotechIcon from '@mui/icons-material/Biotech'
 import Collapse from '@mui/material/Collapse'
 import menuItems from '../Menu'
 import HolismIcon from '../Components/HolismIcon'
-import app from '../Base/App'
+import app from 'App'
 
 let items = menuItems;
 if (app.isDev()) {

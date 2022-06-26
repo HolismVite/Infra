@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import app from '../../../Base/App';
+import app from 'App'
 import { get } from '../../../Base/Api';
 import useMessage from '../../../Hooks/useMessage';
 import fieldStyles from './FieldStyle'

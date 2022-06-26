@@ -2,7 +2,7 @@ import HolismIcon from "../../Components/HolismIcon"
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import React, { useState } from 'react';
-import app from "../../Base/App";
+import app from 'App'
 import { useNavigate } from 'react-router-dom';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 
@@ -55,7 +55,7 @@ const HeaderAction = ({ icon, title, url, action, component, ...rest }) => {
                             + " ltr:right-0 rtl:left-0 "
                         }
                     >
-                        <Component 
+                        <Component
                             hide={() => setShowComponent(false)}
                         />
                     </div>
