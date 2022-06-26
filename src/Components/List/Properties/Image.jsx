@@ -8,6 +8,8 @@ import TableContext from '../TableContext';
 import Dialog from '../../Dialog/Dialog'
 import Upload from '../../Form/Fields/Upload'
 import OkCancel from '../../Dialog/OkCancel';
+import FormElement from '../../Form/FormElement'
+import HolismIcon from '../../HolismIcon'
 
 const Image = ({
     url,
