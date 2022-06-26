@@ -1,5 +1,6 @@
 import OutlinedInput from '@mui/material/OutlinedInput';
-import { app, Field } from '@Form';
+import app from '../../../Base/App';
+import Field from './Field';
 
 const LongText = (props) => {
 

@@ -1,4 +1,4 @@
-import { app } from '@Panel'
+import app from '../../../Base/App'
 
 const Chip = ({
     text,

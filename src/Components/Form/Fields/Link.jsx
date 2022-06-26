@@ -1,6 +1,6 @@
-import { Text } from './Text';
 import LinkIcon from '@mui/icons-material/Link';
-import { app } from '../Exports';
+import app from '../../../Base/App';
+import Text from './Text';
 
 const Link = (props) => {
     const urlFormat = /http(s)?.*/;
@@ -30,4 +30,4 @@ const Link = (props) => {
     />
 }
 
-export default Link ;
+export default Link;

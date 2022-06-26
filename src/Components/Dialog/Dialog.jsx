@@ -4,9 +4,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { app } from '../../Base/App'
-import { PrimaryAction } from './PrimaryAction';
+import app from '../../Base/App';
 import DialogContext from './DialogContext';
+import PrimaryAction from './PrimaryAction';
 
 const Dialog = ({
     title,

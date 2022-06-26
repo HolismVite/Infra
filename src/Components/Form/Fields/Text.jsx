@@ -1,6 +1,7 @@
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
-import { app, Field } from '@Form'
+import app from '../../../Base/App'
+import Field from './Field'
 import HolismIcon from '../../HolismIcon'
 
 const Text = ({

@@ -1,14 +1,12 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom'
-import { useForm } from '../../Hooks/useForm'
-import { FormContext } from './Contexts';
-import {
-    Actions,
-    app,
-    Explanations,
-    FormElement,
-    Page,
-} from '@Form';
+import app from '../../Base/App';
+import useForm from '../../Hooks/useForm';
+import FormContext from './FormContext';
+import Actions from './Actions'
+import Explanations from './Explanations'
+import FormElement from './FormElement'
+import Page from '../Page/Page'
 
 const PageForm = ({
     actions,

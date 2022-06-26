@@ -1,5 +1,5 @@
-import { Text } from './Text';
 import LinkIcon from '@mui/icons-material/Link';
+import Text from './Text';
 
 const Slug = (props) => {
     const slugFormat = /^[a-z0-9-]*$/;
@@ -17,4 +17,4 @@ const Slug = (props) => {
     />
 }
 
-export default Slug ;
+export default Slug;

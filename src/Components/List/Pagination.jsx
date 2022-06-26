@@ -11,10 +11,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { ListContext, app } from '@List'
-import Dialog from '../Dialog/Dialog'
-import { OkCancel } from '../Dialog/OkCancel'
+import app from '../../Base/App';
+import ListContext from './ListContext';
 import DialogContext from '../Dialog/DialogContext';
+import Dialog from '../Dialog/Dialog'
+import OkCancel from '../Dialog/OkCancel';
 
 const textStyle = "text-blue-900 p-2 font-light text-xs items-center cursor-pointer uppercase hover:bg-blue-50 rounded-lg";
 

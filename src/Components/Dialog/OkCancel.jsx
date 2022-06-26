@@ -1,6 +1,6 @@
 import CircularProgress from '@mui/material/CircularProgress';
-import { PrimaryAction } from './PrimaryAction';
-import { CancelAction } from './CancelAction';
+import PrimaryAction from './PrimaryAction';
+import CancelAction from './CancelAction';
 
 const OkCancel = ({
     progress,

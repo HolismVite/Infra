@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
 import DataObjectIcon from '@mui/icons-material/DataObject';
-import { Dialog, EntityAction } from '@List';
-import { app } from '@List';
-import { ListContext } from '../Contexts'
-import { EntityContext } from '../Contexts';
+import app from '../../../Base/App';
+import ListContext from '../ListContext';
+import EntityContext from '../EntityContext';
 import DialogContext from '../../Dialog/DialogContext';
+import Dialog from '../../Dialog/Dialog';
+import EntityAction from './EntityAction';
 
 const ViewRecordAction = () => {
 

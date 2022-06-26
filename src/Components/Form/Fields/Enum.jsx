@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Select, app, useLocalStorageState, get, fieldStyles } from '@Form';
+import app from '../../../Base/App';
+import { get } from '../../../Base/Api';
+import useLocalStorageState from '../../../Base/UseLocalStorageState'
+import fieldStyles from './FieldStyle'
+import Select from './Select'
 
 const Enum = ({
     entityType,

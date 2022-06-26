@@ -2,7 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import InputLabel from '@mui/material/InputLabel';
-import { app, FormContext, fieldStyles } from '@Form';
+import app from '../../../Base/App';
+import FormContext from '../FormContext';
+import fieldStyles from './FieldStyle'
 
 const Field = ({
     column,
@@ -124,4 +126,4 @@ const Field = ({
     </div>
 };
 
-export default Field ;
+export default Field;

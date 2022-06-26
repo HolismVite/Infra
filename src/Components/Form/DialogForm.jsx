@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Dialog from '../Dialog/Dialog'
+import useForm from '../../Hooks/useForm';
 import ListContext from '../List/ListContext'
-import { useForm } from '../../Hooks/useForm'
-import {
-    Actions,
-    Explanations,
-    FormElement,
-} from '@Form';
-import { FormContext } from './Contexts';
 import DialogContext from '../Dialog/DialogContext';
+import FormContext from './FormContext';
+import Dialog from '../Dialog/Dialog'
+import FormElement from './FormElement';
+import Explanations from './Explanations';
+import Actions from './Actions';
 
 const DialogForm = ({
     actions,

@@ -1,6 +1,7 @@
 import MenuItem from '@mui/material/MenuItem';
 import MuiSelect from '@mui/material/Select';
-import { Field, app } from '@Form';
+import app from '../../../Base/App';
+import Field from './Field'
 
 const Select = ({
     hasEmpty,

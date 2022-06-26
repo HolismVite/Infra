@@ -1,5 +1,5 @@
-import { Text } from './Text';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import Text from './Text';
 
 const Phone = (props) => {
 

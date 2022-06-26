@@ -19,7 +19,8 @@ import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import { Button, Toolbar } from './RteComponents'
 import HolismIcon from '../../HolismIcon'
-import { app, fieldStyles, FormContext } from '@Form'
+import app from '../../../Base/App'
+import FormContext from '../FormContext'
 
 const HOTKEYS = {
     'mod+b': 'bold',
