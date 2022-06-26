@@ -1,10 +1,14 @@
 import { useState, useEffect, useContext } from 'react'
 import Collapse from '@mui/material/Collapse';
 import CheckIcon from '@mui/icons-material/Check';
-import { DialogForm, Progress, HolismIcon, get, post, useMessage } from '@Form'
-import { Chip } from "./Chip"
+import { post } from '../../../Base/Api'
+import useMessage from '../../../Hooks/useMessage'
 import ListContext from '../ListContext';
 import DialogContext from '../../Dialog/DialogContext'
+import DialogForm from '../../Form/DialogForm'
+import Chip from "./Chip"
+import HolismIcon from '../../HolismIcon'
+import Progress from '../../Progress'
 
 const EnumProperty = ({
     enumeration,

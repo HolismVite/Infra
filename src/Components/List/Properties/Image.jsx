@@ -1,11 +1,13 @@
 import { useState, useContext } from 'react'
 import UploadIcon from '@mui/icons-material/Upload';
-import { Dialog, HolismIcon } from '../Exports';
-import { FormElement, Upload, app, upload } from '@Form'
-import { OkCancel } from '@Panel'
-import { TableContext } from '@List'
+import app from '../../../Base/App'
+import { upload } from '../../../Base/Api'
 import useMessage from '../../../Hooks/useMessage'
 import DialogContext from '../../Dialog/DialogContext';
+import TableContext from '../Exports';
+import Dialog from '../../Dialog/Dialog'
+import Upload from '../../Form/Upload'
+import OkCancel from '../../Dialog/OkCancel';
 
 const Image = ({
     url,
@@ -46,28 +48,28 @@ const Image = ({
                 }}
             >
                 <Dialog
-                title='Upload image'
-                content={<>
-                    {/* <Explanations explanations={explanations} /> */}
-                    <FormElement
-                        id='uploadImageForm'
-                        inputs={<>
-                            <Upload
-                            />
-                        </>}
-                    />
-                </>}
-                actions={
-                    <OkCancel
-                        progress={progress}
-                        okClick={() => uploadImage()}
-                        cancelClick={() => setOpen(false)}
-                    />
-                }
-                onEntered={() => {
-                    // focusFirstInput('uploadImageForm')
-                }}
-            />
+                    title='Upload image'
+                    content={<>
+                        {/* <Explanations explanations={explanations} /> */}
+                        <FormElement
+                            id='uploadImageForm'
+                            inputs={<>
+                                <Upload
+                                />
+                            </>}
+                        />
+                    </>}
+                    actions={
+                        <OkCancel
+                            progress={progress}
+                            okClick={() => uploadImage()}
+                            cancelClick={() => setOpen(false)}
+                        />
+                    }
+                    onEntered={() => {
+                        // focusFirstInput('uploadImageForm')
+                    }}
+                />
             </DialogContext.Provider>
         }
         <span className="group" onClick={() => setOpen(true)}>

@@ -1,6 +1,6 @@
-import { SketchPicker } from 'react-color';
-import Dialog from '@mui/material/Dialog';
 import { useState } from 'react';
+import Dialog from '@mui/material/Dialog';
+import { SketchPicker } from 'react-color';
 
 const Color = ({
     column,

@@ -1,7 +1,7 @@
 import React from 'react';
 import useLocalStorageState from '../../Base/UseLocalStorageState';
-import { List } from './List'
-import { app } from './Exports';
+import app from '../../Base/App'
+import List from './List';
 
 const Tree = ({
     expanded,

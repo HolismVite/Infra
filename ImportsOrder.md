@@ -5,6 +5,7 @@
 - them then us  
 - less UI to more UI
 - bigger to smallers
+- for peers, alphabetical
 
 ---
 
