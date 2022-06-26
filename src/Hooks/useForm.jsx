@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import app from 'App'
-import { post, get } from '../Base/Api'
+import { post, get } from 'App'
 import useMessage from './useMessage'
 
 const useForm = ({

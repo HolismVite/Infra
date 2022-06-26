@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import UploadIcon from '@mui/icons-material/Upload';
 import app from 'App'
-import { upload } from '../../../Base/Api'
+import { upload } from 'App'
 import useMessage from '../../../Hooks/useMessage'
 import DialogContext from '../../Dialog/DialogContext';
 import TableContext from '../TableContext';

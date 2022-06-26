@@ -12,8 +12,8 @@ import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import Panel from './Panel/Panel';
-import app from './Base/App';
-import { get } from './Base/Api';
+import app from 'App'
+import { get } from 'App'
 import './index.css';
 
 const faTheme = createTheme({

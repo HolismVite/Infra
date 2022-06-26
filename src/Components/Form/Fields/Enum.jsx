@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import app from 'App'
-import { get } from '../../../Base/Api';
+import { get } from 'App'
 import useLocalStorageState from '../../../Base/UseLocalStorageState'
 import fieldStyles from './FieldStyle'
 import Select from './Select'
