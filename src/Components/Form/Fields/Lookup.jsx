@@ -8,7 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import app from 'App'
 import { get } from 'App'
 import { useMessage } from 'Hooks'
-import FormContext from '../FormContext';
+import { FormContext } from 'Contexts'
 import fieldStyles from './FieldStyle';
 
 const Lookup = ({ column, entityType, placeholder, hint, value, required, display }) => {

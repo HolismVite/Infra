@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import FormContext from '../FormContext'
+import { FormContext } from 'Contexts'
 
 const Hidden = ({
     column,

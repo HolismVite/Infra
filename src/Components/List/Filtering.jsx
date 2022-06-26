@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Button from '@mui/material/Button';
 import app from 'App'
-import ListContext from './ListContext';
+import { ListContext } from 'Contexts'
 
 const Filtering = ({ filters }) => {
 

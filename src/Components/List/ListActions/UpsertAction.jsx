@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react'
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import ListContext from '../ListContext'
+import { ListContext } from 'Contexts'
 import Unify from '../../Unify';
-import DialogContext from '../../Dialog/DialogContext';
+import { DialogContext } from 'Contexts'
 
 const UpsertAction = () => {
 

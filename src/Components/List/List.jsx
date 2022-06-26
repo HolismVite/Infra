@@ -8,8 +8,8 @@ import Filtering from "./Filtering"
 import Sorting from "./Sorting"
 import Entities from "./Entities"
 import ListActions from "./ListActions/ListActions"
-import TopContext from '../../Panel/TopContext'
-import ListContext from './ListContext'
+import { TopContext } from 'Contexts'
+import { ListContext } from 'Contexts'
 import ShowHideTopPagination from './ShowHideTopPagination'
 import ShowHideFiltering from './ShowHideFiltering'
 import Reload from './Reload'

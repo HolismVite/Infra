@@ -27,9 +27,9 @@ import DateTimeTitleAgo from '../Show/DateTimeTitleAgo'
 import TitleSubtitle from '../Show/TitleSubtitle'
 import Tree from './Tree'
 import Unify from '../Unify'
-import ListContext from './ListContext'
-import TableContext from './TableContext'
-import EntityContext from './EntityContext'
+import { ListContext } from 'Contexts'
+import { TableContext } from 'Contexts'
+import { EntityContext } from 'Contexts'
 import { useMessage } from 'Hooks'
 
 export { List }

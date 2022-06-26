@@ -3,8 +3,8 @@ import UploadIcon from '@mui/icons-material/Upload';
 import app from 'App'
 import { upload } from 'App'
 import { useMessage } from 'Hooks'
-import DialogContext from '../../Dialog/DialogContext';
-import TableContext from '../TableContext';
+import { DialogContext } from 'Contexts'
+import { TableContext } from 'Contexts'
 import Dialog from '../../Dialog/Dialog'
 import Upload from '../../Form/Fields/Upload'
 import OkCancel from '../../Dialog/OkCancel';

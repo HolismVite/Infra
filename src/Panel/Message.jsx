@@ -3,7 +3,7 @@ import Snackbar from '@mui/material/Snackbar'
 import MuiAlert from '@mui/material/Alert'
 import app from 'App'
 import { useMessage } from 'Hooks'
-import PanelContext from './PanelContext'
+import { PanelContext } from 'Contexts'
 
 const Alert = React.forwardRef((props, ref) => {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />

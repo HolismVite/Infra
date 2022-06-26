@@ -15,8 +15,8 @@ import Success from '../Components/Message/Success'
 import Info from '../Components/Message/Info'
 import Warning from '../Components/Message/Warning'
 import Error from '../Components/Message/Error'
-import PanelContext from './PanelContext';
-import TopContext from './TopContext';
+import { PanelContext } from 'Contexts';
+import { TopContext } from 'Contexts';
 import { useMessage } from 'Hooks'
 
 export { HeaderAction }

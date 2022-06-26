@@ -4,7 +4,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { useDropzone } from 'react-dropzone'
 import Fade from '@mui/material/Fade';
 import app from 'App'
-import FormContext from '../FormContext';
+import { FormContext } from 'Contexts'
 import fieldStyles from './FieldStyle';
 
 const Upload = ({

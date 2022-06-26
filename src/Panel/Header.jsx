@@ -7,7 +7,7 @@ import FullScreen from './HeaderActions/FullScreen';
 import Maximize from './HeaderActions/Maximize';
 import DarkMode from './HeaderActions/DarkMode';
 import HolismIcon from '../Components/HolismIcon';
-import PanelContext from './PanelContext';
+import { PanelContext } from 'Contexts'
 
 const Header = ({ onMenuIconClicked }) => {
 

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import { ListContext } from '@List';
+import { ListContext } from 'Contexts'
 import UpsertAction from './UpsertAction';
 
 const ListActions = () => {

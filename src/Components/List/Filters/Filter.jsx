@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import app from 'App'
-import ListContext from "../ListContext";
+import { ListContext } from 'Contexts'
 import filterOperator from '../../../Base/FilterOperator';
 
 const Filter = ({

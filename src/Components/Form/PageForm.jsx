@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import app from 'App'
 import { useForm } from 'Hooks'
-import FormContext from './FormContext';
+import { FormContext } from 'Contexts'
 import Actions from './Actions'
 import Explanations from './Explanations'
 import FormElement from './FormElement'

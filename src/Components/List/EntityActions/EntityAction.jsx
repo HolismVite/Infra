@@ -8,8 +8,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import { useNavigate } from 'react-router-dom';
 import { HolismIcon, app, Unify } from '@List';
 import { useMessage } from 'Hooks'
-import ListContext from '../ListContext';
-import DialogContext from '../../Dialog/DialogContext'
+import { ListContext } from 'Contexts'
+import { DialogContext } from 'Contexts'
 
 const EntityAction = ({
     asMenuItem,

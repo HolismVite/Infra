@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 import app from 'App'
-import ListContext from '../ListContext';
-import EntityContext from '../EntityContext';
-import DialogContext from '../../Dialog/DialogContext';
+import { ListContext } from 'Contexts'
+import { EntityContext } from 'Contexts'
+import { DialogContext } from 'Contexts'
 import Dialog from '../../Dialog/Dialog';
 import EntityAction from './EntityAction';
 

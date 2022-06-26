@@ -3,9 +3,9 @@ import Checkbox from '@mui/material/Checkbox';
 import Tooltip from '@mui/material/Tooltip';
 import Collapse from '@mui/material/Collapse';
 import app from 'App'
-import ListContext from './ListContext';
-import TableContext from './TableContext'
-import EntityContext from './EntityContext';
+import { ListContext } from 'Contexts'
+import { TableContext } from 'Contexts'
+import { EntityContext } from 'Contexts'
 import Pagination from './Pagination';
 import EntityActions from './EntityActions/EntityActions';
 import NoEntitiesFound from '../NoEntitiesFound';

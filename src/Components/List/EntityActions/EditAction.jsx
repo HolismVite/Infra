@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import app from 'App'
 import EntityAction from './EntityAction';
-import ListContext from '../ListContext'
-import EntityContext from '../EntityContext';
-import DialogContext from '../../Dialog/DialogContext';
+import { ListContext } from 'Contexts'
+import { EntityContext } from 'Contexts'
+import { DialogContext } from 'Contexts'
 import Unify from '../../Unify';
 
 const EditAction = () => {

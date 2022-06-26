@@ -6,6 +6,7 @@ const path = require(`path`)
 const aliases = {
   'App': 'src/Base/Exports',
   'Hooks': 'src/Hooks/Exports',
+  'Contexts': 'src/Contexts/Exports',
   '@Form': 'src/Components/Form/Exports',
   '@List': 'src/Components/List/Exports',
   '@Browse': 'src/Components/Browse/Exports',

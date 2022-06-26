@@ -5,7 +5,7 @@ import Collapse from '@mui/material/Collapse';
 import Filtering from "../List/Filtering";
 import Sorting from "../List/Sorting";
 import Entities from "../List/Entities";
-import { app, EntityAction, ListContext } from '@List';
+import { ListContext } from 'Contexts'
 import { useLocalStorageState } from 'Hooks'
 import { useList } from 'Hooks'
 

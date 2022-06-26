@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MuiTabs from '@mui/material/Tabs';
 import MuiTab from '@mui/material/Tab';
 import Panel from './Panel';
-import TopContext from '../../Panel/PanelContext';
+import { PanelContext } from 'Contexts'
 
 const Tabs = ({
 	title,

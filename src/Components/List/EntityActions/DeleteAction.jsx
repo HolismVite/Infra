@@ -5,13 +5,13 @@ import CircularProgress from '@mui/material/CircularProgress'
 import app from 'App'
 import { post } from 'App'
 import { useMessage } from 'Hooks'
-import ListContext from '../ListContext'
-import EntityContext from '../EntityContext'
+import { ListContext } from 'Contexts'
+import { EntityContext } from 'Contexts'
 import EntityAction from './EntityAction'
 import HolismIcon from '../../HolismIcon'
 import Dialog from '../../../Components/Dialog/Dialog'
 import OkCancel from '../../../Components/Dialog/OkCancel'
-import DialogContext from '../../Dialog/DialogContext'
+import { DialogContext } from 'Contexts'
 
 const DeleteAction = () => {
 

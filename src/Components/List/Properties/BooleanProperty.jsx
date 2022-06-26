@@ -7,7 +7,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import app from 'App'
 import { post } from 'App'
 import { useMessage } from 'Hooks'
-import ListContext from '../ListContext'
+import { ListContext } from 'Contexts'
 import HolismIcon from '../../HolismIcon'
 
 const BooleanProperty = ({

@@ -12,8 +12,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import app from 'App'
-import ListContext from './ListContext';
-import DialogContext from '../Dialog/DialogContext';
+import { ListContext } from 'Contexts'
+import { DialogContext } from 'Contexts'
 import Dialog from '../Dialog/Dialog'
 import OkCancel from '../Dialog/OkCancel';
 

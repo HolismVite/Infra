@@ -4,8 +4,8 @@ import CheckIcon from '@mui/icons-material/Check';
 import { post } from 'App'
 import { get } from 'App'
 import { useMessage } from 'Hooks'
-import ListContext from '../ListContext';
-import DialogContext from '../../Dialog/DialogContext'
+import { ListContext } from 'Contexts'
+import { DialogContext } from 'Contexts'
 import DialogForm from '../../Form/DialogForm'
 import Chip from "./Chip"
 import HolismIcon from '../../HolismIcon'

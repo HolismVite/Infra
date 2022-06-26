@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import Tooltip from '@mui/material/Tooltip'
 import Switch from '@mui/material/Switch';
 import app from 'App'
-import ListContext from './ListContext';
+import { ListContext } from 'Contexts'
 
 const ShowHideEntityActions = ({ className }) => {
 

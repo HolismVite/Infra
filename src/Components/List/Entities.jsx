@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import { ListContext, app, get } from '@List';
+import { ListContext } from 'Contexts'
 import { useLocalStorageState } from 'Hooks'
 import Cards from './EntitiesCards'
 import Table from './EntitiesTable'

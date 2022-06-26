@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import HeaderAction from "./HeaderAction"
-import PanelContext from "../PanelContext";
+import { PanelContext } from 'Contexts'
 
 const Maximize = () => {
 

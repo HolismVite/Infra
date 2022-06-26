@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import PanelContext from '../Panel/PanelContext'
+import { PanelContext } from 'Contexts'
 
 const useMessage = () => {
 

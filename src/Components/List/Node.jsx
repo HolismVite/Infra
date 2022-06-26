@@ -4,8 +4,8 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import AddIcon from '@mui/icons-material/Add';
 import IndeterminateCheckBoxOutlinedIcon from '@mui/icons-material/IndeterminateCheckBoxOutlined';
 import RemoveIcon from '@mui/icons-material/Remove';
-import ListContext from './ListContext';
-import EntityContext from './EntityContext';
+import { ListContext } from 'Contexts'
+import { EntityContext } from 'Contexts'
 import HolismIcon from '../HolismIcon';
 import EntityActions from './EntityActions/EntityActions';
 import Unify from '../Unify';

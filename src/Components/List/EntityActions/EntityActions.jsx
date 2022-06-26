@@ -5,8 +5,8 @@ import Fade from '@mui/material/Fade';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import app from 'App'
-import ListContext from '../ListContext';
-import EntityContext from '../EntityContext';
+import { ListContext } from 'Contexts'
+import { EntityContext } from 'Contexts'
 import DeleteAction from './DeleteAction';
 import EditAction from './EditAction';
 import ViewRecordAction from './ViewRecordAction';
