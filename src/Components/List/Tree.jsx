@@ -1,5 +1,5 @@
 import React from 'react';
-import useLocalStorageState from '../../Base/UseLocalStorageState';
+import { useLocalStorageState } from 'Hooks'
 import app from 'App'
 import List from './List';
 

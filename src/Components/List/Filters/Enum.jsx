@@ -5,7 +5,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import app from 'App'
 import { get } from 'App'
 import Filter from './Filter';
-import useLocalStorageState from '../../../Base/UseLocalStorageState';
+import { useLocalStorageState } from 'Hooks'
 import filterOperator from '../../../Base/FilterOperator';
 
 const Enum = ({ column, entityType, placeholder }) => {

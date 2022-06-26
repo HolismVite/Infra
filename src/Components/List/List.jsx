@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import Collapse from '@mui/material/Collapse'
 import { useSearchParams } from 'react-router-dom'
 import app from 'App'
-import useLocalStorageState from '../../Base/UseLocalStorageState'
+import { useLocalStorageState } from 'Hooks'
 import { useList } from 'Hooks'
 import Filtering from "./Filtering"
 import Sorting from "./Sorting"
