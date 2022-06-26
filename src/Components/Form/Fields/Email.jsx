@@ -1,4 +1,4 @@
-import EmailIcon from '@m ui/icons-material/Email';
+import EmailIcon from '@mui/icons-material/Email';
 import Text from './Text'
 
 const Email = (props) => {

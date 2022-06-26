@@ -1,6 +1,6 @@
-import { DatePart } from './DatePart'
-import { TimePart } from './TimePart'
-import { ValueWithTitle } from './ValueWithTitle'
+import DatePart from './DatePart'
+import TimePart from './TimePart'
+import ValueWithTitle from './ValueWithTitle'
 
 const DateTimeTitleAgo = ({ date, ago }) => {
     return <ValueWithTitle

@@ -1,5 +1,5 @@
-import { DatePart } from './DatePart'
-import { TimePart } from './TimePart'
+import DatePart from './DatePart'
+import TimePart from './TimePart'
 
 const DateTime = ({ date }) => {
     return <>

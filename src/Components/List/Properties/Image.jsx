@@ -4,9 +4,9 @@ import app from '../../../Base/App'
 import { upload } from '../../../Base/Api'
 import useMessage from '../../../Hooks/useMessage'
 import DialogContext from '../../Dialog/DialogContext';
-import TableContext from '../Exports';
+import TableContext from '../TableContext';
 import Dialog from '../../Dialog/Dialog'
-import Upload from '../../Form/Upload'
+import Upload from '../../Form/Fields/Upload'
 import OkCancel from '../../Dialog/OkCancel';
 
 const Image = ({

@@ -1,4 +1,4 @@
-import { app } from '@Panel'
+import app from "../../Base/App"
 
 const TitleSubtitle = ({ title, subtitle }) => {
     return <div className={"ltr:text-left rtl:text-right"}>

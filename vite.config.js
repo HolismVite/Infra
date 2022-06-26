@@ -4,13 +4,15 @@ import svgr from 'vite-plugin-svgr'
 
 const path = require(`path`)
 const aliases = {
+  '@Base': 'src/Base',
+  '@Components': 'src/Components',
   '@Form': 'src/Components/Form/Exports',
   '@List': 'src/Components/List/Exports',
-  '@Browse': 'src/Components/Browse/Browse',
+  '@Browse': 'src/Components/Browse/Exports',
   '@Tree': 'src/Components/Tree/Exports',
   '@Tab': 'src/Components/Tab/Exports',
-  '@Dashboard': 'src/Components/Dashboard/Dashboard',
-  '@Panel': 'src/Panel/Panel',
+  '@Dashboard': 'src/Components/Dashboard/Exports',
+  '@Panel': 'src/Panel/Exports',
 }
 
 const resolvedAliases = Object.fromEntries(

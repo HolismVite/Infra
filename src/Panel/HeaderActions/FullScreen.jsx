@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { HeaderAction } from './HeaderAction';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import app from '../../Base/App';
+import HeaderAction from './HeaderAction';
 
 const FullScreen = () => {
 

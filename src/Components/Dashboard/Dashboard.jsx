@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { TopContext, app } from '@Panel'
+import TopContext from '../../Panel/TopContext'
 
 const Dashboard = ({
     title,
