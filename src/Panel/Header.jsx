@@ -28,7 +28,7 @@ const Header = ({ onMenuIconClicked }) => {
                 </div>
                 <div
                     className={
-                        'flex items-center justify-center'
+                        'flex items-center justify-center gap-4'
                     }
                 >
                     {
