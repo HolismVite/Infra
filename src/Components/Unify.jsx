@@ -35,6 +35,9 @@ const Unify = ({ component, ...rest }) => {
                                     if (i.props?.superAdmin === true) {
                                         return app.isSuperAdmin()
                                     }
+                                    else if (i.type instanceof Function && i.type.toString().indexOf('superAdmin: true') > 0) {
+                                        return app.isSuperAdmin()
+                                    }
                                     else {
                                         return true;
                                     }

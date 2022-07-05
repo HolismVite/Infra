@@ -10,6 +10,7 @@ const Key = () => {
     return <Text
         column='Key'
         placeholder='Key'
+        required="Key is not provided"
         hint={mode === formMode.edition && 'Please change with caution'}
         startIcon={WarningAmberIcon}
         superAdmin
