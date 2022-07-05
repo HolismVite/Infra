@@ -57,17 +57,22 @@ const EditAction = () => {
             create && typeof create !== 'string' &&
             <Unify
                 component={create}
+                isSuperAdmin={app.isSuperAdmin()}
             />
         }
         {
             upsert && typeof upsert !== 'string' &&
             <Unify
                 component={upsert}
+                isSuperAdmin={app.isSuperAdmin()}
             />
         }
         {
             edit && typeof edit !== 'string' &&
-            <Unify component={edit} />
+            <Unify
+                component={edit}
+                isSuperAdmin={app.isSuperAdmin()}
+            />
         }
         <EntityAction
             icon={<EditIcon style={{ color: '#10B981' }} />}

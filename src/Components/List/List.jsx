@@ -97,6 +97,7 @@ const List = ({
     deselectEntities,
     deselectEntity,
     dialogProps,
+    edit,
     entityActions,
     entityType,
     filters,

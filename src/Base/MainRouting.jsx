@@ -1,3 +1,5 @@
+import Progress from '../Components/Progress'
+import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 import app from 'App'
 import NotFound from '../Panel/NotFound';
@@ -6,6 +8,9 @@ import routes from '../Routes';
 import Unify from "../Components/Unify";
 
 const MainRouting = () => {
+
+    const [pageProgress, setPageProgress] = useState(false)
+
     return (
         <Routes>
             <Route
@@ -24,9 +29,17 @@ const MainRouting = () => {
                     return <Route
                         key={route.path}
                         path={route.path}
-                        element={<Unify
-                            component={route.component}
-                        />}
+                        element={
+                            pageProgress
+                                ?
+                                <Progress />
+                                :
+                                <Unify
+                                    component={route.component}
+                                    setPageProgress={setPageProgress}
+                                    isSuperAdmin={app.isSuperAdmin()}
+                                />
+                        }
                     />
                 })
             }

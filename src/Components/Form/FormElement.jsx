@@ -1,3 +1,5 @@
+import Unify from "../Unify"
+
 const FormElement = ({
     id,
     inputs,
@@ -9,7 +11,9 @@ const FormElement = ({
         onSubmit={handleSubmit}
     >
         <div id='fields'>
-            {inputs}
+            <Unify
+                component={inputs}
+            />
         </div>
     </form>
 }
