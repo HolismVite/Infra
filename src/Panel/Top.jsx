@@ -76,11 +76,11 @@ const Top = () => {
                                                 {
                                                     item.link
                                                         ?
-                                                        <a className="link">
+                                                        <span className="link">
                                                             <Link to={item.link}>
                                                                 {app.t(item.title)}
                                                             </Link>
-                                                        </a>
+                                                        </span>
                                                         :
                                                         app.t(item.title)
                                                 }
@@ -89,7 +89,12 @@ const Top = () => {
                                                 ?
                                                 null
                                                 :
-                                                <span className="mx-2" style={{ 'font-size': '10px' }}>/</span>
+                                                <span
+                                                    className="mx-2"
+                                                    style={{
+                                                        fontSize: '10px'
+                                                    }}
+                                                >/</span>
                                             }
                                         </span>)
                                     )
