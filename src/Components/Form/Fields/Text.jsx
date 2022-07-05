@@ -43,12 +43,19 @@ const Text = ({
             return <OutlinedInput
                 label={app.t(label)}
                 value={displayValue}
-                startAdornment={startIcon && <InputAdornment
-                    disablePointerEvents={progress}
-                    disableTypography={progress}
-                    position="start">
-                    <HolismIcon icon={startIcon} />
-                </InputAdornment>}
+                startAdornment={
+                    startIcon &&
+                    <InputAdornment
+                        disablePointerEvents={progress}
+                        disableTypography={progress}
+                        position="start"
+                    >
+                        <HolismIcon
+                            progress={progress}
+                            icon={startIcon}
+                        />
+                    </InputAdornment>
+                }
                 onChange={(e) => {
                     setDisplayValue(e.target.value)
                     setChosenValue(e.target.value)

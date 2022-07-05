@@ -1,16 +1,27 @@
 import Icon from '@mui/material/Icon';
 
-const HolismIcon = ({ icon, className }) => {
+const HolismIcon = ({ icon, progress, className }) => {
     const styles = className ?? "";
     switch (typeof icon) {
         case 'object':
             const iconType = typeof icon?.type;
             if (
                 iconType === 'function'
-                || (iconType === 'object' && typeof icon.type?.render ===
-                    'function')) {
+                ||
+                (
+                    iconType === 'object'
+                    &&
+                    typeof icon.type?.render === 'function'
+                )) {
+                let props = {}
+                if (progress) {
+                    props = { color: 'disabled' }
+                }
                 const PassedIcon = icon
-                return <PassedIcon className={styles} />;
+                return <PassedIcon
+                    className={styles}
+                    {...props}
+                />;
             }
             if (icon.props) {
                 return icon;
