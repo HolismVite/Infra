@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom'
 import app from 'App'
 import { PanelContext } from 'Contexts'
 import { TopContext } from 'Contexts'
@@ -71,7 +72,19 @@ const Top = () => {
                                     app.t(subtitle) ||
                                     (
                                         breadcrumbItems?.map((item, index) => <span key={index}>
-                                            <span>{app.t(item.title)}</span>
+                                            <span>
+                                                {
+                                                    item.link
+                                                        ?
+                                                        <a className="link">
+                                                            <Link to={item.link}>
+                                                                {app.t(item.title)}
+                                                            </Link>
+                                                        </a>
+                                                        :
+                                                        app.t(item.title)
+                                                }
+                                            </span>
                                             {index === breadcrumbItems?.length - 1
                                                 ?
                                                 null
