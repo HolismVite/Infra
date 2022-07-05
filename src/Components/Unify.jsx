@@ -27,29 +27,37 @@ const Unify = ({ component, ...rest }) => {
         }
         if (typeof component.type === 'symbol') {
             if (component.type.toString() === 'Symbol(react.fragment)') {
-                if (component.props && component.props.children && Array.isArray(component.props.children)) {
-                    return <>
-                        {
-                            component.props.children
-                                .filter(i => {
-                                    if (i.props?.superAdmin === true) {
-                                        return app.isSuperAdmin()
-                                    }
-                                    else if (i.type instanceof Function && i.type.toString().indexOf('superAdmin: true') > 0) {
-                                        return app.isSuperAdmin()
-                                    }
-                                    else {
-                                        return true;
-                                    }
-                                })
-                                .map((i, index) => <Unify
-                                    key={index}
-                                    component={i}
-                                    {...i.props}
-                                    {...rest}
-                                />)
-                        }
-                    </>
+                if (component.props && component.props.children) {
+                    if (Array.isArray(component.props.children)) {
+                        return <>
+                            {
+                                component.props.children
+                                    .filter(i => {
+                                        if (i.props?.superAdmin === true) {
+                                            return app.isSuperAdmin()
+                                        }
+                                        else if (i.type instanceof Function && i.type.toString().indexOf('superAdmin: true') > 0) {
+                                            return app.isSuperAdmin()
+                                        }
+                                        else {
+                                            return true;
+                                        }
+                                    })
+                                    .map((i, index) => <Unify
+                                        key={index}
+                                        component={i}
+                                        {...i.props}
+                                        {...rest}
+                                    />)
+                            }
+                        </>
+                    } else {
+                        return <Unify
+                            component={component.props.children}
+                            {...component.props.children}
+                            {...rest}
+                        />
+                    }
                 }
             }
         }
