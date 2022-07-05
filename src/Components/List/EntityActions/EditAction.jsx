@@ -58,6 +58,7 @@ const EditAction = () => {
             <Unify
                 component={create}
                 isSuperAdmin={app.isSuperAdmin()}
+                entityId={entity.id}
             />
         }
         {
@@ -65,6 +66,7 @@ const EditAction = () => {
             <Unify
                 component={upsert}
                 isSuperAdmin={app.isSuperAdmin()}
+                entityId={entity.id}
             />
         }
         {
@@ -72,6 +74,7 @@ const EditAction = () => {
             <Unify
                 component={edit}
                 isSuperAdmin={app.isSuperAdmin()}
+                entityId={entity.id}
             />
         }
         <EntityAction

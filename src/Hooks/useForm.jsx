@@ -226,6 +226,7 @@ const useForm = ({
         currentEntity,
         fields,
         focusFirstInput,
+        formMode,
         handleSubmit,
         isValid,
         loadEntity,

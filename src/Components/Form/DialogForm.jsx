@@ -36,6 +36,7 @@ const DialogForm = ({
         calculatedTitle,
         currentEntity,
         focusFirstInput,
+        formMode,
         handleSubmit,
         isValid,
         mode,
@@ -64,6 +65,7 @@ const DialogForm = ({
         value={{
             addFieldToFormContext,
             currentEntity,
+            formMode,
             isValid,
             mode,
             progress,
