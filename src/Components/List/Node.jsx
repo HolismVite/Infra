@@ -100,7 +100,13 @@ const Node = () => {
                                     }
                                     <EntityAction
                                         icon={<AddIcon />}
-                                        click={() => setOpen(true)}
+                                        click={(e) => {
+                                            e.stopPropagation()
+                                            e.preventDefault()
+                                            e.nativeEvent.stopPropagation()
+                                            e.nativeEvent.preventDefault()
+                                            setOpen(true)
+                                        }}
                                     />
                                 </DialogContext.Provider>
                             </> : entityActions}
