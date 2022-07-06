@@ -5,7 +5,7 @@ import { ListContext } from 'Contexts'
 import Unify from '../../Unify';
 import { DialogContext } from 'Contexts'
 
-const UpsertAction = () => {
+const AddAction = () => {
 
     const [open, setOpen] = useState(false)
 
@@ -72,4 +72,4 @@ const UpsertAction = () => {
     </DialogContext.Provider>
 }
 
-export default UpsertAction
+export default AddAction

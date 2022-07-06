@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { ListContext } from 'Contexts'
-import UpsertAction from './UpsertAction';
+import AddAction from './AddAction';
 
 const ListActions = () => {
     let navigate = useNavigate();
@@ -48,7 +48,7 @@ const ListActions = () => {
             'flex flex-wrap items-center mb-2 lg:mb-0 '
         }
     >
-        <UpsertAction />
+        <AddAction />
         <div>
             {
                 clonedListActions?.map((action, index) => {
