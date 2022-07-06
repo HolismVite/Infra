@@ -16,7 +16,6 @@ const Node = () => {
     const {
         create,
         edit,
-        entity,
         entityActions,
         entityType,
         expanded,
@@ -27,6 +26,10 @@ const Node = () => {
         show,
         upsert,
     } = useContext(ListContext)
+
+    const {
+        entity
+    } = useContext(EntityContext)
 
     const [isExpanded, setIsExpanded] = useState(expanded)
     const [hasChildren, setHasChildren] = useState(entity.relatedItems.children.length > 0)
