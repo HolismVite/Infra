@@ -116,11 +116,6 @@ const EntityAction = ({
                                             icon={icon}
                                             className={color || iconStyles}
                                         />
-                                        // <CircularProgress
-                                        //     variant="determinate"
-                                        //     value={100}
-                                        //     size={20}
-                                        // />
                                     }
                                 </IconButton>
                             </Tooltip>

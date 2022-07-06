@@ -27,7 +27,7 @@ const DialogForm = ({
     } = useContext(ListContext)
 
     const dialogContext = useContext(DialogContext)
-    const { setOpen, entity } = dialogContext || {}
+    const { setOpen, entity, parentId } = dialogContext || {}
 
     const [entityId, setEntityId] = useState(null)
 
@@ -54,7 +54,8 @@ const DialogForm = ({
             reload()
         },
         okAction,
-        title
+        parentId,
+        title,
     })
 
     useEffect(() => {

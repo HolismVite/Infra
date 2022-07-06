@@ -11,6 +11,7 @@ const useForm = ({
     loader,
     okAction,
     onSaved,
+    parentId,
     title,
 }) => {
     // is edit, or is create? get id from somewhere
@@ -171,6 +172,10 @@ const useForm = ({
             else {
                 data[key] = fields[i].value;
             }
+        }
+        if (parentId)
+        {
+            data.parentId = parentId;
         }
         if (extraParams instanceof Object) {
             data = { ...data, ...extraParams };

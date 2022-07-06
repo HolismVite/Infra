@@ -82,7 +82,8 @@ const Node = () => {
                                 <DialogContext.Provider
                                     value={{
                                         open,
-                                        setOpen
+                                        setOpen,
+                                        parentId: entity.hierarchyId || entity.id
                                     }}
                                 >
                                     {
