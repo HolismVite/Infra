@@ -6,14 +6,11 @@ import Cards from './EntitiesCards'
 import Table from './EntitiesTable'
 import Tree from './EntitiesTree';
 
-const Entities = (props) => {
-
-    const {
-        isTree
-    } = props;
+const Entities = () => {
 
     const {
         card,
+        isTree,
         loading,
     } = useContext(ListContext);
 
@@ -35,13 +32,13 @@ const Entities = (props) => {
                 (
                     isTree
                         ?
-                        <Tree {...props} />
+                        <Tree />
                         :
                         card
                             ?
-                            <Cards {...props} />
+                            <Cards />
                             :
-                            <Table {...props} />
+                            <Table />
                 )
         }
     </div>

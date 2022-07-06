@@ -1,25 +1,31 @@
+import { useContext } from 'react'
+import {
+    EntityContext,
+    ListContext
+} from 'Contexts'
 import Node from './Node'
 import NoEntitiesFound from '../NoEntitiesFound';
 
-const Tree = ({
-    data,
-    expanded,
-    show,
-    ...rest
-}) => {
+const Tree = () => {
+
+    const {
+        data,
+    } = useContext(ListContext)
+
     return data.length === 0
         ?
         <NoEntitiesFound />
         :
         <ul className="w-full px-6">
             {
-                data.map(entity => <Node
+                data.map(entity => <EntityContext.Provider
                     key={entity.id}
-                    entity={entity}
-                    expanded={expanded || true}
-                    show={show}
-                    {...rest}
-                />)
+                    value={{
+                        entity: entity,
+                    }}
+                >
+                    <Node />
+                </EntityContext.Provider>)
             }
         </ul>
 }

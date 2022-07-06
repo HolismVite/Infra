@@ -16,32 +16,32 @@ import Reload from './Reload'
 import ShowHideEntityActions from './ShowHideEntityActions'
 
 const List = ({
-  entityType,
-  title,
-  subtitle,
   breadcrumbItems,
-  create,
-  listActions,
-  filters,
-  sorts,
-  headers,
-  row,
-  separateRowForActions,
   card,
+  classProvider,
+  create,
+  dialogs,
+  edit,
   entityActions,
-  menuForActions,
-  multicolumn,
+  entityType,
+  expanded,
+  filters,
   hasDelete,
   hasEdit,
-  edit,
+  headers,
+  isTree,
+  listActions,
+  menuForActions,
+  multicolumn,
+  row,
+  separateRowForActions,
+  show,
+  sorts,
+  subtitle,
+  title,
+  upsert,
   upsertionIcon,
   upsertionText,
-  classProvider,
-  upsert,
-  dialogs,
-  isTree,
-  expanded,
-  show
 }) => {
 
   const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer"
@@ -100,6 +100,7 @@ const List = ({
     edit,
     entityActions,
     entityType,
+    expanded: expanded || true,
     filters,
     hasData,
     hasDelete,
@@ -132,6 +133,7 @@ const List = ({
     setPageSize,
     setSorts,
     setTopPaginationVisibility,
+    show,
     showTopPagiation,
     upsert,
     upsertionIcon,
@@ -186,16 +188,17 @@ List anatomy
     Sorting
       Sort1
       Sort2
+      ...
     Pagination
       GoToPage
+      PageLinks
       PageSize
-      Page links
-  Items (tabular, card)
-    Item1
+  Entities (tabular, card, tree)
+    Entity1
       EntityActions
         EntityAction1
         EntityAction2
         ...
-    Item2
+    Entity2
     ..
 */

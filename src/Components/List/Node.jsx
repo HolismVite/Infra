@@ -11,28 +11,29 @@ import EntityActions from './EntityActions/EntityActions';
 import Unify from '../Unify';
 import EntityAction from './EntityActions/EntityAction';
 
-const Node = ({
-    entityType,
-    entity,
-    show,
-    expanded,
-    create,
-    edit,
-    upsert,
-    entityActions,
-    setEntity,
-    reload
-}) => {
-    const [isExpanded, setIsExpanded] = useState(expanded)
-    const [hasChildren, setHasChildren] = useState(entity.relatedItems.children.length > 0)
+const Node = () => {
+
     const {
+        create,
+        edit,
+        entity,
+        entityActions,
+        entityType,
+        expanded,
         hasDelete,
         hasEdit,
+        reload,
+        setEntity,
+        show,
+        upsert,
     } = useContext(ListContext)
+
+    const [isExpanded, setIsExpanded] = useState(expanded)
+    const [hasChildren, setHasChildren] = useState(entity.relatedItems.children.length > 0)
 
     return <EntityContext.Provider
         value={{
-            entity: childEntity
+            entity: entity
         }}>
         <li className={entity.parentId && "ml-8 border-l border-dashed border-slate-400"}>
             <span
