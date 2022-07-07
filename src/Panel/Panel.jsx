@@ -12,6 +12,8 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Top from './Top';
 import { PanelContext } from 'Contexts'
 import { TopContext } from 'Contexts'
+import Progress from '../Components/Progress';
+
 // https://dev.to/codeply/helpful-page-layouts-using-tailwind-css-1a3k
 // import TrapFocus from '@mui/material/Unstable_TrapFocus';
 // import Backdrop from '@mui/material/Backdrop';
@@ -38,6 +40,8 @@ const Panel = () => {
     const [message, setMessage] = useState()
     const [action, setAction] = useState()
     const [severity, setSeverity] = useState()
+
+    const [progress, setProgress] = useState(false)
 
     const toggleMenu = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -153,8 +157,14 @@ const Panel = () => {
                 <Header onMenuIconClicked={toggleMenu} />
                 <div
                     id='content'
-                    className="md:p-10 md:pt-4 pt-5 flex-1"
+                    className="relative md:p-10 md:pt-4 pt-5 flex-1"
                 >
+                    {
+                        progress &&
+                        <div className="z-10 absolute top-0 right-0 bottom-0 left-0 grid place-items-center bg-[#f1f2f7]">
+                            <Progress />
+                        </div>
+                    }
                     <TopContext.Provider
                         value={{
                             title,
@@ -169,7 +179,9 @@ const Panel = () => {
                         }}
                     >
                         <Top />
-                        <MainRouting />
+                        <MainRouting
+                            setProgress={setProgress}
+                        />
                     </TopContext.Provider>
                 </div>
                 <Footer />
