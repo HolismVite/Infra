@@ -56,7 +56,7 @@ const renderReact = () => {
       theme = arTheme
     }
     root.render(
-      // <React.StrictMode>
+      <React.StrictMode>
         <BrowserRouter>
           <LocalizationProvider dateAdapter={adapter}>
             <CacheProvider value={cacheRtl}>
@@ -71,7 +71,7 @@ const renderReact = () => {
   }
   else {
     root.render(
-      // <React.StrictMode>
+      <React.StrictMode>
         <BrowserRouter>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <Panel />

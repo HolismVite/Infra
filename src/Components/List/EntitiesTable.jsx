@@ -44,6 +44,12 @@ const Table = () => {
 
         headerElements = React.Children
             .toArray(headers.props.children)
+            .filter(header => {
+                if (header.props && header.props.superAdmin) {
+                    return app.isSuperAdmin()
+                }
+                return true;
+            })
             .map(header => React.cloneElement(header, {
                 className: "text-gray-900 dark:text-gray-300 py-3 font-light text-xs "
                     + (header?.props?.start && " ltr:text-left rtl:text-right ")
@@ -122,13 +128,21 @@ const Table = () => {
 
     const clonedCells = (item) => React.Children
         .toArray(row(item).props.children)
-        .map(td => React.cloneElement(td, {
-            className: 'text-gray-900 dark:text-gray-300 py-3 text-sm font-light tracking-wide '
-                + (td?.props?.start && " ltr:text-left rtl:text-right ")
-                + td.props.className,
-            start: td?.props?.start ? 'true' : 'false',
-            hasmoreroom: menuForActions
-        }))
+        .filter(item => {
+            if (item.props && item.props.superAdmin) {
+                return app.isSuperAdmin()
+            }
+            return true
+        })
+        .map(td => {
+            return React.cloneElement(td, {
+                className: 'text-gray-900 dark:text-gray-300 py-3 text-sm font-light tracking-wide '
+                    + (td?.props?.start && " ltr:text-left rtl:text-right ")
+                    + td.props.className,
+                start: td?.props?.start ? 'true' : 'false',
+                hasmoreroom: menuForActions
+            })
+        })
 
     const actions = (item) => (entityActions || hasDelete || hasEdit || edit)
         ?
