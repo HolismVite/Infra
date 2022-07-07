@@ -1,19 +1,22 @@
-import LinkIcon from '@mui/icons-material/Link';
+import LinkIcon from '@mui/icons-material/Link'
 import app from 'App'
-import Text from './Text';
+import Text from './Text'
 
 const Link = (props) => {
-    const urlFormat = /http(s)?.*/;
+    const urlFormat = /http(s)?.*/
 
     const validate = (url) => {
+        if (!url) {
+            return true
+        }
         if (url.startsWith('/')) {
-            return true;
+            return true
         }
         if (url.startsWith('http://') || url.startsWith('https://')) {
-            return true;
+            return true
         }
         if (app.isNothing(url)) {
-            return true;
+            return true
         }
         return {
             error: 'url',
@@ -30,4 +33,4 @@ const Link = (props) => {
     />
 }
 
-export default Link;
+export default Link

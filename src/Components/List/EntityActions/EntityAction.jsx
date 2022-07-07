@@ -76,8 +76,9 @@ const EntityAction = ({
 
     return <DialogContext.Provider
         value={{
+            entity,
             open,
-            setOpen
+            setOpen,
         }}
     >
         {
