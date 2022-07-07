@@ -8,8 +8,15 @@ import HeaderAction from "./HeaderAction"
 
 const ClearCache = () => {
 
+    const siteApiUrl = import.meta.env.VITE_SITE_API_URL
+
+    if (!siteApiUrl)
+    {
+        console.warn('Site API URL is not specified')
+    }
+
     const axiosApi = axios.create({
-        baseURL: import.meta.env.VITE_SITE_API_URL
+        baseURL: siteApiUrl
     })
 
     axiosApi.interceptors.request.use(requestInterceptor);
