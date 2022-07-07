@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { Helmet } from "react-helmet";
+import Skeleton from '@mui/material/Skeleton';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { Transition } from '@headlessui/react'
+import app from 'App'
+import { PanelContext } from 'Contexts'
+import { TopContext } from 'Contexts'
+import { useLocalStorageState } from 'Hooks'
 import MainRouting from '../Base/MainRouting';
 import Sidebar from './Sidebar';
 import Header from './Header';
-import app from 'App'
-import { useLocalStorageState } from 'Hooks'
+import Top from './Top';
 import Footer from './Footer';
 import Message from './Message';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Top from './Top';
-import { PanelContext } from 'Contexts'
-import { TopContext } from 'Contexts'
 import Progress from '../Components/Progress';
 
 // https://dev.to/codeply/helpful-page-layouts-using-tailwind-css-1a3k
@@ -126,7 +127,7 @@ const Panel = () => {
                     // leaveFrom="ml-0"
                     // leaveTo="-ml-64"
                     className={
-                        "w-72 absolute border-b z-10 bg-white dark:bg-slate-900 top-0 bottom-0 "
+                        "w-72 absolute border-b z-20 bg-white dark:bg-slate-900 top-0 bottom-0 "
                         + " ltr:border-r rtl:border-l "
                         +
           /*large*/"lg:w-1/5 lg:static lg:border-b-0 "
@@ -161,9 +162,11 @@ const Panel = () => {
                 >
                     {
                         progress &&
-                        <div className="z-10 absolute top-0 right-0 bottom-0 left-0 grid place-items-center bg-[#f1f2f7]">
-                            <Progress />
-                        </div>
+                        <Skeleton
+                            variant='rectangular'
+                            className="skeleton z-10 absolute top-0 right-0 bottom-0 left-0 h-auto bg-gray-200"
+                            animation="wave"
+                        />
                     }
                     <TopContext.Provider
                         value={{
