@@ -62,7 +62,7 @@ const Upload = ({
     }
 
     useEffect(() => {
-        if (open) {
+        if (open && initialUrls?.length > 0) {
             setProgress(true)
             loadBlobs()
         }
