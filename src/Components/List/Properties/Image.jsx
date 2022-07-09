@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react'
+import { object, string } from 'yup'
 import UploadIcon from '@mui/icons-material/Upload';
 import app from 'App'
 import { upload } from 'App'
@@ -23,6 +24,12 @@ const Image = ({
     const { hasMoreRoom } = useContext(TableContext)
     const { success, error } = useMessage()
     const { reloadEntity } = useContext(ListContext)
+
+    const schema = object({
+        uuid: string().uuid()
+    })
+    const guid = url?.split('/')?.findLast(() => true)?.split('.')[0]
+    const isValid = schema.isValidSync({ uuid: guid })
 
     const uploadImage = () => {
         var form = new FormData();
