@@ -46,7 +46,8 @@
     "slate-react": "^0.79.0",
     "stylis": "^4.1.1",
     "stylis-plugin-rtl": "^2.1.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",
