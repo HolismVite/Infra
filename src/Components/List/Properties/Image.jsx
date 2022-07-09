@@ -5,6 +5,7 @@ import { upload } from 'App'
 import { useMessage } from 'Hooks'
 import { DialogContext } from 'Contexts'
 import { TableContext } from 'Contexts'
+import { ListContext } from 'Contexts'
 import Dialog from '../../Dialog/Dialog'
 import Upload from '../../Form/Fields/Upload'
 import OkCancel from '../../Dialog/OkCancel';
@@ -21,6 +22,7 @@ const Image = ({
     const [progress, setProgress] = useState(false)
     const { hasMoreRoom } = useContext(TableContext)
     const { success, error } = useMessage()
+    const { reloadEntity } = useContext(ListContext)
 
     const uploadImage = () => {
         var form = new FormData();
@@ -33,7 +35,7 @@ const Image = ({
                 setProgress(false)
                 success('Image uploaded successfully')
                 setOpen(false)
-                // app.emit(app.entityReloadRequested, { entity: data })
+                reloadEntity(data)
             }, e => {
                 setProgress(false)
                 error(e)
