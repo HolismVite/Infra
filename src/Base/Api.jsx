@@ -100,9 +100,19 @@ const upload = async (url, data) => {
     .then(response => response?.data)
 }
 
+const file = async (url) => {
+  return await
+    axiosApi.get(url, {
+      crossDomain: true,
+      responseType: 'blob'
+    })
+      .then(response => new File([response?.data], 'File'))
+}
+
 export { axios }
 export { errorInterceptor }
 export { get }
 export { post }
 export { requestInterceptor }
+export { file }
 export { upload }

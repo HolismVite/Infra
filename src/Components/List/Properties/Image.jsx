@@ -1,5 +1,4 @@
-import { useState, useContext } from 'react'
-import { object, string } from 'yup'
+import { useState, useEffect, useContext } from 'react'
 import UploadIcon from '@mui/icons-material/Upload';
 import app from 'App'
 import { upload } from 'App'
@@ -24,12 +23,13 @@ const Image = ({
     const { hasMoreRoom } = useContext(TableContext)
     const { success, error } = useMessage()
     const { reloadEntity } = useContext(ListContext)
+    const [hasImage, setHasImage] = useState(false)
+    const [file, setFile] = useState([])
 
-    const schema = object({
-        uuid: string().uuid()
-    })
-    const guid = url?.split('/')?.findLast(() => true)?.split('.')[0]
-    const isValid = schema.isValidSync({ uuid: guid })
+    useEffect(() => {
+        const guid = url?.split('/')?.findLast(() => true)?.split('.')[0]
+        setHasImage(guid !== '00000000-0000-0000-0000-000000000000')
+    }, [url])
 
     const uploadImage = () => {
         var form = new FormData();
@@ -61,11 +61,10 @@ const Image = ({
                 <Dialog
                     title='Upload image'
                     content={<>
-                        {/* <Explanations explanations={explanations} /> */}
                         <FormElement
-                            id='uploadImageForm'
                             inputs={<>
                                 <Upload
+                                    initialUrls={[url]}
                                 />
                             </>}
                         />
@@ -77,9 +76,6 @@ const Image = ({
                             cancelClick={() => setOpen(false)}
                         />
                     }
-                    onEntered={() => {
-                        // focusFirstInput('uploadImageForm')
-                    }}
                 />
             </DialogContext.Provider>
         }
