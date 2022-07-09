@@ -3,7 +3,6 @@ import React from 'react';
 const useLocalStorageState = (defaultValue, key) => {
     const [value, setValue] = React.useState(() => {
         const stickyValue = window.localStorage.getItem(key);
-        console.log(key, stickyValue)
         return (stickyValue !== null && stickyValue !== 'undefined')
             ? JSON.parse(stickyValue)
             : defaultValue;
