@@ -26,6 +26,7 @@ const Table = () => {
         hasItemSelection,
         headers,
         hiddenEntityActions,
+        isBrowse,
         menuForActions,
         reload,
         row,
@@ -249,6 +250,8 @@ const Table = () => {
                 ?
                 null
                 :
+                !isBrowse
+                &&
                 <div className="pt-8 w-full px-6">
                     <Pagination />
                 </div>
