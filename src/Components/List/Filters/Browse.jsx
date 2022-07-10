@@ -1,7 +1,5 @@
-import app from 'App'
-import Filter from "./Filter";
-import Input from '@mui/material/Input';
 import React, { useState, useEffect } from 'react';
+import Input from '@mui/material/Input';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -13,6 +11,9 @@ import Slide from '@mui/material/Slide';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import app from 'App'
+import { BrowseContext } from 'Contexts'
+import Filter from "./Filter";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -24,10 +25,6 @@ const Browse = ({ column, placeholder, entityType, browser, display, choose }) =
     const [isBrowserDialogOpen, setIsBrowserDialogOpen] = useState(false);
     const [displayValue, setDisplayValue] = useState("");
     const [chosenValue, setChosenValue] = useState("");
-
-    const clonedBrowser = React.cloneElement(browser(), {
-        callerId: `${column}_browser`
-    });
 
     // todo: on resetting filters, setSelectedEntity(null);
 
@@ -51,26 +48,13 @@ const Browse = ({ column, placeholder, entityType, browser, display, choose }) =
         }
     }, [choose, column, display, selectedEntity]);
 
-    useEffect(() => {
-        const handleEntitySelection = ({ item, callerId }) => {
-            if (callerId !== `${column}_browser`) {
-                return;
-            }
-            setSelectedEntity(item.item);
-            setIsBrowserDialogOpen(false);
-        }
-        // app.on(app.entitySelected, handleEntitySelection);
-    });
-
     const browserDialog = <Dialog
         open={isBrowserDialogOpen}
-        aria-labelledby="form-dialog-title"
         fullScreen
         TransitionComponent={Transition}
         onClose={() => setIsBrowserDialogOpen(false)}
     >
         <DialogTitle
-            id="form-dialog-title"
             className="bg-gray-100"
         >
             <div className="flex items-center">
@@ -83,7 +67,15 @@ const Browse = ({ column, placeholder, entityType, browser, display, choose }) =
             </div>
         </DialogTitle>
         <DialogContent>
-            {clonedBrowser}
+            <BrowseContext.Provider
+                value={{
+                    selectedEntity,
+                    setSelectedEntity,
+                    close: () => setIsBrowserDialogOpen(false)
+                }}
+            >
+                <Unify component={browser} />
+            </BrowseContext.Provider>
         </DialogContent>
         <DialogActions>
             <div id='actions' className='mt-4'>
@@ -132,4 +124,4 @@ const Browse = ({ column, placeholder, entityType, browser, display, choose }) =
     </>
 }
 
-export default Browse ;
+export default Browse;

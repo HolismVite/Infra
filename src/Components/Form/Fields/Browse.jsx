@@ -13,6 +13,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import Tooltip from '@mui/material/Tooltip';
 import ClearIcon from '@mui/icons-material/Clear';
 import app from 'App'
+import { BrowseContext } from 'Contexts'
+import Unify from '../../Unify';
 import Field from './Field'
 import Pagination from '../../List/Pagination';
 
@@ -30,22 +32,10 @@ const Browse = ({
 
     app.ensure([display, browser])
 
-    const caller = `${browser.name}Caller`
     const [selectedEntity, setSelectedEntity] = useState(null);
     const [isBrowserDialogOpen, setIsBrowserDialogOpen] = useState(false);
     let show;
     let setValue;
-
-    useEffect(() => {
-        const handleEntitySelection = ({ selectedEntity, callerId }) => {
-            if (callerId !== caller) {
-                return;
-            }
-            setSelectedEntity(selectedEntity);
-            setIsBrowserDialogOpen(false);
-        }
-        // app.on(app.entitySelected, handleEntitySelection);
-    });
 
     useEffect(() => {
         if (!selectedEntity) {
@@ -129,11 +119,15 @@ const Browse = ({
             </div>
         </DialogTitle>
         <DialogContent>
-            {
-                React.cloneElement(browser(), {
-                    callerId: caller
-                })
-            }
+            <BrowseContext.Provider
+                value={{
+                    selectedEntity,
+                    setSelectedEntity,
+                    close: () => setIsBrowserDialogOpen(false)
+                }}
+            >
+                <Unify component={browser} />
+            </BrowseContext.Provider>
         </DialogContent>
         <DialogActions>
             <Pagination />
@@ -207,4 +201,4 @@ const Browse = ({
     />
 };
 
-export default Browse ;
+export default Browse;

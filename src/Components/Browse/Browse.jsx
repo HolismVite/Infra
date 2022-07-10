@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import CheckIcon from '@mui/icons-material/Check';
 import Collapse from '@mui/material/Collapse';
 import { useLocalStorageState } from 'Hooks'
 import { useList } from 'Hooks'
 import { ListContext } from 'Contexts'
+import { BrowseContext } from 'Contexts'
+import Unify from '../Unify';
 import Filtering from "../List/Filtering";
 import Sorting from "../List/Sorting";
 import Entities from "../List/Entities";
@@ -13,7 +15,6 @@ import EntityAction from '../List/EntityActions/EntityAction';
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer";
 
 const Browse = ({
-    callerId,
     card,
     entityType,
     filters,
@@ -36,6 +37,8 @@ const Browse = ({
         isTree
     })
 
+    const { selectedEntity, setSelectedEntity, close } = useContext(BrowseContext)
+
     const toggleFiltering = () => {
         setIsFilteringOpen(!isFilteringOpen);
     }
@@ -45,7 +48,10 @@ const Browse = ({
             icon={<CheckIcon />}
             title={'Select ' + entityType}
             click={({ item }) => {
-                // app.emit(app.entitySelected, { selectedEntity: item, callerId });
+                setSelectedEntity(item)
+                if (close instanceof Function) {
+                    close()
+                }
             }}
         />
     </>
@@ -53,6 +59,7 @@ const Browse = ({
     return <ListContext.Provider value={{
         card,
         data,
+        entityActions,
         hasData,
         headers,
         isBrowse: true,
@@ -89,9 +96,7 @@ const Browse = ({
             </div>
         </Collapse>
 
-        <Entities
-            entityActions={entityActions}
-        />
+        <Entities />
     </ListContext.Provider>
 }
 
