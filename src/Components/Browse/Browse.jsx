@@ -47,8 +47,8 @@ const Browse = ({
         <EntityAction
             icon={<CheckIcon />}
             title={'Select ' + entityType}
-            click={({ item }) => {
-                setSelectedEntity(item)
+            click={({ entity }) => {
+                setSelectedEntity(entity)
                 if (close instanceof Function) {
                     close()
                 }
