@@ -50,15 +50,23 @@ const Table = () => {
                 }
                 return true;
             })
-            .map(header => React.cloneElement(header, {
-                className: "text-gray-900 dark:text-gray-300 py-3 font-light text-xs "
-                    + (header?.props?.start && " ltr:text-left rtl:text-right ")
-                    + (header?.props?.className || ""),
-                start: header?.props?.start ? 'true' : 'false',
-                children: React.Children.toArray(header.props.children).map(child => {
-                    return typeof child === "string" ? app.t(child) : child;
-                })
-            }));
+            .map(header => {
+                const { start, superAdmin, ...rest } = header.props
+                return <header.type
+                    className={"text-gray-900 dark:text-gray-300 py-3 font-light text-xs "
+                        + (header?.props?.start && " ltr:text-left rtl:text-right ")
+                        + (header?.props?.className || "")}
+                    key={header.key}
+                    ref={header.ref}
+                    {...rest}
+                >
+                    {
+                        React.Children.toArray(header.props.children).map(child => {
+                            return typeof child === "string" ? app.t(child) : child;
+                        })
+                    }
+                </header.type>
+            });
     }
 
     const head =
@@ -135,13 +143,17 @@ const Table = () => {
             return true
         })
         .map(td => {
-            return React.cloneElement(td, {
-                className: 'text-gray-900 dark:text-gray-300 py-3 text-sm font-light tracking-wide '
+            const { start, superAdmin, ...rest } = td.props
+            return <td.type
+                key={td.key}
+                ref={td.ref}
+                className={'text-gray-900 dark:text-gray-300 py-3 text-sm font-light tracking-wide '
                     + (td?.props?.start && " ltr:text-left rtl:text-right ")
-                    + td.props.className,
-                start: td?.props?.start ? 'true' : 'false',
-                hasmoreroom: menuForActions
-            })
+                    + td.props.className}
+                hasmoreroom={menuForActions}
+            >
+                {td.props.children}
+            </td.type>
         })
 
     const actions = (item) => (entityActions || hasDelete || hasEdit || edit)
