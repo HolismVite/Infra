@@ -55,6 +55,7 @@ const Browse = ({
         data,
         hasData,
         headers,
+        isBrowse: true,
         loading,
         metadata,
         reload,

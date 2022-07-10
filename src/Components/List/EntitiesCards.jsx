@@ -24,6 +24,7 @@ const Cards = () => {
         hasDelete,
         hasEdit,
         hasItemSelection,
+        isBrowse,
         multicolumn,
         reload,
         selectedEntities,
@@ -141,9 +142,12 @@ const Cards = () => {
                             )
                         }
                     </div>
-                    <div className="px-6 w-full">
-                        <Pagination />
-                    </div>
+                    {
+                        !isBrowse &&
+                        <div className="px-6 w-full">
+                            <Pagination />
+                        </div>
+                    }
                 </>
         }
     </>
