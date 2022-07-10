@@ -33,14 +33,13 @@ const Filtering = ({ filters }) => {
     const filtersArray = filters.props.children.map ? filters.props.children : [filters.props.children];
 
     return <div id='filtering' className="bg-white px-6 py-3 md:rounded-lg relative dark:bg-zinc-700 " onKeyPress={(event) => handleKeyPress(event)}>
-        <div className={"flex flex-wrap "}>
+        <div className={"grid gap-2 md:grid-cols-2"}>
             {
                 filtersArray.map((filter, index) => React.cloneElement(filter, {
                     key: index,
-                    className: ' ltr:ml-4 rtl:mr-4 '
                 }))
             }
-            <div className={"flex justify-end mt-6 sm:mt-3 flex-1"}>
+            <div className={"flex justify-end flex-1 md:col-start-2"}>
                 {
                     // filters?.length > 0 &&
                     <Button
