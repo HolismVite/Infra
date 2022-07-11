@@ -1,3 +1,4 @@
+import { DialogContext } from 'Contexts'
 import { FormContext } from 'Contexts'
 import { get } from '../../Base/Api'
 import { post } from '../../Base/Api'
@@ -27,6 +28,7 @@ import Key from './Fields/Key'
 import Link from './Fields/Link'
 import LongText from './Fields/LongText'
 import Lookup from './Fields/Lookup'
+import Numeric from './Fields/Numeric'
 import Page from '../Page/Page'
 import PageForm from './PageForm'
 import Phone from './Fields/Phone'
@@ -47,6 +49,7 @@ export { Check }
 export { Checks }
 export { Date }
 export { DateTime }
+export { DialogContext }
 export { DialogForm }
 export { Email }
 export { Enum }
@@ -64,6 +67,7 @@ export { Key }
 export { Link }
 export { LongText }
 export { Lookup }
+export { Numeric }
 export { Page }
 export { PageForm }
 export { Phone }
