@@ -72,13 +72,11 @@ const Browse = ({
 
     const browserDialog = <Dialog
         open={isBrowserDialogOpen}
-        aria-labelledby="browserDialog"
         fullScreen
         TransitionComponent={Transition}
         onClose={() => setIsBrowserDialogOpen(false)}
     >
         <DialogTitle
-            id="browserDialog"
             className="bg-gray-100"
         >
             <div className="flex items-center justify-between">
@@ -138,7 +136,13 @@ const Browse = ({
         type='browse'
         column={column}
         {...rest}
-        renderInput={({ displayValue, label, setDisplayValue, setChosenValue, progress }) => {
+        renderInput={({
+            displayValue,
+            label,
+            progress,
+            setChosenValue,
+            setDisplayValue,
+        }) => {
             show = setDisplayValue;
             setValue = setChosenValue;
             return <>
@@ -199,6 +203,6 @@ const Browse = ({
             </>
         }}
     />
-};
+}
 
 export default Browse;
