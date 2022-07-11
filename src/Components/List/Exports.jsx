@@ -1,67 +1,67 @@
-import List from './List'
-import Text from './Filters/Text'
-// import  Select  from './Filters/Select'
-import Enum from './Filters/Enum'
-import Ascending from './Sorts/Ascending'
-import ListAction from './ListActions/ListAction'
-import EntityAction from './EntityActions/EntityAction'
-import Browse from './Filters/Browse'
-import ValueWithTitle from '../Show/ValueWithTitle'
+import { EntityContext } from 'Contexts'
 import { get, post, upload } from '../../Base/Api'
-import app from '../../Base/App'
-import { useQueryStringState } from 'Hooks'
+import { ListContext } from 'Contexts'
+import { TableContext } from 'Contexts'
 import { useLocalStorageState } from 'Hooks'
+import { useMessage } from 'Hooks'
+import { useQueryStringState } from 'Hooks'
+import app from '../../Base/App'
+import Ascending from './Sorts/Ascending'
 import BooleanProperty from './Properties/BooleanProperty'
-import Color from './Properties/Color'
+import Browse from './Filters/Browse'
 import Chip from './Properties/Chip'
-import Image from './Properties/Image'
-import ImageGroup from './Properties/ImageGroup'
-import EnumProperty from './Properties/EnumProperty'
-import Progress from '../Progress'
-import HolismIcon from '../HolismIcon'
-import Dialog from '../../Components/Dialog/Dialog'
+import Color from './Properties/Color'
 import DatePart from '../Show/DatePart'
-import TimePart from '../Show/TimePart'
 import DateTime from '../Show/DateTime'
 import DateTimeTitleAgo from '../Show/DateTimeTitleAgo'
+import Dialog from '../../Components/Dialog/Dialog'
+import EntityAction from './EntityActions/EntityAction'
+import Enum from './Filters/Enum'
+import EnumProperty from './Properties/EnumProperty'
+import HolismIcon from '../HolismIcon'
+import Image from './Properties/Image'
+import ImageGroup from './Properties/ImageGroup'
+import List from './List'
+import ListAction from './ListActions/ListAction'
+import NumberProperty from './Properties/NumberProperty'
+import Progress from '../Progress'
+import Text from './Filters/Text'
+import TimePart from '../Show/TimePart'
 import TitleSubtitle from '../Show/TitleSubtitle'
 import Tree from './Tree'
 import Unify from '../Unify'
-import { ListContext } from 'Contexts'
-import { TableContext } from 'Contexts'
-import { EntityContext } from 'Contexts'
-import { useMessage } from 'Hooks'
+import ValueWithTitle from '../Show/ValueWithTitle'
 
-export { List }
-export { Text }
-// export {  Select  }
-export { Enum }
-export { Ascending }
-export { ListAction }
-export { EntityAction }
-export { Browse }
-export { ValueWithTitle }
-export { get, post, upload }
 export { app }
-export { useQueryStringState }
-export { useLocalStorageState }
+export { Ascending }
 export { BooleanProperty }
-export { Color }
+export { Browse }
 export { Chip }
-export { Image }
-export { ImageGroup }
-export { EnumProperty }
-export { Progress }
-export { HolismIcon }
-export { Dialog }
+export { Color }
 export { DatePart }
-export { TimePart }
 export { DateTime }
 export { DateTimeTitleAgo }
+export { Dialog }
+export { EntityAction }
+export { EntityContext }
+export { Enum }
+export { EnumProperty }
+export { get, post, upload }
+export { HolismIcon }
+export { Image }
+export { ImageGroup }
+export { List }
+export { ListAction }
+export { ListContext }
+export { NumberProperty }
+export { Progress }
+export { TableContext }
+export { Text }
+export { TimePart }
 export { TitleSubtitle }
 export { Tree }
 export { Unify }
-export { ListContext }
-export { TableContext }
-export { EntityContext }
+export { useLocalStorageState }
 export { useMessage }
+export { useQueryStringState }
+export { ValueWithTitle }
