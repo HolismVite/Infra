@@ -1,8 +1,9 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
-
 const path = require(`path`)
+fs = require('fs')
+
 const aliases = {
   'App': 'src/Base/Exports',
   'Hooks': 'src/Hooks/Exports',
@@ -15,6 +16,30 @@ const aliases = {
   '@Dashboard': 'src/Components/Dashboard/Exports',
   '@Panel': 'src/Panel/Exports',
 }
+
+try {
+  const dirs = fs.readdirSync(path.resolve(__dirname, 'src'))
+  const baseDirs = ['Base', 'Components', 'Contexts', 'Hooks', 'Panel']
+  dirs.forEach(dir => {
+    if (baseDirs.indexOf(dir) > -1) {
+      return;
+    }
+    if (dir === '.git' || dir === 'favicons' || dir === 'Branding') {
+      return;
+    }
+    if (!fs.lstatSync(path.resolve(__dirname, 'src', dir)).isDirectory()) {
+      return;
+    }
+    var exportFile = path.resolve(__dirname, 'src', dir, 'Exports.jsx')
+    if (fs.existsSync(exportFile)) {
+      aliases[dir] = `src/${dir}/Exports`
+    }
+  })
+} catch (error) {
+  console.log(error)
+}
+
+console.log(aliases)
 
 const resolvedAliases = Object.fromEntries(
   Object.entries(aliases).map(([key, value]) => [key, path.resolve(__dirname, value)]),
