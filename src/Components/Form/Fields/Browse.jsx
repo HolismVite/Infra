@@ -97,13 +97,13 @@ const Browse = ({
                     dir='ltr'
                     className="listActions flex-1 flex gap-4"
                 >
-                    <IconButton
+                    {/* <IconButton
                         onClick={() => setIsBrowserDialogOpen(false)}
                         aria-label="close"
                     >
                         <CloseIcon />
-                    </IconButton>
-                    <IconButton
+                    </IconButton> */}
+                    {/* <IconButton
                         onClick={() => setIsBrowserDialogOpen(false)}
                         aria-label="close"
                     >
@@ -114,7 +114,7 @@ const Browse = ({
                         aria-label="close"
                     >
                         <CachedIcon />
-                    </IconButton>
+                    </IconButton> */}
                 </div>
             </div>
         </DialogTitle>

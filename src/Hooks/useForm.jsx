@@ -225,6 +225,10 @@ const useForm = ({
         event.preventDefault();
     }
 
+    const getValue = (column) => {
+        
+    }
+
     return {
         addFieldToFormContext,
         calculatedTitle,

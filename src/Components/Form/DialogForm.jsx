@@ -35,6 +35,7 @@ const DialogForm = ({
         addFieldToFormContext,
         calculatedTitle,
         currentEntity,
+        fields,
         focusFirstInput,
         formMode,
         handleSubmit,
@@ -79,7 +80,7 @@ const DialogForm = ({
                 <Explanations explanations={explanations} />
                 <FormElement
                     id='dialogForm'
-                    inputs={inputs}
+                    inputs={inputs instanceof Function ? inputs() : inputs}
                     handleSubmit={handleSubmit}
                 />
             </>}
