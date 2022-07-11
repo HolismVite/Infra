@@ -1,33 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import CircularProgress from '@mui/material/CircularProgress';
+import React, { useEffect, useState } from 'react'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
+import CircularProgress from '@mui/material/CircularProgress'
 import app from 'App'
 import { get } from 'App'
-import Filter from './Filter';
-import { useLocalStorageState } from 'Hooks'
-import filterOperator from '../../../Base/FilterOperator';
+import Filter from './Filter'
+import filterOperator from '../../../Base/FilterOperator'
 
 const Enum = ({ column, entityType, placeholder }) => {
 
-    app.ensure([column, placeholder, entityType]);
+    app.ensure([column, placeholder, entityType])
 
-    const [loading, setLoading] = useState();
-    const [enumItems, setEnumItems] = useLocalStorageState([], entityType + 'Enum');
+    const [loading, setLoading] = useState()
+    const [enumItems, setEnumItems] = useState(app.getEnum(entityType) || [])
 
     useEffect(() => {
         if (enumItems.length !== 0) {
-            return;
+            return
         }
-        setLoading(true);
+        setLoading(true)
         get(`/${entityType}/all`).then(data => {
-            setEnumItems(data);
-            setLoading(false);
+            setEnumItems(data)
+            app.setEnum(entityType, data)
+            window.enums = app.getEnums()
+            setLoading(false)
         }, error => {
-            console.log(error);
-            setLoading(false);
+            console.log(error)
+            setLoading(false)
         })
-    }, [enumItems.length, setEnumItems, entityType]);
+    }, [enumItems.length, setEnumItems, entityType])
 
     return <Filter
         type='select'
@@ -57,6 +58,6 @@ const Enum = ({ column, entityType, placeholder }) => {
                 }
             </Select>}
     />
-};
+}
 
 export default Enum 

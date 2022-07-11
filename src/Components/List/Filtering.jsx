@@ -32,14 +32,14 @@ const Filtering = ({ filters }) => {
 
     const filtersArray = filters.props.children.map ? filters.props.children : [filters.props.children];
 
-    return <div id='filtering' className="bg-white px-6 py-3 md:rounded-lg relative dark:bg-zinc-700 " onKeyPress={(event) => handleKeyPress(event)}>
-        <div className={"grid gap-2 md:grid-cols-2"}>
+    return <div id='filtering' className="bg-white px-3 py-3 md:rounded-lg relative dark:bg-zinc-700 " onKeyPress={(event) => handleKeyPress(event)}>
+        <div className={"grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}>
             {
                 filtersArray.map((filter, index) => React.cloneElement(filter, {
                     key: index,
                 }))
             }
-            <div className={"flex justify-end flex-1 md:col-start-2"}>
+            <div className={"flex justify-end md:col-start-2 lg:col-start-3 xl:col-start-4 gap-2"}>
                 {
                     // filters?.length > 0 &&
                     <Button
@@ -51,7 +51,7 @@ const Filtering = ({ filters }) => {
                 }
                 <Button
                     size="small"
-                    className={"bg-green-200 hover:bg-green-400 ltr:ml-2 rtl:mr-2"}
+                    className={"bg-green-200 hover:bg-green-400"}
                     variant="outlined"
                     onClick={applyFilters}>
                     {app.t('Apply')}

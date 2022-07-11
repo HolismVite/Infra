@@ -1,23 +1,25 @@
-import Validation from "./Validation"
-import Push from './Push'
 import Account from './Account'
-import Holism from "./Holism"
-import Globalization from './Globalization'
-import Url from './Url'
-import StringExtensions from "./StringExtensions"
-import ReactUtils from "./ReactUtils"
+import Enums from './Enums'
 import Env from "./Env"
+import Globalization from './Globalization'
+import Holism from "./Holism"
+import Push from './Push'
+import ReactUtils from "./ReactUtils"
+import StringExtensions from "./StringExtensions"
+import Url from './Url'
+import Validation from "./Validation"
 
 const app = {
-    ...Validation,
-    ...Push,
     ...Account,
-    ...Holism,
+    ...Enums,
+    ...Env,
     ...Globalization,
-    ...Url,
+    ...Holism,
+    ...Push,
     ...ReactUtils,
     ...StringExtensions,
-    ...Env
+    ...Url,
+    ...Validation,
 }
 
 export default app

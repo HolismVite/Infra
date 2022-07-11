@@ -103,7 +103,7 @@ const render = () => {
   }
 }
 
-window.app = app;
+window.app = app
 
 // window.React1 = require('react');
 

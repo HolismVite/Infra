@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
+import React, { useEffect, useState } from 'react'
+import CircularProgress from '@mui/material/CircularProgress'
 import app from 'App'
 import { get } from 'App'
-import { useLocalStorageState } from 'Hooks'
 import fieldStyles from './FieldStyle'
 import Select from './Select'
 
@@ -11,24 +10,26 @@ const Enum = ({
     ...rest
 }) => {
 
-    app.ensure([entityType]);
+    app.ensure([entityType])
 
-    const [loading, setLoading] = useState();
-    const [enumItems, setEnumItems] = useLocalStorageState([], entityType + 'Enum');
+    const [loading, setLoading] = useState()
+    const [enumItems, setEnumItems] = useState(app.getEnum(entityType) || [])
 
     useEffect(() => {
         if (enumItems.length !== 0) {
-            return;
+            return
         }
-        setLoading(true);
+        setLoading(true)
         get(`/${entityType}/all`).then(data => {
-            setEnumItems(data);
-            setLoading(false);
+            setEnumItems(data)
+            app.setEnum(entityType, data)
+            window.enums = app.getEnums()
+            setLoading(false)
         }, error => {
-            console.log(error);
-            setLoading(false);
+            console.log(error)
+            setLoading(false)
         })
-    }, [entityType]);
+    }, [entityType])
 
     return <div className={fieldStyles}>
         {
@@ -44,6 +45,6 @@ const Enum = ({
                 />
         }
     </div>
-};
+}
 
-export default Enum ;
+export default Enum 
