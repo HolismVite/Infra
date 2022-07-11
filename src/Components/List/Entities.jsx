@@ -10,12 +10,14 @@ const Entities = () => {
 
     const {
         card,
+        isBrowse,
         isTree,
         loading,
     } = useContext(ListContext);
 
     return <div id='items' className={
-        'bg-white dark:bg-zinc-700 transition-colors py-6 md:rounded-lg flex flex-col items-center justify-center '
+        'bg-white dark:bg-zinc-700 transition-colors md:rounded-lg flex flex-col items-center justify-center '
+        + (!isBrowse && ' py-6 ')
         + (card && " flex-col")
     }
         style={{

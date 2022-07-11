@@ -231,7 +231,7 @@ const Table = () => {
                     </div>
                 </Collapse>
         }
-        <div className="relative w-full overflow-x-auto px-6">
+        <div className={"relative w-full overflow-x-auto " + (!isBrowse && " px-6 ")}>
             <TableContext.Provider
                 value={{
                     hasMoreRoom: !menuForActions && separateRowForActions && !hiddenEntityActions
