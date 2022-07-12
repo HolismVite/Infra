@@ -37,7 +37,12 @@ const List = ({
         isTree
     })
 
-    const { selectedEntity, setSelectedEntity, close } = useContext(BrowseContext)
+    const {
+        close,
+        onSelected,
+        selectedEntity,
+        setSelectedEntity,
+    } = useContext(BrowseContext)
 
     const toggleFiltering = () => {
         setIsFilteringOpen(!isFilteringOpen);
@@ -49,6 +54,10 @@ const List = ({
             title={'Select ' + entityType}
             click={({ entity }) => {
                 setSelectedEntity(entity)
+                if (onSelected instanceof Function) 
+                {
+                    onSelected()
+                }
                 if (close instanceof Function) {
                     close()
                 }

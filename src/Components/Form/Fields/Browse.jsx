@@ -4,7 +4,6 @@ import app from 'App'
 import { DialogContext } from 'Contexts'
 import { BrowseContext } from 'Contexts'
 import { useBrowser } from 'Hooks'
-import { useFilter } from 'Hooks'
 import BrowserDialog from '../../Browse/BrowserDialog';
 import BrowserIcons from '../../Browse/BrowserIcons';
 import Field from './Field'
@@ -22,17 +21,15 @@ const Browse = ({
 
     const [open, setOpen] = useState(false);
 
-    let tempFunc
-
     const {
+        chosenValue,
         selectedEntity,
         setSelectedEntity,
-        progress,
+        shownValue,
     } = useBrowser({
         show,
         choose,
         column,
-        setValue: (value) => { console.log(value) }
     })
 
     return <Field
@@ -40,14 +37,11 @@ const Browse = ({
         column={column}
         {...rest}
         renderInput={({
-            displayValue,
             label,
             progress,
             setChosenValue,
             setDisplayValue,
         }) => {
-            show = setDisplayValue
-            tempFunc = setChosenValue;
             return <DialogContext.Provider
                 value={{
                     open,
@@ -56,18 +50,22 @@ const Browse = ({
             >
                 <BrowseContext.Provider
                     value={{
+                        close: () => setOpen(false),
+                        list,
+                        onSelected: () => {
+                            setChosenValue(chosenValue)
+                            setDisplayValue(shownValue)
+                        },
                         progress,
-                        small: true,
                         selectedEntity,
                         setSelectedEntity,
-                        list,
-                        close: () => setOpen(false)
+                        small: true,
                     }}
                 >
                     <BrowserDialog />
                     <OutlinedInput
                         label={app.t(label)}
-                        // value={selectedEntity ? show(selectedEntity) : ''}
+                        value={shownValue}
                         readOnly={true}
                         endAdornment={<BrowserIcons />}
                     />

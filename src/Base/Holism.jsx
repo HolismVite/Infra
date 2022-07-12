@@ -15,6 +15,14 @@ const Holism = {
             }
         }
     },
+    ensureFunction: (items) => {
+        Holism.ensure(items)
+        for (let i = 0; i < items.length; i++) {
+            if (!(items[i] instanceof Function)) {
+                throw new Error('Required parameter is not a function')
+            }
+        }
+    },
     breakpoints: {
         xs: 360,
         sm: 640,

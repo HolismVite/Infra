@@ -4,15 +4,18 @@ import InputAdornment from '@mui/material/InputAdornment';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Tooltip from '@mui/material/Tooltip';
 import ClearIcon from '@mui/icons-material/Clear';
+import { BrowseContext } from 'Contexts'
 import { DialogContext } from 'Contexts'
 
 const BrowserIcons = () => {
 
+    const { setOpen } = useContext(DialogContext)
+
     const {
         progress,
         selectedEntity,
-        setOpen,
-    } = useContext(DialogContext)
+        setSelectedEntity,
+    } = useContext(BrowseContext)
 
     return <InputAdornment
         disablePointerEvents={progress}
