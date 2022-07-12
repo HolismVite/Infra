@@ -47,11 +47,13 @@ const Header = ({ onMenuIconClicked }) => {
         </Collapse>
         <Collapse in={maximized}>
             <div
-                className="m-auto absolute top-0 right-0 left-0 h-0 flex justify-center" >
+                id='exitMaximize'
+                className="m-auto absolute top-0 right-0 left-0 h-0 flex justify-center"
+                onClick={() => setMaximized(false)}
+            >
                 <ExpandMoreIcon
                     style={{ fontSize: 40 }}
-                    className="cursor-pointer"
-                    onClick={() => setMaximized(false)}
+                    className="cursor-pointer z-10"
                 />
             </div>
         </Collapse>
