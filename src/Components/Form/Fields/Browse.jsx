@@ -67,7 +67,7 @@ const Browse = ({
                     <BrowserDialog />
                     <OutlinedInput
                         label={app.t(label)}
-                        value={selectedEntity ? show(selectedEntity) : ''}
+                        // value={selectedEntity ? show(selectedEntity) : ''}
                         readOnly={true}
                         endAdornment={<BrowserIcons />}
                     />
