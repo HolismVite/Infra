@@ -10,9 +10,9 @@ const Text = ({
 
     const {
         id,
+        entity,
         label,
-        setValue,
-        value,
+        setEntity,
     } = useFilter({
         column,
         placeholder,
@@ -25,9 +25,9 @@ const Text = ({
     >
         <OutlinedInput
             size='small'
-            value={value}
+            value={entity}
             label={app.t(label)}
-            onChange={(event) => setValue(event.target.value)}
+            onChange={(event) => setEntity(event.target.value)}
         />
     </Filter>
 };

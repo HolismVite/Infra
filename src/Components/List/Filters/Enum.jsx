@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import app from 'App'
-import filterOperator from 'App'
+import { filterOperator } from 'App'
 import { useFilter } from 'Hooks'
 import { useEnum } from 'Hooks'
 import Filter from './Filter'
@@ -21,9 +21,9 @@ const Enum = ({
 
     const {
         id,
+        entity,
         label,
-        setValue,
-        value,
+        setEntity,
     } = useFilter({
         column,
         operator: filterOperator.equals,
@@ -37,10 +37,10 @@ const Enum = ({
     >
         <Select
             size='small'
-            value={value || ''}
+            value={entity || ''}
             label={app.t(label)}
             fullWidth
-            onChange={(event) => { setValue(event.target.value) }}
+            onChange={(event) => { setEntity(event.target.value) }}
         >
             {
                 progress

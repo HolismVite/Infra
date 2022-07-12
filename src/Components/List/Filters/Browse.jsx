@@ -23,9 +23,9 @@ const Browse = ({
 
     const {
         id,
+        entity,
         label,
-        setValue,
-        value,
+        setEntity,
     } = useFilter({
         column,
         placeholder,
@@ -40,7 +40,7 @@ const Browse = ({
         show,
         choose,
         column,
-        setValue: setValue
+        setValue: setEntity
     })
 
     return <Filter
@@ -66,9 +66,8 @@ const Browse = ({
                 <BrowserDialog />
                 <OutlinedInput
                     label={app.t(label)}
-                    value={value}
+                    value={entity ? show(entity) : ''}
                     size='small'
-                    onChange={(e) => setValue(chosenValue)}
                     endAdornment={<BrowserIcons />}
                 />
             </BrowseContext.Provider>

@@ -1,4 +1,4 @@
-import useBrowser from './userBrowser'
+import useBrowser from './useBrowser'
 import useEnum from './useEnum'
 import useFilter from './useFilter'
 import useForm from './useForm'

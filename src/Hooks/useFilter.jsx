@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react'
 import app from 'App'
-import filterOperator from 'App';
+import { filterOperator } from 'App'
 import { ListContext } from 'Contexts'
 
 const useFilter = ({
@@ -10,29 +10,30 @@ const useFilter = ({
     type,
 }) => {
 
-    app.ensure(column);
+    app.ensure(column)
 
-    const [id, setId] = useState();
-    const [value, setValue] = useState();
+    const [id, setId] = useState()
+    const [entity, setEntity] = useState()
+
     var {
         addFilter
-    } = useContext(ListContext);
-    const label = placeholder || column;
+    } = useContext(ListContext)
+    const label = placeholder || column
 
-    // todo: on resetting filters => setValue(value || "");
+    // todo: on resetting filters => setEntity(entity || "")
 
     useEffect(() => {
         setId(`${type}_${column}`)
-    }, [type, column]);
+    }, [type, column])
 
     useEffect(() => {
-        addFilter(column, value, operator || filterOperator.contains);
-    }, [column, addFilter, operator, value]);
+        addFilter(column, entity, operator || filterOperator.contains)
+    }, [column, addFilter, operator, entity])
 
     return {
+        entity,
         label,
-        value,
-        setValue,
+        setEntity,
     }
 }
 
