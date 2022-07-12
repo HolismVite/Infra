@@ -86,7 +86,6 @@ const Upload = ({
                             />
                             <IconButton
                                 className="absolute -top-4 -right-4 "
-                                aria-label="delete"
                                 onClick={(e) => removeImage(e, preview)}
                             >
                                 <CancelIcon />

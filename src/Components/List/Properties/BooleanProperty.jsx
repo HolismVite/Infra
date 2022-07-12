@@ -47,7 +47,6 @@ const BooleanProperty = ({
         <Switch
             checked={value || false}
             onChange={(e) => onChange(e)}
-            inputProps={{ 'aria-label': title }}
             size='small'
         />
         :

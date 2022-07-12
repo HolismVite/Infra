@@ -69,7 +69,6 @@ const Cards = () => {
                                                 :
                                                 deselectEntities(data)
                                         }}
-                                        inputProps={{ 'aria-label': app.t('Select all') }}
                                     />
                                 </Tooltip>
                             </div>

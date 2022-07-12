@@ -6,13 +6,14 @@ import Tooltip from '@mui/material/Tooltip';
 import ClearIcon from '@mui/icons-material/Clear';
 import { DialogContext } from 'Contexts'
 
-const BrowserIcons = ({
-    progress,
-    selectedEntity,
-}) => {
+const BrowserIcons = () => {
 
-    const {setOpen} = useContext(DialogContext)
-    
+    const {
+        progress,
+        selectedEntity,
+        setOpen,
+    } = useContext(DialogContext)
+
     return <InputAdornment
         disablePointerEvents={progress}
         disableTypography={progress}
@@ -29,7 +30,7 @@ const BrowserIcons = ({
                 >
                     <IconButton
                         disabled={progress}
-                        aria-label={app.t("Clear")}
+                        size='small'
                         onClick={() => {
                             setSelectedEntity(null)
                         }}
@@ -49,7 +50,7 @@ const BrowserIcons = ({
         >
             <IconButton
                 disabled={progress}
-                aria-label={app.t("Find")}
+                size='small'
                 onClick={() => setOpen(true)}
                 onMouseDown={() => { }}
             >

@@ -23,9 +23,6 @@ const DateTime = (props) => {
                     setDisplayValue(date)
                     setChosenValue(date)
                 }}
-                KeyboardButtonProps={{
-                    'aria-label': app.t('Change') + ' ' + app.t(label),
-                }}
                 renderInput={({
                     inputRef,
                     inputProps,

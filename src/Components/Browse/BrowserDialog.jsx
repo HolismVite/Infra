@@ -14,11 +14,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const BrowserDialog = ({
-    list
-}) => {
+const BrowserDialog = () => {
 
-    const { open, setOpen } = useContext(DialogContext)
+    const {
+        list,
+        open,
+        setOpen,
+    } = useContext(DialogContext)
 
     return <Dialog
         open={open}

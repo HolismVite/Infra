@@ -85,7 +85,6 @@ const Browse = ({
                 >
                     <IconButton
                         onClick={() => setIsBrowserDialogOpen(false)}
-                        aria-label="close"
                     >
                         <CloseIcon />
                     </IconButton>
@@ -97,19 +96,16 @@ const Browse = ({
                 >
                     {/* <IconButton
                         onClick={() => setIsBrowserDialogOpen(false)}
-                        aria-label="close"
                     >
                         <CloseIcon />
                     </IconButton> */}
                     {/* <IconButton
                         onClick={() => setIsBrowserDialogOpen(false)}
-                        aria-label="close"
                     >
                         <CloseIcon />
                     </IconButton>
                     <IconButton
                         onClick={() => setIsBrowserDialogOpen(false)}
-                        aria-label="close"
                     >
                         <CachedIcon />
                     </IconButton> */}
@@ -170,7 +166,6 @@ const Browse = ({
                                     >
                                         <IconButton
                                             disabled={progress}
-                                            aria-label={app.t("Clear")}
                                             onClick={() => {
                                                 setSelectedEntity(null)
                                             }}
@@ -190,7 +185,6 @@ const Browse = ({
                             >
                                 <IconButton
                                     disabled={progress}
-                                    aria-label={app.t("Find")}
                                     onClick={() => setIsBrowserDialogOpen(true)}
                                     onMouseDown={() => { }}
                                 >

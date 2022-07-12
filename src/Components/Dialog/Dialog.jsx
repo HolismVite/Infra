@@ -30,7 +30,6 @@ const Dialog = ({
         PaperProps={{
             className: "dark:bg-zinc-700"
         }}
-        aria-labelledby="dialogTitle"
         id="dialog"
         fullWidth
         maxWidth={large ? 'md' : (tiny ? 'xs' : 'sm')}

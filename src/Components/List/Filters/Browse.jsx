@@ -50,22 +50,20 @@ const Browse = ({
             >
                 <BrowseContext.Provider
                     value={{
+                        progress,
+                        small: true,
                         selectedEntity,
                         setSelectedEntity,
+                        list,
                         close: () => setOpen(false)
                     }}
                 >
-                    <BrowserDialog
-                        list={list}
-                    />
+                    <BrowserDialog />
                     <OutlinedInput
                         value={value}
                         size='small'
                         onChange={(e) => setValue(chosenValue)}
-                        endAdornment={<BrowserIcons
-                            progress={progress}
-                            selectedEntity={selectedEntity}
-                        />}
+                        endAdornment={<BrowserIcons />}
                     />
                 </BrowseContext.Provider>
             </DialogContext.Provider>

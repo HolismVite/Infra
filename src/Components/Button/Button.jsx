@@ -15,7 +15,6 @@ const Button = ({
     if (icon && !text) {
         return <IconButton
             color={color || "primary"}
-            aria-label={title}
             component="span"
             className={className}
             disabled={disabled}

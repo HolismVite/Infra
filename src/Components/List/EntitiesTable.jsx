@@ -93,7 +93,6 @@ const Table = () => {
                                             :
                                             deselectEntities(data)
                                     }}
-                                    inputProps={{ 'aria-label': app.t('Select all') }}
                                 />
                             </Tooltip>
                         </th>

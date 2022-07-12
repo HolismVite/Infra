@@ -66,7 +66,10 @@ const Sorting = ({ sorts }) => {
                 }
                 {app.t(currentSort.caption)}
             </div>
-            <div className="flex items-center" onClick={handleClick} aria-controls='sortsMenu'>
+            <div
+                className="flex items-center"
+                onClick={handleClick}
+            >
                 <ImportExportIcon />
             </div>
         </div>
@@ -75,7 +78,7 @@ const Sorting = ({ sorts }) => {
             anchorEl={anchorEl}
             keepMounted
             PaperProps={{
-                className:"dark:bg-zinc-700"
+                className: "dark:bg-zinc-700"
             }}
             open={Boolean(anchorEl)}
             onClose={handleClose}
