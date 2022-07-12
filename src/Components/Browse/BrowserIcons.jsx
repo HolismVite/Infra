@@ -7,7 +7,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { BrowseContext } from 'Contexts'
 import { DialogContext } from 'Contexts'
 
-const BrowserIcons = () => {
+const BrowserIcons = ({ onCleared }) => {
 
     const { setOpen } = useContext(DialogContext)
 
@@ -36,6 +36,9 @@ const BrowserIcons = () => {
                         size='small'
                         onClick={() => {
                             setSelectedEntity(null)
+                            if (onCleared instanceof Function) {
+                                onCleared()
+                            }
                         }}
                         onMouseDown={() => { }}
                     >

@@ -63,7 +63,7 @@ const Browse = ({
                     value={shown}
                     readOnly={true}
                     size='small'
-                    endAdornment={<BrowserIcons />}
+                    endAdornment={<BrowserIcons onCleared={() => setEntity(null)} />}
                 />
             </BrowseContext.Provider>
         </DialogContext.Provider>
