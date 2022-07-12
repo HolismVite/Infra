@@ -23,18 +23,29 @@ const useList = ({
     const [selectedEntities, setSelectedEntities] = useState([])
     const { error } = useMessage()
 
-    const addFilter = (property, value, operator) => {
+    const setFilter = (property, value, operator) => {
+        return
         var isAdded = false;
         for (var i = 0; i < filters.length; i++) {
             if (filters[i].property === property) {
                 if (filters[i].operator && operator && filters[i].operator === operator) {
-                    filters[i].value = value;
-                    isAdded = true;
+                    const otherFilters = filters.filter(i => i.property !== property && i.operator !== operator)
+                    setFilters([...otherFilters, {
+                        property,
+                        operator,
+                        value
+                    }])
+                    isAdded = true
+                    break;
                 }
             }
         }
         if (!isAdded) {
-            filters.push({ property: property, operator: operator, value: value });
+            setFilters(previousFilters => [...previousFilters, {
+                property,
+                operator,
+                value
+            }])
         }
     }
 
@@ -65,7 +76,6 @@ const useList = ({
 
     useEffect(() => {
         storeInLocalStorage()
-        reload()
     }, [pageNumber, pageSize, filters, sorts])
 
     useEffect(() => {
@@ -253,7 +263,7 @@ const useList = ({
     }, []);
 
     return {
-        addFilter,
+        setFilter,
         addSort,
         buildFiltersQueryString,
         buildSortsQueryString,

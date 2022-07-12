@@ -16,7 +16,7 @@ const useFilter = ({
     const [entity, setEntity] = useState()
 
     var {
-        addFilter
+        setFilter
     } = useContext(ListContext)
     const label = placeholder || column
 
@@ -27,8 +27,8 @@ const useFilter = ({
     }, [type, column])
 
     useEffect(() => {
-        addFilter(column, entity, operator || filterOperator.contains)
-    }, [column, addFilter, operator, entity])
+        setFilter(column, entity, operator || filterOperator.contains)
+    }, [column, setFilter, operator, entity])
 
     return {
         entity,

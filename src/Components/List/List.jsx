@@ -55,7 +55,7 @@ const List = ({
   const [dialogProps, setDialogProps] = useState({})
 
   const {
-    addFilter,
+    setFilter,
     data,
     deselectEntities,
     deselectEntity,
@@ -89,7 +89,7 @@ const List = ({
   }, [title, subtitle, breadcrumbItems])
 
   return <ListContext.Provider value={{
-    addFilter,
+    setFilter,
     card,
     classProvider,
     create,
