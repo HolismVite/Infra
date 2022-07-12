@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import app from 'App'
-import filterOperator from 'App'
+import { filterOperator } from 'App'
 import { DialogContext } from 'Contexts'
 import { BrowseContext } from 'Contexts'
 import { useFilter } from 'Hooks'
@@ -36,6 +36,12 @@ const Browse = ({
         show,
         type: 'browse',
     })
+
+    useEffect(() => {
+        if (!entity) {
+            setSelectedEntity(null)
+        }
+    }, [entity])
 
     return <Filter
         label={label}

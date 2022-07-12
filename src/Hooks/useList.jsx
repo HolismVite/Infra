@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import app from 'App'
 import { get } from 'App'
 import { useMessage } from 'Hooks'
+import { usePrevious } from 'Hooks'
 
 const useList = ({
     entityType,
@@ -15,6 +16,7 @@ const useList = ({
     const [pageNumber, setPageNumber] = useState(existingParameters.pageNumber || 1)
     const [pageSize, setPageSize] = useState(existingParameters.pageSize || 5)
     const [filters, setFilters] = useState(existingParameters.filters || [])
+    const previousFilters = usePrevious(filters)
     const [sorts, setSorts] = useState(existingParameters.sorts || [])
     const [loading, setLoading] = useState();
     const [data, setData] = useState([]);
@@ -76,7 +78,7 @@ const useList = ({
     }, [pageNumber, pageSize, filters, sorts])
 
     useEffect(() => {
-        console.log(filters)
+        console.log(previousFilters, filters)
     }, [filters])
 
     const buildFiltersQueryString = () => {

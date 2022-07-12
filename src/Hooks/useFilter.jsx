@@ -20,6 +20,7 @@ const useFilter = ({
     const [chosen, setChosen] = useState('')
 
     var {
+        usedFilters,
         setFilter
     } = useContext(ListContext)
     const label = placeholder || column
@@ -44,6 +45,12 @@ const useFilter = ({
             setChosen('')
         }
     }, [entity])
+
+    useEffect(() => {
+        if (!usedFilters || usedFilters.length === 0) {
+            setEntity(null)
+        }
+    }, [usedFilters])
 
     return {
         chosen,

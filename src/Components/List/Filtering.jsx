@@ -15,20 +15,15 @@ const Filtering = ({ filters }) => {
         return <div></div>
     }
 
-    const applyFilters = () => {
-        reload()
-    };
-
     const reset = () => {
         resetFilters()
-        applyFilters();
     }
 
     const handleKeyPress = (event) => {
         if (event.charCode !== 13) {
             return;
         }
-        applyFilters();
+        reload()
     }
 
     const filtersArray = filters.props.children.map ? filters.props.children : [filters.props.children];
@@ -43,7 +38,7 @@ const Filtering = ({ filters }) => {
             <div className={" md:col-start-2 lg:col-start-3 xl:col-start-4 place-self-end"}>
                 <div className="flex justify-end gap-2 items-bottom ">
                     {
-                        usedFilters?.length > 0 &&
+                        // usedFilters?.length > 0 &&
                         <Button
                             className="grow-0"
                             size="small"
@@ -56,7 +51,7 @@ const Filtering = ({ filters }) => {
                         size="small"
                         className={"bg-green-200 hover:bg-green-400"}
                         variant="outlined"
-                        onClick={applyFilters}>
+                        onClick={reload}>
                         {app.t('Apply')}
                     </Button>
                 </div>
