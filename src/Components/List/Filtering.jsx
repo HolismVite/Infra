@@ -39,23 +39,26 @@ const Filtering = ({ filters }) => {
                     key: index,
                 }))
             }
-            <div className={"flex justify-end md:col-start-2 lg:col-start-3 xl:col-start-4 gap-2"}>
-                {
-                    // filters?.length > 0 &&
+            <div className={" md:col-start-2 lg:col-start-3 xl:col-start-4 place-self-end"}>
+                <div className="flex justify-end gap-2 items-bottom ">
+                    {
+                        // filters?.length > 0 &&
+                        <Button
+                            className="grow-0"
+                            size="small"
+                            variant="outlined"
+                            onClick={reset}>
+                            {app.t('Reset')}
+                        </Button>
+                    }
                     <Button
                         size="small"
+                        className={"bg-green-200 hover:bg-green-400"}
                         variant="outlined"
-                        onClick={reset}>
-                        {app.t('Reset')}
+                        onClick={applyFilters}>
+                        {app.t('Apply')}
                     </Button>
-                }
-                <Button
-                    size="small"
-                    className={"bg-green-200 hover:bg-green-400"}
-                    variant="outlined"
-                    onClick={applyFilters}>
-                    {app.t('Apply')}
-                </Button>
+                </div>
             </div>
         </div>
 
