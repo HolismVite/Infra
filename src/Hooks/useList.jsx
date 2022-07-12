@@ -25,16 +25,24 @@ const useList = ({
 
     const setFilter = (property, value, operator) => {
         if (filters.find(i => i.property === property)) {
-            const newFilters = filters.map((i) => {
-                return i.property === property && i.operator === operator
-                    ? { property, value, operator }
-                    : i
-            })
-            setFilters(newFilters)
+            if (value) {
+                const newFilters = filters.map((i) => {
+                    return i.property === property && i.operator === operator
+                        ? { property, value, operator }
+                        : i
+                })
+                setFilters(newFilters)
+            }
+            else {
+                const newFilters = filters.filter(i => i.property !== property)
+                setFilters(newFilters)
+            }
         }
         else {
-            const newFilters = [...filters, { property, value, operator }]
-            setFilters(newFilters)
+            if (value) {
+                const newFilters = [...filters, { property, value, operator }]
+                setFilters(newFilters)
+            }
         }
     }
 
