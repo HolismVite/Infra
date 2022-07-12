@@ -55,7 +55,6 @@ const List = ({
   const [dialogProps, setDialogProps] = useState({})
 
   const {
-    setFilter,
     data,
     deselectEntities,
     deselectEntity,
@@ -70,6 +69,7 @@ const List = ({
     selectEntity,
     setEntity,
     setEntityProgress,
+    setFilter,
     setPageNumber,
     setPageSize,
     setSorts,

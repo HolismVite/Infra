@@ -26,28 +26,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const BrowserDialog = ({
-    card,
-    entityType,
-    filters,
-    headers,
-    isTree,
-    row,
-    sorts,
-}) => {
-
-    const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.camelize(entityType)}_isFilteringOpen`);
-
-    const {
-        data,
-        hasData,
-        loading,
-        metadata,
-        reload,
-    } = useList({
-        entityType,
-        isTree
-    })
+const BrowserDialog = () => {
 
     const toggleFiltering = () => {
         setIsFilteringOpen(!isFilteringOpen);
@@ -59,11 +38,46 @@ const BrowserDialog = ({
     } = useContext(DialogContext)
 
     const {
+        card,
         close,
+        entityType,
+        filters,
+        headers,
+        isTree,
         onSelected,
+        row,
         selectedEntity,
         setSelectedEntity,
+        sorts,
     } = useContext(BrowseContext)
+
+    const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.camelize(entityType)}_isFilteringOpen`);
+
+    const {
+        data,
+        deselectEntities,
+        deselectEntity,
+        hasData,
+        loading,
+        metadata,
+        reload,
+        reloadEntity,
+        resetFilters,
+        selectedEntities,
+        selectEntities,
+        selectEntity,
+        setEntity,
+        setEntityProgress,
+        setFilter,
+        setPageNumber,
+        setPageSize,
+        setSorts,
+        usedFilters,
+    } = useList({
+        entityType,
+        isBrowse: true,
+        isTree,
+    })
 
     const entityActions = <>
         <EntityAction
@@ -115,6 +129,8 @@ const BrowserDialog = ({
     return <ListContext.Provider value={{
         card,
         data,
+        deselectEntities,
+        deselectEntity,
         entityActions,
         hasData,
         headers,
@@ -122,7 +138,19 @@ const BrowserDialog = ({
         loading,
         metadata,
         reload,
+        reloadEntity,
+        resetFilters,
         row,
+        selectedEntities,
+        selectEntities,
+        selectEntity,
+        setEntity,
+        setEntityProgress,
+        setFilter,
+        setPageNumber,
+        setPageSize,
+        setSorts,
+        usedFilters,
     }}>
         <Dialog
             open={open}
@@ -167,7 +195,7 @@ const BrowserDialog = ({
                 </div>
             </DialogTitle>
             <DialogContent>
-                <Unify component={list} />
+                {list}
             </DialogContent>
             <DialogActions>
                 <Pagination />

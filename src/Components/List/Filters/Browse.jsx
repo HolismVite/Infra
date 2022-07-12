@@ -10,11 +10,11 @@ import BrowserIcons from '../../Browse/BrowserIcons';
 import Filter from './Filter'
 
 const Browse = ({
-    list,
     choose,
     column,
     placeholder,
     show,
+    ...rest
 }) => {
 
     const [open, setOpen] = useState(false)
@@ -56,11 +56,11 @@ const Browse = ({
             <BrowseContext.Provider
                 value={{
                     close: () => setOpen(false),
-                    list,
                     onSelected: i => setEntity(i),
                     selectedEntity,
                     setSelectedEntity,
                     small: true,
+                    ...rest
                 }}
             >
                 <BrowserDialog />

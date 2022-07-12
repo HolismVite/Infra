@@ -5,10 +5,11 @@ import { useMessage } from 'Hooks'
 
 const useList = ({
     entityType,
+    isBrowse,
     isTree,
 }) => {
 
-    var key = `${app.camelize(entityType)}_listParameters`
+    var key = `${app.camelize(entityType)}${isBrowse && '_browse'}_listParameters`
     var value = window.localStorage.getItem(key)
     var existingParameters = (value === null ? {} : JSON.parse(value))
 
