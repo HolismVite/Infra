@@ -12,8 +12,8 @@ const useBrowser = ({
 
     useEffect(() => {
         if (!selectedEntity) {
-            // show('');
-            // setValue(null);
+            show('');
+            setValue(null);
             return;
         }
         if (typeof show(selectedEntity) === "undefined") {
@@ -39,12 +39,13 @@ const useBrowser = ({
             else {
                 throw new Error(`No return value specified for ${column} browser chooser function`);
             }
-            // show(show(selectedEntity))
+            show(selectedEntity)
         }
     }, [selectedEntity, choose, column, show, setValue, show]);
 
     return {
-
+        selectedEntity,
+        setSelectedEntity,
     }
 }
 

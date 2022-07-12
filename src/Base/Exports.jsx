@@ -5,6 +5,7 @@ import {
     post,
     upload,
 } from './Api'
+import filterOperator from "./FilterOperator";
 
 export default app
 export {
@@ -13,3 +14,4 @@ export {
     post,
     upload,
 }
+export { filterOperator }
