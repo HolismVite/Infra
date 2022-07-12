@@ -1,3 +1,5 @@
+change browse and browser everywhere to lookup
+
 https://js.devexpress.com/Demos/WidgetsGallery/
 
 rename column to property for fields and filters and everywhere

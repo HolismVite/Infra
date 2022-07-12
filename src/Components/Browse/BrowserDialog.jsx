@@ -7,6 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import { DialogContext } from 'Contexts'
+import { BrowseContext } from 'Contexts'
 import Unify from '../Unify';
 import Pagination from '../List/Pagination';
 
@@ -17,10 +18,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const BrowserDialog = () => {
 
     const {
-        list,
         open,
         setOpen,
     } = useContext(DialogContext)
+
+    const {
+        list
+    } = useContext(BrowseContext)
 
     return <Dialog
         open={open}
