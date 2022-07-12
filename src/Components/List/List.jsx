@@ -45,9 +45,9 @@ const List = ({
 }) => {
 
   const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer"
-  const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isFilteringOpen`)
-  const [hiddenEntityActions, setHiddenEntityActions] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isEntityActionsHidden`)
-  const [showTopPagiation, setTopPaginationVisibility] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isTopPaginationShown`)
+  const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.camelize(entityType)}_isFilteringOpen`)
+  const [hiddenEntityActions, setHiddenEntityActions] = useLocalStorageState(false, `${app.camelize(entityType)}_isEntityActionsHidden`)
+  const [showTopPagiation, setTopPaginationVisibility] = useLocalStorageState(false, `${app.camelize(entityType)}_isTopPaginationShown`)
 
   const hasItemSelection = listActions ? true : false
   const { setTitle, setSubtitle, setBreadcrumbItems } = useContext(TopContext)

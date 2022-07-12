@@ -8,12 +8,7 @@ const useList = ({
     isTree,
 }) => {
 
-    var key = ''
-    key += app.userGuid()
-    if (entityType) {
-        key += `_${entityType}`
-    }
-    key += '_listParameters'
+    var key = `${app.camelize(entityType)}_listParameters`
     var value = window.localStorage.getItem(key)
     var existingParameters = (value === null ? {} : JSON.parse(value))
 
@@ -63,7 +58,7 @@ const useList = ({
         window.localStorage.setItem(key, JSON.stringify({
             pageNumber,
             pageSize,
-            filters,
+            filters: filters.filter(i => i.value),
             sorts
         }));
     }
@@ -128,7 +123,7 @@ const useList = ({
 
     const load = () => {
         setLoading(true);
-        let url = `${entityType}/`;
+        let url = `${app.camelize(entityType)}/`;
         if (isTree) {
             url += 'tree'
         }
@@ -234,7 +229,7 @@ const useList = ({
 
     const reloadEntity = (entity) => {
         setEntityProgress(entity, true);
-        get(`${entityType}/get/${entity.id}`)
+        get(`${app.camelize(entityType)}/get/${entity.id}`)
             .then(result => {
                 setEntityProgress(entity, false)
                 setEntity(result)

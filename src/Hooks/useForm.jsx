@@ -92,7 +92,7 @@ const useForm = ({
             return
         }
         setProgress(true)
-        get(`/${entityType}/get/${entityId}`)
+        get(`/${app.camelize(entityType)}/get/${entityId}`)
             .then(data => {
                 setProgress(false)
                 setCurrentEntity(data)
@@ -191,7 +191,7 @@ const useForm = ({
         }
         else {
             setProgress(true);
-            let url = `${entityType}/`;
+            let url = `${app.camelize(entityType)}/`;
             if (hasFile) {
                 url += 'upload'
             } else {

@@ -20,7 +20,7 @@ const Enum = ({
             return
         }
         setLoading(true)
-        get(`/${entityType}/all`).then(data => {
+        get(`/${app.camelize(entityType)}/all`).then(data => {
             setEnumItems(data)
             app.setEnum(entityType, data)
             window.enums = app.getEnums()

@@ -28,8 +28,8 @@ import Progress from '../Components/Progress';
 const Panel = () => {
 
     const [isSidebarOpen, setIsSidebarOpen] = useLocalStorageState(true, 'isSidebarOpen')
-    const [isDark, setIsDark] = useLocalStorageState(false, `isDark_${app.userGuid()}`)
-    const [maximized, setMaximized] = useLocalStorageState(false, `maximized_${app.userGuid()}`)
+    const [isDark, setIsDark] = useLocalStorageState(false, `isDark`)
+    const [maximized, setMaximized] = useLocalStorageState(false, `maximized`)
 
     const [params, setParams] = useState('');
     const [title, setTitle] = useState('');

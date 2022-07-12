@@ -10,7 +10,7 @@ const Tree = ({
     ...props
 }) => {
 
-    const [isExpanded, setIsExpanded] = useLocalStorageState(expanded || true, `${app.userGuid()}_${entityType}_isTreeExpanded`);
+    const [isExpanded, setIsExpanded] = useLocalStorageState(expanded || true, `${app.camelize(entityType)}_isTreeExpanded`);
 
     return <List
         {...props}

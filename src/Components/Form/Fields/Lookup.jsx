@@ -47,7 +47,7 @@ const Lookup = ({ column, entityType, placeholder, hint, value, required, displa
             return;
         }
         setLoading(true);
-        get(`/${entityType}/all`).then(data => {
+        get(`/${app.camelize(entityType)}/all`).then(data => {
             setLookupItems(data);
             setLoading(false);
         }, e => {

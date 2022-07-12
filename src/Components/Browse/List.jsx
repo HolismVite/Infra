@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import CheckIcon from '@mui/icons-material/Check';
 import Collapse from '@mui/material/Collapse';
+import app from 'App'
 import { useLocalStorageState } from 'Hooks'
 import { useList } from 'Hooks'
 import { ListContext } from 'Contexts'
 import { BrowseContext } from 'Contexts'
-import Unify from '../Unify';
 import Filtering from "../List/Filtering";
 import Sorting from "../List/Sorting";
 import Entities from "../List/Entities";
@@ -24,7 +24,7 @@ const List = ({
     sorts,
 }) => {
 
-    const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.userGuid()}_${entityType}_isFilteringOpen`);
+    const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.camelize(entityType)}_isFilteringOpen`);
 
     const {
         data,

@@ -25,7 +25,7 @@ const DeleteAction = () => {
     const deleteItem = () => {
         setOpen(false)
         setProgress(true)
-        post(`${entityType}/delete/${entity.id}`).then(data => {
+        post(`${app.camelize(entityType)}/delete/${entity.id}`).then(data => {
             success(app.t("Deleted successfully"))
             setProgress(false)
             reload()
