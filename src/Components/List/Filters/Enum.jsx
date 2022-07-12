@@ -35,7 +35,11 @@ const Enum = ({ column, entityType, placeholder }) => {
         column={column}
         placeholder={placeholder}
         operator={filterOperator.equals}
-        renderInput={(value, setValue, label) =>
+        renderInput={({
+            label,
+            setValue,
+            value,
+        }) =>
             <Select
                 size='small'
                 value={value}

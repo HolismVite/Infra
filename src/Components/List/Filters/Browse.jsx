@@ -36,12 +36,10 @@ const Browse = ({
         column={column}
         {...rest}
         renderInput={({
-            progress,
+            label,
             setValue,
             value,
         }) => {
-            show = setValue;
-            setValue = setValue;
             return <DialogContext.Provider
                 value={{
                     open,
@@ -60,6 +58,7 @@ const Browse = ({
                 >
                     <BrowserDialog />
                     <OutlinedInput
+                        label={app.t(label)}
                         value={value}
                         size='small'
                         onChange={(e) => setValue(chosenValue)}

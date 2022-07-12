@@ -19,9 +19,9 @@ const Filter = ({
 
     const [id, setId] = useState();
     const [displayValue, setDisplayValue] = useState(value || "");
-    var { 
+    var {
         addFilter
-     } = useContext(ListContext);
+    } = useContext(ListContext);
     const label = placeholder || column;
 
     // todo: on resetting filters => setDisplayValue(value || "");
@@ -45,7 +45,11 @@ const Filter = ({
                 {app.t(label)}
             </InputLabel>
             {
-                renderInput(displayValue, setDisplayValue, label)
+                renderInput({
+                    value: displayValue,
+                    setValue: setDisplayValue,
+                    label
+                })
             }
         </FormControl>
     </div>

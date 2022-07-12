@@ -8,7 +8,11 @@ const Text = ({ column, placeholder }) => {
         type='text'
         column={column}
         placeholder={placeholder}
-        renderInput={(value, setValue, label) => {
+        renderInput={({
+            label,
+            setValue,
+            value,
+        }) => {
             return <OutlinedInput
                 size='small'
                 value={value}
