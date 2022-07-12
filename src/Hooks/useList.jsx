@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import app from 'App'
 import { get } from 'App'
 import { useMessage } from 'Hooks'
-import { usePrevious } from 'Hooks'
 
 const useList = ({
     entityType,
@@ -16,7 +15,6 @@ const useList = ({
     const [pageNumber, setPageNumber] = useState(existingParameters.pageNumber || 1)
     const [pageSize, setPageSize] = useState(existingParameters.pageSize || 5)
     const [filters, setFilters] = useState(existingParameters.filters || [])
-    const previousFilters = usePrevious(filters)
     const [sorts, setSorts] = useState(existingParameters.sorts || [])
     const [loading, setLoading] = useState();
     const [data, setData] = useState([]);
@@ -24,6 +22,7 @@ const useList = ({
     const [hasData, setHasData] = useState(false)
     const [selectedEntities, setSelectedEntities] = useState([])
     const { error } = useMessage()
+    const [resetRequested, setResetRequested] = useState(false)
 
     const setFilter = (property, value, operator) => {
         if (filters.find(i => i.property === property)) {
@@ -54,6 +53,7 @@ const useList = ({
 
     const resetFilters = () => {
         setFilters([])
+        setResetRequested(true)
     }
 
     const addSort = (property, direction) => {
@@ -78,8 +78,12 @@ const useList = ({
     }, [pageNumber, pageSize, filters, sorts])
 
     useEffect(() => {
-        console.log(previousFilters, filters)
-    }, [filters])
+        console.log(filters)
+        if (resetRequested && filters.length === 0) {
+            reload()
+            setResetRequested(false)
+        }
+    }, [filters, resetRequested])
 
     const buildFiltersQueryString = () => {
         //filters=title_contains_hi&stateId_eq_closed&userAge_gt_35
