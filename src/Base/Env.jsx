@@ -14,10 +14,10 @@ const Env = {
         return Holism.trim(value, '/')
     },
     isDev: () => {
-        if (!import.meta.env.NODE_ENV || import.meta.env.NODE_ENV === 'development') {
-            return true
-        } else {
+        if (import.meta.env.PROD) {
             return false
+        } else {
+            return true
         }
     }
 }
