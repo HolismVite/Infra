@@ -14,7 +14,7 @@ import EntityAction from '../List/EntityActions/EntityAction';
 
 const listActionIconStyle = "text-gray-700 hover:text-blue-500 cursor-pointer";
 
-const Browse = ({
+const List = ({
     card,
     entityType,
     filters,
@@ -67,7 +67,7 @@ const Browse = ({
         metadata,
         reload,
         row,
-    }} id='browser'>
+    }}>
         <div className='flex items-center justify-end px-6 py-2'>
             <div className="flex items-center">
                 {
@@ -81,7 +81,6 @@ const Browse = ({
                     filters && (filters.props?.children?.length > 0 || filters.props?.children?.props)
                         ?
                         <span
-                            id='showHideFiltering'
                             className={listActionIconStyle + " mr-4"}
                             onClick={toggleFiltering}><FilterListIcon /></span>
                         :
@@ -100,4 +99,4 @@ const Browse = ({
     </ListContext.Provider>
 }
 
-export default Browse
+export default List
