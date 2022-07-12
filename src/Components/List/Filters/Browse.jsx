@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import app from 'App'
+import filterOperator from 'App'
 import { DialogContext } from 'Contexts'
 import { BrowseContext } from 'Contexts'
 import { useFilter } from 'Hooks'
@@ -16,8 +17,6 @@ const Browse = ({
     show,
 }) => {
 
-    app.ensure([show])
-
     const [open, setOpen] = useState(false)
     const [selectedEntity, setSelectedEntity] = useState(null)
 
@@ -31,8 +30,10 @@ const Browse = ({
     } = useFilter({
         choose,
         column,
+        operator: filterOperator.equals,
         placeholder,
         selectedEntity,
+        show,
         type: 'browse',
     })
 
