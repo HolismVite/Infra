@@ -3,7 +3,6 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import app from 'App'
 import { DialogContext } from 'Contexts'
 import { BrowseContext } from 'Contexts'
-import { useBrowser } from 'Hooks'
 import BrowserDialog from '../../Browse/BrowserDialog';
 import BrowserIcons from '../../Browse/BrowserIcons';
 import Field from './Field'
@@ -11,30 +10,15 @@ import Field from './Field'
 const Browse = ({
     list,
     choose,
-    column,
-    placeholder,
     show,
     ...rest
 }) => {
 
-    app.ensure([show])
-
     const [open, setOpen] = useState(false);
-
-    const {
-        chosenValue,
-        selectedEntity,
-        setSelectedEntity,
-        shownValue,
-    } = useBrowser({
-        show,
-        choose,
-        column,
-    })
+    const [selectedEntity, setSelectedEntity] = useState(null)
 
     return <Field
         type='browse'
-        column={column}
         {...rest}
         renderInput={({
             label,
@@ -53,8 +37,11 @@ const Browse = ({
                         close: () => setOpen(false),
                         list,
                         onSelected: () => {
-                            setChosenValue(chosenValue)
-                            setDisplayValue(shownValue)
+                            if (selectedEntity) 
+                            {
+                                setChosenValue(choose(selectedEntity))
+                                setDisplayValue(show(selectedEntity))
+                            }
                         },
                         progress,
                         selectedEntity,
@@ -65,7 +52,7 @@ const Browse = ({
                     <BrowserDialog />
                     <OutlinedInput
                         label={app.t(label)}
-                        value={shownValue}
+                        value={show(selectedEntity || {})}
                         readOnly={true}
                         endAdornment={<BrowserIcons />}
                     />

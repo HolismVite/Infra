@@ -3,7 +3,6 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import app from 'App'
 import { DialogContext } from 'Contexts'
 import { BrowseContext } from 'Contexts'
-import { useBrowser } from 'Hooks'
 import { useFilter } from 'Hooks'
 import BrowserDialog from '../../Browse/BrowserDialog';
 import BrowserIcons from '../../Browse/BrowserIcons';
@@ -19,28 +18,16 @@ const Browse = ({
 
     app.ensure([show])
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false)
+    const [selectedEntity, setSelectedEntity] = useState(null)
 
     const {
         id,
-        entity,
         label,
-        setEntity,
     } = useFilter({
         column,
         placeholder,
         type: 'browse',
-    })
-
-    const {
-        selectedEntity,
-        setSelectedEntity,
-        progress,
-    } = useBrowser({
-        show,
-        choose,
-        column,
-        setValue: setEntity
     })
 
     return <Filter
@@ -55,7 +42,6 @@ const Browse = ({
         >
             <BrowseContext.Provider
                 value={{
-                    progress,
                     small: true,
                     selectedEntity,
                     setSelectedEntity,
@@ -66,7 +52,7 @@ const Browse = ({
                 <BrowserDialog />
                 <OutlinedInput
                     label={app.t(label)}
-                    value={entity ? show(entity) : ''}
+                    value={show(selectedEntity || {})}
                     readOnly={true}
                     size='small'
                     endAdornment={<BrowserIcons />}

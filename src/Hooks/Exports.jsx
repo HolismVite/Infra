@@ -1,4 +1,3 @@
-import useBrowser from './useBrowser'
 import useEnum from './useEnum'
 import useFilter from './useFilter'
 import useForm from './useForm'
@@ -7,7 +6,6 @@ import useLocalStorageState from './useLocalStorageState'
 import useMessage from './useMessage'
 import useQueryStringState from './useQueryStringState'
 
-export { useBrowser }
 export { useEnum }
 export { useFilter }
 export { useForm }
