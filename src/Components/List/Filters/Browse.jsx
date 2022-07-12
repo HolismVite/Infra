@@ -1,136 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
-import CachedIcon from '@mui/icons-material/Cached';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-import CloseIcon from '@mui/icons-material/Close';
-import Tooltip from '@mui/material/Tooltip';
-import ClearIcon from '@mui/icons-material/Clear';
 import app from 'App'
+import { DialogContext } from 'Contexts'
 import { BrowseContext } from 'Contexts'
-import Unify from '../../Unify';
+import { useBrowser } from 'Hooks'
+import BrowserDialog from '../../Browse/BrowserDialog';
+import BrowserIcons from '../../Browse/BrowserIcons';
 import Filter from './Filter'
-import Pagination from '../../List/Pagination';
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
 
 const Browse = ({
-    column,
-    browser,
-    display,
+    list,
     choose,
+    column,
+    show,
     ...rest
 }) => {
 
-    app.ensure([display, browser])
+    app.ensure([show])
 
-    const [selectedEntity, setSelectedEntity] = useState(null);
-    const [isBrowserDialogOpen, setIsBrowserDialogOpen] = useState(false);
-    let show;
-    let setValue;
+    const [open, setOpen] = useState(false);
 
-    useEffect(() => {
-        if (!selectedEntity) {
-            // show('');
-            // setValue(null);
-            return;
-        }
-        if (typeof display(selectedEntity) === "undefined") {
-            throw new Error(`No dispaly value specified for Browse ${'id'} `)
-        }
-        else {
-            if (typeof choose === "function") {
-                try {
-                    let chosenValue = choose(selectedEntity);
-                    if (typeof chosenValue === "undefined" || typeof chosenValue === "function")
-                        throw new Error(`No return value specified for ${column} browser chooser function`)
-                    setValue(chosenValue, true);
-                } catch (error) {
-                    throw new Error(`No return value specified for ${column} browser chooser function`);
-                }
-            }
-            else if (column.endsWith('Guid')) {
-                setValue(selectedEntity.guid, true);
-            }
-            else if (column.endsWith('Id')) {
-                setValue(selectedEntity.id, true);
-            }
-            else {
-                throw new Error(`No return value specified for ${column} browser chooser function`);
-            }
-            // show(display(selectedEntity))
-        }
-    }, [selectedEntity, choose, column, display, setValue, show]);
-
-    const browserDialog = <Dialog
-        open={isBrowserDialogOpen}
-        fullScreen
-        TransitionComponent={Transition}
-        onClose={() => setIsBrowserDialogOpen(false)}
-    >
-        <DialogTitle
-            className="bg-gray-100"
-        >
-            <div className="flex items-center justify-between">
-                <div
-                    className="flex gap-4 items-center"
-                >
-                    <IconButton
-                        onClick={() => setIsBrowserDialogOpen(false)}
-                        aria-label="close"
-                    >
-                        <CloseIcon />
-                    </IconButton>
-                    <span className="ml-4">{app.t("Find")}</span>
-                </div>
-                <div
-                    dir='ltr'
-                    className="listActions flex-1 flex gap-4"
-                >
-                    {/* <IconButton
-                        onClick={() => setIsBrowserDialogOpen(false)}
-                        aria-label="close"
-                    >
-                        <CloseIcon />
-                    </IconButton> */}
-                    {/* <IconButton
-                        onClick={() => setIsBrowserDialogOpen(false)}
-                        aria-label="close"
-                    >
-                        <CloseIcon />
-                    </IconButton>
-                    <IconButton
-                        onClick={() => setIsBrowserDialogOpen(false)}
-                        aria-label="close"
-                    >
-                        <CachedIcon />
-                    </IconButton> */}
-                </div>
-            </div>
-        </DialogTitle>
-        <DialogContent>
-            <BrowseContext.Provider
-                value={{
-                    selectedEntity,
-                    setSelectedEntity,
-                    close: () => setIsBrowserDialogOpen(false)
-                }}
-            >
-                <Unify component={browser} />
-            </BrowseContext.Provider>
-        </DialogContent>
-        <DialogActions>
-            <Pagination />
-        </DialogActions>
-    </Dialog>
+    const {
+        selectedEntity,
+        setSelectedEntity,
+        progress,
+    } = useBrowser({
+        show,
+        choose,
+        column,
+        setValue: (value) => { console.log(value) }
+    })
 
     return <Filter
         type='browse'
@@ -143,62 +42,33 @@ const Browse = ({
         }) => {
             show = setValue;
             setValue = setValue;
-            return <>
-                {
-                    browserDialog
-                }
-                <OutlinedInput
-                    value={value}
-                    size='small'
-                    onChange={(e) => setValue(chosenValue)}
-                    endAdornment={
-                        <InputAdornment
-                            disablePointerEvents={progress}
-                            disableTypography={progress}
-                            position="end"
-                        >
-                            {
-                                selectedEntity
-                                    ?
-                                    <Tooltip
-                                        title={app.t("Clear")}
-                                        disableFocusListener={progress}
-                                        disableInteractive={progress}
-                                        disableTouchListener={progress}
-                                    >
-                                        <IconButton
-                                            disabled={progress}
-                                            aria-label={app.t("Clear")}
-                                            onClick={() => {
-                                                setSelectedEntity(null)
-                                            }}
-                                            onMouseDown={() => { }}
-                                        >
-                                            <ClearIcon />
-                                        </IconButton>
-                                    </Tooltip>
-                                    :
-                                    null
-                            }
-                            <Tooltip
-                                title={app.t("Find")}
-                                disableFocusListener={progress}
-                                disableInteractive={progress}
-                                disableTouchListener={progress}
-                            >
-                                <IconButton
-                                    disabled={progress}
-                                    aria-label={app.t("Find")}
-                                    onClick={() => setIsBrowserDialogOpen(true)}
-                                    onMouseDown={() => { }}
-                                >
-                                    <MoreHorizIcon />
-                                </IconButton>
-                            </Tooltip>
-                        </InputAdornment>
-                    }
-                />
-            </>
+            return <DialogContext.Provider
+                value={{
+                    open,
+                    setOpen
+                }}
+            >
+                <BrowseContext.Provider
+                    value={{
+                        selectedEntity,
+                        setSelectedEntity,
+                        close: () => setOpen(false)
+                    }}
+                >
+                    <BrowserDialog
+                        list={list}
+                    />
+                    <OutlinedInput
+                        value={value}
+                        size='small'
+                        onChange={(e) => setValue(chosenValue)}
+                        endAdornment={<BrowserIcons
+                            progress={progress}
+                            selectedEntity={selectedEntity}
+                        />}
+                    />
+                </BrowseContext.Provider>
+            </DialogContext.Provider>
         }}
     />
 }
