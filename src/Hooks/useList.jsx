@@ -267,7 +267,7 @@ const useList = ({
         data,
         deselectEntities,
         deselectEntity,
-        filters,
+        usedFilters: filters,
         hasData,
         loading,
         metadata,

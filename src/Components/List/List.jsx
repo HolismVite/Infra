@@ -73,6 +73,7 @@ const List = ({
     setPageNumber,
     setPageSize,
     setSorts,
+    usedFilters,
   } = useList({
     entityType,
     isTree
@@ -135,6 +136,7 @@ const List = ({
     setTopPaginationVisibility,
     show,
     showTopPagiation,
+    usedFilters,
     upsert,
     upsertionIcon,
     upsertionText,

@@ -7,7 +7,8 @@ const Filtering = ({ filters }) => {
 
     const {
         resetFilters,
-        reload
+        reload,
+        usedFilters,
     } = useContext(ListContext);
 
     if (!filters || filters.props.children.length === 0) {
@@ -42,7 +43,7 @@ const Filtering = ({ filters }) => {
             <div className={" md:col-start-2 lg:col-start-3 xl:col-start-4 place-self-end"}>
                 <div className="flex justify-end gap-2 items-bottom ">
                     {
-                        // filters?.length > 0 &&
+                        usedFilters?.length > 0 &&
                         <Button
                             className="grow-0"
                             size="small"
