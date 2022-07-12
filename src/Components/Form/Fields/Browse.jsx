@@ -21,6 +21,7 @@ const Browse = ({
         type='browse'
         {...rest}
         renderInput={({
+            displayValue,
             label,
             progress,
             setChosenValue,
@@ -37,8 +38,7 @@ const Browse = ({
                         close: () => setOpen(false),
                         list,
                         onSelected: (entity) => {
-                            if (entity) 
-                            {
+                            if (entity) {
                                 setChosenValue(choose(entity))
                                 setDisplayValue(show(entity))
                             }
@@ -52,9 +52,15 @@ const Browse = ({
                     <BrowserDialog />
                     <OutlinedInput
                         label={app.t(label)}
-                        value={show(selectedEntity || {})}
+                        value={displayValue}
                         readOnly={true}
-                        endAdornment={<BrowserIcons />}
+                        endAdornment={<BrowserIcons
+                            onCleared={() => {
+                                setChosenValue('')
+                                setDisplayValue('')
+                                setSelectedEntity(null)
+                            }}
+                        />}
                     />
                 </BrowseContext.Provider>
             </DialogContext.Provider>
