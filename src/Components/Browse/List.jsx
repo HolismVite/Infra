@@ -56,7 +56,7 @@ const List = ({
                 setSelectedEntity(entity)
                 if (onSelected instanceof Function) 
                 {
-                    onSelected()
+                    onSelected(entity)
                 }
                 if (close instanceof Function) {
                     close()

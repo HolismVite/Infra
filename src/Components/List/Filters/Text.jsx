@@ -10,12 +10,14 @@ const Text = ({
 
     const {
         id,
-        entity,
         label,
         setEntity,
+        shown,
     } = useFilter({
+        choose: i => i,
         column,
         placeholder,
+        show: i => i,
         type: 'text',
     })
 
@@ -25,7 +27,7 @@ const Text = ({
     >
         <OutlinedInput
             size='small'
-            value={entity}
+            value={shown}
             label={app.t(label)}
             onChange={(event) => setEntity(event.target.value)}
         />

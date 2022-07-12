@@ -25,9 +25,11 @@ const Enum = ({
         label,
         setEntity,
     } = useFilter({
+        choose: i => i,
         column,
         operator: filterOperator.equals,
         placeholder,
+        show: i => i,
         type: 'select',
     })
 

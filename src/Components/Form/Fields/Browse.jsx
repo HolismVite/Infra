@@ -36,11 +36,11 @@ const Browse = ({
                     value={{
                         close: () => setOpen(false),
                         list,
-                        onSelected: () => {
-                            if (selectedEntity) 
+                        onSelected: (entity) => {
+                            if (entity) 
                             {
-                                setChosenValue(choose(selectedEntity))
-                                setDisplayValue(show(selectedEntity))
+                                setChosenValue(choose(entity))
+                                setDisplayValue(show(entity))
                             }
                         },
                         progress,

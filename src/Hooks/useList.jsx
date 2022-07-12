@@ -24,28 +24,17 @@ const useList = ({
     const { error } = useMessage()
 
     const setFilter = (property, value, operator) => {
-        return
-        var isAdded = false;
-        for (var i = 0; i < filters.length; i++) {
-            if (filters[i].property === property) {
-                if (filters[i].operator && operator && filters[i].operator === operator) {
-                    const otherFilters = filters.filter(i => i.property !== property && i.operator !== operator)
-                    setFilters([...otherFilters, {
-                        property,
-                        operator,
-                        value
-                    }])
-                    isAdded = true
-                    break;
-                }
-            }
+        if (filters.find(i => i.property === property)) {
+            const newFilters = filters.map((i) => {
+                return i.property === property && i.operator === operator
+                    ? { property, value, operator }
+                    : i
+            })
+            setFilters(newFilters)
         }
-        if (!isAdded) {
-            setFilters(previousFilters => [...previousFilters, {
-                property,
-                operator,
-                value
-            }])
+        else {
+            const newFilters = [...filters, { property, value, operator }]
+            setFilters(newFilters)
         }
     }
 

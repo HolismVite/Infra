@@ -25,8 +25,10 @@ const Browse = ({
         id,
         label,
     } = useFilter({
+        choose,
         column,
         placeholder,
+        selectedEntity,
         type: 'browse',
     })
 
