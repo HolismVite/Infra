@@ -27,11 +27,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const BrowserDialog = () => {
-
-    const toggleFiltering = () => {
-        setIsFilteringOpen(!isFilteringOpen);
-    }
-
     const {
         open,
         setOpen,
@@ -52,6 +47,11 @@ const BrowserDialog = () => {
     } = useContext(BrowseContext)
 
     const [isFilteringOpen, setIsFilteringOpen] = useLocalStorageState(false, `${app.camelize(entityType)}_isFilteringOpen`);
+
+    const toggleFiltering = () => {
+        setIsFilteringOpen(!isFilteringOpen);
+    }
+
 
     const {
         data,
@@ -176,11 +176,11 @@ const BrowserDialog = () => {
                         dir='ltr'
                         className="listActions flex-1 flex gap-4"
                     >
-                        {/* <IconButton
-                    onClick={() => setOpen(false)}
-                >
-                    <CloseIcon />
-                </IconButton> */}
+                        <IconButton
+                            onClick={() => setIsFilteringOpen(!isFilteringOpen)}
+                        >
+                            <FilterListIcon />
+                        </IconButton>
                         {/* <IconButton
                     onClick={() => setOpen(false)}
                 >
@@ -194,8 +194,23 @@ const BrowserDialog = () => {
                     </div>
                 </div>
             </DialogTitle>
-            <DialogContent>
-                {list}
+            <DialogContent
+                className="px-0"
+            >
+                <div
+                    className="flex "
+                >
+                    <Collapse in={isFilteringOpen} orientation='horizontal'>
+                        <div
+                            className="w-72 p-5"
+                        >filters</div>
+                    </Collapse>
+                    <div
+                        className="flex-1 px-5"
+                    >
+                        {list}
+                    </div>
+                </div>
             </DialogContent>
             <DialogActions>
                 <Pagination />
