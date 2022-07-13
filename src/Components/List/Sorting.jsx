@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import Tooltip from '@mui/material/Tooltip'
 import IconButton from '@mui/material/IconButton';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import CloseIcon from '@mui/icons-material/Close';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { ListContext } from 'Contexts'
 import app from 'App'
 
@@ -118,7 +122,20 @@ const Sorting = ({ sorts }) => {
                         event.preventDefault();
                     }}
                 >
-                    {app.t(sort.caption)}
+                    <ListItemIcon>
+                        {
+                            sort.direction === 'asc'
+                            &&
+                            <ArrowUpwardIcon />
+                        }
+                        {
+                            sort.direction === 'desc'
+                            &&
+                            <ArrowDownwardIcon />
+                        }
+                    </ListItemIcon>
+                    <ListItemText>{app.t(sort.caption)}</ListItemText>
+
                 </MenuItem>)
             }
         </Menu>
