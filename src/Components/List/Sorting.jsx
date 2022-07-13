@@ -65,7 +65,7 @@ const Sorting = ({ sorts }) => {
                     ?
                     <span onClick={resetSort}>
                         <Tooltip title={app.t('Remove sort')}>
-                            <CloseIcon />
+                            <CloseIcon fontSize='small' />
                         </Tooltip>
                     </span>
                     :
