@@ -11,6 +11,7 @@ import app from '../../Base/App'
 import Browse from './Fields/Browse'
 import Check from './Fields/Check'
 import Checks from './Fields/Checks'
+import Color from './Fields/Color'
 import Date from './Fields/DateOnly'
 import DateTime from './Fields/DateTime'
 import DialogForm from './DialogForm'
@@ -47,6 +48,7 @@ export { app }
 export { Browse }
 export { Check }
 export { Checks }
+export { Color }
 export { Date }
 export { DateTime }
 export { DialogContext }
