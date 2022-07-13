@@ -95,37 +95,6 @@ const BrowserDialog = () => {
         />
     </>
 
-    const list = <>
-        <div className='flex items-center justify-end px-6 py-2'>
-            <div className="flex items-center">
-                {
-                    sorts
-                        ?
-                        <Sorting sorts={sorts} />
-                        :
-                        null
-                }
-                {
-                    filters && (filters.props?.children?.length > 0 || filters.props?.children?.props)
-                        ?
-                        <span
-                            className={listActionIconStyle + " mr-4"}
-                            onClick={toggleFiltering}><FilterListIcon /></span>
-                        :
-                        null
-                }
-            </div>
-        </div>
-
-        <Collapse in={isFilteringOpen}>
-            <div className='mb-4'>
-                <Filtering filters={filters} />
-            </div>
-        </Collapse>
-
-        <Entities />
-    </>
-
     return <ListContext.Provider value={{
         card,
         data,
@@ -203,12 +172,14 @@ const BrowserDialog = () => {
                     <Collapse in={isFilteringOpen} orientation='horizontal'>
                         <div
                             className="w-72 p-5"
-                        >filters</div>
+                        >
+                            <Filtering filters={filters} />
+                        </div>
                     </Collapse>
                     <div
                         className="flex-1 px-5"
                     >
-                        {list}
+                        <Entities />
                     </div>
                 </div>
             </DialogContent>

@@ -6,6 +6,7 @@ import { ListContext } from 'Contexts'
 const Filtering = ({ filters }) => {
 
     const {
+        isBrowse,
         resetFilters,
         reload,
         usedFilters,
@@ -28,14 +29,33 @@ const Filtering = ({ filters }) => {
 
     const filtersArray = filters.props.children.map ? filters.props.children : [filters.props.children];
 
-    return <div id='filtering' className="bg-white px-3 py-3 md:rounded-lg relative dark:bg-zinc-700 " onKeyPress={(event) => handleKeyPress(event)}>
-        <div className={"grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}>
+    return <div
+        id='filtering'
+        className="bg-white px-3 py-3 md:rounded-lg relative dark:bg-zinc-700 "
+        onKeyPress={(event) => handleKeyPress(event)}
+    >
+        <div className={
+            ""
+            + (!isBrowse && "grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4")
+        }
+        >
             {
                 filtersArray.map((filter, index) => React.cloneElement(filter, {
                     key: index,
                 }))
             }
-            <div className={" md:col-start-2 lg:col-start-3 xl:col-start-4 place-self-end"}>
+            <div className={
+                ""
+                +
+                (
+                    isBrowse
+                        ?
+                        "mt-4"
+                        :
+                        " md:col-start-2 lg:col-start-3 xl:col-start-4 place-self-end"
+                )
+            }
+            >
                 <div className="flex justify-end gap-2 items-bottom ">
                     {
                         // usedFilters?.length > 0 &&
