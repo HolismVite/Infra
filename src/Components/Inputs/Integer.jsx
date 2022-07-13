@@ -32,6 +32,8 @@ const Integer = ({ onEnter, acceptOnly }) => {
         if (e.charCode === 13) {
             if (onEnter && typeof onEnter === 'function') {
                 onEnter(value);
+                e.preventDefault()
+                e.preventPropagation()
             }
         }
     }

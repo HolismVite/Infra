@@ -63,11 +63,13 @@ const Pagination = () => {
             onSubmit={() => { }}
         >
             <div id='fields'>
-                <PositiveInteger onEnter={(value) => {
-                    if (value) {
-                        goToPage(value)
-                    }
-                }} />
+                <PositiveInteger
+                    id='goToPageInput'
+                    onEnter={(value) => {
+                        if (value) {
+                            goToPage(value)
+                        }
+                    }} />
             </div>
         </form>}
         actions={<OkCancel
