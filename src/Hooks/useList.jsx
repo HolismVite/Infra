@@ -79,6 +79,10 @@ const useList = ({
     }, [pageNumber, pageSize, filters, sorts])
 
     useEffect(() => {
+        reload()
+    }, [pageNumber, pageSize, sorts])
+
+    useEffect(() => {
         console.log(filters)
         if (resetRequested && filters.length === 0) {
             reload()
