@@ -18,6 +18,7 @@ const DialogForm = ({
     title,
     close,
     okAction,
+    progress: externalProgress,
     ...rest
 }) => {
 
@@ -49,6 +50,7 @@ const DialogForm = ({
     } = useForm({
         entityId,
         entityType,
+        externalProgress,
         humanReadableEntityType,
         onSaved: () => {
             setOpen(false)
@@ -71,6 +73,7 @@ const DialogForm = ({
             isValid,
             mode,
             progress,
+            externalProgress,
             setField,
             setHasFile
         }}>

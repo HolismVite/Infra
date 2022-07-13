@@ -10,7 +10,11 @@ const Actions = ({
     onCanceled
 }) => {
 
-    const { isValid, progress } = useContext(FormContext)
+    const {
+        externalProgress,
+        isValid,
+        progress,
+    } = useContext(FormContext)
 
     return <div id='actions' className={'mt-4 ' + className}>
         {
@@ -36,9 +40,9 @@ const Actions = ({
                             </Button>
                             <Button
                                 variant="outlined"
-                                className={'ltr:ml-2 rtl:mr-2 ' + (isValid ? " bg-green-200 text-gray-900 border-gray-400 " : "")}
+                                className={'ltr:ml-2 rtl:mr-2 ' + ((isValid && !externalProgress) ? " bg-green-200 text-gray-900 border-gray-400 " : "")}
                                 onClick={(e) => handleSubmit(e)}
-                                disabled={!isValid}
+                                disabled={!isValid || externalProgress}
                             >
                                 {app.t('Save')}
                             </Button>
