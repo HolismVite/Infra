@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useForm } from 'Hooks'
+import { useMessage } from 'Hooks'
 import { ListContext } from 'Contexts'
 import { DialogContext } from 'Contexts'
 import { FormContext } from 'Contexts'
@@ -24,6 +25,8 @@ const DialogForm = ({
 }) => {
 
     const [contentProgress, setContentProgress] = useState()
+
+    const { error } = useMessage()
 
     const {
         dialogProps,
@@ -76,7 +79,7 @@ const DialogForm = ({
 
     useEffect(() => {
         if (open && onLoad instanceof Function) {
-            onLoad({ setProgress: setContentProgress })
+            onLoad({ setProgress: setContentProgress, error })
         }
     }, [open])
 
