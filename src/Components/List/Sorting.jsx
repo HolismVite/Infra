@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Tooltip from '@mui/material/Tooltip'
+import IconButton from '@mui/material/IconButton';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import CloseIcon from '@mui/icons-material/Close';
 import { ListContext } from 'Contexts'
@@ -26,8 +28,9 @@ const Sorting = ({ sorts }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [currentSort, setCurrentSort] = useState({});
     const {
+        isBrowse,
+        listActionIconStyle,
         setSorts,
-        listActionIconStyle
     } = useContext(ListContext);
 
     const handleClick = (event) => {
@@ -60,7 +63,11 @@ const Sorting = ({ sorts }) => {
             <div id='currentSort' className="uppercase text-xs text-gray-500 font-light tracking-wider flex items-center">
                 {currentSort.caption
                     ?
-                    <span onClick={resetSort}><CloseIcon /></span>
+                    <span onClick={resetSort}>
+                        <Tooltip title={app.t('Remove sort')}>
+                            <CloseIcon />
+                        </Tooltip>
+                    </span>
                     :
                     null
                 }
@@ -70,7 +77,19 @@ const Sorting = ({ sorts }) => {
                 className="flex items-center"
                 onClick={handleClick}
             >
-                <ImportExportIcon />
+                {
+                    isBrowse
+                        ?
+                        <Tooltip title={app.t('Sorts')}>
+                            <IconButton>
+                                <ImportExportIcon />
+                            </IconButton>
+                        </Tooltip>
+                        :
+                        <Tooltip title={app.t('Sorts')}>
+                            <ImportExportIcon />
+                        </Tooltip>
+                }
             </div>
         </div>
         <Menu

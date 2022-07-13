@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Slide from '@mui/material/Slide';
+import Tooltip from '@mui/material/Tooltip'
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -15,7 +16,6 @@ import { useList } from 'Hooks'
 import { DialogContext } from 'Contexts'
 import { ListContext } from 'Contexts'
 import { BrowseContext } from 'Contexts'
-import Unify from '../Unify';
 import Pagination from '../List/Pagination';
 import Filtering from "../List/Filtering";
 import Sorting from "../List/Sorting";
@@ -139,27 +139,28 @@ const BrowserDialog = () => {
                         >
                             <CloseIcon />
                         </IconButton>
-                        <span className="ml-4">{app.t("Find")}</span>
+                        <span>{app.t("Find")}</span>
                     </div>
                     <div
                         dir='ltr'
-                        className="listActions flex-1 flex gap-4"
+                        className="listActions flex-1 flex gap-4 justify-end"
                     >
-                        <IconButton
-                            onClick={() => setIsFilteringOpen(!isFilteringOpen)}
-                        >
-                            <FilterListIcon />
-                        </IconButton>
-                        {/* <IconButton
-                    onClick={() => setOpen(false)}
-                >
-                    <CloseIcon />
-                </IconButton>
-                <IconButton
-                    onClick={() => setOpen(false)}
-                >
-                    <CachedIcon />
-                </IconButton> */}
+                        {
+                            sorts
+                            &&
+                            <Sorting sorts={sorts} />
+                        }
+                        {
+                            filters
+                            &&
+                            <Tooltip title={app.t('Filters')}>
+                                <IconButton
+                                    onClick={() => setIsFilteringOpen(!isFilteringOpen)}
+                                >
+                                    <FilterListIcon />
+                                </IconButton>
+                            </Tooltip>
+                        }
                     </div>
                 </div>
             </DialogTitle>
