@@ -126,12 +126,12 @@ const Sorting = ({ sorts }) => {
                         {
                             sort.direction === 'asc'
                             &&
-                            <ArrowUpwardIcon />
+                            <ArrowDownwardIcon />
                         }
                         {
                             sort.direction === 'desc'
                             &&
-                            <ArrowDownwardIcon />
+                            <ArrowUpwardIcon />
                         }
                     </ListItemIcon>
                     <ListItemText>{app.t(sort.caption)}</ListItemText>
