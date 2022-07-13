@@ -89,7 +89,7 @@ const EntityAction = ({
                         if (closeMenu && typeof closeMenu === 'function') {
                             // closeMenu()
                         }
-                        className="group"
+                        className = "group"
                     }}>
                         <ListItemIcon>
                             <HolismIcon
