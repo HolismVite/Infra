@@ -11,6 +11,7 @@ const Actions = ({
 }) => {
 
     const {
+        contentProgress,
         externalProgress,
         isValid,
         progress,
@@ -40,9 +41,9 @@ const Actions = ({
                             </Button>
                             <Button
                                 variant="outlined"
-                                className={'ltr:ml-2 rtl:mr-2 ' + ((isValid && !externalProgress) ? " bg-green-200 text-gray-900 border-gray-400 " : "")}
+                                className={'ltr:ml-2 rtl:mr-2 ' + ((isValid && !externalProgress && !contentProgress) ? " bg-green-200 text-gray-900 border-gray-400 " : "")}
                                 onClick={(e) => handleSubmit(e)}
-                                disabled={!isValid || externalProgress}
+                                disabled={!isValid || externalProgress || contentProgress}
                             >
                                 {app.t('Save')}
                             </Button>

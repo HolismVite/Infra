@@ -38,7 +38,7 @@ const Dialog = ({
         }}
     >
         <DialogTitle id="dialogTitle">{app.t(title)}</DialogTitle>
-        <DialogContent>
+        <DialogContent className="transition-all">
             {
                 typeof content === 'string'
                     ?

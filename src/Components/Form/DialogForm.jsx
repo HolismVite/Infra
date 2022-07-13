@@ -18,9 +18,12 @@ const DialogForm = ({
     title,
     close,
     okAction,
+    onLoad,
     progress: externalProgress,
     ...rest
 }) => {
+
+    const [contentProgress, setContentProgress] = useState()
 
     const {
         dialogProps,
@@ -28,7 +31,12 @@ const DialogForm = ({
     } = useContext(ListContext)
 
     const dialogContext = useContext(DialogContext)
-    const { setOpen, entity, parentId } = dialogContext || {}
+    const {
+        entity,
+        open,
+        parentId,
+        setOpen,
+    } = dialogContext || {}
 
     const [entityId, setEntityId] = useState(null)
 
@@ -47,6 +55,7 @@ const DialogForm = ({
         setField,
         setFields,
         setHasFile,
+        setProgress,
     } = useForm({
         entityId,
         entityType,
@@ -65,15 +74,22 @@ const DialogForm = ({
         setCurrentEntity(entity)
     }, [entity])
 
+    useEffect(() => {
+        if (open && onLoad instanceof Function) {
+            onLoad({ setProgress: setContentProgress })
+        }
+    }, [open])
+
     return <FormContext.Provider
         value={{
             addFieldToFormContext,
+            contentProgress,
             currentEntity,
+            externalProgress,
             formMode,
             isValid,
             mode,
             progress,
-            externalProgress,
             setField,
             setHasFile
         }}>

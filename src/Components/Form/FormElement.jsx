@@ -9,16 +9,19 @@ const FormElement = ({
     handleSubmit
 }) => {
 
-    const { externalProgress } = useContext(FormContext)
+    const {
+        contentProgress,
+        externalProgress,
+    } = useContext(FormContext)
 
     return <form
         id={id || 'form'}
         noValidate
         onSubmit={handleSubmit}
     >
-        <div id='fields' className={externalProgress && 'grid place-items-center'}>
+        <div id='fields' className={(externalProgress || contentProgress) && 'grid place-items-center'}>
             {
-                externalProgress
+                externalProgress || contentProgress
                     ?
                     <div className="py-10">
                         <Progress />

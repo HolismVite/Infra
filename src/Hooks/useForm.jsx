@@ -173,8 +173,7 @@ const useForm = ({
                 data[key] = fields[i].value;
             }
         }
-        if (parentId)
-        {
+        if (parentId) {
             data.parentId = parentId;
         }
         if (extraParams instanceof Object) {
@@ -226,7 +225,7 @@ const useForm = ({
     }
 
     const getValue = (column) => {
-        
+
     }
 
     return {
@@ -245,6 +244,7 @@ const useForm = ({
         setField,
         setFields,
         setHasFile,
+        setProgress,
     }
 }
 
