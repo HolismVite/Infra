@@ -37,7 +37,7 @@ const Filtering = ({ filters }) => {
         <div className={
             "grid "
             + (isBrowse && " gap-6 ")
-            + (!isBrowse && "gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4")
+            + (!isBrowse && " gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4")
         }
         >
             {

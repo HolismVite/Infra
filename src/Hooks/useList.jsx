@@ -148,7 +148,7 @@ const useList = ({
         else {
             url += `list?pageNumber=${pageNumber}&pageSize=${pageSize}`
         }
-        const filters = buildFiltersQueryString();
+        const filters = encodeURIComponent(buildFiltersQueryString())
         if (filters) {
             url += `&filters=${filters}`;
         }
