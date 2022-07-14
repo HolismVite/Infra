@@ -35,8 +35,9 @@ const Filtering = ({ filters }) => {
         onKeyPress={(event) => handleKeyPress(event)}
     >
         <div className={
-            ""
-            + (!isBrowse && "grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4")
+            "grid "
+            + (isBrowse && " gap-6 ")
+            + (!isBrowse && "gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4")
         }
         >
             {
