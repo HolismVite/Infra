@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import app from 'App'
+import { useMessage } from 'Hooks'
 import { useForm } from 'Hooks'
 import { FormContext } from 'Contexts'
 import Actions from './Actions'
@@ -16,9 +17,15 @@ const PageForm = ({
     inputs,
     large,
     loader,
+    onLoad,
+    progress: externalProgress,
     returnTo,
     title,
 }) => {
+
+    const [contentProgress, setContentProgress] = useState()
+    
+    const { error } = useMessage()
 
     const navigate = useNavigate();
     const { id, entityId } = app.parseQuery()
@@ -45,11 +52,18 @@ const PageForm = ({
     } = useForm({
         entityId: entityId || id,
         entityType,
+        externalProgress,
         humanReadableEntityType,
         loader,
         onSaved: navigateBack,
         title,
     })
+
+    useEffect(() => {
+        if (onLoad instanceof Function) {
+            onLoad({ setProgress: setContentProgress, error })
+        }
+    }, [])
 
     return <Page
         title={calculatedTitle}
@@ -57,7 +71,9 @@ const PageForm = ({
     >
         <FormContext.Provider value={{
             addFieldToFormContext,
+            contentProgress,
             currentEntity,
+            externalProgress,
             isValid,
             mode,
             progress,

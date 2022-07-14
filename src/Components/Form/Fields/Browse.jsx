@@ -47,6 +47,7 @@ const Browse = ({
                         selectedEntity,
                         setSelectedEntity,
                         small: true,
+                        ...rest
                     }}
                 >
                     <BrowserDialog />
