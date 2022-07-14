@@ -12,6 +12,7 @@ const useForm = ({
     okAction,
     onSaved,
     parentId,
+    submitTo,
     title,
 }) => {
     // is edit, or is create? get id from somewhere
@@ -190,11 +191,18 @@ const useForm = ({
         }
         else {
             setProgress(true);
-            let url = `${app.camelize(entityType)}/`;
-            if (hasFile) {
-                url += 'upload'
-            } else {
-                url += `${mode === formMode.creation ? 'create' : 'update'}`
+            let url = '';
+            if (submitTo) 
+            {
+                url += submitTo
+            }
+            else {
+                url += `${app.camelize(entityType)}/`
+                if (hasFile) {
+                    url += 'upload'
+                } else {
+                    url += `${mode === formMode.creation ? 'create' : 'update'}`
+                }
             }
             if (window.location.search) {
                 const query = window.location.search.slice(1);

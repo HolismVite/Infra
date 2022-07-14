@@ -17,9 +17,11 @@ const PageForm = ({
     inputs,
     large,
     loader,
+    okAction,
     onLoad,
     progress: externalProgress,
     returnTo,
+    submitTo,
     title,
 }) => {
 
@@ -55,7 +57,9 @@ const PageForm = ({
         externalProgress,
         humanReadableEntityType,
         loader,
+        okAction,
         onSaved: navigateBack,
+        submitTo,
         title,
     })
 
