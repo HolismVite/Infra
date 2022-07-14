@@ -4,9 +4,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import app from 'App'
 import { upload } from 'App'
 import { useMessage } from 'Hooks'
+import { ListContext } from 'Contexts'
 import { DialogContext } from 'Contexts'
 import { TableContext } from 'Contexts'
-import { ListContext } from 'Contexts'
+import { FormContext } from 'Contexts'
 import Dialog from '../../Dialog/Dialog'
 import Upload from '../../Form/Fields/Upload'
 import OkCancel from '../../Dialog/OkCancel'
@@ -87,23 +88,29 @@ const Image = ({
                     setOpen: setUploadOpen
                 }}
             >
-                <Dialog
-                    title='Upload image'
-                    content={<>
-                        <FormElement
-                            inputs={<>
-                                <Upload />
-                            </>}
-                        />
-                    </>}
-                    actions={
-                        <OkCancel
-                            progress={progress}
-                            okClick={() => uploadImage()}
-                            cancelClick={() => setUploadOpen(false)}
-                        />
-                    }
-                />
+                <FormContext.Provider
+                    value={{
+                        setHasFile: () => { }
+                    }}
+                >
+                    <Dialog
+                        title='Upload image'
+                        content={<>
+                            <FormElement
+                                inputs={<>
+                                    <Upload />
+                                </>}
+                            />
+                        </>}
+                        actions={
+                            <OkCancel
+                                progress={progress}
+                                okClick={() => uploadImage()}
+                                cancelClick={() => setUploadOpen(false)}
+                            />
+                        }
+                    />
+                </FormContext.Provider>
             </DialogContext.Provider>
         }
         {
