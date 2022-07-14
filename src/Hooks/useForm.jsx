@@ -126,7 +126,7 @@ const useForm = ({
     useEffect(() => {
         if (currentEntity && currentEntity.id) {
             setMode(formMode.edition)
-            // setFields(currentEntity)
+            setFields(currentEntity)
         }
         else {
             setMode(formMode.creation)

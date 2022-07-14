@@ -31,9 +31,16 @@ const Field = ({
     } = useContext(FormContext);
     const [validationState, setValidationState] = useState(null);
     const label = placeholder || column;
+    const [camelizedColumn, setCamelizedColumn] = useState(column)
 
     useEffect(() => {
         setId(`${type}_${column}`);
+        if (isNaN(column)) {
+            setCamelizedColumn(app.camelize(column))
+        } else 
+        {
+            setCamelizedColumn(column)
+        }
     }, [type, column]);
 
     useEffect(() => {
@@ -70,8 +77,8 @@ const Field = ({
 
     useEffect(() => {
         if (currentEntity) {
-            setDisplayValue(currentEntity[app.camelize(column)])
-            setChosenValue(currentEntity[app.camelize(column)])
+            setDisplayValue(currentEntity[camelizedColumn])
+            setChosenValue(currentEntity[camelizedColumn])
         }
     }, [column, currentEntity])
 
