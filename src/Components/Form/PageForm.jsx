@@ -26,7 +26,7 @@ const PageForm = ({
 }) => {
 
     const [contentProgress, setContentProgress] = useState()
-    
+
     const { error } = useMessage()
 
     const navigate = useNavigate();
@@ -49,6 +49,7 @@ const PageForm = ({
         isValid,
         mode,
         progress,
+        setCurrentEntity,
         setField,
         setHasFile,
     } = useForm({
@@ -65,7 +66,11 @@ const PageForm = ({
 
     useEffect(() => {
         if (onLoad instanceof Function) {
-            onLoad({ setProgress: setContentProgress, error })
+            onLoad({
+                error,
+                setCurrentEntity,
+                setProgress: setContentProgress,
+            })
         }
     }, [])
 
