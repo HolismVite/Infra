@@ -59,6 +59,10 @@ const List = ({
     deselectEntities,
     deselectEntity,
     hasData,
+    hasGuid,
+    hasKey,
+    hasOrder,
+    hasSlug,
     loading,
     metadata,
     reload,
@@ -90,7 +94,6 @@ const List = ({
   }, [title, subtitle, breadcrumbItems])
 
   return <ListContext.Provider value={{
-    setFilter,
     card,
     classProvider,
     create,
@@ -106,7 +109,11 @@ const List = ({
     hasData,
     hasDelete,
     hasEdit,
+    hasGuid,
     hasItemSelection,
+    hasKey,
+    hasOrder,
+    hasSlug,
     headers,
     hiddenEntityActions,
     isFilteringOpen,
@@ -128,6 +135,7 @@ const List = ({
     setDialogProps,
     setEntity,
     setEntityProgress,
+    setFilter,
     setHiddenEntityActions,
     setIsFilteringOpen,
     setPageNumber,
@@ -136,10 +144,10 @@ const List = ({
     setTopPaginationVisibility,
     show,
     showTopPagiation,
-    usedFilters,
     upsert,
     upsertionIcon,
     upsertionText,
+    usedFilters,
   }}>
 
     <div

@@ -24,6 +24,10 @@ const useList = ({
     const [selectedEntities, setSelectedEntities] = useState([])
     const { error } = useMessage()
     const [resetRequested, setResetRequested] = useState(false)
+    const [hasGuid, setHasGuid] = useState(false)
+    const [hasKey, setHasKey] = useState(false)
+    const [hasOrder, setHasOrder] = useState(false)
+    const [hasSlug, setHasSlug] = useState(false)
 
     const setFilter = (property, value, operator) => {
         if (filters.find(i => i.property === property)) {
@@ -260,6 +264,19 @@ const useList = ({
     useEffect(() => {
         if (data && Array.isArray(data) && data.length !== 0) {
             setHasData(true)
+            const firstRecord = data[0]
+            if (firstRecord.hasOwnProperty('guid')) {
+                setHasGuid(true)
+            }
+            if (firstRecord.hasOwnProperty('key')) {
+                setHasKey(true)
+            }
+            if (firstRecord.hasOwnProperty('order')) {
+                setHasOrder(true)
+            }
+            if (firstRecord.hasOwnProperty('slug')) {
+                setHasSlug(true)
+            }
         }
         else {
             setHasData(false)
@@ -271,15 +288,17 @@ const useList = ({
     }, []);
 
     return {
-        setFilter,
         addSort,
         buildFiltersQueryString,
         buildSortsQueryString,
         data,
         deselectEntities,
         deselectEntity,
-        usedFilters: filters,
         hasData,
+        hasGuid,
+        hasKey,
+        hasOrder,
+        hasSlug,
         loading,
         metadata,
         pageNumber,
@@ -294,10 +313,12 @@ const useList = ({
         selectEntity,
         setEntity,
         setEntityProgress,
+        setFilter,
         setPageNumber,
         setPageSize,
         setSorts,
         sorts,
+        usedFilters: filters,
     }
 }
 

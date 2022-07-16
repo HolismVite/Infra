@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import Tooltip from '@mui/material/Tooltip';
 import Collapse from '@mui/material/Collapse';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import app from 'App'
 import { ListContext } from 'Contexts'
 import { TableContext } from 'Contexts'
@@ -23,7 +24,11 @@ const Table = () => {
         entityType,
         hasDelete,
         hasEdit,
+        hasGuid,
         hasItemSelection,
+        hasKey,
+        hasOrder,
+        hasSlug,
         headers,
         hiddenEntityActions,
         isBrowse,
@@ -78,6 +83,9 @@ const Table = () => {
                 + (app.getLocale().supportsLetterSpacing && " tracking-wider ")
             }>
                 {
+                    hasOrder && <th></th>
+                }
+                {
                     hasItemSelection ?
                         <th>
                             <Tooltip
@@ -115,6 +123,11 @@ const Table = () => {
     const rowStyle = (item, index, hasBottomBorder) => 'py-3 ' +
         ((hasBottomBorder && index !== data.length - 1) ? 'border-b ' : ' ') +
         (classProvider ? classProvider(item) : '')
+
+    const drag = (item) => hasOrder &&
+        <td>
+            <DragIndicatorIcon className="cursor-move" />
+        </td>
 
     const itemSelection = (item) => hasItemSelection
         ?
@@ -187,6 +200,7 @@ const Table = () => {
                                 <tr
                                     className={rowStyle(item, index, false)}
                                 >
+                                    {drag(item)}
                                     {itemSelection(item)}
                                     {clonedCells(item)}
                                 </tr>
@@ -207,6 +221,7 @@ const Table = () => {
                             <tr
                                 className={rowStyle(item, index, true)}
                             >
+                                {drag(item)}
                                 {itemSelection(item)}
                                 {clonedCells(item)}
                                 {actions(item)}
