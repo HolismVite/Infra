@@ -80,7 +80,7 @@ const Field = ({
             setDisplayValue(currentEntity[camelizedColumn])
             setChosenValue(currentEntity[camelizedColumn])
         }
-    }, [column, currentEntity])
+    }, [camelizedColumn, currentEntity])
 
     const isValid = () => {
         if (!validationState) {
