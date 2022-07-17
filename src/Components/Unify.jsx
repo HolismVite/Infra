@@ -19,8 +19,7 @@ const Unify = ({ component, ...rest }) => {
         if (typeof component.type === 'function') {
             const Component = component.type;
             let props = rest
-            if (rest.props)
-            {
+            if (rest.props) {
                 props = rest.props
             }
             return <Component {...component.props} {...props} />
@@ -37,6 +36,7 @@ const Unify = ({ component, ...rest }) => {
                         return <>
                             {
                                 component.props.children
+                                    .filter(i => i !== undefined)
                                     .filter(i => {
                                         if (i.props?.superAdmin === true) {
                                             return app.isSuperAdmin()
