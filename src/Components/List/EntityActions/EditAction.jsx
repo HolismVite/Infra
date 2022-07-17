@@ -23,21 +23,36 @@ const EditAction = () => {
     } = useContext(ListContext)
     const { entity } = useContext(EntityContext)
 
+    const hasHooks = (component) => {
+        if (!component) {
+            return false
+        }
+        if (component.toString instanceof Function) {
+            return /\buse[A-Z]/.test(component.toString())
+        }
+        return false
+    }
+
     const manageEdition = (component) => {
         if (typeof component === 'string') {
             navigate(component);
         }
         else {
             if (typeof component === 'function') {
-                var result = component(entity);
-                if (typeof result === 'object') {
+                if (hasHooks(component)) {
                     setOpen(true)
                 }
-                else if (typeof result === 'string') {
-                    navigate(result);
-                }
                 else {
-                    app.error('For edition, either provide a component, or a URL');
+                    var result = component(entity);
+                    if (typeof result === 'object') {
+                        setOpen(true)
+                    }
+                    else if (typeof result === 'string') {
+                        navigate(result);
+                    }
+                    else {
+                        app.error('For edition, either provide a component, or a URL');
+                    }
                 }
             }
             else {
