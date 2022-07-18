@@ -114,7 +114,7 @@ const Field = ({
             }
             {
                 renderInput({
-                    displayValue,
+                    displayValue: displayValue || '',
                     setDisplayValue,
                     setChosenValue,
                     setChosenEntity,
