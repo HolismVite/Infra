@@ -1,6 +1,7 @@
 import app from "./App";
 import {
     file,
+    form,
     get,
     post,
     upload,
@@ -10,6 +11,7 @@ import filterOperator from "./FilterOperator";
 export default app
 export {
     file,
+    form,
     get,
     post,
     upload,

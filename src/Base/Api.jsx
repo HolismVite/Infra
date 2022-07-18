@@ -90,6 +90,16 @@ const post = async (url, data) => {
     .then(response => response?.data)
 }
 
+const form = async (url, data) => {
+  return await axiosApi
+    .post(url, data, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(response => response?.data)
+}
+
 const upload = async (url, data) => {
   return await axiosApi
     .post(url, data, {
@@ -111,8 +121,9 @@ const file = async (url) => {
 
 export { axios }
 export { errorInterceptor }
+export { file }
+export { form }
 export { get }
 export { post }
 export { requestInterceptor }
-export { file }
 export { upload }

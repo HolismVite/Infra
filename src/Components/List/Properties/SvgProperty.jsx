@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import EditIcon from '@mui/icons-material/Edit';
-import { upload } from 'App'
+import { form } from 'App'
 import { ListContext } from 'Contexts'
 import { DialogContext } from 'Contexts'
 import DialogForm from '../../Form/DialogForm'
@@ -29,7 +29,7 @@ const SvgProperty = ({
         if (typeof actionUrl === 'function') {
             api = actionUrl(data.value);
         }
-        upload(api, data.value).then(data => {
+        form(api, data.value).then(data => {
             setProgress(false);
             success('Applied');
             setEntity(data)
