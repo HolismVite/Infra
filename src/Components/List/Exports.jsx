@@ -25,6 +25,7 @@ import List from './List'
 import ListAction from './ListActions/ListAction'
 import NumberProperty from './Properties/NumberProperty'
 import Progress from '../Progress'
+import SvgProperty from './Properties/SvgProperty'
 import Text from './Filters/Text'
 import TimePart from '../Show/TimePart'
 import TitleSubtitle from '../Show/TitleSubtitle'
@@ -55,6 +56,7 @@ export { ListAction }
 export { ListContext }
 export { NumberProperty }
 export { Progress }
+export { SvgProperty }
 export { TableContext }
 export { Text }
 export { TimePart }
