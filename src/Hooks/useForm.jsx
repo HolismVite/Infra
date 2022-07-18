@@ -83,8 +83,8 @@ const useForm = ({
     }, [entityId])
 
     useEffect(() => {
-        if (mode === formMode.edition) {
-            loadEntity()
+        if (mode === formMode.edition && !entity) {
+            // loadEntity()
         }
     }, [mode])
 

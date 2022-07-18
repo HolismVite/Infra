@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import EditIcon from '@mui/icons-material/Edit';
-import { post } from 'App'
+import { upload } from 'App'
 import { ListContext } from 'Contexts'
 import { DialogContext } from 'Contexts'
 import DialogForm from '../../Form/DialogForm'
@@ -29,7 +29,7 @@ const SvgProperty = ({
         if (typeof actionUrl === 'function') {
             api = actionUrl(data.value);
         }
-        post(api).then(data => {
+        upload(api, data.value).then(data => {
             setProgress(false);
             success('Applied');
             setEntity(data)
@@ -51,7 +51,7 @@ const SvgProperty = ({
             title={actionUrl && 'Click to change'}
             onClick={() => actionUrl && setOpen(true)}
         >
-            <span>{value}</span>
+            <span dangerouslySetInnerHTML={{ __html: value }}></span>
             {
                 actionUrl && <HolismIcon
                     icon={EditIcon}
