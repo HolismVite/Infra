@@ -1,3 +1,5 @@
+// todo: https://stackoverflow.com/questions/73017619/axios-not-respecting-content-type-header
+
 import axios from "axios"
 import Account from "./Account";
 import app from "./App";
