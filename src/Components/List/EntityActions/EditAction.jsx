@@ -67,7 +67,12 @@ const EditAction = () => {
         asMenuItem={menuForActions}
         click={() => {
             if (edit) {
-                manageEdition(edit);
+                if (edit instanceof Function) {
+                    manageEdition(edit(entity))
+                }
+                else {
+                    manageEdition(edit);
+                }
             }
             else if (upsert) {
                 manageEdition(upsert);
@@ -115,7 +120,7 @@ const EditAction = () => {
         {
             edit && typeof edit !== 'string' &&
             <Unify
-                component={edit}
+                component={edit instanceof Function ? edit(entity) : edit}
                 isSuperAdmin={app.isSuperAdmin()}
                 entityId={entity.id}
                 entity={entity}
