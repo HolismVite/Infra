@@ -1,9 +1,10 @@
+import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
+import PublishIcon from '@mui/icons-material/Publish';
 import {
     axios,
     errorInterceptor,
     requestInterceptor,
 } from '../../Base/Api'
-import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import HeaderAction from "./HeaderAction"
 
 const ClearCache = () => {
@@ -30,13 +31,13 @@ const ClearCache = () => {
     }
 
     return <HeaderAction
-        title="Clear Cache"
-        icon={DeleteSweepIcon}
+        title="Publish"
+        icon={PublishIcon}
         action={({ setProgress, success, error }) => {
             setProgress(true)
             post('/cache/clear')
                 .then(data => {
-                    success('Cache cleared')
+                    success('Published')
                     setProgress(false)
                 }, e => {
                     error(e)
