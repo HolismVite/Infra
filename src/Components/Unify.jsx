@@ -4,7 +4,9 @@ import app from 'App'
 const Unify = ({ component, ...rest }) => {
 
     if (!component) {
-        return <span className="hidden">Component passed to the wrapper is null or undefined</span>
+        const mesasge = 'Component passed to the wrapper is null or undefined'
+        console.warn(mesasge)
+        return <span className="hidden">{mesasge}</span>
     }
     if (typeof component === 'string') {
         return <>{component}</>

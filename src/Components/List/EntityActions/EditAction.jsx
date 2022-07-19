@@ -68,7 +68,7 @@ const EditAction = () => {
         click={() => {
             if (edit) {
                 if (edit instanceof Function) {
-                    manageEdition(edit(entity))
+                    manageEdition(edit({ entity }))
                 }
                 else {
                     manageEdition(edit);
@@ -120,7 +120,7 @@ const EditAction = () => {
         {
             edit && typeof edit !== 'string' &&
             <Unify
-                component={edit instanceof Function ? edit(entity) : edit}
+                component={edit instanceof Function ? edit({ entity }) : edit}
                 isSuperAdmin={app.isSuperAdmin()}
                 entityId={entity.id}
                 entity={entity}
