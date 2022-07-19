@@ -33,11 +33,25 @@ const ViewRecordAction = () => {
                                 :
                                 <span className="inline-block ml-1">
                                     {
-                                        typeof property === "string"
+                                        obj[propertyName] === null
                                             ?
-                                            `"${obj[propertyName]}"`
+                                            <span className="text-gray-400">null</span>
                                             :
-                                            obj[propertyName]
+                                            (
+                                                typeof property === "string"
+                                                    ?
+                                                    `"${obj[propertyName]}"`
+                                                    :
+                                                    (
+                                                        typeof property === 'boolean'
+                                                            ?
+                                                            (
+                                                                obj[propertyName] === true ? 'true' : 'false'
+                                                            )
+                                                            :
+                                                            obj[propertyName]
+                                                    )
+                                            )
                                     }
                                 </span>
                         }
