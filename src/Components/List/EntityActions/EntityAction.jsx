@@ -30,7 +30,10 @@ const EntityAction = ({
 
     const navigate = useNavigate()
     const { success, error } = useMessage()
-    const { reloadEntity } = useContext(ListContext)
+    const {
+        entityType,
+        reloadEntity
+    } = useContext(ListContext)
     const [open, setOpen] = useState(false)
 
     const iconStyles = "text-gray-500 group-hover:text-blue-500 dark:text-zinc-500 dark:group-hover:text-blue-500"
@@ -126,6 +129,7 @@ const EntityAction = ({
                         <Unify
                             component={dialog}
                             entity={entity}
+                            entityType={entityType}
                             reloadEntity={reloadEntity}
                             setEntity={setEntity}
                             {...rest}
