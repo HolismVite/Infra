@@ -74,6 +74,8 @@ const EditAction = () => {
                 component={create}
                 isSuperAdmin={app.isSuperAdmin()}
                 entityId={entity.id}
+                entity={entity}
+                isEdit
             />
         }
         {
@@ -82,6 +84,8 @@ const EditAction = () => {
                 component={upsert}
                 isSuperAdmin={app.isSuperAdmin()}
                 entityId={entity.id}
+                entity={entity}
+                isEdit
             />
         }
         {
@@ -90,6 +94,8 @@ const EditAction = () => {
                 component={edit}
                 isSuperAdmin={app.isSuperAdmin()}
                 entityId={entity.id}
+                entity={entity}
+                isEdit
             />
         }
         <EntityAction
