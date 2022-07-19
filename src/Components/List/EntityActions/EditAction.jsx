@@ -61,6 +61,30 @@ const EditAction = () => {
         }
     }
 
+    const editAction = <EntityAction
+        icon={<EditIcon style={{ color: '#10B981' }} />}
+        title={app.t("Edit")}
+        asMenuItem={menuForActions}
+        click={() => {
+            if (edit) {
+                manageEdition(edit);
+            }
+            else if (upsert) {
+                manageEdition(upsert);
+            }
+            else if (hasEdit) {
+                if (create) {
+                    manageEdition(create);
+                }
+                else {
+                    app.error('You specified hasEdit={true} but has not provided a creation component.');
+                }
+            }
+        }}
+    />
+
+    const showEditAction = edit instanceof Function ? edit({ entity }) : true
+
     return <DialogContext.Provider
         value={{
             open,
@@ -98,27 +122,7 @@ const EditAction = () => {
                 isEdit
             />
         }
-        <EntityAction
-            icon={<EditIcon style={{ color: '#10B981' }} />}
-            title={app.t("Edit")}
-            asMenuItem={menuForActions}
-            click={() => {
-                if (edit) {
-                    manageEdition(edit);
-                }
-                else if (upsert) {
-                    manageEdition(upsert);
-                }
-                else if (hasEdit) {
-                    if (create) {
-                        manageEdition(create);
-                    }
-                    else {
-                        app.error('You specified hasEdit={true} but has not provided a creation component.');
-                    }
-                }
-            }}
-        />
+        {showEditAction && editAction}
     </DialogContext.Provider>
 }
 

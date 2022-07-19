@@ -91,8 +91,8 @@ const Cards = () => {
                                     <div
                                         className=
                                         {
-                                            'item w-full overflow-hidden group relative ' +
-                                            (multicolumn ? '' : "py-4 px-6 ") +
+                                            'item w-full overflow-hidden relative ' +
+                                            (multicolumn ? ' group ' : "py-4 px-6 ") +
                                             (!multicolumn && index !== 0 ? 'border-t ' : '') +
                                             (classProvider ? classProvider(item) : '')
                                         }
