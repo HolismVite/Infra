@@ -38,7 +38,7 @@ const EditAction = () => {
             navigate(component);
         }
         else {
-            if (typeof component === 'function') {
+            if (component instanceof Function) {
                 if (hasHooks(component)) {
                     setOpen(true)
                 }
@@ -68,7 +68,12 @@ const EditAction = () => {
         click={() => {
             if (edit) {
                 if (edit instanceof Function) {
-                    manageEdition(edit({ entity }))
+                    if (hasHooks(edit)) {
+                        manageEdition(edit)
+                    }
+                    else {
+                        manageEdition(edit({ entity }))
+                    }
                 }
                 else {
                     manageEdition(edit);
