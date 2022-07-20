@@ -7,7 +7,9 @@ import FullScreen from './HeaderActions/FullScreen';
 import Maximize from './HeaderActions/Maximize';
 import DarkMode from './HeaderActions/DarkMode';
 import HolismIcon from '../Components/HolismIcon';
+import app from 'App'
 import { PanelContext } from 'Contexts'
+import DevMode from './DevMode';
 
 const Header = ({ onMenuIconClicked }) => {
 
@@ -26,6 +28,7 @@ const Header = ({ onMenuIconClicked }) => {
                         <HolismIcon icon={MenuIcon} />
                     </div>
                 </div>
+                <DevMode />
                 <div
                     className={
                         'flex items-center justify-center gap-4'
