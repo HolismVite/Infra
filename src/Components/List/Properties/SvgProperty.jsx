@@ -51,7 +51,10 @@ const SvgProperty = ({
             title={actionUrl && 'Click to change'}
             onClick={() => actionUrl && setOpen(true)}
         >
-            <span dangerouslySetInnerHTML={{ __html: value }}></span>
+            <span
+                className="w-4 h-4"
+                dangerouslySetInnerHTML={{ __html: value }}
+            ></span>
             {
                 actionUrl && <HolismIcon
                     icon={EditIcon}
