@@ -280,6 +280,9 @@ const useList = ({
         }
         else {
             setHasData(false)
+            if (pageNumber > 1) {
+                setPageNumber(1)
+            }
         }
     }, [data])
 
