@@ -66,7 +66,7 @@ const renderReact = () => {
             </CacheProvider>
           </LocalizationProvider>
         </BrowserRouter>
-      // </React.StrictMode>
+      </React.StrictMode>
     );
   }
   else {
@@ -77,7 +77,7 @@ const renderReact = () => {
             <Panel />
           </LocalizationProvider>
         </BrowserRouter>
-      // </React.StrictMode>
+      </React.StrictMode>
     );
   }
 }
