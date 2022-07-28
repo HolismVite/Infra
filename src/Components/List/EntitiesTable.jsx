@@ -162,6 +162,12 @@ const Table = () => {
             return true
         })
         .map(td => {
+            if (td.props.children.props) {
+                return td.props.children
+            }
+            return td
+        })
+        .map(td => {
             const { start, superAdmin, ...rest } = td.props
             return <td.type
                 key={td.key}

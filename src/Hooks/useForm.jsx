@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import app from 'App'
-import { post, get } from 'App'
+import {
+    get,
+    post,
+    upload,
+} from 'App'
 import { useMessage } from 'Hooks'
 
 const useForm = ({
@@ -191,8 +195,7 @@ const useForm = ({
         else {
             setProgress(true);
             let url = '';
-            if (submitTo) 
-            {
+            if (submitTo) {
                 url += submitTo
             }
             else {
