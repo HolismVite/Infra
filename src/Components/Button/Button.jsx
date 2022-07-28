@@ -1,5 +1,5 @@
 import MuiButton from '@mui/material/Button';
-import { HolismIcon } from '@Panel'
+import { HolismIcon } from 'Panel'
 
 const Button = ({
     text,

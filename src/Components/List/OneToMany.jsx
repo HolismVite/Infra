@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { List, Progress, app, get } from '@List';
+import { List, Progress, app, get } from 'List';
 import { ListContext } from 'Contexts'
 import { useMessage } from 'Hooks'
 

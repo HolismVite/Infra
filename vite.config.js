@@ -8,13 +8,13 @@ const aliases = {
   'App': 'src/Base/Exports',
   'Hooks': 'src/Hooks/Exports',
   'Contexts': 'src/Contexts/Exports',
-  '@Form': 'src/Components/Form/Exports',
-  '@List': 'src/Components/List/Exports',
-  '@Browse': 'src/Components/Browse/Exports',
-  '@Tree': 'src/Components/Tree/Exports',
-  '@Tab': 'src/Components/Tab/Exports',
-  '@Dashboard': 'src/Components/Dashboard/Exports',
-  '@Panel': 'src/Panel/Exports',
+  'Form': 'src/Components/Form/Exports',
+  'List': 'src/Components/List/Exports',
+  'Browse': 'src/Components/Browse/Exports',
+  'Tree': 'src/Components/Tree/Exports',
+  'Tab': 'src/Components/Tab/Exports',
+  'Dashboard': 'src/Components/Dashboard/Exports',
+  'Panel': 'src/Panel/Exports',
 }
 
 try {

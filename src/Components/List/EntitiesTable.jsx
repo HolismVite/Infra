@@ -57,7 +57,7 @@ const Table = () => {
                 return true;
             })
             .map(header => {
-                if (header.props.children.props) {
+                if (header.props.children?.props) {
                     return header.props.children
                 }
                 return header
@@ -162,10 +162,10 @@ const Table = () => {
             return true
         })
         .map(td => {
-            if (td.props.children.props) {
-                return td.props.children
+            if (td.type === 'td') {
+                return td
             }
-            return td
+            return td.props.children
         })
         .map(td => {
             const { start, superAdmin, ...rest } = td.props

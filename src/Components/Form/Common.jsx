@@ -1,4 +1,4 @@
-import { Text } from '@Form'
+import { Text } from 'Form'
 
 const Title = ({ optional }) => {
     const props = {}

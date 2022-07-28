@@ -1,6 +1,6 @@
 // total mess: https://en.wikipedia.org/wiki/List_of_calendars
 import { format } from 'date-fns-jalali'
-import { app } from '@Panel'
+import { app } from 'Panel'
 
 const DatePart = ({ value }) => {
     const normalizedValue = (value && value.endsWith('Z')) ? value : (value + 'Z');

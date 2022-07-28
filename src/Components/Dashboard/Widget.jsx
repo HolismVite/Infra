@@ -1,4 +1,4 @@
-import { app } from '@Panel';
+import { app } from 'Panel';
 import HolismIcon from "../HolismIcon";
 
 const Widget = ({

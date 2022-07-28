@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { useNavigate } from 'react-router-dom';
-import { HolismIcon, app, Unify } from '@List';
+import { HolismIcon, app, Unify } from 'List';
 import { useMessage } from 'Hooks'
 import { ListContext } from 'Contexts'
 import { DialogContext } from 'Contexts'
