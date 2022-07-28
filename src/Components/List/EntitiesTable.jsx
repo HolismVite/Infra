@@ -57,6 +57,12 @@ const Table = () => {
                 return true;
             })
             .map(header => {
+                if (header.props.children.props) {
+                    return header.props.children
+                }
+                return header
+            })
+            .map(header => {
                 const { start, superAdmin, ...rest } = header.props
                 return <header.type
                     className={"text-gray-900 dark:text-gray-300 py-3 font-light text-xs "
