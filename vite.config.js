@@ -15,7 +15,6 @@ const aliases = {
   '@Tab': 'src/Components/Tab/Exports',
   '@Dashboard': 'src/Components/Dashboard/Exports',
   '@Panel': 'src/Panel/Exports',
-  'Common': 'src/Common/Exports'
 }
 
 try {

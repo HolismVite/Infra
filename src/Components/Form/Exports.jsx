@@ -2,6 +2,7 @@ import { DialogContext } from 'Contexts'
 import { FormContext } from 'Contexts'
 import { get } from '../../Base/Api'
 import { post } from '../../Base/Api'
+import { Title } from './Common'
 import { upload } from '../../Base/Api'
 import { useLocalStorageState } from 'Hooks'
 import { useMessage } from 'Hooks'
@@ -82,6 +83,7 @@ export { Slug }
 export { Success }
 export { Text }
 export { Time }
+export { Title }
 export { Upload }
 export { useLocalStorageState }
 export { useMessage }
