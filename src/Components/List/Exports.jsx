@@ -2,6 +2,9 @@ import { EntityContext } from 'Contexts'
 import { get, post, upload } from '../../Base/Api'
 import { ListContext } from 'Contexts'
 import { TableContext } from 'Contexts'
+import { Title } from './Common'
+import { TitleAscending } from './Common'
+import { TitleDescending } from './Common'
 import { useLocalStorageState } from 'Hooks'
 import { useMessage } from 'Hooks'
 import { useQueryStringState } from 'Hooks'
@@ -60,6 +63,9 @@ export { SvgProperty }
 export { TableContext }
 export { Text }
 export { TimePart }
+export { Title }
+export { TitleAscending }
+export { TitleDescending }
 export { TitleSubtitle }
 export { Tree }
 export { Unify }
