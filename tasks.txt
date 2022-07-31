@@ -1,3 +1,29 @@
+consider making everything a component, like:
+
+const Headers = () => {
+    return <>
+        <th>Title</th>
+    </>
+}
+
+const Row = (entity) => {
+    return <>
+        <td>{entity.title}</td>
+    </>
+}
+
+const Lessons = () => {
+    return <List
+        title='Lessons'
+        entityType='Lesson'
+        headers={<Headers />}
+        row={<Row />}
+
+    />
+}
+
+*****************
+
 change browse and browser everywhere to lookup
 
 https://js.devexpress.com/Demos/WidgetsGallery/
