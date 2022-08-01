@@ -11,10 +11,11 @@ import { ListContext } from 'Contexts'
 import HolismIcon from '../../HolismIcon'
 
 const BooleanProperty = ({
+    actionUrl,
+    className,
     column,
     title,
     value,
-    actionUrl
 }) => {
 
     const { success, error } = useMessage()
@@ -59,7 +60,7 @@ const BooleanProperty = ({
                     <HolismIcon icon={ClearIcon} />
             }
         </div>
-    return <div className="property boolean flex items-center justify-center">
+    return <div className={"property boolean flex items-center justify-center " + (className || '')}>
         {
             progress
                 ?
