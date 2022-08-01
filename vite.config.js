@@ -6,15 +6,15 @@ fs = require('fs')
 
 const aliases = {
   'App': 'src/Base/Exports',
-  'Hooks': 'src/Hooks/Exports',
-  'Contexts': 'src/Contexts/Exports',
-  'Form': 'src/Components/Form/Exports',
-  'List': 'src/Components/List/Exports',
   'Browse': 'src/Components/Browse/Exports',
-  'Tree': 'src/Components/Tree/Exports',
-  'Tab': 'src/Components/Tab/Exports',
+  'Contexts': 'src/Contexts/Exports',
   'Dashboard': 'src/Components/Dashboard/Exports',
+  'Form': 'src/Components/Form/Exports',
+  'Hooks': 'src/Hooks/Exports',
+  'List': 'src/Components/List/Exports',
   'Panel': 'src/Panel/Exports',
+  'Tab': 'src/Components/Tab/Exports',
+  'Tree': 'src/Components/Tree/Exports',
 }
 
 try {
@@ -39,10 +39,18 @@ try {
   console.log(error)
 }
 
-console.log(aliases)
+const orderedAliases = Object.keys(aliases).sort().reduce(
+  (obj, key) => {
+    obj[key] = aliases[key];
+    return obj;
+  },
+  {}
+);
+
+console.log(orderedAliases)
 
 const resolvedAliases = Object.fromEntries(
-  Object.entries(aliases).map(([key, value]) => [key, path.resolve(__dirname, value)]),
+  Object.entries(orderedAliases).map(([key, value]) => [key, path.resolve(__dirname, value)]),
 )
 
 export default defineConfig(({ mode }) => {
