@@ -9,6 +9,7 @@ import { useMessage } from 'Hooks'
 import { useQueryStringState } from 'Hooks'
 import app from '../../Base/App'
 import Ascending from './Sorts/Ascending'
+import Boolean from './Filters/Boolean'
 import BooleanProperty from './Properties/BooleanProperty'
 import Browse from './Filters/Browse'
 import Chip from './Properties/Chip'
@@ -37,6 +38,7 @@ import ValueWithTitle from '../Show/ValueWithTitle'
 
 export { app }
 export { Ascending }
+export { Boolean }
 export { BooleanProperty }
 export { Browse }
 export { Chip }
