@@ -6,14 +6,14 @@ import Field from './Field';
 
 const DateOnly = (props) => {
 
+    const field = useField(props)
     const {
         displayValue,
         label,
         progress,
         setChosenValue,
         setDisplayValue,
-        ...field
-    } = useField(props)
+    } = field
 
     return <Field
         type='date'

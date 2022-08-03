@@ -18,20 +18,21 @@ const Browse = ({
     const [open, setOpen] = useState(false);
     const [selectedEntity, setSelectedEntity] = useState(null)
 
-    const {
-        displayValue,
-        label,
-        progress,
-        setChosenValue,
-        setDisplayValue,
-        ...field
-    } = useField({
+    const field = useField({
         choose,
         list,
         show,
         type: 'browse',
         ...rest
     })
+
+    const {
+        displayValue,
+        label,
+        progress,
+        setChosenValue,
+        setDisplayValue,
+    } = field
 
     return <Field
         {...field}

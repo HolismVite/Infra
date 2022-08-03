@@ -5,13 +5,13 @@ import Field from './Field';
 
 const Code = (props) => {
 
+    const field = useField(props)
     const {
         displayValue,
         label,
         setChosenValue,
         setDisplayValue,
-        ...field
-    } = useField(props)
+    } = field
 
     return <Field
         type="longText"

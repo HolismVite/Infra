@@ -17,11 +17,11 @@ const Upload = ({
     ...rest
 }) => {
 
+    const field = useField(rest)
     const {
         progress,
         validateAll,
-        ...field
-    } = useField(rest)
+    } = field
     const [files, setFiles] = useState([])
     const [previews, setPreviews] = useState([])
     const [hasImages, setHasImages] = useState(false)

@@ -10,13 +10,13 @@ const Check = ({
 
     const { change } = rest
 
+    const field = useField(rest)
     const {
         displayValue,
         label,
         setChosenValue,
         setDisplayValue,
-        ...field
-    } = useField(rest)
+    } = field
 
     return <Field
         type='check'

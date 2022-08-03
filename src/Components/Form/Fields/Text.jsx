@@ -30,20 +30,22 @@ const Text = ({
         }
     }
 
+    const field = useField({
+        validate: textValidate,
+        ...rest
+    })
     const {
         displayValue,
         setDisplayValue,
         setChosenValue,
         label,
         progress,
-        ...field
-    } = useField(rest)
+    } = field
 
     return <Field
         type='text'
         {...rest}
         {...field}
-        validate={textValidate}
     >
         <OutlinedInput
             label={app.t(label)}

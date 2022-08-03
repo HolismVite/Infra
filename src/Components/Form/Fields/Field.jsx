@@ -15,6 +15,8 @@ const Field = ({
     type,
 }) => {
 
+    console.log(label)
+
     return <div className={fieldStyles}>
         <FormControl
             error={isValid() ? false : true}
