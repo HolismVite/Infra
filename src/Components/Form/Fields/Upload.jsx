@@ -7,11 +7,12 @@ import app from 'App'
 import { file } from 'App'
 import { FormContext } from 'Contexts'
 import fieldStyles from './FieldStyle';
+import Field from './Field'
 import Progress from '../../Progress'
 
 const Upload = ({
     initialUrls,
-    multiple
+    multiple,
 }) => {
     const [progress, setProgress] = useState(false)
     const [files, setFiles] = useState([])
@@ -41,6 +42,9 @@ const Upload = ({
 
     useEffect(() => {
         setHasImages(previews.length > 0)
+        if (validateAll instanceof Function) {
+            validateAll(previews.length)
+        }
     }, [previews])
 
     const removeImage = (e, preview) => {
@@ -68,50 +72,72 @@ const Upload = ({
         }
     }, [open])
 
-    return progress
-        ?
-        <Progress />
-        :
-        <div
-            className={fieldStyles + (previews.length === 0 ? " relative bg-slate-100 flex justify-center items-center py-20 cursor-pointer group hover:bg-slate-200 border-dashed border-2 border-slate-400 hover:border-slate-600 dark:bg-zinc-700 " : "")}
-            {...getRootProps()}
-        >
-            <Fade in={hasImages}>
-                <div className="relative flex items-center justify-around">
-                    {
-                        previews.map(preview => <div className="relative" key={preview.url}>
-                            <img
-                                className="rounded-lg shadow-md shadow-black w-36 h-36 object-cover "
-                                src={preview.url}
-                            />
-                            <IconButton
-                                className="absolute -top-4 -right-4 "
-                                onClick={(e) => removeImage(e, preview)}
-                            >
-                                <CancelIcon />
-                            </IconButton>
-                        </div>)
-                    }
+    const validate = () => {
+        if (hasImages) {
+            return true;
+        }
+        return {
+            error: 'required',
+            message: 'Please upload an image'
+        }
+    }
+
+    let validateAll = null
+
+    return <Field
+        type='upload'
+        validate={validate}
+        renderInput={({
+            validateAll,
+            progress
+        }) => {
+            validateAll = validateAll
+            return progress
+                ?
+                <Progress />
+                :
+                <div
+                    className={fieldStyles + (previews.length === 0 ? " relative bg-slate-100 flex justify-center items-center py-20 cursor-pointer group hover:bg-slate-200 border-dashed border-2 border-slate-400 hover:border-slate-600 dark:bg-zinc-700 " : "")}
+                    {...getRootProps()}
+                >
+                    <Fade in={hasImages}>
+                        <div className="relative flex items-center justify-around">
+                            {
+                                previews.map(preview => <div className="relative" key={preview.url}>
+                                    <img
+                                        className="rounded-lg shadow-md shadow-black w-36 h-36 object-cover "
+                                        src={preview.url}
+                                    />
+                                    <IconButton
+                                        className="absolute -top-4 -right-4 "
+                                        onClick={(e) => removeImage(e, preview)}
+                                    >
+                                        <CancelIcon />
+                                    </IconButton>
+                                </div>)
+                            }
+                        </div>
+                    </Fade>
+                    <Fade in={!hasImages}>
+                        <div>
+                            {
+                                isDragActive && <div className="absolute inset-0 bg-green-500 animate-pulse"></div>
+                            }
+                            <input {...getInputProps({
+                                multiple: multiple
+                            })} />
+                            <p className="relative text-sm tracking-wide font-bold text-slate-600 group-hover:drop-shadow group-hover:drop-shadow">
+                                {
+                                    isDragActive ?
+                                        <span>Drop the {multiple ? "files" : "file"} here ...</span> :
+                                        <span>Drag &amp; drop {multiple ? "some files" : "a file"} here, or click to select {multiple ? "files" : "a file"}</span>
+                                }
+                            </p>
+                        </div>
+                    </Fade>
                 </div>
-            </Fade>
-            <Fade in={!hasImages}>
-                <div>
-                    {
-                        isDragActive && <div className="absolute inset-0 bg-green-500 animate-pulse"></div>
-                    }
-                    <input {...getInputProps({
-                        multiple: multiple
-                    })} />
-                    <p className="relative text-sm tracking-wide font-bold text-slate-600 group-hover:drop-shadow group-hover:drop-shadow">
-                        {
-                            isDragActive ?
-                                <span>Drop the {multiple ? "files" : "file"} here ...</span> :
-                                <span>Drag &amp; drop {multiple ? "some files" : "a file"} here, or click to select {multiple ? "files" : "a file"}</span>
-                        }
-                    </p>
-                </div>
-            </Fade>
-        </div>
+        }}
+    />
 }
 
 export default Upload 
