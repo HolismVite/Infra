@@ -1,6 +1,7 @@
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import app from 'App'
+import { useField } from 'Hooks'
 import Field from './Field'
 import HolismIcon from '../../HolismIcon'
 
@@ -29,40 +30,45 @@ const Text = ({
         }
     }
 
+    const {
+        displayValue,
+        setDisplayValue,
+        setChosenValue,
+        label,
+        progress,
+        ...field
+    } = useField(rest)
+
     return <Field
         type='text'
         {...rest}
+        {...field}
         validate={textValidate}
-        renderInput={({
-            displayValue,
-            setDisplayValue,
-            setChosenValue,
-            label,
-            progress
-        }) => {
-            return <OutlinedInput
-                label={app.t(label)}
-                value={displayValue}
-                startAdornment={
-                    startIcon &&
-                    <InputAdornment
-                        disablePointerEvents={progress}
-                        disableTypography={progress}
-                        position="start"
-                    >
-                        <HolismIcon
-                            progress={progress}
-                            icon={startIcon}
-                        />
-                    </InputAdornment>
-                }
-                onChange={(e) => {
-                    setDisplayValue(e.target.value)
-                    setChosenValue(e.target.value)
-                }}
-            />
-        }}
-    />
+    >
+        <OutlinedInput
+            label={app.t(label)}
+            value={displayValue}
+            startAdornment={
+                startIcon &&
+                <InputAdornment
+                    disablePointerEvents={progress}
+                    disableTypography={progress}
+                    position="start"
+                >
+                    <HolismIcon
+                        progress={progress}
+                        icon={startIcon}
+                    />
+                </InputAdornment>
+            }
+            onChange={(e) => {
+                setDisplayValue(e.target.value)
+                setChosenValue(e.target.value)
+            }}
+        />
+    </Field>
+
+
 };
 
 export default Text 

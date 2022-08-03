@@ -6,6 +6,7 @@ import Fade from '@mui/material/Fade';
 import app from 'App'
 import { file } from 'App'
 import { FormContext } from 'Contexts'
+import { useField } from 'Hooks'
 import fieldStyles from './FieldStyle';
 import Field from './Field'
 import Progress from '../../Progress'
@@ -13,8 +14,14 @@ import Progress from '../../Progress'
 const Upload = ({
     initialUrls,
     multiple,
+    ...rest
 }) => {
-    const [progress, setProgress] = useState(false)
+
+    const {
+        progress,
+        validateAll,
+        ...field
+    } = useField(rest)
     const [files, setFiles] = useState([])
     const [previews, setPreviews] = useState([])
     const [hasImages, setHasImages] = useState(false)
@@ -42,9 +49,7 @@ const Upload = ({
 
     useEffect(() => {
         setHasImages(previews.length > 0)
-        if (validateAll instanceof Function) {
-            validateAll(previews.length)
-        }
+        validateAll()
     }, [previews])
 
     const removeImage = (e, preview) => {
@@ -82,17 +87,14 @@ const Upload = ({
         }
     }
 
-    let validateAll = null
-
     return <Field
         type='upload'
         validate={validate}
-        renderInput={({
-            validateAll,
+        {...rest}
+        {...field}
+    >
+        {
             progress
-        }) => {
-            validateAll = validateAll
-            return progress
                 ?
                 <Progress />
                 :
@@ -136,8 +138,8 @@ const Upload = ({
                         </div>
                     </Fade>
                 </div>
-        }}
-    />
+        }
+    </Field>
 }
 
 export default Upload 
