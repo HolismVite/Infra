@@ -23,7 +23,7 @@ const Field = ({
             disabled={progress}
         >
             {
-                type !== 'check' && <InputLabel
+                type !== 'check' && type !== 'upload' && <InputLabel
                     htmlFor={id}
                     disableAnimation={progress}
                     disabled={progress}
